@@ -93,7 +93,7 @@ defmodule CloudflareApi.DnsRecords do
   end
 
   @doc ~S"""
-  If the record already exists, this will exit with a success {:ok, :already_deleted}
+  If the record does not exist, this will exit with a success {:ok, :already_deleted}
   """
   def delete(client, zone_id, record_id) do
     case Tesla.delete(c(client), "/zones/#{zone_id}/dns_records/#{record_id}") do
