@@ -56,7 +56,7 @@ defmodule CloudflareApi.DnsRecords do
            type: type,
            name: hostname,
            content: ip,
-           ttl: "1",
+           ttl: "60",
            proxied: false
          }) do
       {:ok, %Tesla.Env{status: 200, body: body}} ->
@@ -78,7 +78,7 @@ defmodule CloudflareApi.DnsRecords do
            type: type,
            name: hostname,
            content: ip,
-           ttl: "1",
+           ttl: "60",
            proxied: false
          }) do
       {:ok, %Tesla.Env{status: 200, body: body}} ->
