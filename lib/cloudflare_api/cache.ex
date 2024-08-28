@@ -272,7 +272,7 @@ defmodule CloudflareApi.Cache do
   end
 
   @spec expire_entry(cache :: Cache.t(), hostname :: String.t()) :: Cache.t()
-  defp expire_entry(%Cache{} = cache, hostname) do
+  defp expire_entry(%Cache{} = cache, _hostname) do
     # TODO - WIP
     cache
     #|> Kernel.struct(
