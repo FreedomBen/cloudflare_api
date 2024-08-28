@@ -10,7 +10,7 @@ by adding `cloudflare_api` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:cloudflare_api, "~> 0.1.0"}
+    {:cloudflare_api, "~> 0.2.0"}
   ]
 end
 ```
