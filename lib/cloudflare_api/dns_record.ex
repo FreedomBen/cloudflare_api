@@ -16,7 +16,7 @@ defmodule CloudflareApi.DnsRecord do
     :ip,
     :created_on,
     type: :A,
-    ttl: "1",
+    ttl: "60",
     proxied: false,
     proxiable: true,
     locked: false
