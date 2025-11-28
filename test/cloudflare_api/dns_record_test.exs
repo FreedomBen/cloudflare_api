@@ -81,4 +81,3 @@ defmodule CloudflareApi.DnsRecordTest do
     assert %DnsRecord{zone_id: "zone-id", hostname: "www.example.com", ip: "1.2.3.4"} = record
   end
 end
-

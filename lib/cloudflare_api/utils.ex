@@ -769,8 +769,8 @@ defmodule CloudflareApi.Utils.Number do
     number_to_delimited(number, get_intl_int_opts(opts))
   end
 
-  defp_testable get_int_opts(opts), do: Keyword.merge(default_int_opts(), opts)
-  defp_testable get_float_opts(opts), do: Keyword.merge(default_float_opts(), opts)
-  defp_testable get_intl_int_opts(opts), do: Keyword.merge(default_intl_int_opts(), opts)
-  defp_testable get_intl_float_opts(opts), do: Keyword.merge(default_intl_float_opts(), opts)
+  defp_testable(get_int_opts(opts), do: Keyword.merge(default_int_opts(), opts))
+  defp_testable(get_float_opts(opts), do: Keyword.merge(default_float_opts(), opts))
+  defp_testable(get_intl_int_opts(opts), do: Keyword.merge(default_intl_int_opts(), opts))
+  defp_testable(get_intl_float_opts(opts), do: Keyword.merge(default_intl_float_opts(), opts))
 end

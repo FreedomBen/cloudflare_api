@@ -194,7 +194,10 @@ defmodule CloudflareApi.Cache do
   end
 
   def handle_call({:expire, hostname}, _from, cache) do
-    Logger.debug(__ENV__, "Handling call for :expire hostname='#{hostname}', cache='#{Utils.to_string(cache)}'")
+    Logger.debug(
+      __ENV__,
+      "Handling call for :expire hostname='#{hostname}', cache='#{Utils.to_string(cache)}'"
+    )
 
     {:reply, :ok, expire_entry(cache, hostname)}
   end
@@ -275,14 +278,14 @@ defmodule CloudflareApi.Cache do
   defp expire_entry(%Cache{} = cache, _hostname) do
     # TODO - WIP
     cache
-    #|> Kernel.struct(
+    # |> Kernel.struct(
     #  hostnames: Map.put(cache.hostnames, cache_entry.dns_record.hostname, cache_entry)
-    #)
-    #cache.hostnames[hostname]
-    #entry = cache.hostnames[hostname]
-    #entry = struct(entry, timestamp: cur_seconds() - 10)
-    #cache.hostnames[hostname] = entry
-    #Map.update!(cache.hostnames[hostname], entry)
-    #Map.update!(cache, cache_entry.dns_record.hostname, fun)
+    # )
+    # cache.hostnames[hostname]
+    # entry = cache.hostnames[hostname]
+    # entry = struct(entry, timestamp: cur_seconds() - 10)
+    # cache.hostnames[hostname] = entry
+    # Map.update!(cache.hostnames[hostname], entry)
+    # Map.update!(cache, cache_entry.dns_record.hostname, fun)
   end
 end

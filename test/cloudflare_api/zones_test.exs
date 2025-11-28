@@ -36,17 +36,15 @@ defmodule CloudflareApi.ZonesTest do
       assert {:ok, ^zones} =
                Zones.list(
                  client(),
-                 [
-                   name: "example.com",
-                   status: "active",
-                   "account.id": "acc-1",
-                   "account.name": "DevAccount",
-                   page: 2,
-                   per_page: 50,
-                   order: "name",
-                   direction: "desc",
-                   match: "all"
-                 ]
+                 name: "example.com",
+                 status: "active",
+                 "account.id": "acc-1",
+                 "account.name": "DevAccount",
+                 page: 2,
+                 per_page: 50,
+                 order: "name",
+                 direction: "desc",
+                 match: "all"
                )
     end
 

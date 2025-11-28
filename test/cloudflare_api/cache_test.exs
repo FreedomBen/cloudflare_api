@@ -10,9 +10,9 @@ defmodule CloudflareApi.CacheTest do
   setup do
     Cache.flush()
 
-    on_exit fn ->
+    on_exit(fn ->
       Cache.flush()
-    end
+    end)
   end
 
   describe "cache" do
@@ -30,9 +30,7 @@ defmodule CloudflareApi.CacheTest do
 
       expired_cache =
         cache
-        |> Kernel.struct(
-          hostnames: Map.put(cache.hostnames, hostname, expired_entry)
-        )
+        |> Kernel.struct(hostnames: Map.put(cache.hostnames, hostname, expired_entry))
 
       _old =
         :sys.replace_state(:cloudflare_api_cache, fn _old ->

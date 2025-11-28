@@ -13,8 +13,8 @@ defmodule CloudflareApi.MixProject do
       description: "A set of convenience functions around the Cloudflare Client API",
       package: package(),
       deps: deps(),
-       docs: docs(),
-       aliases: aliases()
+      docs: docs(),
+      aliases: aliases()
     ]
   end
 

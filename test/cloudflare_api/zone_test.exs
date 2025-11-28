@@ -55,4 +55,3 @@ defmodule CloudflareApi.ZoneTest do
     assert %Zone{id: "zone-id", name: "example.com"} = zone
   end
 end
-

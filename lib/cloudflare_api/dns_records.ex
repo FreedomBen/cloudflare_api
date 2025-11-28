@@ -20,10 +20,11 @@ defmodule CloudflareApi.DnsRecords do
   end
 
   def list_for_host_domain(client, zone_id, host, domain, type \\ nil) do
-    hostname = cond do
-      String.ends_with?(host, domain) -> host
-      true -> "#{host}.#{domain}"
-    end
+    hostname =
+      cond do
+        String.ends_with?(host, domain) -> host
+        true -> "#{host}.#{domain}"
+      end
 
     list_for_hostname(client, zone_id, hostname, type)
   end

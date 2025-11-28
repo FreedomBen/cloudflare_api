@@ -60,4 +60,3 @@ defmodule Mix.Tasks.CloudflareApi.FetchOpenapi do
 
   defp truncate_body(body), do: body
 end
-
