@@ -4,7 +4,7 @@ This document is a concise contributor guide for the `cloudflare_api` Elixir lib
 
 ## Agent instructions
 - Write comprehensive tests for any changed or added functionality.  Tests should exercise both happy path and also test for incorrect or invalid input.
-- Update the CHANGELOG.md when making changes
+- Update the CHANGELOG.md when making changes. Always create a new [unreleased] entry instead of changing the current version.  I'll fill in the release number later when actually releasing.
 
 
 ## Project Structure & Modules

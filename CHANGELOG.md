@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 Dates are in UTC and are taken from the Git commit history. Versions are
 derived from tags and version-bump commits in `mix.exs`.
 
+## [unreleased]
+
+### Changed
+
+- Updated top-level documentation (README, CLAUDE guidance, and planning docs)
+  to reflect the 0.3.0 release, the OpenAPI-driven implementation plan, and
+  high-level caching guidance.
+
 ## [0.3.0] - 2025-11-28
 
 Changes since `v0.2.3`.
@@ -103,4 +111,3 @@ Initial early release series.
 
 - Removed an accidental dependency on `Bonny` and pruned unused password-related
   helpers to keep the dependency set minimal.
-

@@ -80,13 +80,30 @@ Test helper is configured in `test/test_helper.exs`.
 
 ## Documentation
 
-The project uses ExDoc for generating documentation. The main documentation entry point is the `CloudflareApi` module. API documentation is not auto-generated to encourage developers to refer to the official Cloudflare API documentation.
+The project uses ExDoc for generating documentation from moduledocs and
+function docs. The main documentation entry point is the `CloudflareApi`
+module. The library intentionally stays close to the official Cloudflare API
+documentation and does not attempt to auto-generate endpoint wrappers directly
+from the OpenAPI spec.
 
 ## Version and Packaging
 
-Current version: 0.2.3
+Current version: 0.3.0 (see `mix.exs` and `CHANGELOG.md` for details)
 Package name: `cloudflare_api`
 Source: https://github.com/freedomben/cloudflare_api
+
+The repository also vendors Cloudflare's OpenAPI schema at
+`priv/cloudflare_api/openapi.json`. High-level plans for expanding endpoint
+coverage and considering caching strategies live in:
+
+- `FULL_API_IMPLEMENTATION_PLAN.md`
+- `CACHING_POSSIBILITIES.md`
+- `SYNC_PLAN.md` (DNS/zones alignment with the spec)
+
+When making changes, follow `AGENTS.md`:
+
+- Add or update tests for any new functionality (including edge cases).
+- Add a short note under the `[unreleased]` section in `CHANGELOG.md`.
 
 ## Notes for Development
 

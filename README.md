@@ -26,7 +26,7 @@ Add `cloudflare_api` to your `mix.exs`:
 ```elixir
 def deps do
   [
-    {:cloudflare_api, "~> 0.2.3"}
+    {:cloudflare_api, "~> 0.3.0"}
   ]
 end
 ```
@@ -157,6 +157,17 @@ Generate docs:
 mix docs
 ```
 
+## Contributing
+
+Contributions are welcome. Before opening a pull request:
+
+- Read `AGENTS.md` for contributor and tooling guidelines.
+- Add or update tests for any new behavior; avoid real Cloudflare network
+  calls in tests (use `Tesla.Mock` instead).
+- Run `mix test` and `mix format` locally.
+- Add a short note under the `[unreleased]` section in `CHANGELOG.md` for any
+  user‑visible change (including new docs or endpoints).
+
 ## Publishing to Hex.pm
 
 These are general steps for publishing `cloudflare_api` to
@@ -227,4 +238,3 @@ and the package page at:
   other secure runtime configuration.
 - When adding examples, use obviously fake tokens and hostnames and keep
   them out of library business logic.
-
