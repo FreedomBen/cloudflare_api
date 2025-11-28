@@ -33,11 +33,25 @@ defmodule CloudflareApi.DnsRecordsTest do
       ]
 
       mock(fn
-        %Tesla.Env{
-          method: :get,
-          url: "https://api.cloudflare.com/client/v4/zones/zone-id/dns_records"
-        } ->
-          %Tesla.Env{status: 200, body: %{"result" => records_json}}
+          %Tesla.Env{
+            method: :get,
+            url: "https://api.cloudflare.com/client/v4/zones/zone-id/dns_records"
+          } ->
+          %Tesla.Env{
+            status: 200,
+            body: %{
+              "success" => true,
+              "errors" => [],
+              "messages" => [],
+              "result" => records_json,
+              "result_info" => %{
+                "page" => 1,
+                "per_page" => 20,
+                "count" => length(records_json),
+                "total_count" => length(records_json)
+              }
+            }
+          }
       end)
 
       assert {:ok, [record]} = DnsRecords.list(client(), "zone-id")
@@ -52,8 +66,22 @@ defmodule CloudflareApi.DnsRecordsTest do
           method: :get,
           url:
             "https://api.cloudflare.com/client/v4/zones/zone-id/dns_records?name=www.example.com&name.contains=example.com&type=AAAA&page=2&per_page=50&order=type&direction=desc"
-        } ->
-          %Tesla.Env{status: 200, body: %{"result" => records_json}}
+          } ->
+          %Tesla.Env{
+            status: 200,
+            body: %{
+              "success" => true,
+              "errors" => [],
+              "messages" => [],
+              "result" => records_json,
+              "result_info" => %{
+                "page" => 2,
+                "per_page" => 50,
+                "count" => length(records_json),
+                "total_count" => 0
+              }
+            }
+          }
       end)
 
       assert {:ok, []} =
@@ -75,7 +103,15 @@ defmodule CloudflareApi.DnsRecordsTest do
 
       mock(fn
         %Tesla.Env{method: :get} ->
-          %Tesla.Env{status: 400, body: %{"errors" => errors}}
+          %Tesla.Env{
+            status: 400,
+            body: %{
+              "success" => false,
+              "errors" => errors,
+              "messages" => [],
+              "result" => nil
+            }
+          }
       end)
 
       assert {:error, ^errors} = DnsRecords.list(client_fun(), "zone-id")
@@ -95,22 +131,49 @@ defmodule CloudflareApi.DnsRecordsTest do
           method: :get,
           url:
             "https://api.cloudflare.com/client/v4/zones/zone-id/dns_records?name=host.example.com"
-        } ->
-          %Tesla.Env{status: 200, body: %{"result" => []}}
+          } ->
+          %Tesla.Env{
+            status: 200,
+            body: %{
+              "success" => true,
+              "errors" => [],
+              "messages" => [],
+              "result" => [],
+              "result_info" => %{"page" => 1, "per_page" => 20, "count" => 0, "total_count" => 0}
+            }
+          }
 
         %Tesla.Env{
           method: :get,
           url:
             "https://api.cloudflare.com/client/v4/zones/zone-id/dns_records?name=host.example.com&type=A"
-        } ->
-          %Tesla.Env{status: 200, body: %{"result" => []}}
+          } ->
+          %Tesla.Env{
+            status: 200,
+            body: %{
+              "success" => true,
+              "errors" => [],
+              "messages" => [],
+              "result" => [],
+              "result_info" => %{"page" => 1, "per_page" => 20, "count" => 0, "total_count" => 0}
+            }
+          }
 
         %Tesla.Env{
           method: :get,
           url:
             "https://api.cloudflare.com/client/v4/zones/zone-id/dns_records?name=host.example.com&type=AAAA"
-        } ->
-          %Tesla.Env{status: 200, body: %{"result" => []}}
+          } ->
+          %Tesla.Env{
+            status: 200,
+            body: %{
+              "success" => true,
+              "errors" => [],
+              "messages" => [],
+              "result" => [],
+              "result_info" => %{"page" => 1, "per_page" => 20, "count" => 0, "total_count" => 0}
+            }
+          }
       end)
 
       assert {:ok, []} = DnsRecords.list_for_hostname(client(), "zone-id", "host.example.com")
@@ -128,15 +191,33 @@ defmodule CloudflareApi.DnsRecordsTest do
           method: :get,
           url:
             "https://api.cloudflare.com/client/v4/zones/zone-id/dns_records?name=www.example.com"
-        } ->
-          %Tesla.Env{status: 200, body: %{"result" => []}}
+          } ->
+          %Tesla.Env{
+            status: 200,
+            body: %{
+              "success" => true,
+              "errors" => [],
+              "messages" => [],
+              "result" => [],
+              "result_info" => %{"page" => 1, "per_page" => 20, "count" => 0, "total_count" => 0}
+            }
+          }
 
         %Tesla.Env{
           method: :get,
           url:
             "https://api.cloudflare.com/client/v4/zones/zone-id/dns_records?name=already.example.com"
-        } ->
-          %Tesla.Env{status: 200, body: %{"result" => []}}
+          } ->
+          %Tesla.Env{
+            status: 200,
+            body: %{
+              "success" => true,
+              "errors" => [],
+              "messages" => [],
+              "result" => [],
+              "result_info" => %{"page" => 1, "per_page" => 20, "count" => 0, "total_count" => 0}
+            }
+          }
       end)
 
       assert {:ok, []} =
@@ -187,7 +268,15 @@ defmodule CloudflareApi.DnsRecordsTest do
           method: :post,
           url: "https://api.cloudflare.com/client/v4/zones/zone-id/dns_records"
         } ->
-          %Tesla.Env{status: 200, body: %{"result" => result_json}}
+          %Tesla.Env{
+            status: 200,
+            body: %{
+              "success" => true,
+              "errors" => [],
+              "messages" => [],
+              "result" => result_json
+            }
+          }
       end)
 
       assert {:ok, %DnsRecord{id: "new-id", hostname: "www.example.com"}} =
@@ -199,7 +288,12 @@ defmodule CloudflareApi.DnsRecordsTest do
         %Tesla.Env{method: :post} ->
           %Tesla.Env{
             status: 400,
-            body: %{"errors" => [%{"code" => 81_057, "message" => "already exists"}]}
+            body: %{
+              "success" => false,
+              "errors" => [%{"code" => 81_057, "message" => "already exists"}],
+              "messages" => [],
+              "result" => nil
+            }
           }
       end)
 
@@ -240,7 +334,15 @@ defmodule CloudflareApi.DnsRecordsTest do
           method: :post,
           url: "https://api.cloudflare.com/client/v4/zones/zone-id/dns_records"
         } ->
-          %Tesla.Env{status: 200, body: %{"result" => result_json}}
+          %Tesla.Env{
+            status: 200,
+            body: %{
+              "success" => true,
+              "errors" => [],
+              "messages" => [],
+              "result" => result_json
+            }
+          }
       end)
 
       assert {:ok, %DnsRecord{id: "new-id", hostname: "www.example.com"}} =
@@ -252,7 +354,12 @@ defmodule CloudflareApi.DnsRecordsTest do
         %Tesla.Env{method: :post} ->
           %Tesla.Env{
             status: 400,
-            body: %{"errors" => [%{"code" => 81_057, "message" => "already exists"}]}
+            body: %{
+              "success" => false,
+              "errors" => [%{"code" => 81_057, "message" => "already exists"}],
+              "messages" => [],
+              "result" => nil
+            }
           }
       end)
 
@@ -264,7 +371,15 @@ defmodule CloudflareApi.DnsRecordsTest do
       errors = [%{"code" => 1234, "message" => "other error"}]
 
       mock(fn %Tesla.Env{method: :post} ->
-        %Tesla.Env{status: 400, body: %{"errors" => errors}}
+        %Tesla.Env{
+          status: 400,
+          body: %{
+            "success" => false,
+            "errors" => errors,
+            "messages" => [],
+            "result" => nil
+          }
+        }
       end)
 
       dns_struct = %DnsRecord{
@@ -309,7 +424,15 @@ defmodule CloudflareApi.DnsRecordsTest do
           method: :put,
           url: "https://api.cloudflare.com/client/v4/zones/zone-id/dns_records/record-id"
         } ->
-          %Tesla.Env{status: 200, body: %{"result" => result_json}}
+          %Tesla.Env{
+            status: 200,
+            body: %{
+              "success" => true,
+              "errors" => [],
+              "messages" => [],
+              "result" => result_json
+            }
+          }
       end)
 
       assert {:ok, %DnsRecord{id: "updated-id", ip: "5.6.7.8"}} =
@@ -321,7 +444,15 @@ defmodule CloudflareApi.DnsRecordsTest do
 
       mock(fn
         %Tesla.Env{method: :put} ->
-          %Tesla.Env{status: 400, body: %{"errors" => errors}}
+          %Tesla.Env{
+            status: 400,
+            body: %{
+              "success" => false,
+              "errors" => errors,
+              "messages" => [],
+              "result" => nil
+            }
+          }
       end)
 
       assert {:error, ^errors} =
@@ -337,7 +468,15 @@ defmodule CloudflareApi.DnsRecordsTest do
           url: "https://api.cloudflare.com/client/v4/zones/zone-id/dns_records/record-id",
           body: "{}"
         } ->
-          %Tesla.Env{status: 200, body: %{"result" => %{"id" => "record-id"}}}
+          %Tesla.Env{
+            status: 200,
+            body: %{
+              "success" => true,
+              "errors" => [],
+              "messages" => [],
+              "result" => %{"id" => "record-id"}
+            }
+          }
       end)
 
       assert {:ok, "record-id"} = DnsRecords.delete(client(), "zone-id", "record-id")
@@ -348,7 +487,12 @@ defmodule CloudflareApi.DnsRecordsTest do
         %Tesla.Env{method: :delete} ->
           %Tesla.Env{
             status: 404,
-            body: %{"errors" => [%{"code" => 81_044, "message" => "not found"}]}
+            body: %{
+              "success" => false,
+              "errors" => [%{"code" => 81_044, "message" => "not found"}],
+              "messages" => [],
+              "result" => nil
+            }
           }
       end)
 
@@ -359,7 +503,15 @@ defmodule CloudflareApi.DnsRecordsTest do
       errors = [%{"code" => 2345}]
 
       mock(fn %Tesla.Env{method: :delete} ->
-        %Tesla.Env{status: 500, body: %{"errors" => errors}}
+        %Tesla.Env{
+          status: 500,
+          body: %{
+            "success" => false,
+            "errors" => errors,
+            "messages" => [],
+            "result" => nil
+          }
+        }
       end)
 
       assert {:error, ^errors} = DnsRecords.delete(client(), "zone-id", "record-id")
@@ -374,7 +526,21 @@ defmodule CloudflareApi.DnsRecordsTest do
 
       mock(fn
         %Tesla.Env{method: :get} ->
-          %Tesla.Env{status: 200, body: %{"result" => result_json}}
+          %Tesla.Env{
+            status: 200,
+            body: %{
+              "success" => true,
+              "errors" => [],
+              "messages" => [],
+              "result" => result_json,
+              "result_info" => %{
+                "page" => 1,
+                "per_page" => 20,
+                "count" => length(result_json),
+                "total_count" => length(result_json)
+              }
+            }
+          }
       end)
 
       assert DnsRecords.hostname_exists?(client(), "zone-id", "host")
@@ -383,7 +549,16 @@ defmodule CloudflareApi.DnsRecordsTest do
     test "hostname_exists?/4 returns false when no records" do
       mock(fn
         %Tesla.Env{method: :get} ->
-          %Tesla.Env{status: 200, body: %{"result" => []}}
+          %Tesla.Env{
+            status: 200,
+            body: %{
+              "success" => true,
+              "errors" => [],
+              "messages" => [],
+              "result" => [],
+              "result_info" => %{"page" => 1, "per_page" => 20, "count" => 0, "total_count" => 0}
+            }
+          }
       end)
 
       refute DnsRecords.hostname_exists?(client(), "zone-id", "host")
@@ -392,7 +567,15 @@ defmodule CloudflareApi.DnsRecordsTest do
     test "hostname_exists?/4 raises when underlying call returns error" do
       mock(fn
         %Tesla.Env{method: :get} ->
-          %Tesla.Env{status: 400, body: %{"errors" => [%{"code" => 1}]}}
+          %Tesla.Env{
+            status: 400,
+            body: %{
+              "success" => false,
+              "errors" => [%{"code" => 1}],
+              "messages" => [],
+              "result" => nil
+            }
+          }
       end)
 
       assert_raise MatchError, fn ->
@@ -416,7 +599,21 @@ defmodule CloudflareApi.DnsRecordsTest do
           url:
             "https://api.cloudflare.com/client/v4/zones/zone-id/dns_records?name=www.example.com"
         } ->
-          %Tesla.Env{status: 200, body: %{"result" => result_json}}
+          %Tesla.Env{
+            status: 200,
+            body: %{
+              "success" => true,
+              "errors" => [],
+              "messages" => [],
+              "result" => result_json,
+              "result_info" => %{
+                "page" => 1,
+                "per_page" => 20,
+                "count" => length(result_json),
+                "total_count" => length(result_json)
+              }
+            }
+          }
       end)
 
       assert DnsRecords.host_domain_exists?(client(), "zone-id", "www", "example.com")

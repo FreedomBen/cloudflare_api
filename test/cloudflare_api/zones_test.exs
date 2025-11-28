@@ -15,7 +15,21 @@ defmodule CloudflareApi.ZonesTest do
 
       mock(fn
         %Tesla.Env{method: :get, url: "https://api.cloudflare.com/client/v4/zones"} ->
-          %Tesla.Env{status: 200, body: %{"result" => zones}}
+          %Tesla.Env{
+            status: 200,
+            body: %{
+              "success" => true,
+              "errors" => [],
+              "messages" => [],
+              "result" => zones,
+              "result_info" => %{
+                "page" => 1,
+                "per_page" => 20,
+                "count" => length(zones),
+                "total_count" => length(zones)
+              }
+            }
+          }
       end)
 
       assert {:ok, ^zones} = Zones.list(client(), nil)
@@ -30,7 +44,21 @@ defmodule CloudflareApi.ZonesTest do
           url:
             "https://api.cloudflare.com/client/v4/zones?name=example.com&status=active&account.id=acc-1&account.name=DevAccount&page=2&per_page=50&order=name&direction=desc&match=all"
         } ->
-          %Tesla.Env{status: 200, body: %{"result" => zones}}
+          %Tesla.Env{
+            status: 200,
+            body: %{
+              "success" => true,
+              "errors" => [],
+              "messages" => [],
+              "result" => zones,
+              "result_info" => %{
+                "page" => 2,
+                "per_page" => 50,
+                "count" => length(zones),
+                "total_count" => 0
+              }
+            }
+          }
       end)
 
       assert {:ok, ^zones} =
@@ -56,7 +84,21 @@ defmodule CloudflareApi.ZonesTest do
           method: :get,
           url: "https://api.cloudflare.com/client/v4/zones?name=example.com"
         } ->
-          %Tesla.Env{status: 200, body: %{"result" => zones}}
+          %Tesla.Env{
+            status: 200,
+            body: %{
+              "success" => true,
+              "errors" => [],
+              "messages" => [],
+              "result" => zones,
+              "result_info" => %{
+                "page" => 1,
+                "per_page" => 20,
+                "count" => length(zones),
+                "total_count" => length(zones)
+              }
+            }
+          }
       end)
 
       assert {:ok, ^zones} = Zones.list(client(), name: "example.com")
@@ -67,7 +109,15 @@ defmodule CloudflareApi.ZonesTest do
 
       mock(fn
         %Tesla.Env{method: :get} ->
-          %Tesla.Env{status: 400, body: %{"errors" => errors}}
+          %Tesla.Env{
+            status: 400,
+            body: %{
+              "success" => false,
+              "errors" => errors,
+              "messages" => [],
+              "result" => nil
+            }
+          }
       end)
 
       assert {:error, ^errors} = Zones.list(client(), nil)
