@@ -7,11 +7,17 @@ derived from tags and version-bump commits in `mix.exs`.
 
 ## [unreleased]
 
+### Added
+
+- Hand-written modules for Cloudflare Accounts and Worker Routes endpoints,
+  plus a progress log (`FULL_IMPLEMENTATION_PROGRESS.md`) that tracks manual
+  coverage of the OpenAPI spec.
+
 ### Changed
 
-- Updated top-level documentation (README, CLAUDE guidance, and planning docs)
-  to reflect the 0.3.0 release, the OpenAPI-driven implementation plan, and
-  high-level caching guidance.
+- Reverted the automatic OpenAPI module generation approach in favour of
+  explicit modules similar to the original DNS/Zone helpers. Updated the
+  README and top-level moduledoc to explain the manual rollout plan.
 
 ## [0.3.0] - 2025-11-28
 

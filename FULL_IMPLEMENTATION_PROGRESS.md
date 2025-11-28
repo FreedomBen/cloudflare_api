@@ -1,0 +1,442 @@
+# Full API Implementation Progress
+
+This log tracks manual, hand-written implementations of the Cloudflare API
+operations described in `FULL_API_IMPLEMENTATION_PLAN.md`. Modules are grouped
+roughly by the OpenAPI tag they represent.
+
+## Completed Modules
+
+| Module | Endpoints Covered | Notes |
+| --- | --- | --- |
+| `CloudflareApi.DnsRecords` | `GET/POST/PUT/DELETE /zones/:zone/dns_records` plus helpers | Legacy handwritten module, aligned with OpenAPI spec. |
+| `CloudflareApi.Zones` | `GET /zones` | Returns raw zone maps; relies on `opts` keyword list for filters. |
+| `CloudflareApi.Accounts` | `GET /accounts`, `GET /accounts/:id` | Newly created manual module mirroring the spec section. |
+| `CloudflareApi.WorkerRoutes` | `GET/POST/PUT/DELETE /zones/:zone/workers/routes` | Covers list/create/get/update/delete for worker routes. |
+| `CloudflareApi.AiGatewayDatasets` | `GET/POST/PUT/DELETE /accounts/:account_id/ai-gateway/gateways/:gateway_id/datasets` | Dataset CRUD for AI Gateway. |
+| `CloudflareApi.AiGatewayDynamicRoutes` | `GET/POST/PATCH/DELETE /accounts/:account_id/ai-gateway/gateways/:gateway_id/routes` plus deployments & versions | Covers route management, deployments, and versioning APIs. |
+
+## Remaining Modules
+
+The following OpenAPI tags still require dedicated modules. When you begin work
+on one, move it to the “Completed Modules” table above (and include any notes).
+
+- AI Gateway Evaluations
+- AI Gateway Gateways
+- AI Gateway Logs
+- AI Gateway Provider Configs
+- API Shield API Discovery
+- API Shield Client Certificates for a Zone
+- API Shield Endpoint Management
+- API Shield Schema Validation 2.0
+- API Shield Settings
+- API Shield WAF Expression Templates
+- ASN Intelligence
+- Access Bookmark applications (Deprecated)
+- Access SCIM update logs
+- Access application-scoped policies
+- Access applications
+- Access authentication logs
+- Access custom pages
+- Access groups
+- Access identity providers
+- Access key configuration
+- Access mTLS authentication
+- Access policy tester
+- Access reusable policies
+- Access service tokens
+- Access short-lived certificate CAs
+- Access tags
+- Account
+- Account Billing Profile
+- Account Load Balancer Monitor Groups
+- Account Load Balancer Monitors
+- Account Load Balancer Pools
+- Account Load Balancer Search
+- Account Members
+- Account Owned API Tokens
+- Account Permission Groups
+- Account Request Tracer
+- Account Resource Groups
+- Account Roles
+- Account Rulesets
+- Account Subscriptions
+- Account User Groups
+- Account-Level Custom Nameservers
+- Account-Level Custom Nameservers Usage for a Zone
+- Active session
+- Analytics
+- Analyze Certificate
+- Apps
+- Argo Analytics for Geolocation
+- Argo Analytics for Zone
+- Argo Smart Routing
+- Attacker
+- Audit Logs
+- AutoRAG Jobs
+- AutoRAG RAG
+- AutoRAG RAG Search
+- Automatic SSL/TLS
+- Available Page Rules settings
+- BinDB
+- Bot Settings
+- Botnet Threat Feed
+- Build Tokens
+- Builds
+- CNIs
+- Cache Reserve Clear
+- Calls Apps
+- Calls TURN Keys
+- Catalog Sync
+- Category
+- Certificate Packs
+- Cloud Integrations
+- Cloudflare IPs
+- Cloudflare Images
+- Cloudflare Images Keys
+- Cloudflare Images Variants
+- Cloudflare Tunnel
+- Cloudflare Tunnel Configuration
+- Connectivity Services
+- Content Scanning
+- Country
+- Credential Management
+- Custom Hostname Fallback Origin for a Zone
+- Custom Hostname for a Zone
+- Custom Indicator Feeds
+- Custom Origin Trust Store
+- Custom SSL for a Zone
+- Custom pages for a zone
+- Custom pages for an account
+- D1
+- DCV Delegation
+- DEX Remote Commands
+- DEX Synthetic Application Monitoring
+- DLP Datasets
+- DLP Document Fingerprints
+- DLP Email
+- DLP Entries
+- DLP Integration Entries
+- DLP Predefined Entries
+- DLP Profiles
+- DLP Settings
+- DLS Regional Services
+- DNS Analytics
+- DNS Firewall
+- DNS Firewall Analytics
+- DNS Internal Views for an Account
+- DNS Settings for a Zone
+- DNS Settings for an Account
+- DNSSEC
+- Dataset
+- Datasets
+- Destinations
+- Device DEX Tests
+- Device Managed Networks
+- Device Posture Integrations
+- Device posture rules
+- Devices
+- Devices Resilience
+- Diagnostics
+- Domain History
+- Domain Intelligence
+- Durable Objects Namespace
+- Email Routing destination addresses
+- Email Routing routing rules
+- Email Routing settings
+- Email Security
+- Email Security Settings
+- Endpoint Health Checks
+- Environment Variables
+- Event
+- Feedback
+- Filters
+- Firewall rules
+- Gateway CA
+- GitHub Integration
+- Health Checks
+- Hyperdrive
+- IP Access rules for a user
+- IP Access rules for a zone
+- IP Access rules for an account
+- IP Address Management Address Maps
+- IP Address Management BGP Prefixes
+- IP Address Management Dynamic Advertisement
+- IP Address Management Leases
+- IP Address Management Prefix Delegation
+- IP Address Management Prefixes
+- IP Address Management Service Bindings
+- IP Intelligence
+- IP List
+- Indicator
+- Indicator Types
+- Indicators
+- Infrastructure Access Targets
+- Instant Logs jobs for a zone
+- Interconnects
+- Keyless SSL for a Zone
+- Keys
+- Leaked Credential Checks
+- Lists
+- Live streams
+- LivestreamAnalytics
+- Load Balancer Healthcheck Events
+- Load Balancer Monitors
+- Load Balancer Pools
+- Load Balancer Regions
+- Load Balancers
+- Logcontrol CMB config for an account
+- Logpush jobs for a zone
+- Logpush jobs for an account
+- Logs Received
+- MCP Portal
+- MCP Portal Servers
+- Magic Account Apps
+- Magic Connectors
+- Magic GRE tunnels
+- Magic IPsec tunnels
+- Magic Interconnects
+- Magic Network Monitoring Configuration
+- Magic Network Monitoring Rules
+- Magic Network Monitoring VPC Flow logs
+- Magic PCAP collection
+- Magic Site ACLs
+- Magic Site App Configs
+- Magic Site LANs
+- Magic Site NetFlow Config
+- Magic Site WANs
+- Magic Sites
+- Magic Static Routes
+- Maintenance Configuration
+- Managed Transforms
+- Meetings
+- Miscategorization
+- Namespace Management
+- Notification Alert Types
+- Notification History
+- Notification Mechanism Eligibility
+- Notification Silences
+- Notification destinations with PagerDuty
+- Notification policies
+- Notification webhooks
+- Observatory
+- On-ramps
+- OrganizationMembers
+- Organizations
+- Origin CA
+- Origin Post-Quantum
+- Page Rules
+- Page Shield
+- Pages Build Cache
+- Pages Deployment
+- Pages Domains
+- Pages Project
+- Passive DNS by IP
+- Per-Hostname TLS Settings
+- Per-hostname Authenticated Origin Pull
+- Physical Devices
+- Presets
+- Priority Intelligence Requirements (PIR)
+- Query run
+- Queue
+- R2 Account
+- R2 Bucket
+- R2 Catalog Management
+- R2 Super Slurper
+- Radar AI Bots
+- Radar AI Inference
+- Radar AS112
+- Radar Annotations
+- Radar Autonomous Systems
+- Radar BGP
+- Radar Bots
+- Radar Certificate Transparency
+- Radar DNS
+- Radar Datasets
+- Radar Domains Ranking
+- Radar Email Routing
+- Radar Email Security
+- Radar Geolocations
+- Radar HTTP
+- Radar IP
+- Radar Internet Services Ranking
+- Radar Layer 3 Attacks
+- Radar Layer 7 Attacks
+- Radar Leaked Credential Checks
+- Radar Locations
+- Radar NetFlows
+- Radar Origins
+- Radar Quality
+- Radar Robots.txt
+- Radar Search
+- Radar TCP Resets and Timeouts
+- Radar Top-Level Domains
+- Radar Traffic Anomalies
+- Radar Verified Bots
+- Radar Web Crawlers
+- Rate limits for a zone
+- Recordings
+- Registrar Domains
+- Registrations
+- Repository Connections
+- Request for Information (RFI)
+- Resource Sharing
+- Resources
+- SSL Verification
+- SSL/TLS Mode Recommendation
+- SSO
+- Scans
+- Schema Validation
+- Schema Validation Settings
+- Secondary DNS (ACL)
+- Secondary DNS (Peer)
+- Secondary DNS (Primary Zone)
+- Secondary DNS (Secondary Zone)
+- Secondary DNS (TSIG)
+- Secrets Store
+- Security Center Insights
+- Sessions
+- Settings
+- Sinkhole Config
+- Slots
+- Smart Shield Settings
+- Smart Tiered Cache
+- Spectrum Analytics
+- Spectrum Applications
+- Stream Audio Tracks
+- Stream Live Inputs
+- Stream MP4 Downloads
+- Stream Signing Keys
+- Stream Subtitles/Captions
+- Stream Video Clipping
+- Stream Videos
+- Stream Watermark Profile
+- Stream Webhook
+- Table Maintenance Configuration
+- Table Management
+- Tag
+- TagCategory
+- Target Industry
+- Tenants
+- Tiered Caching
+- Token Validation Token Configuration
+- Token Validation Token Rules
+- Total TLS
+- Triggers
+- Tunnel Routing
+- Tunnel Virtual Network
+- Turnstile
+- URL Normalization
+- URL Scanner
+- URL Scanner (Deprecated)
+- Universal SSL Settings for a Zone
+- User
+- User API Tokens
+- User Agent Blocking rules
+- User Billing History
+- User Billing Profile
+- User Subscription
+- User's Account Memberships
+- User's Invites
+- User's Organizations
+- Values
+- Vectorize
+- Vectorize Beta (Deprecated)
+- Versions
+- WAF overrides
+- WAF packages
+- WAF rule groups
+- WAF rules
+- WARP Change Events
+- WHOIS Record
+- Waiting Room
+- Web Analytics
+- Web3 Hostname
+- Webhooks
+- Worker Account Settings
+- Worker Cron Trigger
+- Worker Deployments
+- Worker Domain
+- Worker Environment
+- Worker Script
+- Worker Subdomain
+- Worker Tail Logs
+- Worker Versions
+- Workers
+- Workers AI
+- Workers AI Automatic Speech Recognition
+- Workers AI Dumb Pipe
+- Workers AI Finetune
+- Workers AI Image Classification
+- Workers AI Object Detection
+- Workers AI Summarization
+- Workers AI Text Classification
+- Workers AI Text Embeddings
+- Workers AI Text Generation
+- Workers AI Text To Image
+- Workers AI Text To Speech
+- Workers AI Translation
+- Workers KV Namespace
+- Workers for Platforms
+- Workflows
+- Zaraz
+- Zero Trust Connectivity Settings
+- Zero Trust Gateway PAC files
+- Zero Trust Gateway application and application type mappings
+- Zero Trust Gateway categories
+- Zero Trust Gateway locations
+- Zero Trust Gateway proxy endpoints
+- Zero Trust Gateway rules
+- Zero Trust Hostname Route
+- Zero Trust Risk Scoring
+- Zero Trust Risk Scoring Integrations
+- Zero Trust SSH Settings
+- Zero Trust Subnets
+- Zero Trust accounts
+- Zero Trust applications review status
+- Zero Trust certificates
+- Zero Trust lists
+- Zero Trust organization
+- Zero Trust seats
+- Zero Trust users
+- Zone
+- Zone Analytics (Deprecated)
+- Zone Cache Settings
+- Zone Cloud Connector Rules GET
+- Zone Cloud Connector Rules PUT
+- Zone Holds
+- Zone Lockdown
+- Zone Rate Plan
+- Zone Rulesets
+- Zone Settings
+- Zone Snippets
+- Zone Subscription
+- Zone-Level Access applications
+- Zone-Level Access groups
+- Zone-Level Access identity providers
+- Zone-Level Access mTLS authentication
+- Zone-Level Access policies
+- Zone-Level Access service tokens
+- Zone-Level Access short-lived certificate CAs
+- Zone-Level Authenticated Origin Pulls
+- Zone-Level Zero Trust organization
+- brand_protection
+- brapi
+- domain_search
+- dos-flowtrackd-api_other
+- logo_match
+- mTLS Certificate Management
+- ppc_config
+- ppc_stripe
+- security.txt
+- tseng-abuse-complaint-processor_other
+- warp-teams-device-api_other
+- workers_pipelines_other
+
+## Working Notes
+
+- Tests should live under `test/cloudflare_api/<module>_test.exs` and rely on
+  `Tesla.Mock` with example responses that mirror the OpenAPI envelope.
+- Avoid regenerating modules automatically; everything should be explicit and
+  easy to audit.
+- If you discover a spec ambiguity, record it in this file so the next person
+  knows why an endpoint was implemented a certain way.
