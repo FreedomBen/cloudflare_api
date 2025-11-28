@@ -16,15 +16,15 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.AiGatewayDynamicRoutes` | `GET/POST/PATCH/DELETE /accounts/:account_id/ai-gateway/gateways/:gateway_id/routes` plus deployments & versions | Covers route management, deployments, and versioning APIs. |
 | `CloudflareApi.AiGatewayEvaluations` | Account-level evaluation types and gateway evaluation CRUD | Wraps `/evaluations` and `/evaluation-types` endpoints. |
 | `CloudflareApi.AiGatewayGateways` | `GET/POST/PUT/DELETE /accounts/:account_id/ai-gateway/gateways` and provider URLs | Manages gateway definitions and provider URLs. |
+| `CloudflareApi.AiGatewayLogs` | `/logs` list/delete/get/update plus request/response fetchers | Covers log management endpoints. |
+| `CloudflareApi.AiGatewayProviderConfigs` | `/provider_configs` list/create/update/delete | Manages gateway provider configs. |
+| `CloudflareApi.ApiShieldApiDiscovery` | `/api_gateway/discovery` OpenAPI + operations patching | Wraps API Shield discovery management endpoints. |
 
 ## Remaining Modules
 
 The following OpenAPI tags still require dedicated modules. When you begin work
 on one, move it to the “Completed Modules” table above (and include any notes).
 
-- AI Gateway Logs
-- AI Gateway Provider Configs
-- API Shield API Discovery
 - API Shield Client Certificates for a Zone
 - API Shield Endpoint Management
 - API Shield Schema Validation 2.0
