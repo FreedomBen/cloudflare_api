@@ -22,7 +22,7 @@ defmodule CloudflareApi.DnsRecord do
     locked: false
   ]
 
-  @type ttl ::
+  @type record_type ::
           :A
           | :AAAA
           | :CNAME
@@ -42,6 +42,9 @@ defmodule CloudflareApi.DnsRecord do
           | :TLSA
           | :URI
 
+  @deprecated "Use t:record_type/0 instead; kept for backward compatibility."
+  @type ttl :: record_type
+
   @type t :: %__MODULE__{
           :id => String.t() | nil,
           :zone_id => String.t(),
@@ -49,7 +52,7 @@ defmodule CloudflareApi.DnsRecord do
           :ip => String.t(),
           :zone_name => String.t() | nil,
           :created_on => String.t() | nil,
-          :type => ttl,
+          :type => record_type,
           :ttl => non_neg_integer(),
           :proxied => boolean() | nil,
           :proxiable => boolean() | nil,

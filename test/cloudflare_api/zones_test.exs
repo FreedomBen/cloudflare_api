@@ -21,6 +21,35 @@ defmodule CloudflareApi.ZonesTest do
       assert {:ok, ^zones} = Zones.list(client(), nil)
     end
 
+    test "encodes spec-aligned query params" do
+      zones = []
+
+      mock(fn
+        %Tesla.Env{
+          method: :get,
+          url:
+            "https://api.cloudflare.com/client/v4/zones?name=example.com&status=active&account.id=acc-1&account.name=DevAccount&page=2&per_page=50&order=name&direction=desc&match=all"
+        } ->
+          %Tesla.Env{status: 200, body: %{"result" => zones}}
+      end)
+
+      assert {:ok, ^zones} =
+               Zones.list(
+                 client(),
+                 [
+                   name: "example.com",
+                   status: "active",
+                   "account.id": "acc-1",
+                   "account.name": "DevAccount",
+                   page: 2,
+                   per_page: 50,
+                   order: "name",
+                   direction: "desc",
+                   match: "all"
+                 ]
+               )
+    end
+
     test "returns {:ok, zones} with options" do
       zones = [%{"id" => "zone-1"}]
 

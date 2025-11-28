@@ -2,13 +2,6 @@ defmodule CloudflareApi.DnsRecords do
   alias CloudflareApi.DnsRecord
 
   def list(client, zone_id, opts \\ nil) do
-    # TODO validate zone and raise exception if invalid
-    # with {:ok, env} <- Tesla.get(c(client), list_url(zone_id, opts)) do
-    #  case env.body do
-    #    %{"success" => false} -> {:err, env.body["errors"]}
-    #    body -> {:ok, body}
-    #  end
-    # end
     case Tesla.get(c(client), list_url(zone_id, opts)) do
       {:ok, %Tesla.Env{status: 200, body: body}} -> {:ok, to_structs(body["result"])}
       {:ok, %Tesla.Env{body: %{"errors" => errs}}} -> {:error, errs}
@@ -17,10 +10,13 @@ defmodule CloudflareApi.DnsRecords do
   end
 
   def list_for_hostname(client, zone_id, hostname, type \\ nil) do
-    case type do
-      nil -> list(c(client), zone_id, name: hostname)
-      _ -> list(c(client), zone_id, name: hostname, type: "A")
-    end
+    opts =
+      case type do
+        nil -> [name: hostname]
+        type -> [name: hostname, type: type]
+      end
+
+    list(client, zone_id, opts)
   end
 
   def list_for_host_domain(client, zone_id, host, domain, type \\ nil) do
@@ -96,7 +92,9 @@ defmodule CloudflareApi.DnsRecords do
   If the record does not exist, this will exit with a success {:ok, :already_deleted}
   """
   def delete(client, zone_id, record_id) do
-    case Tesla.delete(c(client), "/zones/#{zone_id}/dns_records/#{record_id}") do
+    # The OpenAPI schema models this endpoint with a required (but empty) JSON
+    # request body, so we send an empty map here to align with that shape.
+    case Tesla.delete(c(client), "/zones/#{zone_id}/dns_records/#{record_id}", body: %{}) do
       {:ok, %Tesla.Env{status: 200, body: body}} ->
         {:ok, body["result"]["id"]}
 
