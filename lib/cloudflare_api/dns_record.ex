@@ -59,10 +59,20 @@ defmodule CloudflareApi.DnsRecord do
           :locked => boolean() | nil
         }
 
+  @doc ~S"""
+  Build the Cloudflare DNS records URL for a given record.
+
+  This is primarily useful for debugging or when you need to reason about the
+  REST endpoint for a specific record.
+  """
   def cf_url(record) do
     "https://api.cloudflare.com/client/v4/zones/#{record.zone_id}/dns_records"
   end
 
+  @doc ~S"""
+  Convert a `CloudflareApi.DnsRecord` struct into the JSON body Cloudflare
+  expects when creating or updating a record.
+  """
   def to_cf_json(record) do
     %{
       type: record.type,
@@ -73,6 +83,31 @@ defmodule CloudflareApi.DnsRecord do
     }
   end
 
+  @doc ~S"""
+  Build a `CloudflareApi.DnsRecord` struct from a Cloudflare-style map.
+
+  The input may use either atom keys (for example `:zone_id`) or string keys
+  (for example `"zone_id"`); keys are normalized before the struct is built.
+
+  ## Examples
+
+      iex> source = %{
+      ...>   "id" => "id",
+      ...>   "zone_id" => "zone-id",
+      ...>   "zone_name" => "example.com",
+      ...>   "name" => "www.example.com",
+      ...>   "content" => "1.2.3.4",
+      ...>   "created_on" => "now",
+      ...>   "type" => "A",
+      ...>   "ttl" => 120,
+      ...>   "proxied" => true,
+      ...>   "proxiable" => true,
+      ...>   "locked" => false
+      ...> }
+      iex> record = CloudflareApi.DnsRecord.from_cf_json(source)
+      iex> {record.id, record.zone_id, record.hostname, record.ip}
+      {"id", "zone-id", "www.example.com", "1.2.3.4"}
+  """
   def from_cf_json(%{zone_id: _} = record) do
     record
     |> Utils.map_atom_keys_to_strings()

@@ -1,4 +1,15 @@
 defmodule CloudflareApi.Utils do
+  @moduledoc ~S"""
+  Assorted helper functions used throughout `cloudflare_api`.
+
+  The functions in this module are general-purpose utilities (map and list
+  conversions, UUID checks, inspection helpers, masking, string formatting,
+  etc.) that are useful both inside this library and in client applications.
+
+  Most helpers are designed to be pipe-friendly and to play nicely with
+  standard library modules such as `Enum` and `Kernel`.
+  """
+
   @doc ~S"""
   Using either `key` or `extract_func`, extract the specified thing.
 
@@ -168,8 +179,9 @@ defmodule CloudflareApi.Utils do
 
   ## Examples
 
-      iex> CloudflareApi.Utils.map_string_keys_to_atoms(%{"one" => "one", "two" => "two"})
-      %{one: "one", two: "two"}m
+      iex> map = CloudflareApi.Utils.map_string_keys_to_atoms(%{"one" => "one", "two" => "two"})
+      iex> {map.one, map.two}
+      {"one", "two"}
 
   """
   def map_string_keys_to_atoms(map) do
@@ -179,12 +191,13 @@ defmodule CloudflareApi.Utils do
   end
 
   @doc ~S"""
-  Convert a map with `String` keys into a map with `Atom` keys.
+  Convert a map with `Atom` keys into a map with `String` keys.
 
   ## Examples
 
-      iex> CloudflareApi.Utils.map_atom_keys_to_strings(%{one: "one", two: "two"})
-      %{"one" => "one", "two" => "two"}
+      iex> map = CloudflareApi.Utils.map_atom_keys_to_strings(%{one: "one", two: "two"})
+      iex> {map["one"], map["two"]}
+      {"one", "two"}
 
   """
   def map_atom_keys_to_strings(map) do
@@ -198,8 +211,10 @@ defmodule CloudflareApi.Utils do
 
   ## Examples
 
-      CloudflareApi.Utils.struct_to_map(%Something{hello: "world"})
-      %{hello: "world"}
+      iex> record = %CloudflareApi.DnsRecord{zone_id: "zone", hostname: "host", ip: "1.2.3.4"}
+      iex> map = CloudflareApi.Utils.struct_to_map(record)
+      iex> {map.zone_id, map.hostname, map.ip}
+      {"zone", "host", "1.2.3.4"}
 
   """
   def struct_to_map(struct, mask_keys \\ []) do
@@ -213,10 +228,10 @@ defmodule CloudflareApi.Utils do
 
   ## Examples
 
-      iex> CloudflareApi.Utils.mask_map_key_values(%{name: "Ben, title: "Lord"}, [:title])
+      iex> CloudflareApi.Utils.mask_map_key_values(%{name: "Ben", title: "Lord"}, [:title])
       %{name: "Ben", title: "****"}
 
-      iex> CloudflareApi.Utils.mask_map_key_values(%{name: "Ben, age: 39}, [:age])
+      iex> CloudflareApi.Utils.mask_map_key_values(%{name: "Ben", age: 39}, [:age])
       %{name: "Ben", age: "**"}
   """
   def mask_map_key_values(map, mask_keys) do
@@ -254,15 +269,31 @@ defmodule CloudflareApi.Utils do
       string =~
         ~r/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/
 
+  @doc ~S"""
+  Variant of `uuid?/1` that also treats `nil` as a valid value.
+
+  This is convenient when working with optional identifiers that may be
+  either a UUID string or `nil`.
+  """
   def uuid_or_nil?(nil), do: true
   def uuid_or_nil?(string), do: uuid?(string)
 
   @deprecated "Use uuid?/1 instead."
   # credo:disable-for-next-line Credo.Check.Readability.PredicateFunctionNames
+  @doc ~S"""
+  Deprecated alias for `uuid?/1`.
+
+  Prefer calling `uuid?/1` directly instead.
+  """
   def is_uuid?(value), do: uuid?(value)
 
   @deprecated "Use uuid_or_nil?/1 instead."
   # credo:disable-for-next-line Credo.Check.Readability.PredicateFunctionNames
+  @doc ~S"""
+  Deprecated alias for `uuid_or_nil?/1`.
+
+  Prefer calling `uuid_or_nil?/1` directly instead.
+  """
   def is_uuid_or_nil?(value), do: uuid_or_nil?(value)
 
   # def nil_or_empty?(nil), do: true
@@ -288,6 +319,12 @@ defmodule CloudflareApi.Utils do
     "" == str_or_nil |> Kernel.to_string() |> String.trim()
   end
 
+  @doc ~S"""
+  Inverse of `nil_or_empty?/1`.
+
+  Returns `true` only when the value is neither `nil` nor an empty/whitespace
+  string after `to_string/1` and `String.trim/1`.
+  """
   def not_nil_or_empty?(str_or_nil), do: not nil_or_empty?(str_or_nil)
 
   @doc """
@@ -302,7 +339,6 @@ defmodule CloudflareApi.Utils do
       "someval"
       iex> CloudflareApi.Utils.raise_if_nil!("somevar", nil)
       ** (CloudflareApi.CantBeNil) variable 'somevar' was nil but cannot be
-          (malan 0.1.0) lib/malan/utils.ex:135: CloudflareApi.Utils.raise_if_nil!/2
 
   """
   def raise_if_nil!(varname, value) do
@@ -323,8 +359,7 @@ defmodule CloudflareApi.Utils do
       iex> CloudflareApi.Utils.raise_if_nil!("someval")
       "someval"
       iex> CloudflareApi.Utils.raise_if_nil!(nil)
-      ** (CloudflareApi.CantBeNil) variable 'somevar' was nil but cannot be
-          (malan 0.1.0) lib/malan/utils.ex:142: CloudflareApi.Utils.raise_if_nil!/1
+      ** (CloudflareApi.CantBeNil) value was set to nil but cannot be
 
   """
   def raise_if_nil!(value) do
@@ -405,20 +440,20 @@ defmodule CloudflareApi.Utils do
 
   ## Examples
 
-      iex> map_to_string(%{michael: "knight"})
+      iex> CloudflareApi.Utils.map_to_string(%{michael: "knight"})
       "michael: 'knight'"
 
-      iex> map_to_string(%{michael: "knight", kitt: "karr"})
+      iex> CloudflareApi.Utils.map_to_string(%{michael: "knight", kitt: "karr"})
       "kitt: 'karr', michael: 'knight'"
 
-      iex> map_to_string(%{michael: "knight", kitt: "karr"}, [:kitt])
+      iex> CloudflareApi.Utils.map_to_string(%{michael: "knight", kitt: "karr"}, [:kitt])
       "kitt: '****', michael: 'knight'"
 
-      iex> map_to_string(%{michael: "knight", kitt: "karr"}, [:kitt, :michael])
+      iex> CloudflareApi.Utils.map_to_string(%{michael: "knight", kitt: "karr"}, [:kitt, :michael])
       "kitt: '****', michael: '******'"
 
-      iex> map_to_string(%{"michael" => "knight", "kitt" => "karr", "carr" => "hart"}, ["kitt", "michael"])
-      "carr: 'hart', kitt: '****', michael: '******'"
+      iex> CloudflareApi.Utils.map_to_string(%{"michael" => "knight", "kitt" => "karr", "carr" => "hart"}, ["kitt", "michael"])
+      "michael: '******', kitt: '****', carr: 'hart'"
 
   """
   @spec map_to_string(map :: map() | String.Chars.t(), mask_keys :: list(binary())) :: binary()
@@ -480,13 +515,13 @@ defmodule CloudflareApi.Utils do
 
   ## Examples
 
-      iex> list_to_strings_and_atoms([:circle])
+      iex> CloudflareApi.Utils.list_to_strings_and_atoms([:circle])
       [:circle, "circle"]
 
-      iex> list_to_strings_and_atoms([:circle, :square])
+      iex> CloudflareApi.Utils.list_to_strings_and_atoms([:circle, :square])
       [:square, "square", :circle, "circle"]
 
-      iex> list_to_strings_and_atoms(["circle", "square"])
+      iex> CloudflareApi.Utils.list_to_strings_and_atoms(["circle", "square"])
       ["square", :square, "circle", :circle]
   """
   def list_to_strings_and_atoms(list) do
@@ -532,11 +567,18 @@ defmodule CloudflareApi.Utils do
 end
 
 defmodule CloudflareApi.Utils.Enum do
-  @doc """
-  will return true if all invocations of the function return false.  If one callback returns `true`, the end result will be `false`
+  @moduledoc ~S"""
+  Small helpers that complement Elixir's `Enum` module.
 
-  `Enum.all?` will return true if all invocations of the function return
-  true. `CloudflareApi.Utils.Enum.none?` is the opposite.
+  Functions here follow the naming of their standard-library counterparts and
+  are intended to be easy to drop into existing pipelines.
+  """
+
+  @doc ~S"""
+  Return `true` when the predicate returns `false` for every element.
+
+  Conceptually this is the inverse of `Enum.all?/2` – it answers the question
+  “none of the elements match this predicate?”.
   """
   def none?(enum, func) do
     Enum.all?(enum, fn i -> !func.(i) end)
@@ -544,6 +586,19 @@ defmodule CloudflareApi.Utils.Enum do
 end
 
 defmodule CloudflareApi.Utils.Crypto do
+  @moduledoc ~S"""
+  Convenience functions for generating and hashing tokens.
+
+  These helpers are thin wrappers around the Erlang `:crypto` module and
+  `Base` encoding utilities.
+  """
+
+  @doc ~S"""
+  Generate a cryptographically strong random string of the given length.
+
+  The resulting string is URL-safe and restricted to a modified Base64
+  alphabet that avoids `"+"` and `"/"`.
+  """
   def strong_random_string(length) do
     :crypto.strong_rand_bytes(length)
     |> Base.encode64(padding: false)
@@ -552,6 +607,9 @@ defmodule CloudflareApi.Utils.Crypto do
     |> binary_part(0, length)
   end
 
+  @doc ~S"""
+  Hash an API token using SHA‑256 and return the Base64-encoded digest.
+  """
   def hash_token(api_token) do
     :crypto.hash(:sha256, api_token)
     |> Base.encode64()
@@ -559,6 +617,16 @@ defmodule CloudflareApi.Utils.Crypto do
 end
 
 defmodule CloudflareApi.Utils.DateTime do
+  @moduledoc ~S"""
+  DateTime utilities for working with relative times and expiry checks.
+
+  These helpers make it easy to express “N days from now”, “in the past?”,
+  and other common time adjustments in application code and tests.
+  """
+
+  @doc ~S"""
+  Get the current UTC time truncated to whole seconds.
+  """
   def utc_now_trunc(),
     do: DateTime.truncate(DateTime.utc_now(), :second)
 
@@ -653,6 +721,14 @@ defmodule CloudflareApi.Utils.DateTime do
 end
 
 defmodule CloudflareApi.Utils.IPv4 do
+  @moduledoc ~S"""
+  Simple helpers for working with IPv4 address tuples.
+  """
+
+  @doc ~S"""
+  Convert an Erlang `{:inet.ip4_address(), 4}` tuple into a dotted decimal
+  string (for example `{127, 0, 0, 1} -> "127.0.0.1"`).
+  """
   def to_s(ip_tuple) do
     ip_tuple
     |> :inet_parse.ntoa()
@@ -661,6 +737,13 @@ defmodule CloudflareApi.Utils.IPv4 do
 end
 
 defmodule CloudflareApi.Utils.FromEnv do
+  @moduledoc ~S"""
+  Utilities for formatting information from `Macro.Env` for logging.
+
+  These helpers are primarily used by `CloudflareApi.Utils.Logger` to include
+  module, function and arity information in log messages.
+  """
+
   @spec log_str(env :: Macro.Env.t(), :mfa | :func_only) :: String.t()
   def log_str(%Macro.Env{} = env, :mfa), do: "[#{mfa_str(env)}]"
   def log_str(%Macro.Env{} = env, :func_only), do: "[#{func_str(env)}]"
@@ -680,6 +763,14 @@ defmodule CloudflareApi.Utils.FromEnv do
 end
 
 defmodule CloudflareApi.Utils.Logger do
+  @moduledoc ~S"""
+  Logging helpers that wrap `Logger` with ANSI colors and optional MFA context.
+
+  Each log-level function mirrors the corresponding `Logger` call but applies
+  a consistent color from `CloudflareApi.Utils.LoggerColor`. Overloads that
+  accept `Macro.Env` will prefix messages with the calling module and function.
+  """
+
   alias CloudflareApi.Utils.LoggerColor
 
   import CloudflareApi.Utils.FromEnv
@@ -708,6 +799,13 @@ defmodule CloudflareApi.Utils.Logger do
 end
 
 defmodule CloudflareApi.Utils.LoggerColor do
+  @moduledoc ~S"""
+  Color palette used by `CloudflareApi.Utils.Logger`.
+
+  Each function returns a simple atom suitable for use with `Logger`'s
+  `:ansi_color` metadata.
+  """
+
   def green, do: :green
   def black, do: :black
   def red, do: :red
@@ -728,6 +826,13 @@ defmodule CloudflareApi.Utils.LoggerColor do
 end
 
 defmodule CloudflareApi.CantBeNil do
+  @moduledoc ~S"""
+  Exception raised when a value that must not be `nil` is unexpectedly `nil`.
+
+  This is used by functions such as `CloudflareApi.Utils.raise_if_nil!/1,2`
+  to provide more helpful error messages.
+  """
+
   defexception [:message]
 
   def exception(opts) do
@@ -744,6 +849,14 @@ defmodule CloudflareApi.CantBeNil do
 end
 
 defmodule CloudflareApi.Utils.Number do
+  @moduledoc ~S"""
+  Helpers for formatting numbers with thousands separators and precision.
+
+  The functions here are small wrappers around `Number.Delimit` that provide
+  sensible defaults for “US” and “international” styles. A few internal
+  helpers are made public in test environments via `defp_testable/2`.
+  """
+
   import CloudflareApi.Utils, only: [defp_testable: 2]
   import Number.Delimit
 

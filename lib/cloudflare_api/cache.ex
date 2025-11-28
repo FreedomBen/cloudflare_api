@@ -29,70 +29,153 @@ defmodule CloudflareApi.Cache do
           hostnames: %{String.t() => CloudflareApi.CacheEntry.t()}
         }
 
+  @doc ~S"""
+  Start the cache GenServer.
+
+  This is invoked by the application supervision tree and usually does not
+  need to be called directly.
+  """
   def start_link(args) when is_list(args) do
     Logger.debug(__ENV__, "Starting cache link with: #{Utils.to_string(args)}")
     GenServer.start_link(__MODULE__, args, name: @self)
   end
 
+  @doc ~S"""
+  Fetch a cached `CloudflareApi.DnsRecord` for the given hostname.
+
+  If the hostname is not in the cache or the entry has expired, this function
+  returns `nil` or raises (for example when pattern matching on the result).
+  """
   def get(hostname) do
     get_entry(hostname).dns_record
   end
 
+  @doc ~S"""
+  Fetch a cached record even if it is expired.
+
+  This is primarily useful for debugging; it bypasses the expiration check
+  and returns whatever entry is stored for `hostname`, if any.
+  """
   def get(hostname, :even_if_expired) do
     get_entry(hostname, :even_if_expired).dns_record
   end
 
+  @doc ~S"""
+  Return the full `CloudflareApi.CacheEntry` for `hostname`, or `nil` if it is
+  missing or expired.
+  """
   def get_entry(hostname) do
     GenServer.call(@self, {:get, hostname})
   end
 
+  @doc ~S"""
+  Return the full cache entry for `hostname`, even if it has expired.
+  """
   def get_entry(hostname, :even_if_expired) do
     GenServer.call(@self, {:get, hostname, :even_if_expired})
   end
 
+  @doc ~S"""
+  Insert or update a cache entry using the record’s own hostname.
+
+  The record will be timestamped with the current monotonic time and will
+  expire after `expire_seconds`.
+  """
   def add_or_update(%DnsRecord{} = record) do
     # GenServer.call(@self, {:update, record})
     GenServer.call(@self, {:update, record}, 15_000)
   end
 
+  @doc ~S"""
+  Insert or update a cache entry under an explicit `hostname`.
+
+  This is useful when you want to cache a record under a different key than
+  its `record.hostname` field.
+  """
   def add_or_update(hostname, %DnsRecord{} = record) do
     # GenServer.call(@self, {:update, hostname, record})
     GenServer.call(@self, {:update, hostname, record}, 15_000)
   end
 
+  @doc ~S"""
+  Alias for `add_or_update/1`.
+  """
   def update(%DnsRecord{} = record), do: add_or_update(record)
+
+  @doc ~S"""
+  Alias for `add_or_update/2`.
+  """
   def update(hostname, %DnsRecord{} = record), do: add_or_update(hostname, record)
 
+  @doc ~S"""
+  Check whether the cache currently includes a non-expired record for `hostname`.
+  """
   def includes?(hostname) do
     # GenServer.call(@self, {:includes, hostname})
     GenServer.call(@self, {:includes, hostname}, 15_000)
   end
 
+  @doc ~S"""
+  Check whether `hostname` has ever been added to the cache, ignoring expiry.
+
+  This is currently a thin wrapper around `get_entry/1` and is mainly useful
+  for debugging.
+  """
   def includes?(hostname, :even_if_expired) do
     # TODO
     get_entry(hostname).dns_record
   end
 
+  @doc ~S"""
+  Remove any cached entry for `hostname`.
+  """
   def delete(hostname) do
     # GenServer.call(@self, {:delete, hostname})
     GenServer.call(@self, {:delete, hostname}, 15_000)
   end
 
+  @doc ~S"""
+  Clear all cached entries and reset the cache to its initial state.
+  """
   def flush do
     # GenServer.call(@self, {:flush})
     GenServer.call(@self, {:flush}, 15_000)
   end
 
+  @doc ~S"""
+  Dump all cached DNS records as a list.
+
+  This is a convenience wrapper around `dump_cache/0` that returns only the
+  `CloudflareApi.DnsRecord` structs instead of the internal entries.
+
+  ## Examples
+
+      iex> alias CloudflareApi.{Cache, DnsRecord}
+      iex> Cache.flush()
+      iex> record = %DnsRecord{zone_id: "zone", hostname: "www.example.com", ip: "1.2.3.4"}
+      iex> Cache.add_or_update(record)
+      iex> [cached] = Cache.dump()
+      iex> {cached.zone_id, cached.hostname, cached.ip}
+      {"zone", "www.example.com", "1.2.3.4"}
+  """
   def dump do
     dump_cache()
     |> extract_hostnames()
   end
 
+  @doc ~S"""
+  Return the raw cache struct, including timestamps and internal state.
+  """
   def dump_cache do
     # GenServer.call(@self, {:dump})
     GenServer.call(@self, {:dump}, 15_000)
   end
 
+  @doc ~S"""
+  Force a single hostname to be treated as expired.
+
+  This is primarily used by tests and debugging tools.
+  """
   def expire(hostname) do
     # GenServer.call(@self, {:expire, hostname})
     GenServer.call(@self, {:expire, hostname}, 15_000)

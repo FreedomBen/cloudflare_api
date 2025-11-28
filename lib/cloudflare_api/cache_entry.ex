@@ -1,5 +1,9 @@
 defmodule CloudflareApi.CacheEntry do
   @moduledoc """
+  Internal struct used by `CloudflareApi.Cache`.
+
+  Each entry stores the cached `CloudflareApi.DnsRecord` along with the
+  monotonic timestamp (in seconds) when it was inserted or last updated.
   """
 
   @enforce_keys [:timestamp, :dns_record]

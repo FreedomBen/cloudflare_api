@@ -1,6 +1,8 @@
 defmodule CloudflareApi.UtilsTest do
   use ExUnit.Case, async: true
 
+  doctest CloudflareApi.Utils
+
   alias CloudflareApi.Utils
   alias CloudflareApi.Utils.Enum, as: EnumUtils
   alias CloudflareApi.Utils.Crypto

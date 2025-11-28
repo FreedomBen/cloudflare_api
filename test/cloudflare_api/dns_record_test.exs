@@ -1,6 +1,8 @@
 defmodule CloudflareApi.DnsRecordTest do
   use ExUnit.Case, async: true
 
+  doctest CloudflareApi.DnsRecord
+
   alias CloudflareApi.DnsRecord
 
   test "to_cf_json/1 maps struct fields to Cloudflare JSON" do
