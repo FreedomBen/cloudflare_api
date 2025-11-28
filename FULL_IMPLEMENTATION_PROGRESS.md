@@ -19,6 +19,9 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.AiGatewayLogs` | `/logs` list/delete/get/update plus request/response fetchers | Covers log management endpoints. |
 | `CloudflareApi.AiGatewayProviderConfigs` | `/provider_configs` list/create/update/delete | Manages gateway provider configs. |
 | `CloudflareApi.ApiShieldApiDiscovery` | `/api_gateway/discovery` OpenAPI + operations patching | Wraps API Shield discovery management endpoints. |
+| `CloudflareApi.ApiShieldEndpointManagement` | `/api_gateway/operations` CRUD and schema export | Manages API Shield endpoint definitions. |
+| `CloudflareApi.ApiShieldSchemaValidation` | Schema validation zone/operation settings and user schemas | Covers Schema Validation 2.0 endpoints. |
+| `CloudflareApi.ApiShieldSettings` | `/api_gateway/configuration` get/update | Zone-level configuration helper. |
 
 ## Remaining Modules
 
@@ -26,9 +29,6 @@ The following OpenAPI tags still require dedicated modules. When you begin work
 on one, move it to the “Completed Modules” table above (and include any notes).
 
 - API Shield Client Certificates for a Zone
-- API Shield Endpoint Management
-- API Shield Schema Validation 2.0
-- API Shield Settings
 - API Shield WAF Expression Templates
 - ASN Intelligence
 - Access Bookmark applications (Deprecated)
