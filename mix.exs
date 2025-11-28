@@ -13,7 +13,8 @@ defmodule CloudflareApi.MixProject do
       description: "A set of convenience functions around the Cloudflare Client API",
       package: package(),
       deps: deps(),
-      docs: docs()
+       docs: docs(),
+       aliases: aliases()
     ]
   end
 
@@ -44,6 +45,12 @@ defmodule CloudflareApi.MixProject do
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
       {:number, "~> 1.0.3"}
+    ]
+  end
+
+  defp aliases do
+    [
+      fetch_openapi: ["cloudflare_api.fetch_openapi"]
     ]
   end
 
