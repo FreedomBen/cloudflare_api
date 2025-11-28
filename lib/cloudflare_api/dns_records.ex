@@ -37,7 +37,7 @@ defmodule CloudflareApi.DnsRecords do
       {:ok, %Tesla.Env{status: 200, body: body}} ->
         {:ok, to_struct(body["result"])}
 
-      {:ok, %Tesla.Env{status: 400, body: %{"errors" => [%{"code" => 81057}]}}} ->
+      {:ok, %Tesla.Env{status: 400, body: %{"errors" => [%{"code" => 81_057}]}}} ->
         {:ok, :already_exists}
 
       {:ok, %Tesla.Env{body: %{"errors" => errs}}} ->
@@ -59,7 +59,7 @@ defmodule CloudflareApi.DnsRecords do
       {:ok, %Tesla.Env{status: 200, body: body}} ->
         {:ok, to_struct(body["result"])}
 
-      {:ok, %Tesla.Env{status: 400, body: %{"errors" => [%{"code" => 81057}]}}} ->
+      {:ok, %Tesla.Env{status: 400, body: %{"errors" => [%{"code" => 81_057}]}}} ->
         {:ok, :already_created}
 
       {:ok, %Tesla.Env{body: %{"errors" => errs}}} ->
@@ -99,7 +99,7 @@ defmodule CloudflareApi.DnsRecords do
       {:ok, %Tesla.Env{status: 200, body: body}} ->
         {:ok, body["result"]["id"]}
 
-      {:ok, %Tesla.Env{status: 404, body: %{"errors" => [%{"code" => 81044}]}}} ->
+      {:ok, %Tesla.Env{status: 404, body: %{"errors" => [%{"code" => 81_044}]}}} ->
         {:ok, :already_deleted}
 
       {:ok, %Tesla.Env{body: %{"errors" => errs}}} ->

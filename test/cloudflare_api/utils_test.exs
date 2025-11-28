@@ -92,14 +92,14 @@ defmodule CloudflareApi.UtilsTest do
       assert masked.age == "**"
     end
 
-    test "is_uuid?/1 and is_uuid_or_nil?/1 behave correctly" do
-      refute Utils.is_uuid?(nil)
-      refute Utils.is_uuid?("hello")
-      assert Utils.is_uuid?("4c2fd8d3-a6e3-4e4b-a2ce-3f21456eeb85")
+    test "uuid?/1 and uuid_or_nil?/1 behave correctly" do
+      refute Utils.uuid?(nil)
+      refute Utils.uuid?("hello")
+      assert Utils.uuid?("4c2fd8d3-a6e3-4e4b-a2ce-3f21456eeb85")
 
-      assert Utils.is_uuid_or_nil?(nil)
-      assert Utils.is_uuid_or_nil?("4c2fd8d3-a6e3-4e4b-a2ce-3f21456eeb85")
-      refute Utils.is_uuid_or_nil?("nope")
+      assert Utils.uuid_or_nil?(nil)
+      assert Utils.uuid_or_nil?("4c2fd8d3-a6e3-4e4b-a2ce-3f21456eeb85")
+      refute Utils.uuid_or_nil?("nope")
     end
 
     test "nil_or_empty?/1 and not_nil_or_empty?/1" do

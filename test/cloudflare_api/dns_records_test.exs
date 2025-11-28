@@ -199,7 +199,7 @@ defmodule CloudflareApi.DnsRecordsTest do
         %Tesla.Env{method: :post} ->
           %Tesla.Env{
             status: 400,
-            body: %{"errors" => [%{"code" => 81057, "message" => "already exists"}]}
+            body: %{"errors" => [%{"code" => 81_057, "message" => "already exists"}]}
           }
       end)
 
@@ -252,7 +252,7 @@ defmodule CloudflareApi.DnsRecordsTest do
         %Tesla.Env{method: :post} ->
           %Tesla.Env{
             status: 400,
-            body: %{"errors" => [%{"code" => 81057, "message" => "already exists"}]}
+            body: %{"errors" => [%{"code" => 81_057, "message" => "already exists"}]}
           }
       end)
 
@@ -348,7 +348,7 @@ defmodule CloudflareApi.DnsRecordsTest do
         %Tesla.Env{method: :delete} ->
           %Tesla.Env{
             status: 404,
-            body: %{"errors" => [%{"code" => 81044, "message" => "not found"}]}
+            body: %{"errors" => [%{"code" => 81_044, "message" => "not found"}]}
           }
       end)
 

@@ -116,6 +116,7 @@ defmodule CloudflareApi.Utils do
   """
   def pry_pipe(retval, arg1 \\ nil, arg2 \\ nil, arg3 \\ nil, arg4 \\ nil) do
     require IEx
+    # credo:disable-for-next-line Credo.Check.Warning.IExPry
     IEx.pry()
     retval
   end
@@ -238,22 +239,31 @@ defmodule CloudflareApi.Utils do
 
   ## Examples
 
-      iex> CloudflareApi.Utils.is_uuid?(nil)
+      iex> CloudflareApi.Utils.uuid?(nil)
       false
-      iex> CloudflareApi.Utils.is_uuid?("hello world")
+      iex> CloudflareApi.Utils.uuid?("hello world")
       false
-      iex> CloudflareApi.Utils.is_uuid?("4c2fd8d3-a6e3-4e4b-a2ce-3f21456eeb85")
+      iex> CloudflareApi.Utils.uuid?("4c2fd8d3-a6e3-4e4b-a2ce-3f21456eeb85")
       true
 
   """
-  def is_uuid?(nil), do: false
+  def uuid?(nil), do: false
 
-  def is_uuid?(string),
+  def uuid?(string),
     do:
-      string =~ ~r/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/
+      string =~
+        ~r/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/
 
-  def is_uuid_or_nil?(nil), do: true
-  def is_uuid_or_nil?(string), do: is_uuid?(string)
+  def uuid_or_nil?(nil), do: true
+  def uuid_or_nil?(string), do: uuid?(string)
+
+  @deprecated "Use uuid?/1 instead."
+  # credo:disable-for-next-line Credo.Check.Readability.PredicateFunctionNames
+  def is_uuid?(value), do: uuid?(value)
+
+  @deprecated "Use uuid_or_nil?/1 instead."
+  # credo:disable-for-next-line Credo.Check.Readability.PredicateFunctionNames
+  def is_uuid_or_nil?(value), do: uuid_or_nil?(value)
 
   # def nil_or_empty?(nil), do: true
   # def nil_or_empty?(str) when is_string(str), do: "" == str |> String.trim()
