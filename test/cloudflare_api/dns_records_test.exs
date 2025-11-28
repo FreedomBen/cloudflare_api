@@ -33,10 +33,10 @@ defmodule CloudflareApi.DnsRecordsTest do
       ]
 
       mock(fn
-          %Tesla.Env{
-            method: :get,
-            url: "https://api.cloudflare.com/client/v4/zones/zone-id/dns_records"
-          } ->
+        %Tesla.Env{
+          method: :get,
+          url: "https://api.cloudflare.com/client/v4/zones/zone-id/dns_records"
+        } ->
           %Tesla.Env{
             status: 200,
             body: %{
@@ -66,7 +66,7 @@ defmodule CloudflareApi.DnsRecordsTest do
           method: :get,
           url:
             "https://api.cloudflare.com/client/v4/zones/zone-id/dns_records?name=www.example.com&name.contains=example.com&type=AAAA&page=2&per_page=50&order=type&direction=desc"
-          } ->
+        } ->
           %Tesla.Env{
             status: 200,
             body: %{
@@ -131,7 +131,7 @@ defmodule CloudflareApi.DnsRecordsTest do
           method: :get,
           url:
             "https://api.cloudflare.com/client/v4/zones/zone-id/dns_records?name=host.example.com"
-          } ->
+        } ->
           %Tesla.Env{
             status: 200,
             body: %{
@@ -147,7 +147,7 @@ defmodule CloudflareApi.DnsRecordsTest do
           method: :get,
           url:
             "https://api.cloudflare.com/client/v4/zones/zone-id/dns_records?name=host.example.com&type=A"
-          } ->
+        } ->
           %Tesla.Env{
             status: 200,
             body: %{
@@ -163,7 +163,7 @@ defmodule CloudflareApi.DnsRecordsTest do
           method: :get,
           url:
             "https://api.cloudflare.com/client/v4/zones/zone-id/dns_records?name=host.example.com&type=AAAA"
-          } ->
+        } ->
           %Tesla.Env{
             status: 200,
             body: %{
@@ -191,7 +191,7 @@ defmodule CloudflareApi.DnsRecordsTest do
           method: :get,
           url:
             "https://api.cloudflare.com/client/v4/zones/zone-id/dns_records?name=www.example.com"
-          } ->
+        } ->
           %Tesla.Env{
             status: 200,
             body: %{
@@ -207,7 +207,7 @@ defmodule CloudflareApi.DnsRecordsTest do
           method: :get,
           url:
             "https://api.cloudflare.com/client/v4/zones/zone-id/dns_records?name=already.example.com"
-          } ->
+        } ->
           %Tesla.Env{
             status: 200,
             body: %{
