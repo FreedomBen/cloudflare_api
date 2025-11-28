@@ -22,6 +22,11 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.ApiShieldEndpointManagement` | `/api_gateway/operations` CRUD and schema export | Manages API Shield endpoint definitions. |
 | `CloudflareApi.ApiShieldSchemaValidation` | Schema validation zone/operation settings and user schemas | Covers Schema Validation 2.0 endpoints. |
 | `CloudflareApi.ApiShieldSettings` | `/api_gateway/configuration` get/update | Zone-level configuration helper. |
+| `CloudflareApi.AsnIntelligence` | `/intel/asn` overview + subnets | Provides ASN intel helpers. |
+| `CloudflareApi.AccessBookmarks` | Deprecated bookmark application endpoints | Maintains legacy Access bookmark support. |
+| `CloudflareApi.AccessScimUpdateLogs` | `/access/logs/scim/updates` list | Lists SCIM update logs for an account. |
+| `CloudflareApi.AccessAppPolicies` | `/access/apps/:app_id/policies` | Manage app-scoped Access policies. |
+| `CloudflareApi.AccessApplications` | `/access/apps` CRUD plus token/settings helpers | Full Access application management. |
 
 ## Remaining Modules
 
@@ -30,11 +35,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 
 - API Shield Client Certificates for a Zone
 - API Shield WAF Expression Templates
-- ASN Intelligence
-- Access Bookmark applications (Deprecated)
-- Access SCIM update logs
-- Access application-scoped policies
-- Access applications
 - Access authentication logs
 - Access custom pages
 - Access groups
