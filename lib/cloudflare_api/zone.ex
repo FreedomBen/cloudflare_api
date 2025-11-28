@@ -37,12 +37,22 @@ defmodule CloudflareApi.Zone do
     Utils.struct_to_map(zone)
   end
 
-  def from_cf_json(%{"zone_id" => _} = zone) do
-    # https://stackoverflow.com/a/41980865/2062384
-    struct(CloudflareApi.Zone, zone)
+  def from_cf_json(zone) do
+    zone
+    |> normalize_keys()
+    |> then(&struct(__MODULE__, &1))
   end
 
-  def from_cf_json(zone) do
-    from_cf_json(Utils.map_atom_keys_to_strings(zone))
+  defp normalize_keys(%{} = zone) do
+    case Map.keys(zone) do
+      [] ->
+        zone
+
+      [key | _] when is_binary(key) ->
+        Utils.map_string_keys_to_atoms(zone)
+
+      _ ->
+        zone
+    end
   end
 end

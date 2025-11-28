@@ -3,29 +3,44 @@ defmodule CloudflareApi.CacheTest do
   doctest CloudflareApi.Cache
 
   alias CloudflareApi.{Cache, DnsRecord}
+  alias CloudflareApi.CacheEntry
 
   @test_hostname "test.example.com"
 
   setup do
-    IO.puts "Hello!"
     Cache.flush()
 
     on_exit fn ->
-      IO.puts "Goodbye!"
       Cache.flush()
     end
   end
 
   describe "cache" do
-    # start_supervised({CloudflareApi.Cache, []})
-    #setup [:cache_dns_record]
-
-    #setup do
-    #  cache_dns_record()
-    #end
-
     test "expired is hidden" do
-      lljkkjl
+      hostname = @test_hostname
+      dns_record = dns_record_fixture(hostname)
+
+      assert dns_record == Cache.add_or_update(dns_record)
+      assert Cache.includes?(hostname)
+      assert dns_record == Cache.get(hostname)
+
+      cache = :sys.get_state(:cloudflare_api_cache)
+
+      expired_entry = %CacheEntry{dns_record: dns_record, timestamp: -1_000_000_000}
+
+      expired_cache =
+        cache
+        |> Kernel.struct(
+          hostnames: Map.put(cache.hostnames, hostname, expired_entry)
+        )
+
+      _old =
+        :sys.replace_state(:cloudflare_api_cache, fn _old ->
+          expired_cache
+        end)
+
+      refute Cache.includes?(hostname)
+      assert_raise KeyError, fn -> Cache.get(hostname) end
     end
 
     test "includes, update, get, flush, dump, delete all work" do

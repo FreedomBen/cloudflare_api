@@ -1,38 +1,51 @@
 defmodule CloudflareApiTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
+
   doctest CloudflareApi
 
-  alias CloudflareApi.DnsRecords
+  test "new/1 returns a configured Tesla client" do
+    token = "test-token"
+    client = CloudflareApi.new(token)
 
-  @test_token "<populate me!>"
+    assert %Tesla.Client{pre: middleware} = client
 
-  test "It all works" do
-    # Because this test requires real cloudflare, we jam it all into one subroutine
-    c = CloudflareApi.client(@test_token)
-    DnsRecords.list(c, "abc")
-    assert c
+    {Tesla.Middleware.BaseUrl, _fun, [base_url]} =
+      Enum.find(middleware, fn {mod, _fun, _args} -> mod == Tesla.Middleware.BaseUrl end)
+
+    assert base_url == "https://api.cloudflare.com/client/v4"
+
+    assert Enum.any?(middleware, fn {mod, _fun, _args} -> mod == Tesla.Middleware.JSON end)
+
+    assert Enum.any?(middleware, fn
+             {Tesla.Middleware.BearerAuth, _fun, [opts]} ->
+               Keyword.get(opts, :token) == token
+
+             _ ->
+               false
+           end)
   end
 
-  test "#client/1" do
+  test "client/1 returns a reusable zero-arity function" do
+    token = "another-token"
+
+    client_fun = CloudflareApi.client(token)
+
+    assert is_function(client_fun, 0)
+
+    client1 = client_fun.()
+    client2 = client_fun.()
+
+    assert client1 == client2
+    assert match?(%Tesla.Client{}, client1)
   end
 
-  test "#new/1" do
-  end
+  test "uri_encode_opts/1 encodes according to RFC3986" do
+    opts = [{:name, "example domain"}, {:q, "a&b=c"}, {"weird", "value!"}]
 
-  test "#uri_encode_opts/1" do
-  end
+    encoded = CloudflareApi.uri_encode_opts(opts)
 
-  test "#opts_to_query_str/1" do
-  end
-
-  describe "DnsRecords" do
-    test "#list/3" do
-    end
-
-    test "#list_for_hostname/4" do
-    end
-
-    test "#create/3" do
-    end
+    assert encoded =~ "name=example%20domain"
+    assert encoded =~ "q=a%26b%3Dc"
+    assert encoded =~ "weird=value%21"
   end
 end
