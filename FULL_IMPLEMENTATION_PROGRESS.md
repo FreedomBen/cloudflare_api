@@ -27,6 +27,11 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.AccessScimUpdateLogs` | `/access/logs/scim/updates` list | Lists SCIM update logs for an account. |
 | `CloudflareApi.AccessAppPolicies` | `/access/apps/:app_id/policies` | Manage app-scoped Access policies. |
 | `CloudflareApi.AccessApplications` | `/access/apps` CRUD plus token/settings helpers | Full Access application management. |
+| `CloudflareApi.AccessAuthenticationLogs` | `/access/logs/access_requests` list | Authentication log retrieval. |
+| `CloudflareApi.AccessCustomPages` | `/access/custom_pages` CRUD | Manage Access custom pages. |
+| `CloudflareApi.AccessGroups` | `/access/groups` CRUD | Manage Access groups. |
+| `CloudflareApi.AccessIdentityProviders` | `/access/identity_providers` CRUD + SCIM | Identity provider management. |
+| `CloudflareApi.AccessKeyConfiguration` | `/access/keys` get/update/rotate | Access key configuration helper. |
 
 ## Remaining Modules
 
@@ -35,11 +40,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 
 - API Shield Client Certificates for a Zone
 - API Shield WAF Expression Templates
-- Access authentication logs
-- Access custom pages
-- Access groups
-- Access identity providers
-- Access key configuration
 - Access mTLS authentication
 - Access policy tester
 - Access reusable policies
