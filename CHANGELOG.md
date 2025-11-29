@@ -162,6 +162,9 @@ derived from tags and version-bump commits in `mix.exs`.
 - Added Workers AI Text Embeddings/Generation/Text-to-* modules, Workers AI Translation, and
   the storage/control plane helpers for Workers KV namespaces plus Workers for Platforms, all with
   coverage to keep the spec tracker moving.
+- Workflows, Zaraz, Zero Trust connectivity settings, PAC files, application/type mappings,
+  categories, and locations now have dedicated modules and tests, continuing the steady march
+  through the remaining tags in `FULL_IMPLEMENTATION_PROGRESS.md`.
 
 ### Changed
 

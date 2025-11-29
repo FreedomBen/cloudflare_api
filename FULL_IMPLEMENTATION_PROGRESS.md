@@ -363,6 +363,13 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.WorkersAiTranslation` | `/ai/run/@cf/(ai4bharat|meta)/*` | Translation helpers. |
 | `CloudflareApi.WorkersKvNamespace` | `/storage/kv/namespaces*` + keys/bulk/values | Namespace management and key/value CRUD. |
 | `CloudflareApi.WorkersForPlatforms` | `/workers/dispatch/namespaces*` | Workers for Platforms namespace/script lifecycle helpers. |
+| `CloudflareApi.Workflows` | `/accounts/:account_id/workflows*` | Workflow definitions, instances, events, and versions. |
+| `CloudflareApi.Zaraz` | `/zones/:zone_id/settings/zaraz/*` | Zaraz zone config, workflow, publish, and history endpoints. |
+| `CloudflareApi.ZeroTrustConnectivitySettings` | `/accounts/:account_id/zerotrust/connectivity_settings` GET/PATCH | Zero Trust connectivity settings helper. |
+| `CloudflareApi.ZeroTrustGatewayPacFiles` | `/accounts/:account_id/gateway/pacfiles` | PAC file list/create helpers. |
+| `CloudflareApi.ZeroTrustGatewayAppTypeMappings` | `/accounts/:account_id/gateway/app_types` | Application/application-type mapping list helper. |
+| `CloudflareApi.ZeroTrustGatewayCategories` | `/accounts/:account_id/gateway/categories` | Gateway category listing helper. |
+| `CloudflareApi.ZeroTrustGatewayLocations` | `/accounts/:account_id/gateway/locations*` | Gateway location list/create/get/update/delete. |
 | `CloudflareApi.WhoisRecord` | `GET /accounts/:account_id/intel/whois` | WHOIS record lookup helper. |
 
 ## Remaining Modules
@@ -383,13 +390,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Environment Variables
 - Event
 - Feedback
-- Workflows
-- Zaraz
-- Zero Trust Connectivity Settings
-- Zero Trust Gateway PAC files
-- Zero Trust Gateway application and application type mappings
-- Zero Trust Gateway categories
-- Zero Trust Gateway locations
 - Zero Trust Gateway proxy endpoints
 - Zero Trust Gateway rules
 - Zero Trust Hostname Route
