@@ -120,6 +120,10 @@ derived from tags and version-bump commits in `mix.exs`.
   Realtime Kit recordings, registrar domains, device registrations, build repo
   connections, Cloudforce One RFI, and resource sharing modules plus tests to
   keep the non-Radar tags moving forward.
+- Resources catalog, SSL verification + mode recommendation, account SSO
+  connectors, Cloudforce One scans, schema validation (schemas + settings), and
+  Secondary DNS (ACL/peer/primary zone) helpers round out the next batch with
+  associated ExUnit coverage.
 
 ### Changed
 

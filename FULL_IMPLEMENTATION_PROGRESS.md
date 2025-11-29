@@ -266,6 +266,16 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.RepositoryConnections` | `/accounts/:account_id/builds/repos/connections` upsert/delete | Builds repo connection helpers. |
 | `CloudflareApi.RequestForInformation` | `/accounts/:account_id/cloudforce-one/requests*` | Cloudforce One RFI lifecycle, assets, and messages. |
 | `CloudflareApi.ResourceSharing` | `/accounts/:account_id/shares*` + org shares | Share, recipient, and resource management. |
+| `CloudflareApi.ResourcesCatalog` | `/accounts/:account_id/magic/cloud/resources` list/export/policy-preview/get | Magic Cloud resource catalog helpers. |
+| `CloudflareApi.SslVerification` | `/zones/:zone_id/ssl/verification*` | SSL verification details + pack updates. |
+| `CloudflareApi.SslTlsModeRecommendation` | `GET /zones/:zone_id/ssl/recommendation` | Fetches SSL/TLS mode recommendation. |
+| `CloudflareApi.SsoConnectors` | `/accounts/:account_id/sso_connectors*` list/create/get/update/delete | Account SSO connector management inc. verification. |
+| `CloudflareApi.Scans` | `/accounts/:account_id/cloudforce-one/scans/*` | Cloudforce One scan config CRUD + results. |
+| `CloudflareApi.SchemaValidation` | `/zones/:zone_id/schema_validation/schemas*` | Schema validation schema CRUD + host/operation extraction. |
+| `CloudflareApi.SchemaValidationSettings` | `/zones/:zone_id/schema_validation/settings*` | Zone schema validation settings + per-operation overrides. |
+| `CloudflareApi.SecondaryDnsAcl` | `/accounts/:account_id/secondary_dns/acls*` | Secondary DNS ACL lifecycle helpers. |
+| `CloudflareApi.SecondaryDnsPeer` | `/accounts/:account_id/secondary_dns/peers*` | Secondary DNS peer management. |
+| `CloudflareApi.SecondaryDnsPrimaryZone` | `/zones/:zone_id/secondary_dns/outgoing*` | Primary zone (outgoing) configuration helpers. |
 
 ## Remaining Modules
 
@@ -287,16 +297,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Feedback
 - Pages Domains
 - Pages Project
-- Resources
-- SSL Verification
-- SSL/TLS Mode Recommendation
-- SSO
-- Scans
-- Schema Validation
-- Schema Validation Settings
-- Secondary DNS (ACL)
-- Secondary DNS (Peer)
-- Secondary DNS (Primary Zone)
 - Secondary DNS (Secondary Zone)
 - Secondary DNS (TSIG)
 - Secrets Store
