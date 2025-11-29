@@ -335,6 +335,13 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.WafRuleGroups` | `/zones/:zone_id/firewall/waf/packages/:package_id/groups*` | Rule group list/get/update. |
 | `CloudflareApi.WafRules` | `/zones/:zone_id/firewall/waf/packages/:package_id/rules*` | Rule list/get/update. |
 | `CloudflareApi.WarpChangeEvents` | `GET /accounts/:account_id/dex/warp-change-events` | WARP change event listing. |
+| `CloudflareApi.WaitingRoom` | `/waiting_rooms` account+zone listings, CRUD, events, rules, preview, settings, status | Full Waiting Room management surface. |
+| `CloudflareApi.WebAnalytics` | `/rum/site_info`, `/rum/v2/:ruleset_id/(rule|rules)`, `/zones/:zone_id/settings/rum` | Web Analytics site/rule CRUD plus zone RUM toggles. |
+| `CloudflareApi.Web3Hostname` | `/web3/hostnames*` + IPFS universal path content list entries | Web3 hostname CRUD and IPFS gateway content lists. |
+| `CloudflareApi.Webhooks` | `/realtime/kit/:app_id/webhooks*` | Realtime Kit webhook list/create/get/update/replace/delete. |
+| `CloudflareApi.WorkerAccountSettings` | `/accounts/:account_id/workers/account-settings` GET/PUT | Worker account settings fetch/update helper. |
+| `CloudflareApi.WorkerCronTrigger` | `/workers/scripts/:script_name/schedules` GET/PUT | Worker cron schedule listing and replacement. |
+| `CloudflareApi.WorkerDeployments` | `/workers/scripts/:script_name/deployments*` | Worker deployment list/create/get/delete with optional `force`. |
 | `CloudflareApi.WhoisRecord` | `GET /accounts/:account_id/intel/whois` | WHOIS record lookup helper. |
 
 ## Remaining Modules
@@ -355,13 +362,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Environment Variables
 - Event
 - Feedback
-- Waiting Room
-- Web Analytics
-- Web3 Hostname
-- Webhooks
-- Worker Account Settings
-- Worker Cron Trigger
-- Worker Deployments
 - Worker Domain
 - Worker Environment
 - Worker Script

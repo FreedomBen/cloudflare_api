@@ -148,6 +148,10 @@ derived from tags and version-bump commits in `mix.exs`.
   WAF overrides/packages/groups/rules, WARP change events, and WHOIS lookups so
   the analytics/security backlog keeps shrinking with documented wrappers and
   ExUnit coverage.
+- Added Waiting Room, Web Analytics, Web3 Hostname, Webhooks, Worker Account
+  Settings, Worker Cron Trigger, and Worker Deployments modules (with matching
+  tests) to keep chipping away at the next section of
+  `FULL_IMPLEMENTATION_PROGRESS.md`.
 
 ### Changed
 
