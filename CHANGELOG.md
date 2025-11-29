@@ -40,6 +40,8 @@ derived from tags and version-bump commits in `mix.exs`.
   binary and multipart uploads for dataset versions and document fingerprints.
 - DLP Email account-mapping/rule management plus DLP entry helpers (custom,
   predefined, and integration variants) so the DLP surface is largely covered.
+- DLP Profiles and DLP Settings modules, handling profile CRUD/config endpoints
+  and account-level limits/pattern validation/payload log APIs.
 
 ### Changed
 

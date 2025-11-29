@@ -107,14 +107,14 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.DlpEntries` | `/dlp/entries` list/create/get/update/delete | General entry CRUD including custom/predefined updates. |
 | `CloudflareApi.DlpIntegrationEntries` | `/dlp/entries/integration` CRUD | Integration-entry lifecycle helpers. |
 | `CloudflareApi.DlpPredefinedEntries` | `/dlp/entries/predefined` create/delete | Predefined entry helpers. |
+| `CloudflareApi.DlpProfiles` | `/dlp/profiles` list/custom/predefined/config helpers | Full profile lifecycle coverage. |
+| `CloudflareApi.DlpSettings` | `/dlp/limits`, `/dlp/patterns/validate`, `/dlp/payload_log` | Account-level settings helpers. |
 
 ## Remaining Modules
 
 The following OpenAPI tags still require dedicated modules. When you begin work
 on one, move it to the “Completed Modules” table above (and include any notes).
 
-- DLP Profiles
-- DLP Settings
 - DLS Regional Services
 - DNS Analytics
 - DNS Firewall
