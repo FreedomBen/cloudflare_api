@@ -86,9 +86,6 @@ roughly by the OpenAPI tag they represent.
 The following OpenAPI tags still require dedicated modules. When you begin work
 on one, move it to the “Completed Modules” table above (and include any notes).
 
-- Category
-- Certificate Packs
-- Cloud Integrations
 - Cloudflare IPs
 - Cloudflare Images
 - Cloudflare Images Keys
