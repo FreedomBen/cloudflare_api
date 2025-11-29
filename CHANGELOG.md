@@ -210,6 +210,8 @@ derived from tags and version-bump commits in `mix.exs`.
 - Ensure `CloudflareApi.Cache.get/1` and `get/2` return `nil` for missing
   hostnames (while preserving the `:even_if_expired` escape hatch) and update
   cache tests so expiry semantics match the documented behaviour.
+- Tighten doctest HTTP mocking by pattern matching on `%Tesla.Env{}` to keep
+  type checks quiet while preserving the existing doctest behaviour.
 
 ## [0.3.0] - 2025-11-28
 

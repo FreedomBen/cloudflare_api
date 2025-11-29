@@ -27,7 +27,7 @@ defmodule CloudflareApi.DoctestTest do
 
   setup context do
     if context[:test_type] == :doctest do
-      mock(fn env ->
+      mock(fn %Tesla.Env{} = env ->
         result = sample_result(context[:test])
 
         {:ok,
