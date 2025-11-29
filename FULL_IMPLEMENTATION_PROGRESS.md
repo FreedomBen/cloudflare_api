@@ -56,17 +56,17 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.AccountSubscriptions` | `/subscriptions` CRUD | Manage subscriptions. |
 | `CloudflareApi.AccountUserGroups` | `/iam/user_groups` + members | User group management. |
 | `CloudflareApi.AccountCustomNameservers` | `/custom_ns` + zone usage | Custom nameserver management. |
+| `CloudflareApi.RealtimeKitActiveSession` | `/realtime/kit/.../active-session` | Manage meeting sessions. |
+| `CloudflareApi.RealtimeKitAnalytics` | `/realtime/kit/:app_id/analytics/daywise` | Daywise analytics. |
+| `CloudflareApi.RealtimeKitApps` | `/realtime/kit/apps` | Realtime Kit app CRUD. |
+| `CloudflareApi.AnalyzeCertificate` | `/ssl/analyze` | Analyze zone certificates. |
+| `CloudflareApi.ArgoAnalyticsGeolocation` | `/analytics/latency/colos` | Argo latency analytics. |
 
 ## Remaining Modules
 
 The following OpenAPI tags still require dedicated modules. When you begin work
 on one, move it to the “Completed Modules” table above (and include any notes).
 
-- Active session
-- Analytics
-- Analyze Certificate
-- Apps
-- Argo Analytics for Geolocation
 - Argo Analytics for Zone
 - Argo Smart Routing
 - Attacker
