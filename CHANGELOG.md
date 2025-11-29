@@ -16,6 +16,8 @@ derived from tags and version-bump commits in `mix.exs`.
   and audit log wrappers to keep recent modules guarded by tests.
 - AutoRAG collection management and search helpers to round out the initial
   AutoRAG surface area.
+- Automatic SSL/TLS, Page Rules settings, and BinDB helpers to extend coverage
+  into SSL settings and Cloudforce One binary analysis workflows.
 
 ### Changed
 

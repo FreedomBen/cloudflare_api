@@ -68,17 +68,15 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.AutoragJobs` | `/autorag/rags/:rag_id/jobs` | AutoRAG job listings/logs. |
 | `CloudflareApi.AutoragRags` | `/autorag/rags` CRUD | Manage AutoRAG collections. |
 | `CloudflareApi.AutoragRagSearch` | `/autorag/rags/:rag_id/search` | Execute AutoRAG search queries. |
+| `CloudflareApi.AutomaticSslTls` | `/zones/:zone_id/settings/ssl_automatic_mode` | Automatic SSL/TLS enrollment. |
+| `CloudflareApi.AvailablePageRulesSettings` | `/zones/:zone_id/pagerules/settings` | Page Rules settings metadata. |
+| `CloudflareApi.BinDb` | `/accounts/:account_id/cloudforce-one/binary` | BinDB upload and fetch helpers. |
 
 ## Remaining Modules
 
 The following OpenAPI tags still require dedicated modules. When you begin work
 on one, move it to the “Completed Modules” table above (and include any notes).
 
-- AutoRAG RAG
-- AutoRAG RAG Search
-- Automatic SSL/TLS
-- Available Page Rules settings
-- BinDB
 - Bot Settings
 - Botnet Threat Feed
 - Build Tokens

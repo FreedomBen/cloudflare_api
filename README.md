@@ -98,6 +98,9 @@ hand-written approach. Newly added modules include:
 - `CloudflareApi.AutoragJobs` – inspect AutoRAG jobs and logs.
 - `CloudflareApi.AutoragRags` – manage AutoRAG collections (create/list/update/delete).
 - `CloudflareApi.AutoragRagSearch` – execute AutoRAG search queries.
+- `CloudflareApi.AutomaticSslTls` – inspect or update Automatic SSL/TLS enrollment.
+- `CloudflareApi.AvailablePageRulesSettings` – list Page Rules settings available to a zone.
+- `CloudflareApi.BinDb` – upload binaries to / fetch binaries from Cloudforce One BinDB.
 
 Further modules will be added iteratively; progress is tracked in
 `FULL_IMPLEMENTATION_PROGRESS.md`.
