@@ -96,6 +96,8 @@ hand-written approach. Newly added modules include:
 - `CloudflareApi.Attacker` – list Cloudforce One attacker events.
 - `CloudflareApi.AuditLogs` – fetch account/user audit logs.
 - `CloudflareApi.AutoragJobs` – inspect AutoRAG jobs and logs.
+- `CloudflareApi.AutoragRags` – manage AutoRAG collections (create/list/update/delete).
+- `CloudflareApi.AutoragRagSearch` – execute AutoRAG search queries.
 
 Further modules will be added iteratively; progress is tracked in
 `FULL_IMPLEMENTATION_PROGRESS.md`.
