@@ -349,6 +349,13 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.WorkerTailLogs` | `/workers/scripts/:script_name/tails*` | Tail session list/start/delete. |
 | `CloudflareApi.Workers` | `/accounts/:account_id/workers/workers*` + builds/triggers | Workers services CRUD plus build/trigger listings. |
 | `CloudflareApi.WorkersAi` | `/accounts/:account_id/ai/*` | Workers AI author/model/task search, run, and markdown conversion endpoints. |
+| `CloudflareApi.WorkersAiAutomaticSpeechRecognition` | `/ai/run/@cf/deepgram/*`, `/ai/run/@cf/openai/whisper*` | Automatic speech recognition websocket + run endpoints. |
+| `CloudflareApi.WorkersAiDumbPipe` | `/ai/run/@cf/pipecat-ai/*` | Pipecat smart turn websocket helpers. |
+| `CloudflareApi.WorkersAiFinetune` | `/ai/finetunes*` | Finetune list/create/public listing + asset uploads. |
+| `CloudflareApi.WorkersAiImageClassification` | `/ai/run/@cf/microsoft/resnet-50` | Image classification runner. |
+| `CloudflareApi.WorkersAiObjectDetection` | `/ai/run/@cf/facebook/omni-detr-resnet-50` | Object detection runner. |
+| `CloudflareApi.WorkersAiSummarization` | `/ai/run/@cf/facebook/(omni-)?bart-large-cnn` | Summarization model runners. |
+| `CloudflareApi.WorkersAiTextClassification` | `/ai/run/@cf/(baai|huggingface)/*` | Text classification model runners. |
 | `CloudflareApi.WhoisRecord` | `GET /accounts/:account_id/intel/whois` | WHOIS record lookup helper. |
 
 ## Remaining Modules
@@ -369,13 +376,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Environment Variables
 - Event
 - Feedback
-- Workers AI Automatic Speech Recognition
-- Workers AI Dumb Pipe
-- Workers AI Finetune
-- Workers AI Image Classification
-- Workers AI Object Detection
-- Workers AI Summarization
-- Workers AI Text Classification
 - Workers AI Text Embeddings
 - Workers AI Text Generation
 - Workers AI Text To Image

@@ -156,6 +156,9 @@ derived from tags and version-bump commits in `mix.exs`.
   Worker Tail Logs, Workers (service CRUD/build metadata), and Workers AI modules,
   each with accompanying ExUnit coverage to extend the Workers surface in the
   progress log.
+- Added Workers AI Automatic Speech Recognition, Dumb Pipe, Finetune, Image Classification,
+  Object Detection, Summarization, and Text Classification wrappers (with tests) to keep the
+  Workers AI tag family on pace with `FULL_IMPLEMENTATION_PROGRESS.md`.
 
 ### Changed
 
