@@ -94,6 +94,14 @@ derived from tags and version-bump commits in `mix.exs`.
 - Added service bindings, IP intel/list lookups, Cloudforce One indicators &
   indicator types, infrastructure targets, Instant Logs jobs, interconnects,
   and Keyless SSL wrappers so the networking/Cloudforce One sections track the spec.
+- MCP portal + server management, Magic Interconnects, and the notification
+  alerting surface (alert types, history, delivery eligibility, silences,
+  PagerDuty destinations, policies, and webhooks) so Access AI Controls and
+  Alerting tags are now represented with tested modules.
+- Observatory speed tests, Magic WAN on-ramps, organization/member helpers,
+  Origin CA + post-quantum settings, Page Rules & Page Shield, plus Pages build
+  cache/deployment wrappers to continue chipping away at the tag list with
+  comprehensive ExUnit coverage.
 
 ### Changed
 

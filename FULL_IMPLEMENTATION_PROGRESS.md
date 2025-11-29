@@ -196,6 +196,26 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.Meetings` | `/accounts/:account_id/realtime/kit/:app_id/meetings` CRUD + participants | Realtime Kit meeting and participant APIs. |
 | `CloudflareApi.Miscategorization` | `POST /accounts/:account_id/intel/miscategorization` | Submit intel miscategorization reports. |
 | `CloudflareApi.NamespaceManagement` | `/accounts/:account_id/r2-catalog/:bucket/namespaces` list | List R2 catalog namespaces. |
+| `CloudflareApi.McpPortal` | `GET/POST/GET/PUT/DELETE /accounts/:account_id/access/ai-controls/mcp/portals` | Manage Access AI Controls portals. |
+| `CloudflareApi.McpPortalServers` | `/accounts/:account_id/access/ai-controls/mcp/servers` list/create/get/update/delete + `/sync` | MCP server CRUD plus capability sync trigger. |
+| `CloudflareApi.MagicInterconnects` | `/accounts/:account_id/magic/cf_interconnects` list/bulk update/get/update | Covers interconnect listing and updates. |
+| `CloudflareApi.NotificationAlertTypes` | `GET /accounts/:account_id/alerting/v3/available_alerts` | Lists available alert types. |
+| `CloudflareApi.NotificationHistory` | `GET /accounts/:account_id/alerting/v3/history` | Alert delivery history listing. |
+| `CloudflareApi.NotificationMechanismEligibility` | `GET /accounts/:account_id/alerting/v3/destinations/eligible` | Delivery mechanism eligibility helper. |
+| `CloudflareApi.NotificationSilences` | `/accounts/:account_id/alerting/v3/silences` list/create/update/get/delete | Silence CRUD operations. |
+| `CloudflareApi.NotificationDestinationsPagerduty` | `/accounts/:account_id/alerting/v3/destinations/pagerduty` list/delete + `/connect` token endpoints | PagerDuty destination management & connect helper. |
+| `CloudflareApi.NotificationPolicies` | `/accounts/:account_id/alerting/v3/policies` list/create/get/update/delete | Notification policy lifecycle. |
+| `CloudflareApi.NotificationWebhooks` | `/accounts/:account_id/alerting/v3/destinations/webhooks` list/create/get/update/delete | Manage webhook destinations. |
+| `CloudflareApi.Observatory` | `/zones/:zone_id/speed_api/*` for availabilities/pages/tests/schedules | Speed (Observatory) listings, test management, and scheduling. |
+| `CloudflareApi.OnRamps` | `/accounts/:account_id/magic/cloud/onramps` CRUD + apply/plan/export + Magic WAN address space | Magic WAN on-ramp lifecycle helpers. |
+| `CloudflareApi.OrganizationMembers` | `/organizations/:organization_id/members` list/create/get/delete + batch create | Organization member management. |
+| `CloudflareApi.Organizations` | `/organizations` list/create/get/update/delete + accounts/profile | Organization CRUD plus account & profile helpers. |
+| `CloudflareApi.OriginCa` | `/certificates` list/create/get/delete | Origin CA certificate lifecycle. |
+| `CloudflareApi.OriginPostQuantum` | `/zones/:zone_id/cache/origin_post_quantum_encryption` get/update | Manage Origin Post-Quantum encryption setting. |
+| `CloudflareApi.PageRules` | `/zones/:zone_id/pagerules` list/create/get/update/patch/delete | Page Rule lifecycle helpers. |
+| `CloudflareApi.PageShield` | `/zones/:zone_id/page_shield` settings + connections/cookies/policies/scripts | Page Shield settings, policy, and signal accessors. |
+| `CloudflareApi.PagesBuildCache` | `POST /accounts/:account_id/pages/projects/:project/purge_build_cache` | Purge Pages build cache. |
+| `CloudflareApi.PagesDeployments` | `/accounts/:account_id/pages/projects/:project/deployments` list/create/get/delete/logs/retry/rollback | Pages deployment lifecycle helpers. |
 
 ## Remaining Modules
 
@@ -215,26 +235,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Environment Variables
 - Event
 - Feedback
-- MCP Portal
-- MCP Portal Servers
-- Magic Interconnects
-- Notification Alert Types
-- Notification History
-- Notification Mechanism Eligibility
-- Notification Silences
-- Notification destinations with PagerDuty
-- Notification policies
-- Notification webhooks
-- Observatory
-- On-ramps
-- OrganizationMembers
-- Organizations
-- Origin CA
-- Origin Post-Quantum
-- Page Rules
-- Page Shield
-- Pages Build Cache
-- Pages Deployment
 - Pages Domains
 - Pages Project
 - Passive DNS by IP
