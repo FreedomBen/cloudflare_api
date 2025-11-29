@@ -110,6 +110,9 @@ derived from tags and version-bump commits in `mix.exs`.
   modules (AI Bots, AI Inference, AS112, annotations, autonomous systems, BGP,
   bots, and certificate transparency) so the Radar tag family now has tested
   entry points.
+- Added Radar DNS, datasets, domain ranking, email routing/security, geolocation,
+  HTTP, IP lookup, internet service ranking, and Layer 3 attack helpers to keep
+  expanding the Radar footprint with verified request/response coverage.
 
 ### Changed
 

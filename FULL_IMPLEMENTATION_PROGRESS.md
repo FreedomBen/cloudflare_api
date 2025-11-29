@@ -236,6 +236,16 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.RadarBgp` | `/radar/bgp/*` metrics/events routes | BGP events, routes, and top listings. |
 | `CloudflareApi.RadarBots` | `/radar/bots*` overview/summary/timeseries/bot detail | Radar bot analytics helper. |
 | `CloudflareApi.RadarCertificateTransparency` | `/radar/ct/*` authorities/logs/summary/timeseries | Certificate transparency analytics. |
+| `CloudflareApi.RadarDns` | `/radar/dns/*` summary/timeseries/top endpoints | DNS analytics summary, grouping, and top listings. |
+| `CloudflareApi.RadarDatasets` | `/radar/datasets*` list/get/download | Dataset listing + download URL helper. |
+| `CloudflareApi.RadarDomainsRanking` | `/radar/ranking/*` domain ranking endpoints | Domain rank top/time-series lookups. |
+| `CloudflareApi.RadarEmailRouting` | `/radar/email/routing/*` summary/timeseries groups | Email routing analytics helpers. |
+| `CloudflareApi.RadarEmailSecurity` | `/radar/email/security/*` summary/timeseries/top tlds | Email security analytics incl. top TLDs. |
+| `CloudflareApi.RadarGeolocations` | `/radar/geolocations*` list/get | Radar geolocation metadata. |
+| `CloudflareApi.RadarHttp` | `/radar/http/*` summary/timeseries/top endpoints | HTTP analytics across dimensions. |
+| `CloudflareApi.RadarIp` | `GET /radar/entities/ip` | Single IP metadata lookup. |
+| `CloudflareApi.RadarInternetServicesRanking` | `/radar/ranking/internet_services/*` categories/top/timeseries | Internet services ranking analytics. |
+| `CloudflareApi.RadarLayer3Attacks` | `/radar/attacks/layer3/*` summary/timeseries/top endpoints | Layer 3 attack analytics. |
 
 ## Remaining Modules
 
@@ -257,16 +267,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Feedback
 - Pages Domains
 - Pages Project
-- Radar DNS
-- Radar Datasets
-- Radar Domains Ranking
-- Radar Email Routing
-- Radar Email Security
-- Radar Geolocations
-- Radar HTTP
-- Radar IP
-- Radar Internet Services Ranking
-- Radar Layer 3 Attacks
 - Radar Layer 7 Attacks
 - Radar Leaked Credential Checks
 - Radar Locations
