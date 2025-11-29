@@ -207,9 +207,9 @@ derived from tags and version-bump commits in `mix.exs`.
 
 ### Fixed
 
-- Ensure `CloudflareApi.Cache.get/1` raises a `KeyError` when reading expired
-  or missing hostnames (and clean up test helpers) so cache expiry semantics
-  match the expectations in the ExUnit suite.
+- Ensure `CloudflareApi.Cache.get/1` and `get/2` return `nil` for missing
+  hostnames (while preserving the `:even_if_expired` escape hatch) and update
+  cache tests so expiry semantics match the documented behaviour.
 
 ## [0.3.0] - 2025-11-28
 

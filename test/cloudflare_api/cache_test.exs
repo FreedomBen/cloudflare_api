@@ -38,7 +38,8 @@ defmodule CloudflareApi.CacheTest do
         end)
 
       refute Cache.includes?(hostname)
-      assert_raise KeyError, fn -> Cache.get(hostname) end
+      assert Cache.get(hostname) == nil
+      assert Cache.get(hostname, :even_if_expired) == dns_record
     end
 
     test "includes, update, get, flush, dump, delete all work" do
@@ -85,6 +86,16 @@ defmodule CloudflareApi.CacheTest do
       assert %{} == Cache.dump_cache().hostnames
       assert false == Cache.includes?(hn1)
       assert false == Cache.includes?(hn2)
+    end
+
+    test "get/1 returns nil for unknown hostname" do
+      refute Cache.includes?("missing.example.com")
+      assert Cache.get("missing.example.com") == nil
+    end
+
+    test "get/2 with :even_if_expired returns nil for unknown hostname" do
+      refute Cache.includes?("missing.example.com")
+      assert Cache.get("missing.example.com", :even_if_expired) == nil
     end
   end
 

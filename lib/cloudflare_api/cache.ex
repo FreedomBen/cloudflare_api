@@ -44,10 +44,13 @@ defmodule CloudflareApi.Cache do
   Fetch a cached `CloudflareApi.DnsRecord` for the given hostname.
 
   If the hostname is not in the cache or the entry has expired, this function
-  returns `nil` or raises (for example when pattern matching on the result).
+  returns `nil`.
   """
   def get(hostname) do
-    get_entry(hostname).dns_record
+    case get_entry(hostname) do
+      %CacheEntry{dns_record: dns_record} -> dns_record
+      nil -> nil
+    end
   end
 
   @doc ~S"""
@@ -57,7 +60,10 @@ defmodule CloudflareApi.Cache do
   and returns whatever entry is stored for `hostname`, if any.
   """
   def get(hostname, :even_if_expired) do
-    get_entry(hostname, :even_if_expired).dns_record
+    case get_entry(hostname, :even_if_expired) do
+      %CacheEntry{dns_record: dns_record} -> dns_record
+      nil -> nil
+    end
   end
 
   @doc ~S"""
