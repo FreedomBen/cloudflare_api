@@ -80,15 +80,15 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.CallsApps` | `/calls/apps` | Calls app CRUD. |
 | `CloudflareApi.CallsTurnKeys` | `/calls/turn_keys` | TURN key management. |
 | `CloudflareApi.CatalogSync` | `/magic/cloud/catalog-syncs` | Catalog sync CRUD + refresh. |
+| `CloudflareApi.CloudflareIps` | `/ips` | Cloudflare public IP ranges. |
+| `CloudflareApi.CloudflareImages` | `/images/v1`, `/images/v2` | Cloudflare Images APIs. |
+| `CloudflareApi.CloudflareImagesKeys` | `/images/v1/keys` | Images signing keys. |
 
 ## Remaining Modules
 
 The following OpenAPI tags still require dedicated modules. When you begin work
 on one, move it to the “Completed Modules” table above (and include any notes).
 
-- Cloudflare IPs
-- Cloudflare Images
-- Cloudflare Images Keys
 - Cloudflare Images Variants
 - Cloudflare Tunnel
 - Cloudflare Tunnel Configuration

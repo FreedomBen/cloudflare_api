@@ -24,6 +24,8 @@ derived from tags and version-bump commits in `mix.exs`.
   introspection, interconnects, and Smart Shield jobs are now covered.
 - Calls apps, TURN keys, and Magic Catalog Sync helpers with full test coverage
   to keep expanding account-level management APIs.
+- Cloudflare IPs, Images, and Images Keys modules (with multipart upload
+  handling) so media workflows and IP listings are represented in the wrapper.
 
 ### Changed
 

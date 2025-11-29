@@ -110,6 +110,9 @@ hand-written approach. Newly added modules include:
 - `CloudflareApi.CallsApps` – manage Cloudflare Calls applications.
 - `CloudflareApi.CallsTurnKeys` – create/update/delete Calls TURN keys.
 - `CloudflareApi.CatalogSync` – orchestrate Magic Cloud catalog syncs.
+- `CloudflareApi.CloudflareIps` – fetch Cloudflare public IP ranges.
+- `CloudflareApi.CloudflareImages` – upload/list/manage Cloudflare Images assets.
+- `CloudflareApi.CloudflareImagesKeys` – manage Cloudflare Images signing keys.
 
 Further modules will be added iteratively; progress is tracked in
 `FULL_IMPLEMENTATION_PROGRESS.md`.
