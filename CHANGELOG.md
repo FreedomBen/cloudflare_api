@@ -159,6 +159,9 @@ derived from tags and version-bump commits in `mix.exs`.
 - Added Workers AI Automatic Speech Recognition, Dumb Pipe, Finetune, Image Classification,
   Object Detection, Summarization, and Text Classification wrappers (with tests) to keep the
   Workers AI tag family on pace with `FULL_IMPLEMENTATION_PROGRESS.md`.
+- Added Workers AI Text Embeddings/Generation/Text-to-* modules, Workers AI Translation, and
+  the storage/control plane helpers for Workers KV namespaces plus Workers for Platforms, all with
+  coverage to keep the spec tracker moving.
 
 ### Changed
 

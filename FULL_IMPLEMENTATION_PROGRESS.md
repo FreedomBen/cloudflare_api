@@ -356,6 +356,13 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.WorkersAiObjectDetection` | `/ai/run/@cf/facebook/omni-detr-resnet-50` | Object detection runner. |
 | `CloudflareApi.WorkersAiSummarization` | `/ai/run/@cf/facebook/(omni-)?bart-large-cnn` | Summarization model runners. |
 | `CloudflareApi.WorkersAiTextClassification` | `/ai/run/@cf/(baai|huggingface)/*` | Text classification model runners. |
+| `CloudflareApi.WorkersAiTextEmbeddings` | `/ai/run/@cf/(baai|google|pfnet|qwen)/*` | Text embedding model runners. |
+| `CloudflareApi.WorkersAiTextGeneration` | `/ai/run/@cf|@hf/*` | Text generation/run endpoints for OSS/partner models. |
+| `CloudflareApi.WorkersAiTextToImage` | `/ai/run/@cf/*` + websocket test pipe | Text-to-image runs plus websocket helper. |
+| `CloudflareApi.WorkersAiTextToSpeech` | `/ai/run/@cf/(deepgram|myshell-ai)/*` | TTS run + websocket endpoints. |
+| `CloudflareApi.WorkersAiTranslation` | `/ai/run/@cf/(ai4bharat|meta)/*` | Translation helpers. |
+| `CloudflareApi.WorkersKvNamespace` | `/storage/kv/namespaces*` + keys/bulk/values | Namespace management and key/value CRUD. |
+| `CloudflareApi.WorkersForPlatforms` | `/workers/dispatch/namespaces*` | Workers for Platforms namespace/script lifecycle helpers. |
 | `CloudflareApi.WhoisRecord` | `GET /accounts/:account_id/intel/whois` | WHOIS record lookup helper. |
 
 ## Remaining Modules
@@ -376,13 +383,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Environment Variables
 - Event
 - Feedback
-- Workers AI Text Embeddings
-- Workers AI Text Generation
-- Workers AI Text To Image
-- Workers AI Text To Speech
-- Workers AI Translation
-- Workers KV Namespace
-- Workers for Platforms
 - Workflows
 - Zaraz
 - Zero Trust Connectivity Settings
