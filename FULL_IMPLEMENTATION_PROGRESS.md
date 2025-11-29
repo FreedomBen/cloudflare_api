@@ -191,6 +191,11 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.MagicSiteNetflowConfig` | `/accounts/:account_id/magic/sites/:site_id/netflow_config` CRUD | Site NetFlow configuration. |
 | `CloudflareApi.MagicSiteWans` | `/accounts/:account_id/magic/sites/:site_id/wans` CRUD | Site WAN interfaces. |
 | `CloudflareApi.MagicStaticRoutes` | `/accounts/:account_id/magic/routes` CRUD + bulk ops | Manage Magic static routes with validation helpers. |
+| `CloudflareApi.MaintenanceConfiguration` | `/accounts/:account_id/r2-catalog/:bucket/maintenance-configs` get/update | R2 catalog maintenance configuration helper. |
+| `CloudflareApi.ManagedTransforms` | `/zones/:zone_id/managed_headers` list/update/delete | Managed header transform controls. |
+| `CloudflareApi.Meetings` | `/accounts/:account_id/realtime/kit/:app_id/meetings` CRUD + participants | Realtime Kit meeting and participant APIs. |
+| `CloudflareApi.Miscategorization` | `POST /accounts/:account_id/intel/miscategorization` | Submit intel miscategorization reports. |
+| `CloudflareApi.NamespaceManagement` | `/accounts/:account_id/r2-catalog/:bucket/namespaces` list | List R2 catalog namespaces. |
 
 ## Remaining Modules
 
@@ -213,11 +218,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - MCP Portal
 - MCP Portal Servers
 - Magic Interconnects
-- Maintenance Configuration
-- Managed Transforms
-- Meetings
-- Miscategorization
-- Namespace Management
 - Notification Alert Types
 - Notification History
 - Notification Mechanism Eligibility
