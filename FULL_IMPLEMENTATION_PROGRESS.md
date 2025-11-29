@@ -180,6 +180,17 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.MagicConnectors` | `/accounts/:account_id/magic/connectors` CRUD + telemetry | Connector management plus telemetry events/snapshots helpers. |
 | `CloudflareApi.MagicGreTunnels` | `/accounts/:account_id/magic/gre_tunnels` CRUD + bulk update | GRE tunnel lifecycle helpers including batch update. |
 | `CloudflareApi.MagicIpsecTunnels` | `/accounts/:account_id/magic/ipsec_tunnels` CRUD + PSK generation | IPsec tunnel management, bulk updates, and PSK generation. |
+| `CloudflareApi.MagicNetworkMonitoringConfiguration` | `/accounts/:account_id/mnm/config` CRUD + full listing | Account-level MNM configuration helpers. |
+| `CloudflareApi.MagicNetworkMonitoringRules` | `/accounts/:account_id/mnm/rules` CRUD + advertisement updates | MNM rule lifecycle management. |
+| `CloudflareApi.MagicNetworkMonitoringVpcFlows` | `POST /accounts/:account_id/mnm/vpc-flows/token` | Generates VPC flow log auth tokens. |
+| `CloudflareApi.MagicPcapCollection` | `/accounts/:account_id/pcaps` requests + bucket ownership | Manage PCAP capture requests and storage ownership. |
+| `CloudflareApi.MagicSites` | `/accounts/:account_id/magic/sites` CRUD | Manage Magic Sites. |
+| `CloudflareApi.MagicSiteAcls` | `/accounts/:account_id/magic/sites/:site_id/acls` CRUD | Site-level ACL management. |
+| `CloudflareApi.MagicSiteAppConfigs` | `/accounts/:account_id/magic/sites/:site_id/app_configs` CRUD | Manage per-site app configs. |
+| `CloudflareApi.MagicSiteLans` | `/accounts/:account_id/magic/sites/:site_id/lans` CRUD | Site LAN definitions. |
+| `CloudflareApi.MagicSiteNetflowConfig` | `/accounts/:account_id/magic/sites/:site_id/netflow_config` CRUD | Site NetFlow configuration. |
+| `CloudflareApi.MagicSiteWans` | `/accounts/:account_id/magic/sites/:site_id/wans` CRUD | Site WAN interfaces. |
+| `CloudflareApi.MagicStaticRoutes` | `/accounts/:account_id/magic/routes` CRUD + bulk ops | Manage Magic static routes with validation helpers. |
 
 ## Remaining Modules
 
@@ -202,17 +213,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - MCP Portal
 - MCP Portal Servers
 - Magic Interconnects
-- Magic Network Monitoring Configuration
-- Magic Network Monitoring Rules
-- Magic Network Monitoring VPC Flow logs
-- Magic PCAP collection
-- Magic Site ACLs
-- Magic Site App Configs
-- Magic Site LANs
-- Magic Site NetFlow Config
-- Magic Site WANs
-- Magic Sites
-- Magic Static Routes
 - Maintenance Configuration
 - Managed Transforms
 - Meetings
