@@ -35,3 +35,38 @@ jobs:
       - name: Run tests
         run: mix test
 
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+
+    strategy:
+      fail-fast: false
+      matrix:
+        elixir: ["1.15.x"]
+        otp: ["26.x"]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Elixir and Erlang/OTP
+        uses: erlef/setup-beam@v1
+        with:
+          elixir-version: ${{ matrix.elixir }}
+          otp-version: ${{ matrix.otp }}
+          cache: mix
+
+      - name: Install dependencies
+        run: mix deps.get
+
+      - name: Compile
+        run: mix compile --warnings-as-errors
+
+      - name: Build Hex package
+        run: mix hex.build
+
+      - name: Upload Hex package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cloudflare_api-hex-${{ matrix.elixir }}-otp-${{ matrix.otp }}
+          path: cloudflare_api-*.tar

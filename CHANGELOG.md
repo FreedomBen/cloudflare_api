@@ -204,6 +204,9 @@ derived from tags and version-bump commits in `mix.exs`.
    experimentation.
 - Updated development-time dependencies (`ex_doc`, `jason` and their formatter
   stack) to the latest Hex releases.
+- Add a dedicated `build` job to the CI workflow that compiles the project,
+  runs `mix hex.build`, and uploads the resulting Hex tarball as a GitHub
+  Actions artifact.
 
 ### Fixed
 
