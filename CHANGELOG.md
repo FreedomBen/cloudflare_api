@@ -165,6 +165,9 @@ derived from tags and version-bump commits in `mix.exs`.
 - Workflows, Zaraz, Zero Trust connectivity settings, PAC files, application/type mappings,
   categories, and locations now have dedicated modules and tests, continuing the steady march
   through the remaining tags in `FULL_IMPLEMENTATION_PROGRESS.md`.
+- Completed the next Zero Trust slice: proxy endpoints, gateway rules, hostname routes, risk scoring
+  (behaviors/summary/user reset), risk scoring integrations, and SSH settings—each with thin modules
+  and deterministic tests.
 
 ### Changed
 

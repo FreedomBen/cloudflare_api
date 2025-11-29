@@ -370,6 +370,12 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.ZeroTrustGatewayAppTypeMappings` | `/accounts/:account_id/gateway/app_types` | Application/application-type mapping list helper. |
 | `CloudflareApi.ZeroTrustGatewayCategories` | `/accounts/:account_id/gateway/categories` | Gateway category listing helper. |
 | `CloudflareApi.ZeroTrustGatewayLocations` | `/accounts/:account_id/gateway/locations*` | Gateway location list/create/get/update/delete. |
+| `CloudflareApi.ZeroTrustGatewayProxyEndpoints` | `/gateway/proxy_endpoints*` | Proxy endpoint list/create/get/update/delete. |
+| `CloudflareApi.ZeroTrustGatewayRules` | `/gateway/rules*` | Zero Trust Gateway rule CRUD + tenant listing + expiration reset. |
+| `CloudflareApi.ZeroTrustHostnameRoute` | `/zerotrust/routes/hostname*` | Hostname route list/create/get/update/delete. |
+| `CloudflareApi.ZeroTrustRiskScoring` | `/zt_risk_scoring` behaviors/summary/user/reset | Risk scoring behavior + summary + user reset helpers. |
+| `CloudflareApi.ZeroTrustRiskScoringIntegrations` | `/zt_risk_scoring/integrations*` | Integration list/create/update/delete + reference lookup. |
+| `CloudflareApi.ZeroTrustSshSettings` | `/gateway/audit_ssh_settings*` | SSH audit settings get/update/rotate seed. |
 | `CloudflareApi.WhoisRecord` | `GET /accounts/:account_id/intel/whois` | WHOIS record lookup helper. |
 
 ## Remaining Modules
@@ -390,12 +396,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Environment Variables
 - Event
 - Feedback
-- Zero Trust Gateway proxy endpoints
-- Zero Trust Gateway rules
-- Zero Trust Hostname Route
-- Zero Trust Risk Scoring
-- Zero Trust Risk Scoring Integrations
-- Zero Trust SSH Settings
 - Zero Trust Subnets
 - Zero Trust accounts
 - Zero Trust applications review status
