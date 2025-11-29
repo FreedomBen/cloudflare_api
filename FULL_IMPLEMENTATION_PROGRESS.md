@@ -89,6 +89,9 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.ConnectivityServices` | `/connectivity/directory/services` | Connectivity directory APIs. |
 | `CloudflareApi.ContentScanning` | `/content-upload-scan` | Content scanning controls. |
 | `CloudflareApi.Country` | `/cloudforce-one/events/countries` | Country intel lookups. |
+| `CloudflareApi.CustomHostnameFallbackOrigin` | `/custom_hostnames/fallback_origin` | Fallback origin settings. |
+| `CloudflareApi.CustomHostnames` | `/custom_hostnames` | Zone custom hostnames + certs. |
+| `CloudflareApi.CustomIndicatorFeeds` | `/intel/indicator-feeds` | Custom indicator feed APIs. |
 
 ## Remaining Modules
 
@@ -96,9 +99,6 @@ The following OpenAPI tags still require dedicated modules. When you begin work
 on one, move it to the “Completed Modules” table above (and include any notes).
 
 - Credential Management
-- Custom Hostname Fallback Origin for a Zone
-- Custom Hostname for a Zone
-- Custom Indicator Feeds
 - Custom Origin Trust Store
 - Custom SSL for a Zone
 - Custom pages for a zone

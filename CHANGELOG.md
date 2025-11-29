@@ -29,6 +29,8 @@ derived from tags and version-bump commits in `mix.exs`.
 - Images variants, Cloudflare Tunnels, tunnel configuration, connectivity
   services, content scanning, and country helpers with tests to keep the manual
   rollout moving.
+- Custom hostname fallback/origin, custom hostname CRUD/cert helpers, and custom
+  indicator feed management to expand coverage across TLS and intel APIs.
 
 ### Changed
 

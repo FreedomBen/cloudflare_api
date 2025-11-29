@@ -119,6 +119,9 @@ hand-written approach. Newly added modules include:
 - `CloudflareApi.ConnectivityServices` – manage Connectivity Services directory entries.
 - `CloudflareApi.ContentScanning` – enable/disable content upload scanning and payloads.
 - `CloudflareApi.Country` – fetch Cloudforce One country data.
+- `CloudflareApi.CustomHostnameFallbackOrigin` – manage fallback origin for custom hostnames.
+- `CloudflareApi.CustomHostnames` – full CRUD and certificate operations for zone custom hostnames.
+- `CloudflareApi.CustomIndicatorFeeds` – manage Cloudforce One custom indicator feeds.
 
 Further modules will be added iteratively; progress is tracked in
 `FULL_IMPLEMENTATION_PROGRESS.md`.
