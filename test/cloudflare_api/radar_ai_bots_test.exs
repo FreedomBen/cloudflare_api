@@ -20,7 +20,9 @@ defmodule CloudflareApi.RadarAiBotsTest do
 
   test "timeseries_group_user_agent/2 hits expected path", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/radar/ai/bots/timeseries_groups/user_agent"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/radar/ai/bots/timeseries_groups/user_agent"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"user_agent" => "bot"}]}}}
     end)
 

@@ -11,16 +11,21 @@ defmodule CloudflareApi.RadarLayer7AttacksTest do
 
   test "summary/3 encodes dimension", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/radar/attacks/layer7/summary/http_method"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/radar/attacks/layer7/summary/http_method"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"dimension" => "http_method"}]}}}
     end)
 
-    assert {:ok, [%{"dimension" => "http_method"}]} = RadarLayer7Attacks.summary(client, "http_method")
+    assert {:ok, [%{"dimension" => "http_method"}]} =
+             RadarLayer7Attacks.summary(client, "http_method")
   end
 
   test "top_locations/3 encodes type", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/radar/attacks/layer7/top/locations/origin"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/radar/attacks/layer7/top/locations/origin"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"location" => "US"}]}}}
     end)
 

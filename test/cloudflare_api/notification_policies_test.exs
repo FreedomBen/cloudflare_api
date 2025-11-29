@@ -11,7 +11,9 @@ defmodule CloudflareApi.NotificationPoliciesTest do
 
   test "list/3 fetches policies", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/alerting/v3/policies?per_page=50"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/alerting/v3/policies?per_page=50"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"id" => "pol"}]}}}
     end)
 

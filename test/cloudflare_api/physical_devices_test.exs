@@ -11,7 +11,9 @@ defmodule CloudflareApi.PhysicalDevicesTest do
 
   test "list/3 applies pagination", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/devices/physical-devices?page=2"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/devices/physical-devices?page=2"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"id" => "dev"}]}}}
     end)
 
@@ -22,7 +24,9 @@ defmodule CloudflareApi.PhysicalDevicesTest do
     params = %{"reason" => "lost"}
 
     mock(fn %Tesla.Env{method: :post, url: url, body: body} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/devices/physical-devices/dev/revoke"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/devices/physical-devices/dev/revoke"
+
       assert Jason.decode!(body) == params
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{"revoked" => true}}}}
     end)

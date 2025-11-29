@@ -35,7 +35,9 @@ defmodule CloudflareApi.R2BucketTest do
     encoded = URI.encode_www_form("cdn.example.com")
 
     mock(fn %Tesla.Env{method: :put, url: url, body: body} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/r2/buckets/foo/domains/custom/#{encoded}"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/r2/buckets/foo/domains/custom/#{encoded}"
+
       assert Jason.decode!(body) == params
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => params}}}
     end)
@@ -48,7 +50,9 @@ defmodule CloudflareApi.R2BucketTest do
     params = %{"filters" => []}
 
     mock(fn %Tesla.Env{method: :put, url: url, body: body} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/event_notifications/r2/foo/configuration/queues/bar"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/event_notifications/r2/foo/configuration/queues/bar"
+
       assert Jason.decode!(body) == params
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => params}}}
     end)

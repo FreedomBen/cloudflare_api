@@ -11,7 +11,9 @@ defmodule CloudflareApi.MagicInterconnectsTest do
 
   test "list/3 requests interconnect collection", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/magic/cf_interconnects?page=1"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/magic/cf_interconnects?page=1"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"id" => "ic"}]}}}
     end)
 

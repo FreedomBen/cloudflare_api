@@ -28,8 +28,11 @@ defmodule CloudflareApi.Recordings do
     request(client, :post, base_path(account_id, app_id) <> "/track", params)
   end
 
-  defp base_path(account_id, app_id), do: "/accounts/#{account_id}/realtime/kit/#{app_id}/recordings"
-  defp recording_path(account_id, app_id, recording_id), do: base_path(account_id, app_id) <> "/#{encode(recording_id)}"
+  defp base_path(account_id, app_id),
+    do: "/accounts/#{account_id}/realtime/kit/#{app_id}/recordings"
+
+  defp recording_path(account_id, app_id, recording_id),
+    do: base_path(account_id, app_id) <> "/#{encode(recording_id)}"
 
   defp request(client_or_fun, method, url, body \\ nil) do
     client = c(client_or_fun)

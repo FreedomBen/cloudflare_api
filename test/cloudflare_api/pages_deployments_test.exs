@@ -11,7 +11,9 @@ defmodule CloudflareApi.PagesDeploymentsTest do
 
   test "list/4 encodes query params", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/pages/projects/proj/deployments?per_page=5"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/pages/projects/proj/deployments?per_page=5"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"id" => "dep"}]}}}
     end)
 
@@ -31,7 +33,9 @@ defmodule CloudflareApi.PagesDeploymentsTest do
 
   test "logs/5 hits log endpoint", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/pages/projects/proj/deployments/dep/history/logs"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/pages/projects/proj/deployments/dep/history/logs"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"line" => "ok"}]}}}
     end)
 

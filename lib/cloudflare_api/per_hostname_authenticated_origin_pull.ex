@@ -60,7 +60,9 @@ defmodule CloudflareApi.PerHostnameAuthenticatedOriginPull do
 
   defp base_path(zone_id), do: "/zones/#{zone_id}/origin_tls_client_auth/hostnames"
   defp certificates_path(zone_id), do: base_path(zone_id) <> "/certificates"
-  defp certificate_path(zone_id, certificate_id), do: certificates_path(zone_id) <> "/#{encode(certificate_id)}"
+
+  defp certificate_path(zone_id, certificate_id),
+    do: certificates_path(zone_id) <> "/#{encode(certificate_id)}"
 
   defp with_query(path, []), do: path
   defp with_query(path, opts), do: path <> "?" <> CloudflareApi.uri_encode_opts(opts)

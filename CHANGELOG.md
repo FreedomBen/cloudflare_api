@@ -124,6 +124,14 @@ derived from tags and version-bump commits in `mix.exs`.
   connectors, Cloudforce One scans, schema validation (schemas + settings), and
   Secondary DNS (ACL/peer/primary zone) helpers round out the next batch with
   associated ExUnit coverage.
+- Added Pages Domains/Projects, Secondary DNS secondary zone + TSIG, Secrets
+  Store, Security Center Insights, Sessions, Settings, Sinkhole Config, and
+  Slots modules—each with matching tests—to continue driving the OpenAPI tag
+  list toward completion.
+- Added Smart Shield/Tiered Cache, Spectrum analytics/applications, and a swath
+  of Stream helpers (audio tracks, live inputs, MP4 downloads, signing keys,
+  subtitles/captions, clipping) so caching + media endpoints now have thin
+  wrappers and deterministic tests.
 
 ### Changed
 

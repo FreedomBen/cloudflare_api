@@ -26,10 +26,15 @@ defmodule CloudflareApi.Scans do
   end
 
   def open_ports(client, account_id, config_id, opts \\ []) do
-    fetch(client, "/accounts/#{account_id}/cloudforce-one/scans/results/#{encode(config_id)}", opts)
+    fetch(
+      client,
+      "/accounts/#{account_id}/cloudforce-one/scans/results/#{encode(config_id)}",
+      opts
+    )
   end
 
-  defp config_path(account_id, config_id), do: "/accounts/#{account_id}/cloudforce-one/scans/config/#{encode(config_id)}"
+  defp config_path(account_id, config_id),
+    do: "/accounts/#{account_id}/cloudforce-one/scans/config/#{encode(config_id)}"
 
   defp fetch(client_or_fun, path, opts) do
     c(client_or_fun)

@@ -11,7 +11,9 @@ defmodule CloudflareApi.RecordingsTest do
 
   test "list/4 hits recordings endpoint", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/realtime/kit/app/recordings"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/realtime/kit/app/recordings"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"id" => "rec"}]}}}
     end)
 
@@ -33,7 +35,9 @@ defmodule CloudflareApi.RecordingsTest do
     params = %{"action" => "pause"}
 
     mock(fn %Tesla.Env{method: :put, url: url, body: body} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/realtime/kit/app/recordings/rec"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/realtime/kit/app/recordings/rec"
+
       assert Jason.decode!(body) == params
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => params}}}
     end)
@@ -46,6 +50,7 @@ defmodule CloudflareApi.RecordingsTest do
       {:ok, %Tesla.Env{env | status: 404, body: %{"errors" => [%{"code" => 1}]}}}
     end)
 
-    assert {:error, [%{"code" => 1}]} = Recordings.active_recording(client, "acc", "app", "meeting")
+    assert {:error, [%{"code" => 1}]} =
+             Recordings.active_recording(client, "acc", "app", "meeting")
   end
 end

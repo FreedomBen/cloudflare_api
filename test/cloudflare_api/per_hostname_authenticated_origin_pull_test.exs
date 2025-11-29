@@ -13,7 +13,9 @@ defmodule CloudflareApi.PerHostnameAuthenticatedOriginPullTest do
     params = %{"hostnames" => [%{"hostname" => "a.com", "enabled" => true}]}
 
     mock(fn %Tesla.Env{method: :put, url: url, body: body} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/zones/zone/origin_tls_client_auth/hostnames"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/zones/zone/origin_tls_client_auth/hostnames"
+
       assert Jason.decode!(body) == params
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => params}}}
     end)
@@ -24,7 +26,9 @@ defmodule CloudflareApi.PerHostnameAuthenticatedOriginPullTest do
 
   test "list_certificates/3 encodes query params", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/zones/zone/origin_tls_client_auth/hostnames/certificates?page=2"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/zones/zone/origin_tls_client_auth/hostnames/certificates?page=2"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"id" => "cert"}]}}}
     end)
 

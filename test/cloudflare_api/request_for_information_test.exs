@@ -23,7 +23,9 @@ defmodule CloudflareApi.RequestForInformationTest do
 
   test "constants/2 hits constants endpoint", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/cloudforce-one/requests/constants"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/cloudforce-one/requests/constants"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{"types" => []}}}}
     end)
 
@@ -34,7 +36,9 @@ defmodule CloudflareApi.RequestForInformationTest do
     params = %{"name" => "doc"}
 
     mock(fn %Tesla.Env{method: :post, url: url, body: body} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/cloudforce-one/requests/req/asset/new"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/cloudforce-one/requests/req/asset/new"
+
       assert Jason.decode!(body) == params
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{"id" => "asset"}}}}
     end)

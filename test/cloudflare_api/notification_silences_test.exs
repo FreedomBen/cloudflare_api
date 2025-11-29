@@ -11,7 +11,9 @@ defmodule CloudflareApi.NotificationSilencesTest do
 
   test "list/3 requests silences collection", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/alerting/v3/silences?status=active"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/alerting/v3/silences?status=active"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"id" => "sil"}]}}}
     end)
 

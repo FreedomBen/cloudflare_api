@@ -276,6 +276,26 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.SecondaryDnsAcl` | `/accounts/:account_id/secondary_dns/acls*` | Secondary DNS ACL lifecycle helpers. |
 | `CloudflareApi.SecondaryDnsPeer` | `/accounts/:account_id/secondary_dns/peers*` | Secondary DNS peer management. |
 | `CloudflareApi.SecondaryDnsPrimaryZone` | `/zones/:zone_id/secondary_dns/outgoing*` | Primary zone (outgoing) configuration helpers. |
+| `CloudflareApi.PagesDomains` | `/accounts/:account_id/pages/projects/:project_name/domains` GET/POST/PATCH/DELETE | Manage Pages custom domain lifecycle. |
+| `CloudflareApi.PagesProject` | `/accounts/:account_id/pages/projects` + `/:project_name` GET/POST/PATCH/DELETE | Pages project list/create/get/update/delete. |
+| `CloudflareApi.SecondaryDnsSecondaryZone` | `/zones/:zone_id/secondary_dns/incoming` CRUD + `/force_axfr` | Incoming secondary zone config + forced transfers. |
+| `CloudflareApi.SecondaryDnsTsig` | `/accounts/:account_id/secondary_dns/tsigs` list/create/get/update/delete | TSIG key management for Secondary DNS. |
+| `CloudflareApi.SecretsStore` | `/accounts/:account_id/secrets_store/*` quota, stores, and secrets endpoints | Secrets Store quota plus store/secret CRUD + duplicate helpers. |
+| `CloudflareApi.SecurityCenterInsights` | `/intel/attack-surface-report/*`, `/security-center/insights*` (account+zone) | Security Center insight listings, counts, and dismissals. |
+| `CloudflareApi.Sessions` | `/accounts/:account_id/realtime/kit/:app_id/sessions*` list/session/participants/chat/summary/transcript | Realtime Kit session and participant analytics. |
+| `CloudflareApi.Settings` | `GET/PUT /accounts/:account_id/cni/settings` | Magic WAN / Magic Transit account settings helper. |
+| `CloudflareApi.SinkholeConfig` | `GET /accounts/:account_id/intel/sinkholes` | Account sinkhole configuration listing. |
+| `CloudflareApi.Slots` | `/accounts/:account_id/cni/slots` list + `/slots/:slot` detail | Slot inventory lookup helpers. |
+| `CloudflareApi.SmartShieldSettings` | `GET/PATCH /zones/:zone_id/smart_shield` | Smart Shield zone-level settings helper. |
+| `CloudflareApi.SmartTieredCache` | `/zones/:zone_id/cache/tiered_cache_smart_topology_enable` GET/PATCH/DELETE | Smart Tiered Cache configuration management. |
+| `CloudflareApi.SpectrumAnalytics` | `/zones/:zone_id/spectrum/analytics/*` aggregate/current, by time, summary | Spectrum analytics listing helpers. |
+| `CloudflareApi.SpectrumApplications` | `/zones/:zone_id/spectrum/apps` list/create/get/update/delete | Spectrum application lifecycle helper. |
+| `CloudflareApi.StreamAudioTracks` | `/accounts/:account_id/stream/:identifier/audio*` | Manage Stream video audio tracks. |
+| `CloudflareApi.StreamLiveInputs` | `/accounts/:account_id/stream/live_inputs*` + outputs | Stream live input + output management. |
+| `CloudflareApi.StreamMp4Downloads` | `/accounts/:account_id/stream/:identifier/downloads*` | Manage MP4 downloads (all + type-specific) for videos. |
+| `CloudflareApi.StreamSigningKeys` | `/accounts/:account_id/stream/keys` list/create/delete | Stream signing key helpers. |
+| `CloudflareApi.StreamSubtitlesCaptions` | `/accounts/:account_id/stream/:identifier/captions*` | Manage Stream subtitles/captions upload/download. |
+| `CloudflareApi.StreamVideoClipping` | `POST /accounts/:account_id/stream/clip` | Clip Stream videos via start/end time. |
 
 ## Remaining Modules
 
@@ -295,26 +315,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Environment Variables
 - Event
 - Feedback
-- Pages Domains
-- Pages Project
-- Secondary DNS (Secondary Zone)
-- Secondary DNS (TSIG)
-- Secrets Store
-- Security Center Insights
-- Sessions
-- Settings
-- Sinkhole Config
-- Slots
-- Smart Shield Settings
-- Smart Tiered Cache
-- Spectrum Analytics
-- Spectrum Applications
-- Stream Audio Tracks
-- Stream Live Inputs
-- Stream MP4 Downloads
-- Stream Signing Keys
-- Stream Subtitles/Captions
-- Stream Video Clipping
 - Stream Videos
 - Stream Watermark Profile
 - Stream Webhook

@@ -70,7 +70,9 @@ defmodule CloudflareApi.ResourceSharing do
 
   defp account_base(account_id), do: "/accounts/#{account_id}/shares"
   defp share_path(account_id, share_id), do: account_base(account_id) <> "/#{encode(share_id)}"
-  defp recipients_path(account_id, share_id), do: share_path(account_id, share_id) <> "/recipients"
+
+  defp recipients_path(account_id, share_id),
+    do: share_path(account_id, share_id) <> "/recipients"
 
   defp recipient_path(account_id, share_id, recipient_id) do
     recipients_path(account_id, share_id) <> "/#{encode(recipient_id)}"

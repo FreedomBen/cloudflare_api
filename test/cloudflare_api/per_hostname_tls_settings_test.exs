@@ -11,7 +11,9 @@ defmodule CloudflareApi.PerHostnameTlsSettingsTest do
 
   test "list/4 hits setting collection", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/zones/zone/hostnames/settings/tls13?per_page=20"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/zones/zone/hostnames/settings/tls13?per_page=20"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"hostname" => "a"}]}}}
     end)
 
@@ -24,13 +26,21 @@ defmodule CloudflareApi.PerHostnameTlsSettingsTest do
     encoded = URI.encode_www_form("blog.example.com")
 
     mock(fn %Tesla.Env{method: :put, url: url, body: body} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/zones/zone/hostnames/settings/tls13/#{encoded}"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/zones/zone/hostnames/settings/tls13/#{encoded}"
+
       assert Jason.decode!(body) == params
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => params}}}
     end)
 
     assert {:ok, ^params} =
-             PerHostnameTlsSettings.put_hostname(client, "zone", "tls13", "blog.example.com", params)
+             PerHostnameTlsSettings.put_hostname(
+               client,
+               "zone",
+               "tls13",
+               "blog.example.com",
+               params
+             )
   end
 
   test "delete_hostname/4 sends empty JSON body", %{client: client} do

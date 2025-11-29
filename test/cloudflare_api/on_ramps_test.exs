@@ -11,7 +11,9 @@ defmodule CloudflareApi.OnRampsTest do
 
   test "list/3 encodes query params", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/magic/cloud/onramps?per_page=10"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/magic/cloud/onramps?per_page=10"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"id" => "onr"}]}}}
     end)
 
@@ -22,7 +24,9 @@ defmodule CloudflareApi.OnRampsTest do
     params = %{"plan_id" => "123"}
 
     mock(fn %Tesla.Env{method: :post, url: url, body: body} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/magic/cloud/onramps/onr/apply"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/magic/cloud/onramps/onr/apply"
+
       assert Jason.decode!(body) == params
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{"status" => "ok"}}}}
     end)
@@ -34,7 +38,9 @@ defmodule CloudflareApi.OnRampsTest do
     params = %{"prefixes" => ["10.0.0.0/8"]}
 
     mock(fn %Tesla.Env{method: :put, url: url, body: body} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/magic/cloud/onramps/magic_wan_address_space"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/magic/cloud/onramps/magic_wan_address_space"
+
       assert Jason.decode!(body) == params
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => params}}}
     end)

@@ -45,12 +45,15 @@ defmodule CloudflareApi.SsoConnectorsTest do
     params = %{"saml_metadata" => "..."}
 
     mock(fn %Tesla.Env{method: :post, url: url, body: body} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/sso_connectors/sso/begin_verification"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/sso_connectors/sso/begin_verification"
+
       assert Jason.decode!(body) == params
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{"status" => "pending"}}}}
     end)
 
-    assert {:ok, %{"status" => "pending"}} = SsoConnectors.begin_verification(client, "acc", "sso", params)
+    assert {:ok, %{"status" => "pending"}} =
+             SsoConnectors.begin_verification(client, "acc", "sso", params)
   end
 
   test "get/3 handles errors", %{client: client} do

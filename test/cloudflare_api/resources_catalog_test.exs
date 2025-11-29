@@ -20,7 +20,9 @@ defmodule CloudflareApi.ResourcesCatalogTest do
 
   test "export/3 encodes opts", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/magic/cloud/resources/export?format=json"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/magic/cloud/resources/export?format=json"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{"url" => "https://"}}}}
     end)
 

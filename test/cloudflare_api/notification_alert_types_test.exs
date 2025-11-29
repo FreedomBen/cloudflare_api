@@ -11,7 +11,9 @@ defmodule CloudflareApi.NotificationAlertTypesTest do
 
   test "list/3 fetches alert types", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/alerting/v3/available_alerts"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/alerting/v3/available_alerts"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"id" => "zone.down"}]}}}
     end)
 

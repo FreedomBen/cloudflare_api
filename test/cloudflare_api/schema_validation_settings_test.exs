@@ -34,12 +34,15 @@ defmodule CloudflareApi.SchemaValidationSettingsTest do
     params = %{"action" => "log"}
 
     mock(fn %Tesla.Env{method: :put, url: url, body: body} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/zones/zone/schema_validation/settings/operations/op"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/zones/zone/schema_validation/settings/operations/op"
+
       assert Jason.decode!(body) == params
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => params}}}
     end)
 
-    assert {:ok, ^params} = SchemaValidationSettings.update_operation_setting(client, "zone", "op", params)
+    assert {:ok, ^params} =
+             SchemaValidationSettings.update_operation_setting(client, "zone", "op", params)
   end
 
   test "delete_operation_setting/4 sends empty body", %{client: client} do

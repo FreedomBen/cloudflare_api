@@ -20,7 +20,9 @@ defmodule CloudflareApi.RadarAiInferenceTest do
 
   test "timeseries_group/3 encodes dimension and opts", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/radar/ai/inference/timeseries_groups/continent?page=1"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/radar/ai/inference/timeseries_groups/continent?page=1"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"dimension" => "continent"}]}}}
     end)
 

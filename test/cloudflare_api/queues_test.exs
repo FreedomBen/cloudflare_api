@@ -11,7 +11,9 @@ defmodule CloudflareApi.QueuesTest do
 
   test "list_subscriptions/3 encodes filters", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/event_subscriptions/subscriptions?page=1"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/event_subscriptions/subscriptions?page=1"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"id" => "sub"}]}}}
     end)
 

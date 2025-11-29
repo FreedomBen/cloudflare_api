@@ -20,7 +20,9 @@ defmodule CloudflareApi.RadarAs112Test do
 
   test "top_locations_by/4 encodes dimension and value", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/radar/as112/top/locations/ip_version/IPv6"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/radar/as112/top/locations/ip_version/IPv6"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"location" => "US"}]}}}
     end)
 

@@ -40,7 +40,9 @@ defmodule CloudflareApi.R2CatalogManagement do
   end
 
   defp base_path(account_id), do: "/accounts/#{account_id}/r2-catalog"
-  defp bucket_path(account_id, bucket_name), do: base_path(account_id) <> "/#{encode(bucket_name)}"
+
+  defp bucket_path(account_id, bucket_name),
+    do: base_path(account_id) <> "/#{encode(bucket_name)}"
 
   defp with_query(path, []), do: path
   defp with_query(path, opts), do: path <> "?" <> CloudflareApi.uri_encode_opts(opts)

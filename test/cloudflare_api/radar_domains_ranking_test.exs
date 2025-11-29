@@ -20,7 +20,9 @@ defmodule CloudflareApi.RadarDomainsRankingTest do
 
   test "timeseries_groups/2 encodes opts", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/radar/ranking/timeseries_groups?continent=EU"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/radar/ranking/timeseries_groups?continent=EU"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"continent" => "EU"}]}}}
     end)
 

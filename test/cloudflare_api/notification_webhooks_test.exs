@@ -11,7 +11,9 @@ defmodule CloudflareApi.NotificationWebhooksTest do
 
   test "list/3 fetches webhook collection", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/alerting/v3/destinations/webhooks"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/alerting/v3/destinations/webhooks"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"id" => "wh"}]}}}
     end)
 
@@ -40,7 +42,9 @@ defmodule CloudflareApi.NotificationWebhooksTest do
 
   test "get/3 returns webhook", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/alerting/v3/destinations/webhooks/wh"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/alerting/v3/destinations/webhooks/wh"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{"id" => "wh"}}}}
     end)
 

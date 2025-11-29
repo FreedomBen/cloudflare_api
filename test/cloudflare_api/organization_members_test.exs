@@ -11,7 +11,9 @@ defmodule CloudflareApi.OrganizationMembersTest do
 
   test "list/3 encodes filters", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/organizations/org%2F1/members?role=admin"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/organizations/org%2F1/members?role=admin"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"id" => "mem"}]}}}
     end)
 

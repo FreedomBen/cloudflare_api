@@ -11,7 +11,8 @@ defmodule CloudflareApi.McpPortalTest do
 
   test "list/3 hits the portals collection", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/access/ai-controls/mcp/portals?page=2"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/access/ai-controls/mcp/portals?page=2"
 
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"name" => "portal"}]}}}
     end)

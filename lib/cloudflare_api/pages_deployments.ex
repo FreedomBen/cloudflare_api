@@ -44,7 +44,12 @@ defmodule CloudflareApi.PagesDeployments do
   """
   def logs(client, account_id, project_name, deployment_id, opts \\ []) do
     c(client)
-    |> Tesla.get(with_query(deployment_path(account_id, project_name, deployment_id) <> "/history/logs", opts))
+    |> Tesla.get(
+      with_query(
+        deployment_path(account_id, project_name, deployment_id) <> "/history/logs",
+        opts
+      )
+    )
     |> handle_response()
   end
 

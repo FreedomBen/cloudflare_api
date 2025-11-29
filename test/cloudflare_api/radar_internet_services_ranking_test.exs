@@ -11,7 +11,9 @@ defmodule CloudflareApi.RadarInternetServicesRankingTest do
 
   test "categories/2 fetches categories", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/radar/ranking/internet_services/categories"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/radar/ranking/internet_services/categories"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"name" => "Search"}]}}}
     end)
 
@@ -20,7 +22,9 @@ defmodule CloudflareApi.RadarInternetServicesRankingTest do
 
   test "top/2 encodes query params", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/radar/ranking/internet_services/top?category=Search"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/radar/ranking/internet_services/top?category=Search"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"service" => "Example"}]}}}
     end)
 

@@ -11,7 +11,9 @@ defmodule CloudflareApi.RadarDnsTest do
 
   test "summary/3 encodes dimension and opts", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/radar/dns/summary/cache_hit?continent=EU"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/radar/dns/summary/cache_hit?continent=EU"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"dimension" => "cache_hit"}]}}}
     end)
 

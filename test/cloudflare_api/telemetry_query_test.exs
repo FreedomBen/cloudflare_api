@@ -13,7 +13,9 @@ defmodule CloudflareApi.TelemetryQueryTest do
     params = %{"query" => "SELECT *"}
 
     mock(fn %Tesla.Env{method: :post, url: url, body: body} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/workers/observability/telemetry/query"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/workers/observability/telemetry/query"
+
       assert Jason.decode!(body) == params
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"rows" => 1}]}}}
     end)

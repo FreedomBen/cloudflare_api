@@ -20,7 +20,9 @@ defmodule CloudflareApi.RadarLayer3AttacksTest do
 
   test "top_locations/3 handles origin/target", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/radar/attacks/layer3/top/locations/origin"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/radar/attacks/layer3/top/locations/origin"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"location" => "US"}]}}}
     end)
 

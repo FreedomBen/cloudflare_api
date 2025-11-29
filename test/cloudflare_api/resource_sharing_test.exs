@@ -27,7 +27,8 @@ defmodule CloudflareApi.ResourceSharingTest do
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{"id" => "rec"}}}}
     end)
 
-    assert {:ok, %{"id" => "rec"}} = ResourceSharing.create_recipient(client, "acc", "share", params)
+    assert {:ok, %{"id" => "rec"}} =
+             ResourceSharing.create_recipient(client, "acc", "share", params)
   end
 
   test "delete_resource/4 sends empty JSON body", %{client: client} do
@@ -46,7 +47,8 @@ defmodule CloudflareApi.ResourceSharingTest do
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"id" => "share"}]}}}
     end)
 
-    assert {:ok, [%{"id" => "share"}]} = ResourceSharing.organization_shares(client, "org", page: 1)
+    assert {:ok, [%{"id" => "share"}]} =
+             ResourceSharing.organization_shares(client, "org", page: 1)
   end
 
   test "get/3 handles errors", %{client: client} do

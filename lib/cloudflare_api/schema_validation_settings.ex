@@ -47,6 +47,7 @@ defmodule CloudflareApi.SchemaValidationSettings do
 
   defp settings_path(zone_id), do: "/zones/#{zone_id}/schema_validation/settings"
   defp operation_settings_path(zone_id), do: settings_path(zone_id) <> "/operations"
+
   defp single_operation_path(zone_id, operation_id),
     do: operation_settings_path(zone_id) <> "/#{encode(operation_id)}"
 

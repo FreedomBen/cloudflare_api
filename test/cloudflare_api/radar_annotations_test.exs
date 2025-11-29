@@ -20,7 +20,9 @@ defmodule CloudflareApi.RadarAnnotationsTest do
 
   test "outage_locations/2 encodes query params", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/radar/annotations/outages/locations?limit=5"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/radar/annotations/outages/locations?limit=5"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"location" => "US"}]}}}
     end)
 

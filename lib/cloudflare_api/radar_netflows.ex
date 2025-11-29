@@ -4,7 +4,12 @@ defmodule CloudflareApi.RadarNetflows do
   """
 
   def summary(client, dimension \\ nil, opts \\ []) do
-    path = if(dimension, do: "/radar/netflows/summary/" <> encode(dimension), else: "/radar/netflows/summary")
+    path =
+      if(dimension,
+        do: "/radar/netflows/summary/" <> encode(dimension),
+        else: "/radar/netflows/summary"
+      )
+
     fetch(client, path, opts)
   end
 

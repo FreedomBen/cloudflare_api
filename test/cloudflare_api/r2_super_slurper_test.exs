@@ -43,7 +43,9 @@ defmodule CloudflareApi.R2SuperSlurperTest do
     params = %{"bucket" => "dst"}
 
     mock(fn %Tesla.Env{method: :put, url: url, body: body} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/slurper/target/connectivity-precheck"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/slurper/target/connectivity-precheck"
+
       assert Jason.decode!(body) == params
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{"status" => "ok"}}}}
     end)

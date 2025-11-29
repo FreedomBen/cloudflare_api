@@ -13,7 +13,9 @@ defmodule CloudflareApi.PriorityIntelligenceRequirementsTest do
     params = %{"status" => "open"}
 
     mock(fn %Tesla.Env{method: :post, url: url, body: body} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/cloudforce-one/requests/priority"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/cloudforce-one/requests/priority"
+
       assert Jason.decode!(body) == params
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"id" => "pir"}]}}}
     end)
@@ -24,7 +26,9 @@ defmodule CloudflareApi.PriorityIntelligenceRequirementsTest do
 
   test "quota/2 fetches quota", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/cloudforce-one/requests/priority/quota"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/cloudforce-one/requests/priority/quota"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{"remaining" => 5}}}}
     end)
 
@@ -46,6 +50,7 @@ defmodule CloudflareApi.PriorityIntelligenceRequirementsTest do
       {:ok, %Tesla.Env{env | status: 404, body: %{"errors" => [%{"code" => 404}]}}}
     end)
 
-    assert {:error, [%{"code" => 404}]} = PriorityIntelligenceRequirements.get(client, "acc", "missing")
+    assert {:error, [%{"code" => 404}]} =
+             PriorityIntelligenceRequirements.get(client, "acc", "missing")
   end
 end

@@ -11,7 +11,9 @@ defmodule CloudflareApi.NotificationDestinationsPagerdutyTest do
 
   test "list_services/3 lists PagerDuty services", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/alerting/v3/destinations/pagerduty"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/alerting/v3/destinations/pagerduty"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => ["svc"]}}}
     end)
 
@@ -34,7 +36,9 @@ defmodule CloudflareApi.NotificationDestinationsPagerdutyTest do
     params = %{"redirect_url" => "https://example.com"}
 
     mock(fn %Tesla.Env{method: :post, url: url, body: body} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/alerting/v3/destinations/pagerduty/connect"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/alerting/v3/destinations/pagerduty/connect"
+
       assert Jason.decode!(body) == params
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{"token_id" => "tok"}}}}
     end)

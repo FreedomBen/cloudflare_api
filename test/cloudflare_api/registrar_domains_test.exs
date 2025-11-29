@@ -11,11 +11,14 @@ defmodule CloudflareApi.RegistrarDomainsTest do
 
   test "list/3 encodes opts", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/registrar/domains?status=active"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/registrar/domains?status=active"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"name" => "example.com"}]}}}
     end)
 
-    assert {:ok, [%{"name" => "example.com"}]} = RegistrarDomains.list(client, "acc", status: "active")
+    assert {:ok, [%{"name" => "example.com"}]} =
+             RegistrarDomains.list(client, "acc", status: "active")
   end
 
   test "update/4 PUTs payload", %{client: client} do

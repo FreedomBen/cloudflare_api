@@ -31,7 +31,9 @@ defmodule CloudflareApi.SchemaValidationTest do
 
   test "extract_operations/4 encodes schema id", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/zones/zone/schema_validation/schemas/schema/operations"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/zones/zone/schema_validation/schemas/schema/operations"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => []}}}
     end)
 

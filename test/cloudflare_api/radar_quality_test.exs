@@ -20,7 +20,9 @@ defmodule CloudflareApi.RadarQualityTest do
 
   test "speed_top_ases/2 encodes opts", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/radar/quality/speed/top/ases?continent=EU"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/radar/quality/speed/top/ases?continent=EU"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"asn" => 1}]}}}
     end)
 

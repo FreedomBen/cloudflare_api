@@ -36,7 +36,9 @@ defmodule CloudflareApi.SsoConnectors do
   end
 
   defp base_path(account_id), do: "/accounts/#{account_id}/sso_connectors"
-  defp connector_path(account_id, connector_id), do: base_path(account_id) <> "/#{encode(connector_id)}"
+
+  defp connector_path(account_id, connector_id),
+    do: base_path(account_id) <> "/#{encode(connector_id)}"
 
   defp fetch(client_or_fun, path, opts) do
     c(client_or_fun)

@@ -102,7 +102,8 @@ defmodule CloudflareApi.Observatory do
     tests_path(zone_id, page_url) <> "/" <> encode(test_id)
   end
 
-  defp schedule_path(zone_id, page_url), do: base_path(zone_id) <> "/schedule/" <> encode(page_url)
+  defp schedule_path(zone_id, page_url),
+    do: base_path(zone_id) <> "/schedule/" <> encode(page_url)
 
   defp with_query(path, []), do: path
 

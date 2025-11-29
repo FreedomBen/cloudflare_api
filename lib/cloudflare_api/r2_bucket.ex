@@ -112,7 +112,8 @@ defmodule CloudflareApi.R2Bucket do
     request(client, :get, event_notification_path(account_id, bucket_name, queue_id))
   end
 
-  def update_event_notification(client, account_id, bucket_name, queue_id, params) when is_map(params) do
+  def update_event_notification(client, account_id, bucket_name, queue_id, params)
+      when is_map(params) do
     request(client, :put, event_notification_path(account_id, bucket_name, queue_id), params)
   end
 
@@ -145,9 +146,14 @@ defmodule CloudflareApi.R2Bucket do
   end
 
   defp buckets_base(account_id), do: "/accounts/#{account_id}/r2/buckets"
-  defp bucket_path(account_id, bucket_name), do: buckets_base(account_id) <> "/#{encode(bucket_name)}"
+
+  defp bucket_path(account_id, bucket_name),
+    do: buckets_base(account_id) <> "/#{encode(bucket_name)}"
+
   defp cors_path(account_id, bucket_name), do: bucket_path(account_id, bucket_name) <> "/cors"
-  defp custom_domains_path(account_id, bucket_name), do: bucket_path(account_id, bucket_name) <> "/domains/custom"
+
+  defp custom_domains_path(account_id, bucket_name),
+    do: bucket_path(account_id, bucket_name) <> "/domains/custom"
 
   defp custom_domain_path(account_id, bucket_name, domain),
     do: custom_domains_path(account_id, bucket_name) <> "/#{encode(domain)}"
@@ -155,7 +161,9 @@ defmodule CloudflareApi.R2Bucket do
   defp managed_domain_path(account_id, bucket_name),
     do: bucket_path(account_id, bucket_name) <> "/domains/managed"
 
-  defp lifecycle_path(account_id, bucket_name), do: bucket_path(account_id, bucket_name) <> "/lifecycle"
+  defp lifecycle_path(account_id, bucket_name),
+    do: bucket_path(account_id, bucket_name) <> "/lifecycle"
+
   defp lock_path(account_id, bucket_name), do: bucket_path(account_id, bucket_name) <> "/lock"
   defp sippy_path(account_id, bucket_name), do: bucket_path(account_id, bucket_name) <> "/sippy"
 

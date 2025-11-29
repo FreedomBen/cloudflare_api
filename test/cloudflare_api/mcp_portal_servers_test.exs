@@ -11,7 +11,9 @@ defmodule CloudflareApi.McpPortalServersTest do
 
   test "list/3 encodes query params", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/access/ai-controls/mcp/servers?per_page=20"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/access/ai-controls/mcp/servers?per_page=20"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"hostname" => "srv"}]}}}
     end)
 
@@ -20,7 +22,9 @@ defmodule CloudflareApi.McpPortalServersTest do
 
   test "sync/3 posts empty JSON body", %{client: client} do
     mock(fn %Tesla.Env{method: :post, url: url, body: body} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/access/ai-controls/mcp/servers/srv/sync"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/access/ai-controls/mcp/servers/srv/sync"
+
       assert Jason.decode!(body) == %{}
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{"status" => "ok"}}}}
     end)

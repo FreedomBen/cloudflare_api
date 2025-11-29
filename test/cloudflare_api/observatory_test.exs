@@ -11,7 +11,9 @@ defmodule CloudflareApi.ObservatoryTest do
 
   test "availabilities/4 applies query params", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/zones/zone/speed_api/availabilities?region=us"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/zones/zone/speed_api/availabilities?region=us"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"status" => "up"}]}}}
     end)
 
@@ -23,7 +25,9 @@ defmodule CloudflareApi.ObservatoryTest do
     encoded_url = URI.encode_www_form("https://example.com/foo")
 
     mock(fn %Tesla.Env{method: :post, url: url, body: body} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/zones/zone/speed_api/pages/#{encoded_url}/tests"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/zones/zone/speed_api/pages/#{encoded_url}/tests"
+
       assert Jason.decode!(body) == params
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{"id" => "test"}}}}
     end)

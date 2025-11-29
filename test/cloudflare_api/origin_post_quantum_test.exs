@@ -11,7 +11,9 @@ defmodule CloudflareApi.OriginPostQuantumTest do
 
   test "get/2 retrieves setting", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/zones/zone/cache/origin_post_quantum_encryption"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/zones/zone/cache/origin_post_quantum_encryption"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{"value" => "on"}}}}
     end)
 
@@ -34,6 +36,7 @@ defmodule CloudflareApi.OriginPostQuantumTest do
       {:ok, %Tesla.Env{env | status: 400, body: %{"errors" => [%{"code" => 1}]}}}
     end)
 
-    assert {:error, [%{"code" => 1}]} = OriginPostQuantum.update(client, "zone", %{"value" => "bad"})
+    assert {:error, [%{"code" => 1}]} =
+             OriginPostQuantum.update(client, "zone", %{"value" => "bad"})
   end
 end

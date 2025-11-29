@@ -11,7 +11,9 @@ defmodule CloudflareApi.ScansTest do
 
   test "get_config/3 fetches config", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/cloudforce-one/scans/config"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/cloudforce-one/scans/config"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{"configs" => []}}}}
     end)
 
@@ -31,7 +33,9 @@ defmodule CloudflareApi.ScansTest do
 
   test "open_ports/4 encodes config id", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/cloudforce-one/scans/results/cfg"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/cloudforce-one/scans/results/cfg"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => []}}}
     end)
 

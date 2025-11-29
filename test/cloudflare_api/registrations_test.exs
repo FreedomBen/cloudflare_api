@@ -22,7 +22,9 @@ defmodule CloudflareApi.RegistrationsTest do
     params = %{"registration_ids" => ["reg"]}
 
     mock(fn %Tesla.Env{method: :post, url: url, body: body} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/devices/registrations/revoke"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/devices/registrations/revoke"
+
       assert Jason.decode!(body) == params
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{"revoked" => 1}}}}
     end)

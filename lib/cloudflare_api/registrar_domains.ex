@@ -22,7 +22,9 @@ defmodule CloudflareApi.RegistrarDomains do
   end
 
   defp base_path(account_id), do: "/accounts/#{account_id}/registrar/domains"
-  defp domain_path(account_id, domain_name), do: base_path(account_id) <> "/#{encode(domain_name)}"
+
+  defp domain_path(account_id, domain_name),
+    do: base_path(account_id) <> "/#{encode(domain_name)}"
 
   defp with_query(path, []), do: path
   defp with_query(path, opts), do: path <> "?" <> CloudflareApi.uri_encode_opts(opts)

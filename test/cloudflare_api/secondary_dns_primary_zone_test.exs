@@ -31,12 +31,15 @@ defmodule CloudflareApi.SecondaryDnsPrimaryZoneTest do
 
   test "enable_transfers/2 posts empty body", %{client: client} do
     mock(fn %Tesla.Env{method: :post, url: url, body: body} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/zones/zone/secondary_dns/outgoing/enable"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/zones/zone/secondary_dns/outgoing/enable"
+
       assert Jason.decode!(body) == %{}
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{"status" => "enabled"}}}}
     end)
 
-    assert {:ok, %{"status" => "enabled"}} = SecondaryDnsPrimaryZone.enable_transfers(client, "zone")
+    assert {:ok, %{"status" => "enabled"}} =
+             SecondaryDnsPrimaryZone.enable_transfers(client, "zone")
   end
 
   test "status/3 returns errors", %{client: client} do

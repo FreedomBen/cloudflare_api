@@ -11,7 +11,9 @@ defmodule CloudflareApi.PresetsTest do
 
   test "list/4 encodes query params", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/realtime/kit/app/presets?page=1"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/realtime/kit/app/presets?page=1"
+
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"id" => "preset"}]}}}
     end)
 
@@ -22,7 +24,9 @@ defmodule CloudflareApi.PresetsTest do
     params = %{"name" => "webinar"}
 
     mock(fn %Tesla.Env{method: :patch, url: url, body: body} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/realtime/kit/app/presets/pre"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/realtime/kit/app/presets/pre"
+
       assert Jason.decode!(body) == params
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => params}}}
     end)

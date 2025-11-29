@@ -11,7 +11,9 @@ defmodule CloudflareApi.PagesBuildCacheTest do
 
   test "purge/3 POSTs empty JSON body", %{client: client} do
     mock(fn %Tesla.Env{method: :post, url: url, body: body} = env ->
-      assert url == "https://api.cloudflare.com/client/v4/accounts/acc/pages/projects/project/purge_build_cache"
+      assert url ==
+               "https://api.cloudflare.com/client/v4/accounts/acc/pages/projects/project/purge_build_cache"
+
       assert Jason.decode!(body) == %{}
       {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{"purged" => true}}}}
     end)
