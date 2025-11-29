@@ -296,6 +296,16 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.StreamSigningKeys` | `/accounts/:account_id/stream/keys` list/create/delete | Stream signing key helpers. |
 | `CloudflareApi.StreamSubtitlesCaptions` | `/accounts/:account_id/stream/:identifier/captions*` | Manage Stream subtitles/captions upload/download. |
 | `CloudflareApi.StreamVideoClipping` | `POST /accounts/:account_id/stream/clip` | Clip Stream videos via start/end time. |
+| `CloudflareApi.StreamVideos` | `/accounts/:account_id/stream*` list/upload/update/delete/embed/token | Core Stream video lifecycle helper. |
+| `CloudflareApi.StreamWatermarkProfile` | `/accounts/:account_id/stream/watermarks*` | Stream watermark profile CRUD. |
+| `CloudflareApi.StreamWebhook` | `/accounts/:account_id/stream/webhook` GET/PUT/DELETE | Manage Stream webhook endpoints. |
+| `CloudflareApi.TableMaintenanceConfiguration` | `/r2-catalog/.../tables/:table/maintenance-configs` GET/POST | R2 catalog table maintenance config helper. |
+| `CloudflareApi.TableManagement` | `/r2-catalog/.../tables` list | List tables within an R2 namespace. |
+| `CloudflareApi.Tag` | `/cloudforce-one/events/tags*` + dataset indicators | Cloudforce One tag CRUD + indicator listing. |
+| `CloudflareApi.TagCategory` | `/cloudforce-one/events/tags/categories*` | Cloudforce One tag category CRUD. |
+| `CloudflareApi.TargetIndustry` | `/cloudforce-one/events/targetIndustries*` + dataset variants | Target-industry listings per dataset/catalog. |
+| `CloudflareApi.Tenants` | `/tenants/:tenant_id/*` detail + accounts/types/entitlements/memberships | Tenant metadata helper. |
+| `CloudflareApi.TieredCaching` | `/zones/:zone_id/argo/tiered_caching` GET/PATCH | Argo Tiered Caching configuration helper. |
 
 ## Remaining Modules
 
@@ -315,16 +325,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Environment Variables
 - Event
 - Feedback
-- Stream Videos
-- Stream Watermark Profile
-- Stream Webhook
-- Table Maintenance Configuration
-- Table Management
-- Tag
-- TagCategory
-- Target Industry
-- Tenants
-- Tiered Caching
 - Token Validation Token Configuration
 - Token Validation Token Rules
 - Total TLS

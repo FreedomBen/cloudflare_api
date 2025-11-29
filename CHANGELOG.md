@@ -132,6 +132,10 @@ derived from tags and version-bump commits in `mix.exs`.
   of Stream helpers (audio tracks, live inputs, MP4 downloads, signing keys,
   subtitles/captions, clipping) so caching + media endpoints now have thin
   wrappers and deterministic tests.
+- Rounded out the remaining Stream layer (videos, watermarks, webhooks) plus R2
+  table maintenance/management, Cloudforce One tag/category/target industry
+  helpers, tenant metadata, and classic Argo Tiered Caching so the next slice of
+  the OpenAPI backlog is covered with docs and tests.
 
 ### Changed
 
