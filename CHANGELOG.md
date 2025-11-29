@@ -20,6 +20,8 @@ derived from tags and version-bump commits in `mix.exs`.
   into SSL settings and Cloudforce One binary analysis workflows.
 - Bot Settings, Botnet Threat Feed, and Build Tokens modules with matching
   tests to continue the march across the Cloudflare tag list.
+- Builds, CNIs, and Cache Reserve Clear wrappers plus tests so Workers build
+  introspection, interconnects, and Smart Shield jobs are now covered.
 
 ### Changed
 

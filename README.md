@@ -104,6 +104,9 @@ hand-written approach. Newly added modules include:
 - `CloudflareApi.BotSettings` – manage zone bot management configuration.
 - `CloudflareApi.BotnetThreatFeed` – read Botnet Threat Feed reports and ASN configs.
 - `CloudflareApi.BuildTokens` – manage Cloudflare Builds tokens.
+- `CloudflareApi.Builds` – inspect builds, logs, and cancel jobs for Workers scripts.
+- `CloudflareApi.Cnis` – manage Cloudflare Network Interconnects.
+- `CloudflareApi.CacheReserveClear` – inspect or trigger Cache Reserve Clear jobs.
 
 Further modules will be added iteratively; progress is tracked in
 `FULL_IMPLEMENTATION_PROGRESS.md`.

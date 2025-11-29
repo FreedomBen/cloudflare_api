@@ -74,15 +74,15 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.BotSettings` | `/zones/:zone_id/bot_management` | Manage zone bot settings. |
 | `CloudflareApi.BotnetThreatFeed` | `/botnet_feed/...` ASN reports/configs | Botnet feed helpers. |
 | `CloudflareApi.BuildTokens` | `/builds/tokens` | Manage build tokens. |
+| `CloudflareApi.Builds` | `/builds/builds` | Build inspection/log helpers. |
+| `CloudflareApi.Cnis` | `/cni/cnis` | CNI CRUD operations. |
+| `CloudflareApi.CacheReserveClear` | `/smart_shield/cache_reserve_clear` | Cache Reserve Clear trigger/status. |
 
 ## Remaining Modules
 
 The following OpenAPI tags still require dedicated modules. When you begin work
 on one, move it to the “Completed Modules” table above (and include any notes).
 
-- Builds
-- CNIs
-- Cache Reserve Clear
 - Calls Apps
 - Calls TURN Keys
 - Catalog Sync
