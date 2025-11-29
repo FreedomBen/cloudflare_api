@@ -316,6 +316,16 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.UrlNormalization` | `/zones/:zone_id/url_normalization` GET/PUT/DELETE | URL normalization setting helper. |
 | `CloudflareApi.UrlScanner` | `/accounts/:account_id/urlscanner/v2/*` scan/search/dom/har/screenshot/response | Modern URL Scanner v2 helpers. |
 | `CloudflareApi.UrlScannerDeprecated` | `/accounts/:account_id/urlscanner/*` scan/search/har/screenshot/response | Legacy URL Scanner helpers.
+| `CloudflareApi.UniversalSslSettings` | `/zones/:zone_id/ssl/universal/settings` GET/PATCH | Universal SSL setting helper. |
+| `CloudflareApi.User` | `/user` GET/PATCH + `/users/tenants` list | Authenticated user profile + tenant listing. |
+| `CloudflareApi.UserApiTokens` | `/user/tokens*` list/create/update/delete/verify/permission groups | User API token management.
+| `CloudflareApi.UserAgentBlockingRules` | `/zones/:zone_id/firewall/ua_rules*` | Zone UA blocking rule CRUD. |
+| `CloudflareApi.UserBillingHistory` | `GET /user/billing/history` | User billing history fetcher. |
+| `CloudflareApi.UserBillingProfile` | `GET /user/billing/profile` | User billing profile helper. |
+| `CloudflareApi.UserSubscription` | `/user/subscriptions*` list/update/delete | User subscription management. |
+| `CloudflareApi.UserAccountMemberships` | `/memberships*` list/get/update/delete | User account membership helper. |
+| `CloudflareApi.UsersInvites` | `/user/invites*` list/get/respond | User invitation management. |
+| `CloudflareApi.UsersOrganizations` | `/user/organizations*` list/get/delete | User organization membership helper.
 
 ## Remaining Modules
 
@@ -335,16 +345,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Environment Variables
 - Event
 - Feedback
-- Universal SSL Settings for a Zone
-- User
-- User API Tokens
-- User Agent Blocking rules
-- User Billing History
-- User Billing Profile
-- User Subscription
-- User's Account Memberships
-- User's Invites
-- User's Organizations
 - Values
 - Vectorize
 - Vectorize Beta (Deprecated)

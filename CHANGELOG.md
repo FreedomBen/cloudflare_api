@@ -140,6 +140,10 @@ derived from tags and version-bump commits in `mix.exs`.
   routing + virtual networks, Turnstile, URL Normalization, and both generations
   of URL Scanner so the next sequence of security/networking tags are fully
   wrapped with ExUnit coverage.
+- Added Universal SSL settings plus a suite of user-scoped modules (profile,
+  tenants, API tokens, UA blocking, billing history/profile, subscriptions,
+  account memberships, invites, orgs) with matching tests to keep chipping away
+  at the remaining user/zone settings list.
 
 ### Changed
 
