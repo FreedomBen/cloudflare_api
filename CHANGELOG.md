@@ -16,6 +16,9 @@ derived from tags and version-bump commits in `mix.exs`.
   Zone Subscription, and zone-level Access Applications modules (each with
   matching ExUnit coverage) to keep knocking items off
   `FULL_IMPLEMENTATION_PROGRESS.md`.
+- Zone Zero Trust organization, Brand Protection, BRAPI, Domain Search,
+  DOS Flowtrackd, Logo Match, and mTLS Certificate Management modules (with
+  comprehensive tests) so the next OpenAPI tag group is fully covered.
 - Added zone-level Access groups, identity providers, mTLS authentication,
   policies, service tokens, short-lived certificate CAs, and Authenticated
   Origin Pull helpers so the remaining Access/AOP rows in

@@ -403,32 +403,19 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.ZoneAccessServiceTokens` | `/zones/:zone_id/access/service_tokens*` | Zone-level service token CRUD operations. |
 | `CloudflareApi.ZoneAccessShortLivedCertificateCas` | `/zones/:zone_id/access/apps/ca` + `/apps/:app_id/ca` | List and manage short-lived certificate CAs for zone apps. |
 | `CloudflareApi.ZoneAuthenticatedOriginPulls` | `/zones/:zone_id/origin_tls_client_auth*` | Zone-level Authenticated Origin Pull certificates and settings. |
+| `CloudflareApi.ZoneZeroTrustOrganization` | `/zones/:zone_id/access/organizations*` + `/revoke_user` | Zone-level Zero Trust organization CRUD + token revocation. |
+| `CloudflareApi.BrandProtection` | `/accounts/:account_id/brand-protection/*`, `/internal/submit`, `/live`, `/ready` | Manage Brand Protection alerts, brands, submissions, and service health. |
+| `CloudflareApi.Brapi` | `/accounts/:account_id/browser-rendering/*` | Browser Rendering API helpers (content/json/links/markdown/pdf/scrape/screenshot/snapshot`). |
+| `CloudflareApi.DomainSearch` | `/accounts/:account_id/brand-protection/(matches|queries|search|total-queries)` | Domain search queries, matches, and summary counts. |
+| `CloudflareApi.DosFlowtrackdApi` | `/magic/advanced_dns_protection` + `/magic/advanced_tcp_protection` configs | Advanced DNS/TCP Flowtrackd rule, filter, prefix, and status management. |
+| `CloudflareApi.LogoMatch` | `/accounts/:account_id/brand-protection/(logo-matches|logos|scan-*)`, `/signed-url` | Logo ingestion, scanning, and match download helpers. |
+| `CloudflareApi.MtlsCertificateManagement` | `/accounts/:account_id/mtls_certificates*` | Account-level mTLS certificate CRUD plus association listing. |
 
 ## Remaining Modules
 
 The following OpenAPI tags still require dedicated modules. When you begin work
 on one, move it to the “Completed Modules” table above (and include any notes).
 
-- Diagnostics
-- Domain History
-- Domain Intelligence
-- Durable Objects Namespace
-- Email Routing destination addresses
-- Email Routing routing rules
-- Email Routing settings
-- Email Security
-- Email Security Settings
-- Endpoint Health Checks
-- Environment Variables
-- Event
-- Feedback
-- Zone-Level Zero Trust organization
-- brand_protection
-- brapi
-- domain_search
-- dos-flowtrackd-api_other
-- logo_match
-- mTLS Certificate Management
 - ppc_config
 - ppc_stripe
 - security.txt
