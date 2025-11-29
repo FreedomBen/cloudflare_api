@@ -48,7 +48,7 @@ defmodule CloudflareApi.D1 do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.D1.get_database(client, "account_id", %{})
+      iex> CloudflareApi.D1.get_database(client, "account_id", "database_id")
       {:ok, %{"id" => "example"}}
 
   """
@@ -66,7 +66,7 @@ defmodule CloudflareApi.D1 do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.D1.delete_database(client, "account_id", %{})
+      iex> CloudflareApi.D1.delete_database(client, "account_id", "database_id")
       {:ok, %{"id" => "example"}}
 
   """
@@ -84,7 +84,7 @@ defmodule CloudflareApi.D1 do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.D1.update_database(client, "account_id", %{}, %{})
+      iex> CloudflareApi.D1.update_database(client, "account_id", "database_id", %{})
       {:ok, %{"id" => "example"}}
 
   """
@@ -102,7 +102,7 @@ defmodule CloudflareApi.D1 do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.D1.update_database_partial(client, "account_id", %{}, %{})
+      iex> CloudflareApi.D1.update_database_partial(client, "account_id", "database_id", %{})
       {:ok, %{"id" => "example"}}
 
   """
@@ -120,7 +120,7 @@ defmodule CloudflareApi.D1 do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.D1.export_database(client, "account_id", %{}, %{})
+      iex> CloudflareApi.D1.export_database(client, "account_id", "database_id", %{})
       {:ok, %{"id" => "example"}}
 
   """
@@ -138,7 +138,7 @@ defmodule CloudflareApi.D1 do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.D1.import_database(client, "account_id", %{}, %{})
+      iex> CloudflareApi.D1.import_database(client, "account_id", "database_id", %{})
       {:ok, %{"id" => "example"}}
 
   """
@@ -156,7 +156,7 @@ defmodule CloudflareApi.D1 do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.D1.query_database(client, "account_id", %{}, %{})
+      iex> CloudflareApi.D1.query_database(client, "account_id", "database_id", %{})
       {:ok, %{"id" => "example"}}
 
   """
@@ -174,7 +174,7 @@ defmodule CloudflareApi.D1 do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.D1.raw_query_database(client, "account_id", %{}, %{})
+      iex> CloudflareApi.D1.raw_query_database(client, "account_id", "database_id", %{})
       {:ok, %{"id" => "example"}}
 
   """

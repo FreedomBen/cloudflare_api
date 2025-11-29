@@ -112,7 +112,8 @@ defmodule CloudflareApi.ContentScanning do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.ContentScanning.add_payloads(client, "zone_id", "payloads")
+      iex> payloads = [%{}]
+      iex> CloudflareApi.ContentScanning.add_payloads(client, "zone_id", payloads)
       {:ok, %{"id" => "example"}}
 
   """

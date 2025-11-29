@@ -12,7 +12,7 @@ defmodule CloudflareApi.Indicator do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.Indicator.list(client, "account_id", %{}, [])
+      iex> CloudflareApi.Indicator.list(client, "account_id", "dataset_id", [])
       {:ok, [%{"id" => "example"}]}
 
   """
@@ -52,7 +52,7 @@ defmodule CloudflareApi.Indicator do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.Indicator.list_tags(client, "account_id", %{}, [])
+      iex> CloudflareApi.Indicator.list_tags(client, "account_id", "dataset_id", [])
       {:ok, [%{"id" => "example"}]}
 
   """
@@ -74,7 +74,7 @@ defmodule CloudflareApi.Indicator do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.Indicator.create(client, "account_id", %{}, %{})
+      iex> CloudflareApi.Indicator.create(client, "account_id", "dataset_id", %{})
       {:ok, %{"id" => "example"}}
 
   """
@@ -92,7 +92,7 @@ defmodule CloudflareApi.Indicator do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.Indicator.create_bulk(client, "account_id", %{}, %{})
+      iex> CloudflareApi.Indicator.create_bulk(client, "account_id", "dataset_id", %{})
       {:ok, %{"id" => "example"}}
 
   """
@@ -110,7 +110,7 @@ defmodule CloudflareApi.Indicator do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.Indicator.get(client, "account_id", %{}, "indicator_id")
+      iex> CloudflareApi.Indicator.get(client, "account_id", "dataset_id", "indicator_id")
       {:ok, %{"id" => "example"}}
 
   """
@@ -132,7 +132,7 @@ defmodule CloudflareApi.Indicator do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.Indicator.update(client, "account_id", %{}, "indicator_id", %{})
+      iex> CloudflareApi.Indicator.update(client, "account_id", "dataset_id", "indicator_id", %{})
       {:ok, %{"id" => "example"}}
 
   """
@@ -155,7 +155,7 @@ defmodule CloudflareApi.Indicator do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.Indicator.delete(client, "account_id", %{}, "indicator_id")
+      iex> CloudflareApi.Indicator.delete(client, "account_id", "dataset_id", "indicator_id")
       {:ok, %{"id" => "example"}}
 
   """

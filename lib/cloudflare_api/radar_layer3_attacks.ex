@@ -84,7 +84,7 @@ defmodule CloudflareApi.RadarLayer3Attacks do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.RadarLayer3Attacks.top_locations(client, "type", [])
+      iex> CloudflareApi.RadarLayer3Attacks.top_locations(client, :origin, [])
       {:ok, %{"id" => "example"}}
 
   """

@@ -48,7 +48,7 @@ defmodule CloudflareApi.MagicSiteAppConfigs do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.MagicSiteAppConfigs.get(client, "account_id", "site_id", %{})
+      iex> CloudflareApi.MagicSiteAppConfigs.get(client, "account_id", "site_id", "app_config_id")
       {:ok, %{"id" => "example"}}
 
   """
@@ -66,7 +66,7 @@ defmodule CloudflareApi.MagicSiteAppConfigs do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.MagicSiteAppConfigs.update(client, "account_id", "site_id", %{}, %{})
+      iex> CloudflareApi.MagicSiteAppConfigs.update(client, "account_id", "site_id", "app_config_id", %{})
       {:ok, %{"id" => "example"}}
 
   """
@@ -84,7 +84,7 @@ defmodule CloudflareApi.MagicSiteAppConfigs do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.MagicSiteAppConfigs.patch(client, "account_id", "site_id", %{}, %{})
+      iex> CloudflareApi.MagicSiteAppConfigs.patch(client, "account_id", "site_id", "app_config_id", %{})
       {:ok, %{"id" => "example"}}
 
   """
@@ -102,7 +102,7 @@ defmodule CloudflareApi.MagicSiteAppConfigs do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.MagicSiteAppConfigs.delete(client, "account_id", "site_id", %{})
+      iex> CloudflareApi.MagicSiteAppConfigs.delete(client, "account_id", "site_id", "app_config_id")
       {:ok, %{"id" => "example"}}
 
   """

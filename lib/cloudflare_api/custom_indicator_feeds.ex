@@ -176,7 +176,8 @@ defmodule CloudflareApi.CustomIndicatorFeeds do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.CustomIndicatorFeeds.update_snapshot(client, "account_id", "feed_id", "%Multipart{} = multipart")
+      iex> multipart = Tesla.Multipart.new()
+      iex> CloudflareApi.CustomIndicatorFeeds.update_snapshot(client, "account_id", "feed_id", multipart)
       {:ok, %{"id" => "example"}}
 
   """

@@ -102,7 +102,7 @@ defmodule CloudflareApi.Event do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.Event.get_event(client, "account_id", %{}, "event_id")
+      iex> CloudflareApi.Event.get_event(client, "account_id", "dataset_id", "event_id")
       {:ok, %{"id" => "example"}}
 
   """
@@ -192,7 +192,7 @@ defmodule CloudflareApi.Event do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.Event.delete_events_from_dataset(client, "account_id", %{}, %{})
+      iex> CloudflareApi.Event.delete_events_from_dataset(client, "account_id", "dataset_id", %{})
       {:ok, %{"id" => "example"}}
 
   """
@@ -210,7 +210,7 @@ defmodule CloudflareApi.Event do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.Event.move_to_dataset(client, "account_id", %{}, %{})
+      iex> CloudflareApi.Event.move_to_dataset(client, "account_id", "dataset_id", %{})
       {:ok, %{"id" => "example"}}
 
   """
@@ -408,7 +408,7 @@ defmodule CloudflareApi.Event do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.Event.get_raw_event_dataset(client, "account_id", %{}, "event_id")
+      iex> CloudflareApi.Event.get_raw_event_dataset(client, "account_id", "dataset_id", "event_id")
       {:ok, %{"id" => "example"}}
 
   """

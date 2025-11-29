@@ -54,7 +54,7 @@ defmodule CloudflareApi.IndicatorTypes do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.IndicatorTypes.create(client, "account_id", %{}, %{})
+      iex> CloudflareApi.IndicatorTypes.create(client, "account_id", "dataset_id", %{})
       {:ok, %{"id" => "example"}}
 
   """

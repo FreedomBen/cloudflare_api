@@ -50,7 +50,7 @@ defmodule CloudflareApi.Scans do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.Scans.update_config(client, "account_id", %{}, %{})
+      iex> CloudflareApi.Scans.update_config(client, "account_id", "config_id", %{})
       {:ok, %{"id" => "example"}}
 
   """
@@ -70,7 +70,7 @@ defmodule CloudflareApi.Scans do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.Scans.delete_config(client, "account_id", %{})
+      iex> CloudflareApi.Scans.delete_config(client, "account_id", "config_id")
       {:ok, %{"id" => "example"}}
 
   """
@@ -90,7 +90,7 @@ defmodule CloudflareApi.Scans do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.Scans.open_ports(client, "account_id", %{}, [])
+      iex> CloudflareApi.Scans.open_ports(client, "account_id", "config_id", [])
       {:ok, %{"id" => "example"}}
 
   """

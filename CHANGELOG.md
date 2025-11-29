@@ -9,6 +9,8 @@ derived from tags and version-bump commits in `mix.exs`.
 
 ### Added
 
+- Added a global doctest suite (with a default Tesla mock) so `mix test`
+  now exercises the inline examples for every `CloudflareApi.*` module.
 - Added moduledocs/function docs (with inline examples) across the Cloudflare
   endpoint wrappers and a helper script (`script/add_endpoint_docs.exs`) so
   future modules can stay consistently documented.

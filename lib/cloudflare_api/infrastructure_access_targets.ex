@@ -102,7 +102,8 @@ defmodule CloudflareApi.InfrastructureAccessTargets do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.InfrastructureAccessTargets.create_targets(client, "account_id", "targets")
+      iex> targets = [%{}]
+      iex> CloudflareApi.InfrastructureAccessTargets.create_targets(client, "account_id", targets)
       {:ok, %{"id" => "example"}}
 
   """
@@ -120,7 +121,8 @@ defmodule CloudflareApi.InfrastructureAccessTargets do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.InfrastructureAccessTargets.delete_targets(client, "account_id", "target_ids")
+      iex> target_ids = ["target_id"]
+      iex> CloudflareApi.InfrastructureAccessTargets.delete_targets(client, "account_id", target_ids)
       {:ok, %{"id" => "example"}}
 
   """
@@ -138,7 +140,8 @@ defmodule CloudflareApi.InfrastructureAccessTargets do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.InfrastructureAccessTargets.delete_targets_deprecated(client, "account_id", "targets")
+      iex> targets = [%{}]
+      iex> CloudflareApi.InfrastructureAccessTargets.delete_targets_deprecated(client, "account_id", targets)
       {:ok, %{"id" => "example"}}
 
   """

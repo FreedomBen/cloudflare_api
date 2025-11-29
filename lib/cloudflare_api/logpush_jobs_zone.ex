@@ -102,7 +102,7 @@ defmodule CloudflareApi.LogpushJobsZone do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.LogpushJobsZone.list_dataset_jobs(client, "zone_id", %{})
+      iex> CloudflareApi.LogpushJobsZone.list_dataset_jobs(client, "zone_id", "dataset_id")
       {:ok, [%{"id" => "example"}]}
 
   """
@@ -120,7 +120,7 @@ defmodule CloudflareApi.LogpushJobsZone do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.LogpushJobsZone.list_dataset_fields(client, "zone_id", %{})
+      iex> CloudflareApi.LogpushJobsZone.list_dataset_fields(client, "zone_id", "dataset_id")
       {:ok, [%{"id" => "example"}]}
 
   """

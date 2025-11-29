@@ -52,7 +52,7 @@ defmodule CloudflareApi.TokenValidationTokenConfiguration do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.TokenValidationTokenConfiguration.get(client, "zone_id", %{}, [])
+      iex> CloudflareApi.TokenValidationTokenConfiguration.get(client, "zone_id", "config_id", [])
       {:ok, %{"id" => "example"}}
 
   """
@@ -72,7 +72,7 @@ defmodule CloudflareApi.TokenValidationTokenConfiguration do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.TokenValidationTokenConfiguration.update(client, "zone_id", %{}, %{})
+      iex> CloudflareApi.TokenValidationTokenConfiguration.update(client, "zone_id", "config_id", %{})
       {:ok, %{"id" => "example"}}
 
   """
@@ -92,7 +92,7 @@ defmodule CloudflareApi.TokenValidationTokenConfiguration do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.TokenValidationTokenConfiguration.delete(client, "zone_id", %{})
+      iex> CloudflareApi.TokenValidationTokenConfiguration.delete(client, "zone_id", "config_id")
       {:ok, %{"id" => "example"}}
 
   """
@@ -112,7 +112,7 @@ defmodule CloudflareApi.TokenValidationTokenConfiguration do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.TokenValidationTokenConfiguration.update_credentials(client, "zone_id", %{}, %{})
+      iex> CloudflareApi.TokenValidationTokenConfiguration.update_credentials(client, "zone_id", "config_id", %{})
       {:ok, %{"id" => "example"}}
 
   """

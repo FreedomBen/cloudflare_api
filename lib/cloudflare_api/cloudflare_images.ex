@@ -54,7 +54,8 @@ defmodule CloudflareApi.CloudflareImages do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.CloudflareImages.upload(client, "account_id", "%Multipart{} = multipart")
+      iex> multipart = Tesla.Multipart.new()
+      iex> CloudflareApi.CloudflareImages.upload(client, "account_id", multipart)
       {:ok, %{"id" => "example"}}
 
   """
@@ -174,7 +175,8 @@ defmodule CloudflareApi.CloudflareImages do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.CloudflareImages.create_direct_upload_v2(client, "account_id", "%Multipart{} = multipart")
+      iex> multipart = Tesla.Multipart.new()
+      iex> CloudflareApi.CloudflareImages.create_direct_upload_v2(client, "account_id", multipart)
       {:ok, %{"id" => "example"}}
 
   """

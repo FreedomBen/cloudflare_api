@@ -14,7 +14,8 @@ defmodule CloudflareApi.BinDb do
   ## Examples
 
       iex> client = CloudflareApi.client("api-token")
-      iex> CloudflareApi.BinDb.upload(client, "account_id", "file")
+      iex> file = %{filename: "sample.bin", body: "contents"}
+      iex> CloudflareApi.BinDb.upload(client, "account_id", file)
       {:ok, %{"id" => "example"}}
 
   """
