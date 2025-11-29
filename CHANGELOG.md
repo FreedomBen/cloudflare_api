@@ -116,6 +116,10 @@ derived from tags and version-bump commits in `mix.exs`.
 - Layer 7 attacks, leaked credential checks, locations, NetFlows, origins,
   quality, robots.txt, search, TCP resets/timeouts, and TLD metadata wrappers
   finish another slice of Radar analytics with dedicated tests.
+- Added verified bots, web crawlers, traffic anomalies, zone rate limits,
+  Realtime Kit recordings, registrar domains, device registrations, build repo
+  connections, Cloudforce One RFI, and resource sharing modules plus tests to
+  keep the non-Radar tags moving forward.
 
 ### Changed
 

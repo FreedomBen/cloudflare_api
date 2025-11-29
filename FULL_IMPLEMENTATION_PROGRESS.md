@@ -256,6 +256,16 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.RadarSearch` | `GET /radar/search/global` | Radar global search helper. |
 | `CloudflareApi.RadarTcpResetsTimeouts` | `/radar/tcp_resets_timeouts/*` summary/timeseries | TCP resets/timeouts analytics. |
 | `CloudflareApi.RadarTopLevelDomains` | `/radar/tlds*` list/detail | Top-level domain metadata. |
+| `CloudflareApi.RadarTrafficAnomalies` | `/radar/traffic_anomalies*` list + locations | Traffic anomaly listings and top locations. |
+| `CloudflareApi.RadarVerifiedBots` | `/radar/verified_bots/top/*` endpoints | Verified bot analytics. |
+| `CloudflareApi.RadarWebCrawlers` | `/radar/bots/crawlers/*` summary/timeseries | Web crawler analytics. |
+| `CloudflareApi.RateLimits` | `/zones/:zone_id/rate_limits` list/create/get/update/delete | Zone rate limit lifecycle helper. |
+| `CloudflareApi.Recordings` | `/accounts/:account_id/realtime/kit/:app_id/recordings*` | Realtime Kit recording management. |
+| `CloudflareApi.RegistrarDomains` | `/accounts/:account_id/registrar/domains` list/get/update | Registrar domain helpers. |
+| `CloudflareApi.Registrations` | `/accounts/:account_id/devices/registrations` list/get/delete + revoke/unrevoke | Device registration management. |
+| `CloudflareApi.RepositoryConnections` | `/accounts/:account_id/builds/repos/connections` upsert/delete | Builds repo connection helpers. |
+| `CloudflareApi.RequestForInformation` | `/accounts/:account_id/cloudforce-one/requests*` | Cloudforce One RFI lifecycle, assets, and messages. |
+| `CloudflareApi.ResourceSharing` | `/accounts/:account_id/shares*` + org shares | Share, recipient, and resource management. |
 
 ## Remaining Modules
 
@@ -277,16 +287,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Feedback
 - Pages Domains
 - Pages Project
-- Radar Traffic Anomalies
-- Radar Verified Bots
-- Radar Web Crawlers
-- Rate limits for a zone
-- Recordings
-- Registrar Domains
-- Registrations
-- Repository Connections
-- Request for Information (RFI)
-- Resource Sharing
 - Resources
 - SSL Verification
 - SSL/TLS Mode Recommendation
