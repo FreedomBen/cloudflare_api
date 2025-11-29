@@ -147,6 +147,12 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.IpAccessRulesAccount` | `/accounts/:account_id/firewall/access_rules/rules` CRUD | Account-level IP access rule management. |
 | `CloudflareApi.IpAccessRulesUser` | `/user/firewall/access_rules/rules` CRUD | User-level IP access rules. |
 | `CloudflareApi.IpAccessRulesZone` | `/zones/:zone_id/firewall/access_rules/rules` CRUD | Zone-level IP access rules with cascade deletes. |
+| `CloudflareApi.IpAddressManagementAddressMaps` | `/addressing/address_maps` CRUD + memberships | Address map management plus account/IP/zone membership helpers. |
+| `CloudflareApi.IpAddressManagementBgpPrefixes` | `/addressing/prefixes/:id/bgp/prefixes` CRUD | BGP prefix lifecycle helpers. |
+| `CloudflareApi.IpAddressManagementDynamicAdvertisement` | `/addressing/prefixes/:id/bgp/status` | Fetch and update dynamic advertisement state. |
+| `CloudflareApi.IpAddressManagementLeases` | `/addressing/leases` list | Lease listing helper. |
+| `CloudflareApi.IpAddressManagementPrefixDelegation` | `/addressing/prefixes/:id/delegations` CRUD | Manage prefix delegations to other accounts. |
+| `CloudflareApi.IpAddressManagementPrefixes` | `/addressing/prefixes` CRUD + validate + LOA download | Prefix lifecycle, validation, and LOA download wrapper. |
 
 ## Remaining Modules
 
@@ -166,12 +172,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Environment Variables
 - Event
 - Feedback
-- IP Address Management Address Maps
-- IP Address Management BGP Prefixes
-- IP Address Management Dynamic Advertisement
-- IP Address Management Leases
-- IP Address Management Prefix Delegation
-- IP Address Management Prefixes
 - IP Address Management Service Bindings
 - IP Intelligence
 - IP List

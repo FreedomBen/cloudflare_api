@@ -80,6 +80,9 @@ derived from tags and version-bump commits in `mix.exs`.
 - GitHub integration autofill, Health Checks (including Smart Shield + preview),
   Hyperdrive configs, and IP Access rules (user/zone/account) modules, each with
   request/response coverage and Tesla-based tests.
+- IP Address Management modules for address maps, prefixes (plus BGP, delegations,
+  leases, dynamic advertisement, LOA download), bringing the addressing surface
+  in line with the OpenAPI spec.
 
 ### Changed
 
