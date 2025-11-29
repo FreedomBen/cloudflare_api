@@ -125,6 +125,9 @@ hand-written approach. Newly added modules include:
 - `CloudflareApi.CustomOriginTrustStore` – manage ACM custom origin trust store certificates.
 - `CloudflareApi.CustomSsl` – upload/list/prioritize custom SSL certificates for a zone.
 - `CloudflareApi.CredentialManagement` – store R2 data catalog credentials.
+- `CloudflareApi.CustomPagesZone` – list/update custom pages for a zone.
+- `CloudflareApi.CustomPagesAccount` – list/update account-scoped custom pages.
+- `CloudflareApi.D1` – manage Cloudflare D1 databases, imports/exports, and queries.
 
 Further modules will be added iteratively; progress is tracked in
 `FULL_IMPLEMENTATION_PROGRESS.md`.

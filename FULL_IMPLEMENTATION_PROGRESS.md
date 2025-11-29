@@ -95,15 +95,15 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.CustomOriginTrustStore` | `/acm/custom_trust_store` | ACM custom trust stores. |
 | `CloudflareApi.CustomSsl` | `/custom_certificates` | Custom SSL configs. |
 | `CloudflareApi.CredentialManagement` | `/r2-catalog/:bucket_name/credential` | Store R2 catalog credentials. |
+| `CloudflareApi.CustomPagesZone` | `/zones/:id/custom_pages` | Zone custom page management. |
+| `CloudflareApi.CustomPagesAccount` | `/accounts/:id/custom_pages` | Account custom page management. |
+| `CloudflareApi.D1` | `/d1/database` | Manage D1 databases/queries. |
 
 ## Remaining Modules
 
 The following OpenAPI tags still require dedicated modules. When you begin work
 on one, move it to the “Completed Modules” table above (and include any notes).
 
-- Custom pages for a zone
-- Custom pages for an account
-- D1
 - DCV Delegation
 - DEX Remote Commands
 - DEX Synthetic Application Monitoring

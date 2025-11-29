@@ -30,8 +30,9 @@ derived from tags and version-bump commits in `mix.exs`.
   services, content scanning, and country helpers with tests to keep the manual
   rollout moving.
 - Custom hostname fallback/origin, custom hostname CRUD/cert helpers, custom
-  origin trust stores, custom SSL configs, credential management, and custom
-  indicator feed management to expand coverage across TLS and intel APIs.
+  origin trust stores, custom SSL configs, credential management, custom pages
+  (zone/account), D1 database helpers, and custom indicator feeds to expand
+  coverage across TLS, Workers storage, and intel APIs.
 
 ### Changed
 
