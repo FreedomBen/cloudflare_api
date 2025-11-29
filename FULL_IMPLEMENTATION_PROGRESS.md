@@ -32,6 +32,11 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.AccessGroups` | `/access/groups` CRUD | Manage Access groups. |
 | `CloudflareApi.AccessIdentityProviders` | `/access/identity_providers` CRUD + SCIM | Identity provider management. |
 | `CloudflareApi.AccessKeyConfiguration` | `/access/keys` get/update/rotate | Access key configuration helper. |
+| `CloudflareApi.AccessMtlsAuthentication` | `/access/certificates` + settings | Manage mTLS certificates and settings. |
+| `CloudflareApi.AccessPolicyTester` | `/access/policy-tests` | Run policy tests and retrieve results. |
+| `CloudflareApi.AccessReusablePolicies` | `/access/policies` | Reusable policy CRUD. |
+| `CloudflareApi.AccessServiceTokens` | `/access/service_tokens` | Manage service tokens, refresh, rotate. |
+| `CloudflareApi.AccessShortLivedCertificateCas` | `/access/apps/:app_id/ca` | Short-lived certificate CA helpers. |
 
 ## Remaining Modules
 
@@ -40,11 +45,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 
 - API Shield Client Certificates for a Zone
 - API Shield WAF Expression Templates
-- Access mTLS authentication
-- Access policy tester
-- Access reusable policies
-- Access service tokens
-- Access short-lived certificate CAs
 - Access tags
 - Account
 - Account Billing Profile
