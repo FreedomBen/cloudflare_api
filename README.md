@@ -113,6 +113,9 @@ hand-written approach. Newly added modules include:
 - `CloudflareApi.CloudflareIps` – fetch Cloudflare public IP ranges.
 - `CloudflareApi.CloudflareImages` – upload/list/manage Cloudflare Images assets.
 - `CloudflareApi.CloudflareImagesKeys` – manage Cloudflare Images signing keys.
+- `CloudflareApi.CloudflareImagesVariants` – create/update/list Images variants.
+- `CloudflareApi.CloudflareTunnels` – CRUD Cloudflare/Warp tunnels, tokens, and connections.
+- `CloudflareApi.CloudflareTunnelConfiguration` – read/update Zero Trust tunnel configs.
 
 Further modules will be added iteratively; progress is tracked in
 `FULL_IMPLEMENTATION_PROGRESS.md`.

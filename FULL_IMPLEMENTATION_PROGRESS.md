@@ -83,15 +83,15 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.CloudflareIps` | `/ips` | Cloudflare public IP ranges. |
 | `CloudflareApi.CloudflareImages` | `/images/v1`, `/images/v2` | Cloudflare Images APIs. |
 | `CloudflareApi.CloudflareImagesKeys` | `/images/v1/keys` | Images signing keys. |
+| `CloudflareApi.CloudflareImagesVariants` | `/images/v1/variants` | Images variant CRUD. |
+| `CloudflareApi.CloudflareTunnels` | `/cfd_tunnel`, `/warp_connector`, `/tunnels` | Tunnel CRUD/connectors. |
+| `CloudflareApi.CloudflareTunnelConfiguration` | `/cfd_tunnel/:id/configurations` | Tunnel config management. |
 
 ## Remaining Modules
 
 The following OpenAPI tags still require dedicated modules. When you begin work
 on one, move it to the “Completed Modules” table above (and include any notes).
 
-- Cloudflare Images Variants
-- Cloudflare Tunnel
-- Cloudflare Tunnel Configuration
 - Connectivity Services
 - Content Scanning
 - Country
