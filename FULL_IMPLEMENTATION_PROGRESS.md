@@ -136,6 +136,11 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.EmailSecuritySettings` | `/email-security/settings` | Allow/block/trusted domain settings. |
 | `CloudflareApi.EndpointHealthChecks` | `/diagnostics/endpoint-healthchecks` CRUD | Endpoint health check helpers. |
 | `CloudflareApi.EnvironmentVariables` | `/builds/triggers/:id/environment_variables` list/upsert/delete | Build trigger environment variables. |
+| `CloudflareApi.Event` | `/cloudforce-one/events` CRUD + relationships/raw | Cloudforce One event helpers. |
+| `CloudflareApi.Feedback` | `/bot_management/feedback` list/create | Bot management feedback. |
+| `CloudflareApi.Filters` | `GET/POST/PUT/DELETE /zones/:zone_id/filters` + single filter operations | Bulk and single firewall filter CRUD with query helpers. |
+| `CloudflareApi.FirewallRules` | `/zones/:zone_id/firewall/rules` list/create/update/delete + priority helpers | Bulk and single firewall rule management with delete + priority APIs. |
+| `CloudflareApi.GatewayCa` | `/accounts/:account_id/access/gateway_ca` list/create/delete | SSH CA management for Access Gateway. |
 
 ## Remaining Modules
 
@@ -155,9 +160,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Environment Variables
 - Event
 - Feedback
-- Filters
-- Firewall rules
-- Gateway CA
 - GitHub Integration
 - Health Checks
 - Hyperdrive

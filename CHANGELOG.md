@@ -69,6 +69,14 @@ derived from tags and version-bump commits in `mix.exs`.
   block, trusted domains, impersonation registry) now have wrappers and tests.
 - Endpoint health checks and build-trigger environment variables helpers,
   covering the diagnostics and environment variable tags.
+- Event (Cloudforce One) and Feedback modules to support event analytics plus
+  bot-management feedback reporting.
+- Filters module for zone-level firewall filters, including query helpers and
+  tests for bulk and single filter CRUD endpoints.
+- Firewall Rules module spanning list/create/update/delete plus priority helpers,
+  including tests for bulk id handling and delete cascades.
+- Gateway CA module for Access SSH certificate authorities, covering list/create/delete
+  flows and associated tests.
 
 ### Changed
 
