@@ -106,6 +106,10 @@ derived from tags and version-bump commits in `mix.exs`.
   device + Realtime Kit preset helpers, Cloudforce One PIR, telemetry query,
   Queue/event subscription management, and R2 account/bucket coverage so the next
   set of tags have thin wrappers and tests.
+- R2 catalog + Super Slurper management plus the first wave of Radar analytics
+  modules (AI Bots, AI Inference, AS112, annotations, autonomous systems, BGP,
+  bots, and certificate transparency) so the Radar tag family now has tested
+  entry points.
 
 ### Changed
 

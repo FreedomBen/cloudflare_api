@@ -226,6 +226,16 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.Queues` | `/event_subscriptions/subscriptions` + `/queues` + consumers/messages/purge | Full queue, subscription, consumer, and message helpers. |
 | `CloudflareApi.R2Account` | `GET /accounts/:account_id/r2/metrics` | Account-level R2 metrics fetcher. |
 | `CloudflareApi.R2Bucket` | `/accounts/:account_id/r2/buckets` + domains/cors/lifecycle/event notifications/temp creds | Comprehensive R2 bucket management. |
+| `CloudflareApi.R2CatalogManagement` | `/accounts/:account_id/r2-catalog` list/get + enable/disable | Manage R2 cataloging state per bucket. |
+| `CloudflareApi.R2SuperSlurper` | `/accounts/:account_id/slurper/*` job CRUD + connectivity checks | Super Slurper job lifecycle helpers. |
+| `CloudflareApi.RadarAiBots` | `/radar/ai/bots/*` summary/timeseries endpoints | AI bot analytics wrappers. |
+| `CloudflareApi.RadarAiInference` | `/radar/ai/inference/*` summary/timeseries endpoints | AI inference analytics helpers. |
+| `CloudflareApi.RadarAs112` | `/radar/as112/*` summary/timeseries/top endpoints | AS112 analytics (timeseries + top locations). |
+| `CloudflareApi.RadarAnnotations` | `/radar/annotations*` list/outage endpoints | Radar annotation listings. |
+| `CloudflareApi.RadarAutonomousSystems` | `/radar/entities/asns*` list/get/as-set/rel | ASN metadata lookups. |
+| `CloudflareApi.RadarBgp` | `/radar/bgp/*` metrics/events routes | BGP events, routes, and top listings. |
+| `CloudflareApi.RadarBots` | `/radar/bots*` overview/summary/timeseries/bot detail | Radar bot analytics helper. |
+| `CloudflareApi.RadarCertificateTransparency` | `/radar/ct/*` authorities/logs/summary/timeseries | Certificate transparency analytics. |
 
 ## Remaining Modules
 
@@ -247,16 +257,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Feedback
 - Pages Domains
 - Pages Project
-- R2 Catalog Management
-- R2 Super Slurper
-- Radar AI Bots
-- Radar AI Inference
-- Radar AS112
-- Radar Annotations
-- Radar Autonomous Systems
-- Radar BGP
-- Radar Bots
-- Radar Certificate Transparency
 - Radar DNS
 - Radar Datasets
 - Radar Domains Ranking
