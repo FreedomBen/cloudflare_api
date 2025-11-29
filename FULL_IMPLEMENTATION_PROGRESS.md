@@ -47,17 +47,17 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.AccountLoadBalancerPools` | `/load_balancers/pools` | Pool CRUD, health, preview, references. |
 | `CloudflareApi.AccountLoadBalancerSearch` | `/load_balancers/search` | Resource search helper. |
 | `CloudflareApi.AccountMembers` | `/accounts/:account_id/members` | Manage account members. |
+| `CloudflareApi.AccountOwnedApiTokens` | `/accounts/:id/tokens` CRUD, verify, permission groups | Account-owned token helpers. |
+| `CloudflareApi.AccountPermissionGroups` | `/iam/permission_groups` | List permission groups. |
+| `CloudflareApi.AccountRequestTracer` | `/request-tracer/trace` | Trigger request tracer. |
+| `CloudflareApi.AccountResourceGroups` | `/iam/resource_groups` | Resource group CRUD. |
+| `CloudflareApi.AccountRoles` | `/accounts/:id/roles` | List account roles. |
 
 ## Remaining Modules
 
 The following OpenAPI tags still require dedicated modules. When you begin work
 on one, move it to the “Completed Modules” table above (and include any notes).
 
-- Account Owned API Tokens
-- Account Permission Groups
-- Account Request Tracer
-- Account Resource Groups
-- Account Roles
 - Account Rulesets
 - Account Subscriptions
 - Account User Groups
