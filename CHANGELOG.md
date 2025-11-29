@@ -36,6 +36,8 @@ derived from tags and version-bump commits in `mix.exs`.
 - DCV Delegation, DEX Remote Commands, and DEX Synthetic Application Monitoring
   modules with comprehensive tests, including binary download handling for
   command artifacts.
+- DLP Datasets and DLP Document Fingerprints helpers, covering CRUD flows plus
+  binary and multipart uploads for dataset versions and document fingerprints.
 
 ### Changed
 

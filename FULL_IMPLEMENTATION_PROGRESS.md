@@ -101,14 +101,14 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.DcvDelegation` | `GET /zones/:zone_id/dcv_delegation/uuid` | Retrieves the delegated DCV UUID for a zone. |
 | `CloudflareApi.DexRemoteCommands` | `/dex/commands` list/create/devices/quota/download endpoints | Remote command CRUD helpers plus binary downloads. |
 | `CloudflareApi.DexSyntheticApplicationMonitoring` | `/dex/colos`, `/dex/fleet-status/*`, `/dex/http-tests/*`, `/dex/traceroute-*` | Covers the Synthetic Monitoring analytics GET endpoints. |
+| `CloudflareApi.DlpDatasets` | `/dlp/datasets` CRUD plus upload helpers | Handles dataset versions, column metadata, and binary uploads. |
+| `CloudflareApi.DlpDocumentFingerprints` | `/dlp/document_fingerprints` CRUD + upload | Document fingerprint management and multipart uploads. |
 
 ## Remaining Modules
 
 The following OpenAPI tags still require dedicated modules. When you begin work
 on one, move it to the “Completed Modules” table above (and include any notes).
 
-- DLP Datasets
-- DLP Document Fingerprints
 - DLP Email
 - DLP Entries
 - DLP Integration Entries
