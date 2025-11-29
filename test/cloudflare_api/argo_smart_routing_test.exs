@@ -29,6 +29,7 @@ defmodule CloudflareApi.ArgoSmartRoutingTest do
     mock(fn %Tesla.Env{method: :patch, url: url, body: body} = env ->
       assert url ==
                "https://api.cloudflare.com/client/v4/zones/zone/argo/smart_routing"
+
       assert Jason.decode!(body) == %{"value" => "off"}
 
       {:ok,

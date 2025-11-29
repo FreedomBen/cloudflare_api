@@ -162,6 +162,9 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.InstantLogsJobs` | `/logpush/edge/jobs` list/create | Instant Logs job management for zones. |
 | `CloudflareApi.Interconnects` | `/cni/interconnects` CRUD + status + LOA | Network interconnect lifecycle helper incl. LOA download. |
 | `CloudflareApi.KeylessSslZone` | `/zones/:zone_id/keyless_certificates` CRUD | Zone-level Keyless SSL configuration management. |
+| `CloudflareApi.Keys` | `POST /accounts/:account_id/workers/observability/telemetry/keys` | Lists Workers Observability telemetry keys for an account. |
+| `CloudflareApi.LeakedCredentialChecks` | `/zones/:zone_id/leaked-credential-checks` status + custom detection CRUD | Manage Leaked Credential Checks status and custom detection patterns. |
+| `CloudflareApi.Lists` | `/accounts/:account_id/rules/lists` CRUD + items/bulk operations | Account filter list definitions, items, and async bulk operations. |
 
 ## Remaining Modules
 
@@ -181,9 +184,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Environment Variables
 - Event
 - Feedback
-- Keys
-- Leaked Credential Checks
-- Lists
 - Live streams
 - LivestreamAnalytics
 - Load Balancer Healthcheck Events

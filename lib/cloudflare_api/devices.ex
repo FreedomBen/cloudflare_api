@@ -64,7 +64,8 @@ defmodule CloudflareApi.Devices do
     get(client, "/accounts/#{account_id}/devices/policy/#{policy_id}/exclude")
   end
 
-  def set_policy_split_tunnel_exclude(client, account_id, policy_id, params) when is_map(params) do
+  def set_policy_split_tunnel_exclude(client, account_id, policy_id, params)
+      when is_map(params) do
     put(client, "/accounts/#{account_id}/devices/policy/#{policy_id}/exclude", params)
   end
 
@@ -72,7 +73,8 @@ defmodule CloudflareApi.Devices do
     get(client, "/accounts/#{account_id}/devices/policy/#{policy_id}/include")
   end
 
-  def set_policy_split_tunnel_include(client, account_id, policy_id, params) when is_map(params) do
+  def set_policy_split_tunnel_include(client, account_id, policy_id, params)
+      when is_map(params) do
     put(client, "/accounts/#{account_id}/devices/policy/#{policy_id}/include", params)
   end
 

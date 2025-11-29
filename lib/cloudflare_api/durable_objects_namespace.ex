@@ -5,7 +5,9 @@ defmodule CloudflareApi.DurableObjectsNamespace do
 
   def list_namespaces(client, account_id, opts \\ []) do
     c(client)
-    |> Tesla.get("/accounts/#{account_id}/workers/durable_objects/namespaces" <> query_suffix(opts))
+    |> Tesla.get(
+      "/accounts/#{account_id}/workers/durable_objects/namespaces" <> query_suffix(opts)
+    )
     |> handle()
   end
 

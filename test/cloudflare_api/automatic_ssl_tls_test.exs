@@ -29,6 +29,7 @@ defmodule CloudflareApi.AutomaticSslTlsTest do
     mock(fn %Tesla.Env{method: :patch, url: url, body: body} = env ->
       assert url ==
                "https://api.cloudflare.com/client/v4/zones/zone/settings/ssl_automatic_mode"
+
       assert Jason.decode!(body) == %{"value" => "custom"}
 
       {:ok,

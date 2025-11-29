@@ -45,6 +45,7 @@ defmodule CloudflareApi.CallsAppsTest do
   test "delete/3 bubbles up errors", %{client: client} do
     mock(fn %Tesla.Env{method: :delete, url: url} = env ->
       assert url == "https://api.cloudflare.com/client/v4/accounts/acc/calls/apps/app"
+
       {:ok,
        %Tesla.Env{
          env

@@ -47,7 +47,10 @@ defmodule CloudflareApi.CloudIntegrations do
 
   def discover(client, account_id, provider_id, opts \\ []) do
     c(client)
-    |> Tesla.post(provider_path(account_id, provider_id) <> "/discover" <> query_suffix(opts), %{})
+    |> Tesla.post(
+      provider_path(account_id, provider_id) <> "/discover" <> query_suffix(opts),
+      %{}
+    )
     |> handle_response()
   end
 

@@ -63,9 +63,7 @@ defmodule CloudflareApi.DexRemoteCommands do
   """
   def download_output(client, account_id, command_id, filename) do
     c(client)
-    |> Tesla.get(
-      commands_path(account_id) <> "/#{command_id}/downloads/#{filename}"
-    )
+    |> Tesla.get(commands_path(account_id) <> "/#{command_id}/downloads/#{filename}")
     |> handle_response()
   end
 

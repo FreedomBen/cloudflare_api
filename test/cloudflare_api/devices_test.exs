@@ -32,15 +32,23 @@ defmodule CloudflareApi.DevicesTest do
 
   test "split tunnel include/exclude helpers call proper endpoints", %{client: client} do
     mock(fn
-      %Tesla.Env{method: :get, url: "https://api.cloudflare.com/client/v4/accounts/acc/devices/policy/include"} = env ->
+      %Tesla.Env{
+        method: :get,
+        url: "https://api.cloudflare.com/client/v4/accounts/acc/devices/policy/include"
+      } = env ->
         {:ok, %Tesla.Env{env | status: 200, body: %{"result" => []}}}
 
-      %Tesla.Env{method: :put, url: "https://api.cloudflare.com/client/v4/accounts/acc/devices/policy/include"} = env ->
+      %Tesla.Env{
+        method: :put,
+        url: "https://api.cloudflare.com/client/v4/accounts/acc/devices/policy/include"
+      } = env ->
         {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{"ok" => true}}}}
     end)
 
     assert {:ok, []} = Devices.split_tunnel_include(client, "acc")
-    assert {:ok, %{"ok" => true}} = Devices.set_split_tunnel_include(client, "acc", %{"value" => []})
+
+    assert {:ok, %{"ok" => true}} =
+             Devices.set_split_tunnel_include(client, "acc", %{"value" => []})
   end
 
   test "policy-specific split tunnel endpoints use policy id", %{client: client} do
@@ -91,7 +99,10 @@ defmodule CloudflareApi.DevicesTest do
 
   test "certificate_status/2 uses zone endpoint", %{client: client} do
     mock(fn
-      %Tesla.Env{method: :get, url: "https://api.cloudflare.com/client/v4/zones/zone/devices/policy/certificates"} = env ->
+      %Tesla.Env{
+        method: :get,
+        url: "https://api.cloudflare.com/client/v4/zones/zone/devices/policy/certificates"
+      } = env ->
         {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{"status" => "enabled"}}}}
     end)
 
