@@ -109,29 +109,33 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.DlpPredefinedEntries` | `/dlp/entries/predefined` create/delete | Predefined entry helpers. |
 | `CloudflareApi.DlpProfiles` | `/dlp/profiles` list/custom/predefined/config helpers | Full profile lifecycle coverage. |
 | `CloudflareApi.DlpSettings` | `/dlp/limits`, `/dlp/patterns/validate`, `/dlp/payload_log` | Account-level settings helpers. |
+| `CloudflareApi.DlsRegionalServices` | `/addressing/regional_hostnames` list/create/update/delete | Regional hostname management + region listings. |
+| `CloudflareApi.DnsAnalytics` | `/dns_analytics/report` + `/bytime` | DNS analytics reports (table & time series). |
+| `CloudflareApi.DnsFirewall` | `/dns_firewall` cluster CRUD + reverse DNS | DNS Firewall cluster management. |
+| `CloudflareApi.DnsFirewallAnalytics` | `/dns_firewall/:id/dns_analytics` | Cluster analytics table + by time. |
+| `CloudflareApi.DnsInternalViews` | `/dns_settings/views` CRUD | Internal view management for accounts. |
+| `CloudflareApi.DnsSettings` | `/dns_settings` account + zone endpoints | DNS settings show/update. |
+| `CloudflareApi.Dnssec` | `/zones/:zone_id/dnssec` get/update/delete | DNSSEC helpers. |
+| `CloudflareApi.Dataset` | `/cloudforce-one/events/dataset` CRUD | Cloudforce One dataset management. |
+| `CloudflareApi.Datasets` | `/cloudforce-one/events/datasets/populate` | Populate dataset lookup tables. |
+| `CloudflareApi.Destinations` | `/workers/observability/destinations` CRUD | Workers observability destinations. |
+| `CloudflareApi.DeviceDexTests` | `/dex/devices/dex_tests` CRUD | Device DEX test management. |
+| `CloudflareApi.DeviceManagedNetworks` | `/devices/networks` CRUD | Managed network helpers. |
+| `CloudflareApi.DevicePostureIntegrations` | `/devices/posture/integration` CRUD | Device posture integration helpers. |
+| `CloudflareApi.DevicePostureRules` | `/devices/posture` CRUD | Device posture rule helpers. |
+| `CloudflareApi.Devices` | `/devices` + settings policy endpoints | Device settings, overrides, certificates. |
+| `CloudflareApi.DevicesResilience` | `/devices/resilience/disconnect` | Global WARP override management. |
+| `CloudflareApi.Diagnostics` | `/diagnostics/traceroute` | Traceroute diagnostic helper. |
+| `CloudflareApi.DomainHistory` | `/intel/domain-history` | Domain history lookups. |
+| `CloudflareApi.DomainIntelligence` | `/intel/domain`, `/intel/domain/bulk` | Domain intelligence lookups. |
+| `CloudflareApi.DurableObjectsNamespace` | `/workers/durable_objects/namespaces` list/objects | Durable Objects namespace helpers. |
+| `CloudflareApi.EmailRoutingDestinationAddresses` | `/email/routing/addresses` CRUD | Email routing destination address management. |
 
 ## Remaining Modules
 
 The following OpenAPI tags still require dedicated modules. When you begin work
 on one, move it to the “Completed Modules” table above (and include any notes).
 
-- DLS Regional Services
-- DNS Analytics
-- DNS Firewall
-- DNS Firewall Analytics
-- DNS Internal Views for an Account
-- DNS Settings for a Zone
-- DNS Settings for an Account
-- DNSSEC
-- Dataset
-- Datasets
-- Destinations
-- Device DEX Tests
-- Device Managed Networks
-- Device Posture Integrations
-- Device posture rules
-- Devices
-- Devices Resilience
 - Diagnostics
 - Domain History
 - Domain Intelligence

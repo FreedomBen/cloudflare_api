@@ -43,6 +43,12 @@ defmodule CloudflareApi do
   Because this layer is very thin, it doesn't usually take long to add new
   endpoints._
 
+  ## Expansion progress
+
+  Additional modules are being added manually (see
+  `FULL_IMPLEMENTATION_PROGRESS.md`) so that the library eventually wraps every
+  Cloudflare endpoint while keeping the surface area straightforward and easy to
+  audit.
   """
 
   @doc ~S"""

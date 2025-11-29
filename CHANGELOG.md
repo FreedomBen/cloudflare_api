@@ -42,6 +42,27 @@ derived from tags and version-bump commits in `mix.exs`.
   predefined, and integration variants) so the DLP surface is largely covered.
 - DLP Profiles and DLP Settings modules, handling profile CRUD/config endpoints
   and account-level limits/pattern validation/payload log APIs.
+- DLS Regional Services and DNS Analytics wrappers so regional hostname
+  management and DNS analytics reports are available with tests.
+- DNS Firewall cluster management plus DNS Firewall analytics modules to cover
+  firewall CRUD/reverse DNS and analytics reporting.
+- DNS internal views and DNS settings (zone/account) modules to wrap the
+  remaining DNS settings endpoints with tests.
+- DNSSEC helpers plus Cloudforce One dataset CRUD, continuing the march through
+  the remaining DNS/Dataset tags in the progress plan.
+- Dataset populate helper and Workers Observability destinations endpoints so
+  Cloudforce One batch jobs and logging destinations are covered.
+- Device DEX tests and Device Managed Networks modules to round out the
+  remaining device-tagged endpoints.
+- Device posture integrations and rules modules, keeping the Device section in
+  `FULL_IMPLEMENTATION_PROGRESS.md` current.
+- Devices module (covering device settings policies, split tunnel lists,
+  revoke/unrevoke, override codes, certificates) plus Devices Resilience
+  helpers for the global WARP override.
+- Diagnostics traceroute helper plus domain history and domain intelligence
+  modules to close out the intel-related tags.
+- Durable Objects namespace list/object helpers and email routing destination
+  address CRUD, continuing the march across the remaining tags.
 
 ### Changed
 
