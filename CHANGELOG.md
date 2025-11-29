@@ -102,6 +102,10 @@ derived from tags and version-bump commits in `mix.exs`.
   Origin CA + post-quantum settings, Page Rules & Page Shield, plus Pages build
   cache/deployment wrappers to continue chipping away at the tag list with
   comprehensive ExUnit coverage.
+- Passive DNS lookups, per-hostname TLS + authenticated origin pulls, physical
+  device + Realtime Kit preset helpers, Cloudforce One PIR, telemetry query,
+  Queue/event subscription management, and R2 account/bucket coverage so the next
+  set of tags have thin wrappers and tests.
 
 ### Changed
 

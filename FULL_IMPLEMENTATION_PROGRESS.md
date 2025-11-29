@@ -216,6 +216,16 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.PageShield` | `/zones/:zone_id/page_shield` settings + connections/cookies/policies/scripts | Page Shield settings, policy, and signal accessors. |
 | `CloudflareApi.PagesBuildCache` | `POST /accounts/:account_id/pages/projects/:project/purge_build_cache` | Purge Pages build cache. |
 | `CloudflareApi.PagesDeployments` | `/accounts/:account_id/pages/projects/:project/deployments` list/create/get/delete/logs/retry/rollback | Pages deployment lifecycle helpers. |
+| `CloudflareApi.PassiveDnsByIp` | `GET /accounts/:account_id/intel/dns` | Passive DNS lookups scoped to an account. |
+| `CloudflareApi.PerHostnameTlsSettings` | `/zones/:zone_id/hostnames/settings/:setting_id` list/get/put/delete | Manage per-hostname TLS overrides. |
+| `CloudflareApi.PerHostnameAuthenticatedOriginPull` | `/zones/:zone_id/origin_tls_client_auth/hostnames` + certificates | Configure hostname auth origin pull and client certificates. |
+| `CloudflareApi.PhysicalDevices` | `/accounts/:account_id/devices/physical-devices` list/get/delete/revoke + registrations | Physical device lifecycle helpers. |
+| `CloudflareApi.Presets` | `/accounts/:account_id/realtime/kit/:app_id/presets` list/create/get/update/delete | Realtime Kit preset management. |
+| `CloudflareApi.PriorityIntelligenceRequirements` | `/accounts/:account_id/cloudforce-one/requests/priority*` | Cloudforce One PIR CRUD, quotas, and listings. |
+| `CloudflareApi.TelemetryQuery` | `POST /accounts/:account_id/workers/observability/telemetry/query` | Run Workers observability queries. |
+| `CloudflareApi.Queues` | `/event_subscriptions/subscriptions` + `/queues` + consumers/messages/purge | Full queue, subscription, consumer, and message helpers. |
+| `CloudflareApi.R2Account` | `GET /accounts/:account_id/r2/metrics` | Account-level R2 metrics fetcher. |
+| `CloudflareApi.R2Bucket` | `/accounts/:account_id/r2/buckets` + domains/cors/lifecycle/event notifications/temp creds | Comprehensive R2 bucket management. |
 
 ## Remaining Modules
 
@@ -237,16 +247,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Feedback
 - Pages Domains
 - Pages Project
-- Passive DNS by IP
-- Per-Hostname TLS Settings
-- Per-hostname Authenticated Origin Pull
-- Physical Devices
-- Presets
-- Priority Intelligence Requirements (PIR)
-- Query run
-- Queue
-- R2 Account
-- R2 Bucket
 - R2 Catalog Management
 - R2 Super Slurper
 - Radar AI Bots
