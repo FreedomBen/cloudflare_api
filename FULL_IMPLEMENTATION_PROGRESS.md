@@ -103,16 +103,16 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.DexSyntheticApplicationMonitoring` | `/dex/colos`, `/dex/fleet-status/*`, `/dex/http-tests/*`, `/dex/traceroute-*` | Covers the Synthetic Monitoring analytics GET endpoints. |
 | `CloudflareApi.DlpDatasets` | `/dlp/datasets` CRUD plus upload helpers | Handles dataset versions, column metadata, and binary uploads. |
 | `CloudflareApi.DlpDocumentFingerprints` | `/dlp/document_fingerprints` CRUD + upload | Document fingerprint management and multipart uploads. |
+| `CloudflareApi.DlpEmail` | `/dlp/email/account_mapping`, `/dlp/email/rules` | Email DLP account mapping and rule management. |
+| `CloudflareApi.DlpEntries` | `/dlp/entries` list/create/get/update/delete | General entry CRUD including custom/predefined updates. |
+| `CloudflareApi.DlpIntegrationEntries` | `/dlp/entries/integration` CRUD | Integration-entry lifecycle helpers. |
+| `CloudflareApi.DlpPredefinedEntries` | `/dlp/entries/predefined` create/delete | Predefined entry helpers. |
 
 ## Remaining Modules
 
 The following OpenAPI tags still require dedicated modules. When you begin work
 on one, move it to the “Completed Modules” table above (and include any notes).
 
-- DLP Email
-- DLP Entries
-- DLP Integration Entries
-- DLP Predefined Entries
 - DLP Profiles
 - DLP Settings
 - DLS Regional Services

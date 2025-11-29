@@ -38,6 +38,8 @@ derived from tags and version-bump commits in `mix.exs`.
   command artifacts.
 - DLP Datasets and DLP Document Fingerprints helpers, covering CRUD flows plus
   binary and multipart uploads for dataset versions and document fingerprints.
+- DLP Email account-mapping/rule management plus DLP entry helpers (custom,
+  predefined, and integration variants) so the DLP surface is largely covered.
 
 ### Changed
 
