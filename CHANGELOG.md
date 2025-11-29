@@ -113,6 +113,9 @@ derived from tags and version-bump commits in `mix.exs`.
 - Added Radar DNS, datasets, domain ranking, email routing/security, geolocation,
   HTTP, IP lookup, internet service ranking, and Layer 3 attack helpers to keep
   expanding the Radar footprint with verified request/response coverage.
+- Layer 7 attacks, leaked credential checks, locations, NetFlows, origins,
+  quality, robots.txt, search, TCP resets/timeouts, and TLD metadata wrappers
+  finish another slice of Radar analytics with dedicated tests.
 
 ### Changed
 

@@ -246,6 +246,16 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.RadarIp` | `GET /radar/entities/ip` | Single IP metadata lookup. |
 | `CloudflareApi.RadarInternetServicesRanking` | `/radar/ranking/internet_services/*` categories/top/timeseries | Internet services ranking analytics. |
 | `CloudflareApi.RadarLayer3Attacks` | `/radar/attacks/layer3/*` summary/timeseries/top endpoints | Layer 3 attack analytics. |
+| `CloudflareApi.RadarLayer7Attacks` | `/radar/attacks/layer7/*` summary/timeseries/top endpoints | Layer 7 attack analytics helpers. |
+| `CloudflareApi.RadarLeakedCredentialChecks` | `/radar/leaked_credential_checks/*` summary/timeseries | Leaked credential check analytics. |
+| `CloudflareApi.RadarLocations` | `/radar/entities/locations*` list/detail | Location metadata lookups. |
+| `CloudflareApi.RadarNetflows` | `/radar/netflows/*` summary/timeseries/top endpoints | NetFlows analytics endpoints. |
+| `CloudflareApi.RadarOrigins` | `/radar/origins/*` list/summary/timeseries | Origin analytics + detail fetchers. |
+| `CloudflareApi.RadarQuality` | `/radar/quality/*` IQI + speed analytics | Quality index and speed analytics wrappers. |
+| `CloudflareApi.RadarRobotsTxt` | `/radar/robots_txt/top/*` endpoints | Robots.txt top user agents/domain categories. |
+| `CloudflareApi.RadarSearch` | `GET /radar/search/global` | Radar global search helper. |
+| `CloudflareApi.RadarTcpResetsTimeouts` | `/radar/tcp_resets_timeouts/*` summary/timeseries | TCP resets/timeouts analytics. |
+| `CloudflareApi.RadarTopLevelDomains` | `/radar/tlds*` list/detail | Top-level domain metadata. |
 
 ## Remaining Modules
 
@@ -267,16 +277,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Feedback
 - Pages Domains
 - Pages Project
-- Radar Layer 7 Attacks
-- Radar Leaked Credential Checks
-- Radar Locations
-- Radar NetFlows
-- Radar Origins
-- Radar Quality
-- Radar Robots.txt
-- Radar Search
-- Radar TCP Resets and Timeouts
-- Radar Top-Level Domains
 - Radar Traffic Anomalies
 - Radar Verified Bots
 - Radar Web Crawlers
