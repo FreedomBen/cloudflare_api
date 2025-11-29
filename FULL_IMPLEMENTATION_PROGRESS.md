@@ -42,17 +42,17 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.AccessTags` | `/access/tags` | Access tag CRUD.
 | `CloudflareApi.Account` | `/accounts/:account_id/builds/account/limits` | Account limits helper. |
 | `CloudflareApi.AccountBillingProfile` | `/accounts/:account_id/billing/profile` | Billing profile fetcher. |
+| `CloudflareApi.AccountLoadBalancerMonitorGroups` | `/load_balancers/monitor_groups` | Monitor group CRUD + references. |
+| `CloudflareApi.AccountLoadBalancerMonitors` | `/load_balancers/monitors` | Monitor CRUD, preview, references. |
+| `CloudflareApi.AccountLoadBalancerPools` | `/load_balancers/pools` | Pool CRUD, health, preview, references. |
+| `CloudflareApi.AccountLoadBalancerSearch` | `/load_balancers/search` | Resource search helper. |
+| `CloudflareApi.AccountMembers` | `/accounts/:account_id/members` | Manage account members. |
 
 ## Remaining Modules
 
 The following OpenAPI tags still require dedicated modules. When you begin work
 on one, move it to the “Completed Modules” table above (and include any notes).
 
-- Account Load Balancer Monitor Groups
-- Account Load Balancer Monitors
-- Account Load Balancer Pools
-- Account Load Balancer Search
-- Account Members
 - Account Owned API Tokens
 - Account Permission Groups
 - Account Request Tracer
