@@ -33,6 +33,9 @@ derived from tags and version-bump commits in `mix.exs`.
   origin trust stores, custom SSL configs, credential management, custom pages
   (zone/account), D1 database helpers, and custom indicator feeds to expand
   coverage across TLS, Workers storage, and intel APIs.
+- DCV Delegation, DEX Remote Commands, and DEX Synthetic Application Monitoring
+  modules with comprehensive tests, including binary download handling for
+  command artifacts.
 
 ### Changed
 
