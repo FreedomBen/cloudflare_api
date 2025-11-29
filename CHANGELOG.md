@@ -197,6 +197,8 @@ derived from tags and version-bump commits in `mix.exs`.
 - Reverted the automatic OpenAPI module generation approach in favour of
   explicit modules similar to the original DNS/Zone helpers. Updated the
   README and top-level moduledoc to explain the manual rollout plan.
+- Polished the `CloudflareApi` moduledoc and client helper documentation,
+  adding tested examples and clarifying how to construct and reuse clients.
 
 ## [0.3.0] - 2025-11-28
 
