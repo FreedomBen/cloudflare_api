@@ -136,6 +136,10 @@ derived from tags and version-bump commits in `mix.exs`.
   table maintenance/management, Cloudforce One tag/category/target industry
   helpers, tenant metadata, and classic Argo Tiered Caching so the next slice of
   the OpenAPI backlog is covered with docs and tests.
+- Implemented Token Validation configs/rules, Total TLS, build Triggers, tunnel
+  routing + virtual networks, Turnstile, URL Normalization, and both generations
+  of URL Scanner so the next sequence of security/networking tags are fully
+  wrapped with ExUnit coverage.
 
 ### Changed
 

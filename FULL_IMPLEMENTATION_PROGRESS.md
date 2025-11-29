@@ -306,6 +306,16 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.TargetIndustry` | `/cloudforce-one/events/targetIndustries*` + dataset variants | Target-industry listings per dataset/catalog. |
 | `CloudflareApi.Tenants` | `/tenants/:tenant_id/*` detail + accounts/types/entitlements/memberships | Tenant metadata helper. |
 | `CloudflareApi.TieredCaching` | `/zones/:zone_id/argo/tiered_caching` GET/PATCH | Argo Tiered Caching configuration helper. |
+| `CloudflareApi.TokenValidationTokenConfiguration` | `/zones/:zone_id/token_validation/config*` | Token Validation config CRUD + credential updates. |
+| `CloudflareApi.TokenValidationTokenRules` | `/zones/:zone_id/token_validation/rules*` list/create/bulk/update/delete/preview | Token Validation rule lifecycle helper. |
+| `CloudflareApi.TotalTls` | `/zones/:zone_id/acm/total_tls` GET/POST | Total TLS setting management. |
+| `CloudflareApi.Triggers` | `/accounts/:account_id/builds/triggers*` + manual builds/cache purge | Build trigger CRUD + helpers. |
+| `CloudflareApi.TunnelRouting` | `/accounts/:account_id/teamnet/routes*` list/create/update/delete + IP lookups | Tunnel route management. |
+| `CloudflareApi.TunnelVirtualNetwork` | `/accounts/:account_id/teamnet/virtual_networks*` | Virtual network CRUD. |
+| `CloudflareApi.Turnstile` | `/accounts/:account_id/challenges/widgets*` | Turnstile widget CRUD + secret rotation. |
+| `CloudflareApi.UrlNormalization` | `/zones/:zone_id/url_normalization` GET/PUT/DELETE | URL normalization setting helper. |
+| `CloudflareApi.UrlScanner` | `/accounts/:account_id/urlscanner/v2/*` scan/search/dom/har/screenshot/response | Modern URL Scanner v2 helpers. |
+| `CloudflareApi.UrlScannerDeprecated` | `/accounts/:account_id/urlscanner/*` scan/search/har/screenshot/response | Legacy URL Scanner helpers.
 
 ## Remaining Modules
 
@@ -325,16 +335,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Environment Variables
 - Event
 - Feedback
-- Token Validation Token Configuration
-- Token Validation Token Rules
-- Total TLS
-- Triggers
-- Tunnel Routing
-- Tunnel Virtual Network
-- Turnstile
-- URL Normalization
-- URL Scanner
-- URL Scanner (Deprecated)
 - Universal SSL Settings for a Zone
 - User
 - User API Tokens
