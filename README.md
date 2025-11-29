@@ -122,6 +122,9 @@ hand-written approach. Newly added modules include:
 - `CloudflareApi.CustomHostnameFallbackOrigin` – manage fallback origin for custom hostnames.
 - `CloudflareApi.CustomHostnames` – full CRUD and certificate operations for zone custom hostnames.
 - `CloudflareApi.CustomIndicatorFeeds` – manage Cloudforce One custom indicator feeds.
+- `CloudflareApi.CustomOriginTrustStore` – manage ACM custom origin trust store certificates.
+- `CloudflareApi.CustomSsl` – upload/list/prioritize custom SSL certificates for a zone.
+- `CloudflareApi.CredentialManagement` – store R2 data catalog credentials.
 
 Further modules will be added iteratively; progress is tracked in
 `FULL_IMPLEMENTATION_PROGRESS.md`.

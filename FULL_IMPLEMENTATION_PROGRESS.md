@@ -92,15 +92,15 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.CustomHostnameFallbackOrigin` | `/custom_hostnames/fallback_origin` | Fallback origin settings. |
 | `CloudflareApi.CustomHostnames` | `/custom_hostnames` | Zone custom hostnames + certs. |
 | `CloudflareApi.CustomIndicatorFeeds` | `/intel/indicator-feeds` | Custom indicator feed APIs. |
+| `CloudflareApi.CustomOriginTrustStore` | `/acm/custom_trust_store` | ACM custom trust stores. |
+| `CloudflareApi.CustomSsl` | `/custom_certificates` | Custom SSL configs. |
+| `CloudflareApi.CredentialManagement` | `/r2-catalog/:bucket_name/credential` | Store R2 catalog credentials. |
 
 ## Remaining Modules
 
 The following OpenAPI tags still require dedicated modules. When you begin work
 on one, move it to the “Completed Modules” table above (and include any notes).
 
-- Credential Management
-- Custom Origin Trust Store
-- Custom SSL for a Zone
 - Custom pages for a zone
 - Custom pages for an account
 - D1
