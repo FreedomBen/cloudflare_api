@@ -37,17 +37,17 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.AccessReusablePolicies` | `/access/policies` | Reusable policy CRUD. |
 | `CloudflareApi.AccessServiceTokens` | `/access/service_tokens` | Manage service tokens, refresh, rotate. |
 | `CloudflareApi.AccessShortLivedCertificateCas` | `/access/apps/:app_id/ca` | Short-lived certificate CA helpers. |
+| `CloudflareApi.ApiShieldClientCertificates` | `/client_certificates` + hostname associations | Manage client certs for API Shield. |
+| `CloudflareApi.ApiShieldWafExpressionTemplates` | `/expression-template/fallthrough` | Manage WAF expression templates. |
+| `CloudflareApi.AccessTags` | `/access/tags` | Access tag CRUD.
+| `CloudflareApi.Account` | `/accounts/:account_id/builds/account/limits` | Account limits helper. |
+| `CloudflareApi.AccountBillingProfile` | `/accounts/:account_id/billing/profile` | Billing profile fetcher. |
 
 ## Remaining Modules
 
 The following OpenAPI tags still require dedicated modules. When you begin work
 on one, move it to the “Completed Modules” table above (and include any notes).
 
-- API Shield Client Certificates for a Zone
-- API Shield WAF Expression Templates
-- Access tags
-- Account
-- Account Billing Profile
 - Account Load Balancer Monitor Groups
 - Account Load Balancer Monitors
 - Account Load Balancer Pools
