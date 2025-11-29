@@ -141,6 +141,12 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.Filters` | `GET/POST/PUT/DELETE /zones/:zone_id/filters` + single filter operations | Bulk and single firewall filter CRUD with query helpers. |
 | `CloudflareApi.FirewallRules` | `/zones/:zone_id/firewall/rules` list/create/update/delete + priority helpers | Bulk and single firewall rule management with delete + priority APIs. |
 | `CloudflareApi.GatewayCa` | `/accounts/:account_id/access/gateway_ca` list/create/delete | SSH CA management for Access Gateway. |
+| `CloudflareApi.GitHubIntegration` | `/builds/repos/.../config_autofill` | Repo config autofill helper for the GitHub integration. |
+| `CloudflareApi.HealthChecks` | `/zones/:zone_id/healthchecks` + preview + Smart Shield variants | Full health check CRUD, preview helpers, and Smart Shield endpoints. |
+| `CloudflareApi.Hyperdrive` | `/accounts/:account_id/hyperdrive/configs` CRUD | Hyperdrive configuration lifecycle helper. |
+| `CloudflareApi.IpAccessRulesAccount` | `/accounts/:account_id/firewall/access_rules/rules` CRUD | Account-level IP access rule management. |
+| `CloudflareApi.IpAccessRulesUser` | `/user/firewall/access_rules/rules` CRUD | User-level IP access rules. |
+| `CloudflareApi.IpAccessRulesZone` | `/zones/:zone_id/firewall/access_rules/rules` CRUD | Zone-level IP access rules with cascade deletes. |
 
 ## Remaining Modules
 
@@ -160,12 +166,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Environment Variables
 - Event
 - Feedback
-- GitHub Integration
-- Health Checks
-- Hyperdrive
-- IP Access rules for a user
-- IP Access rules for a zone
-- IP Access rules for an account
 - IP Address Management Address Maps
 - IP Address Management BGP Prefixes
 - IP Address Management Dynamic Advertisement

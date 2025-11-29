@@ -77,6 +77,9 @@ derived from tags and version-bump commits in `mix.exs`.
   including tests for bulk id handling and delete cascades.
 - Gateway CA module for Access SSH certificate authorities, covering list/create/delete
   flows and associated tests.
+- GitHub integration autofill, Health Checks (including Smart Shield + preview),
+  Hyperdrive configs, and IP Access rules (user/zone/account) modules, each with
+  request/response coverage and Tesla-based tests.
 
 ### Changed
 
