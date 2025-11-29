@@ -152,6 +152,10 @@ derived from tags and version-bump commits in `mix.exs`.
   Settings, Worker Cron Trigger, and Worker Deployments modules (with matching
   tests) to keep chipping away at the next section of
   `FULL_IMPLEMENTATION_PROGRESS.md`.
+- Implemented Worker Domain, Worker Environment, Worker Script, Worker Subdomain,
+  Worker Tail Logs, Workers (service CRUD/build metadata), and Workers AI modules,
+  each with accompanying ExUnit coverage to extend the Workers surface in the
+  progress log.
 
 ### Changed
 

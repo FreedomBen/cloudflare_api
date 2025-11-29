@@ -342,6 +342,13 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.WorkerAccountSettings` | `/accounts/:account_id/workers/account-settings` GET/PUT | Worker account settings fetch/update helper. |
 | `CloudflareApi.WorkerCronTrigger` | `/workers/scripts/:script_name/schedules` GET/PUT | Worker cron schedule listing and replacement. |
 | `CloudflareApi.WorkerDeployments` | `/workers/scripts/:script_name/deployments*` | Worker deployment list/create/get/delete with optional `force`. |
+| `CloudflareApi.WorkerDomain` | `/accounts/:account_id/workers/domains*` | Domain listing, attach, get, and detach helpers. |
+| `CloudflareApi.WorkerEnvironment` | `/workers/services/:service/environments/:environment` content/settings | Environment content upload + settings patch helpers. |
+| `CloudflareApi.WorkerScript` | `/accounts/:account_id/workers/scripts*` | Script list/search, uploads, settings, secrets, subdomains, usage model. |
+| `CloudflareApi.WorkerSubdomain` | `/accounts/:account_id/workers/subdomain` GET/PUT/DELETE | Account-level Workers subdomain helper. |
+| `CloudflareApi.WorkerTailLogs` | `/workers/scripts/:script_name/tails*` | Tail session list/start/delete. |
+| `CloudflareApi.Workers` | `/accounts/:account_id/workers/workers*` + builds/triggers | Workers services CRUD plus build/trigger listings. |
+| `CloudflareApi.WorkersAi` | `/accounts/:account_id/ai/*` | Workers AI author/model/task search, run, and markdown conversion endpoints. |
 | `CloudflareApi.WhoisRecord` | `GET /accounts/:account_id/intel/whois` | WHOIS record lookup helper. |
 
 ## Remaining Modules
@@ -362,14 +369,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Environment Variables
 - Event
 - Feedback
-- Worker Domain
-- Worker Environment
-- Worker Script
-- Worker Subdomain
-- Worker Tail Logs
-- Worker Versions
-- Workers
-- Workers AI
 - Workers AI Automatic Speech Recognition
 - Workers AI Dumb Pipe
 - Workers AI Finetune
