@@ -205,6 +205,12 @@ derived from tags and version-bump commits in `mix.exs`.
 - Updated development-time dependencies (`ex_doc`, `jason` and their formatter
   stack) to the latest Hex releases.
 
+### Fixed
+
+- Ensure `CloudflareApi.Cache.get/1` raises a `KeyError` when reading expired
+  or missing hostnames (and clean up test helpers) so cache expiry semantics
+  match the expectations in the ExUnit suite.
+
 ## [0.3.0] - 2025-11-28
 
 Changes since `v0.2.3`.

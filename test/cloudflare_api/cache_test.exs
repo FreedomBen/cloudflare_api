@@ -88,7 +88,7 @@ defmodule CloudflareApi.CacheTest do
     end
   end
 
-  defp dns_record_fixture(hostname \\ @test_hostname) do
+  defp dns_record_fixture(hostname) do
     %DnsRecord{
       id: "abcd1123",
       zone_id: "",
@@ -99,7 +99,4 @@ defmodule CloudflareApi.CacheTest do
     }
   end
 
-  defp cache_dns_record(dns_record \\ dns_record_fixture()) do
-    {:ok, dns_record: Cache.add_or_update(dns_record)}
-  end
 end

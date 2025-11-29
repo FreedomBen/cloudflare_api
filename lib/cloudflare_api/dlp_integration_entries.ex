@@ -27,7 +27,7 @@ defmodule CloudflareApi.DlpIntegrationEntries do
   defp base_path(account_id), do: "/accounts/#{account_id}/dlp/entries/integration"
   defp entry_path(account_id, entry_id), do: base_path(account_id) <> "/#{entry_id}"
 
-  defp request(client, method, url, body \\ nil) do
+  defp request(client, method, url, body) do
     client = c(client)
 
     result =
