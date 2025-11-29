@@ -83,6 +83,9 @@ derived from tags and version-bump commits in `mix.exs`.
 - IP Address Management modules for address maps, prefixes (plus BGP, delegations,
   leases, dynamic advertisement, LOA download), bringing the addressing surface
   in line with the OpenAPI spec.
+- Added service bindings, IP intel/list lookups, Cloudforce One indicators &
+  indicator types, infrastructure targets, Instant Logs jobs, interconnects,
+  and Keyless SSL wrappers so the networking/Cloudforce One sections track the spec.
 
 ### Changed
 

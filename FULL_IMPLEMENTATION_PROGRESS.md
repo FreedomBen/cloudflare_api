@@ -153,6 +153,15 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.IpAddressManagementLeases` | `/addressing/leases` list | Lease listing helper. |
 | `CloudflareApi.IpAddressManagementPrefixDelegation` | `/addressing/prefixes/:id/delegations` CRUD | Manage prefix delegations to other accounts. |
 | `CloudflareApi.IpAddressManagementPrefixes` | `/addressing/prefixes` CRUD + validate + LOA download | Prefix lifecycle, validation, and LOA download wrapper. |
+| `CloudflareApi.IpAddressManagementServiceBindings` | `/addressing/prefixes/:id/bindings` CRUD + services | Service binding CRUD plus service catalog listing. |
+| `CloudflareApi.IpIntelligence` | `/intel/ip` overview | IP reputation/overview helper. |
+| `CloudflareApi.IpList` | `/intel/ip-list` | IP list metadata fetcher. |
+| `CloudflareApi.Indicator` | `/cloudforce-one/events/dataset/:dataset/indicators` CRUD + global list | Dataset indicator management, bulk ops, and tag listing. |
+| `CloudflareApi.IndicatorTypes` | Indicator type listing + creation endpoints | Handles modern/legacy list plus dataset type creation. |
+| `CloudflareApi.InfrastructureAccessTargets` | `/infrastructure/targets` CRUD + batch | Target CRUD, batch ops, status, and LOA download. |
+| `CloudflareApi.InstantLogsJobs` | `/logpush/edge/jobs` list/create | Instant Logs job management for zones. |
+| `CloudflareApi.Interconnects` | `/cni/interconnects` CRUD + status + LOA | Network interconnect lifecycle helper incl. LOA download. |
+| `CloudflareApi.KeylessSslZone` | `/zones/:zone_id/keyless_certificates` CRUD | Zone-level Keyless SSL configuration management. |
 
 ## Remaining Modules
 
@@ -172,16 +181,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Environment Variables
 - Event
 - Feedback
-- IP Address Management Service Bindings
-- IP Intelligence
-- IP List
-- Indicator
-- Indicator Types
-- Indicators
-- Infrastructure Access Targets
-- Instant Logs jobs for a zone
-- Interconnects
-- Keyless SSL for a Zone
 - Keys
 - Leaked Credential Checks
 - Lists

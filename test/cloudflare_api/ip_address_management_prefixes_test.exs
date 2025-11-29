@@ -54,9 +54,11 @@ defmodule CloudflareApi.IpAddressManagementPrefixesTest do
   end
 
   test "validate/3 POSTs empty body and accepts 202", %{client: client} do
-    mock(fn %Tesla.Env{method: :post, url: url} = env ->
+    mock(fn %Tesla.Env{method: :post, url: url, body: body} = env ->
       assert url ==
                "https://api.cloudflare.com/client/v4/accounts/acc/addressing/prefixes/pfx/validate"
+
+      assert Jason.decode!(body) == %{}
 
       {:ok, %Tesla.Env{env | status: 202, body: %{"result" => %{"status" => "pending"}}}}
     end)

@@ -49,14 +49,14 @@ defmodule CloudflareApi.IpAddressManagementPrefixes do
         {:post, %{} = params} ->
           Tesla.post(client, url, params)
 
-        {:post, nil} ->
-          Tesla.post(client, url, "")
-
         {:patch, %{} = params} ->
           Tesla.patch(client, url, params)
 
         {:delete, %{} = params} ->
           Tesla.delete(client, url, body: params)
+
+        {:post, _} ->
+          Tesla.post(client, url, "")
       end
 
     handle_response(result)
