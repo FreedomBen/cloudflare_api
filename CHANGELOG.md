@@ -63,6 +63,12 @@ derived from tags and version-bump commits in `mix.exs`.
   modules to close out the intel-related tags.
 - Durable Objects namespace list/object helpers and email routing destination
   address CRUD, continuing the march across the remaining tags.
+- Email routing rules and settings modules (including catch-all + DNS toggles)
+  to round out the email routing surface.
+- Email Security investigation endpoints and Email Security settings (allow,
+  block, trusted domains, impersonation registry) now have wrappers and tests.
+- Endpoint health checks and build-trigger environment variables helpers,
+  covering the diagnostics and environment variable tags.
 
 ### Changed
 

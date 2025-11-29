@@ -130,6 +130,12 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.DomainIntelligence` | `/intel/domain`, `/intel/domain/bulk` | Domain intelligence lookups. |
 | `CloudflareApi.DurableObjectsNamespace` | `/workers/durable_objects/namespaces` list/objects | Durable Objects namespace helpers. |
 | `CloudflareApi.EmailRoutingDestinationAddresses` | `/email/routing/addresses` CRUD | Email routing destination address management. |
+| `CloudflareApi.EmailRoutingRoutingRules` | `/email/routing/rules` get/create/update/delete | Routing rule and catch-all helpers. |
+| `CloudflareApi.EmailRoutingSettings` | `/email/routing` settings + DNS toggles | Email routing enable/disable + DNS helpers. |
+| `CloudflareApi.EmailSecurity` | `/email-security/investigate` endpoints | Message investigation helpers. |
+| `CloudflareApi.EmailSecuritySettings` | `/email-security/settings` | Allow/block/trusted domain settings. |
+| `CloudflareApi.EndpointHealthChecks` | `/diagnostics/endpoint-healthchecks` CRUD | Endpoint health check helpers. |
+| `CloudflareApi.EnvironmentVariables` | `/builds/triggers/:id/environment_variables` list/upsert/delete | Build trigger environment variables. |
 
 ## Remaining Modules
 
