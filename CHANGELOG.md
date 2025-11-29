@@ -9,6 +9,10 @@ derived from tags and version-bump commits in `mix.exs`.
 
 ### Added
 
+- Pay-Per-Crawl configuration + Stripe helpers, SecurityTxt, Tseng abuse report
+  processing, WARP Teams device override codes, and Workers Pipelines (legacy
+  + v1) modules with comprehensive tests to clear the remaining tags from
+  `FULL_IMPLEMENTATION_PROGRESS.md`.
 - Hand-written modules for Cloudflare Accounts and Worker Routes endpoints,
   plus a progress log (`FULL_IMPLEMENTATION_PROGRESS.md`) that tracks manual
   coverage of the OpenAPI spec.

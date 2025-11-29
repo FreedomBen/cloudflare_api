@@ -278,10 +278,13 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.SecondaryDnsPrimaryZone` | `/zones/:zone_id/secondary_dns/outgoing*` | Primary zone (outgoing) configuration helpers. |
 | `CloudflareApi.PagesDomains` | `/accounts/:account_id/pages/projects/:project_name/domains` GET/POST/PATCH/DELETE | Manage Pages custom domain lifecycle. |
 | `CloudflareApi.PagesProject` | `/accounts/:account_id/pages/projects` + `/:project_name` GET/POST/PATCH/DELETE | Pages project list/create/get/update/delete. |
+| `CloudflareApi.PpcConfig` | `/accounts/:account_id/pay-per-crawl/zones_can_be_enabled*`, `/zones/:zone_id/pay-per-crawl/configuration` GET/POST/PATCH | Pay-Per-Crawl zone configuration CRUD plus account-level eligibility toggles. |
+| `CloudflareApi.PpcStripe` | `/accounts/:account_id/pay-per-crawl/(crawler|publisher)/stripe` GET/POST/DELETE | Configure Pay-Per-Crawl Stripe connections for crawlers and publishers. |
 | `CloudflareApi.SecondaryDnsSecondaryZone` | `/zones/:zone_id/secondary_dns/incoming` CRUD + `/force_axfr` | Incoming secondary zone config + forced transfers. |
 | `CloudflareApi.SecondaryDnsTsig` | `/accounts/:account_id/secondary_dns/tsigs` list/create/get/update/delete | TSIG key management for Secondary DNS. |
 | `CloudflareApi.SecretsStore` | `/accounts/:account_id/secrets_store/*` quota, stores, and secrets endpoints | Secrets Store quota plus store/secret CRUD + duplicate helpers. |
 | `CloudflareApi.SecurityCenterInsights` | `/intel/attack-surface-report/*`, `/security-center/insights*` (account+zone) | Security Center insight listings, counts, and dismissals. |
+| `CloudflareApi.SecurityTxt` | `GET/PUT/DELETE /zones/:zone_id/security-center/securitytxt` | Manage Security Center `security.txt` content for a zone. |
 | `CloudflareApi.Sessions` | `/accounts/:account_id/realtime/kit/:app_id/sessions*` list/session/participants/chat/summary/transcript | Realtime Kit session and participant analytics. |
 | `CloudflareApi.Settings` | `GET/PUT /accounts/:account_id/cni/settings` | Magic WAN / Magic Transit account settings helper. |
 | `CloudflareApi.SinkholeConfig` | `GET /accounts/:account_id/intel/sinkholes` | Account sinkhole configuration listing. |
@@ -310,6 +313,7 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.TokenValidationTokenRules` | `/zones/:zone_id/token_validation/rules*` list/create/bulk/update/delete/preview | Token Validation rule lifecycle helper. |
 | `CloudflareApi.TotalTls` | `/zones/:zone_id/acm/total_tls` GET/POST | Total TLS setting management. |
 | `CloudflareApi.Triggers` | `/accounts/:account_id/builds/triggers*` + manual builds/cache purge | Build trigger CRUD + helpers. |
+| `CloudflareApi.TsengAbuseComplaintProcessorOther` | `/accounts/:account_id/abuse-reports*` list/get/submit + mitigations + appeals | Abuse report submission/listing plus mitigation listings and review requests. |
 | `CloudflareApi.TunnelRouting` | `/accounts/:account_id/teamnet/routes*` list/create/update/delete + IP lookups | Tunnel route management. |
 | `CloudflareApi.TunnelVirtualNetwork` | `/accounts/:account_id/teamnet/virtual_networks*` | Virtual network CRUD. |
 | `CloudflareApi.Turnstile` | `/accounts/:account_id/challenges/widgets*` | Turnstile widget CRUD + secret rotation. |
@@ -335,6 +339,7 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.WafRuleGroups` | `/zones/:zone_id/firewall/waf/packages/:package_id/groups*` | Rule group list/get/update. |
 | `CloudflareApi.WafRules` | `/zones/:zone_id/firewall/waf/packages/:package_id/rules*` | Rule list/get/update. |
 | `CloudflareApi.WarpChangeEvents` | `GET /accounts/:account_id/dex/warp-change-events` | WARP change event listing. |
+| `CloudflareApi.WarpTeamsDeviceApiOther` | `GET /accounts/:account_id/devices/registrations/:registration_id/override_codes` | Fetch one-time Zero Trust device override codes. |
 | `CloudflareApi.WaitingRoom` | `/waiting_rooms` account+zone listings, CRUD, events, rules, preview, settings, status | Full Waiting Room management surface. |
 | `CloudflareApi.WebAnalytics` | `/rum/site_info`, `/rum/v2/:ruleset_id/(rule|rules)`, `/zones/:zone_id/settings/rum` | Web Analytics site/rule CRUD plus zone RUM toggles. |
 | `CloudflareApi.Web3Hostname` | `/web3/hostnames*` + IPFS universal path content list entries | Web3 hostname CRUD and IPFS gateway content lists. |
@@ -363,6 +368,7 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.WorkersAiTranslation` | `/ai/run/@cf/(ai4bharat|meta)/*` | Translation helpers. |
 | `CloudflareApi.WorkersKvNamespace` | `/storage/kv/namespaces*` + keys/bulk/values | Namespace management and key/value CRUD. |
 | `CloudflareApi.WorkersForPlatforms` | `/workers/dispatch/namespaces*` | Workers for Platforms namespace/script lifecycle helpers. |
+| `CloudflareApi.WorkersPipelinesOther` | `/accounts/:account_id/pipelines*`, `/pipelines/v1/(pipelines|sinks|streams|validate_sql)` | Workers Pipelines (deprecated + v1) list/create/get/update/delete plus sink/stream helpers and SQL validation. |
 | `CloudflareApi.Workflows` | `/accounts/:account_id/workflows*` | Workflow definitions, instances, events, and versions. |
 | `CloudflareApi.Zaraz` | `/zones/:zone_id/settings/zaraz/*` | Zaraz zone config, workflow, publish, and history endpoints. |
 | `CloudflareApi.ZeroTrustConnectivitySettings` | `/accounts/:account_id/zerotrust/connectivity_settings` GET/PATCH | Zero Trust connectivity settings helper. |
@@ -416,12 +422,7 @@ roughly by the OpenAPI tag they represent.
 The following OpenAPI tags still require dedicated modules. When you begin work
 on one, move it to the “Completed Modules” table above (and include any notes).
 
-- ppc_config
-- ppc_stripe
-- security.txt
-- tseng-abuse-complaint-processor_other
-- warp-teams-device-api_other
-- workers_pipelines_other
+- _None right now — progress is up to date._
 
 ## Working Notes
 
