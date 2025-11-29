@@ -18,6 +18,8 @@ derived from tags and version-bump commits in `mix.exs`.
   AutoRAG surface area.
 - Automatic SSL/TLS, Page Rules settings, and BinDB helpers to extend coverage
   into SSL settings and Cloudforce One binary analysis workflows.
+- Bot Settings, Botnet Threat Feed, and Build Tokens modules with matching
+  tests to continue the march across the Cloudflare tag list.
 
 ### Changed
 

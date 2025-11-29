@@ -101,6 +101,9 @@ hand-written approach. Newly added modules include:
 - `CloudflareApi.AutomaticSslTls` – inspect or update Automatic SSL/TLS enrollment.
 - `CloudflareApi.AvailablePageRulesSettings` – list Page Rules settings available to a zone.
 - `CloudflareApi.BinDb` – upload binaries to / fetch binaries from Cloudforce One BinDB.
+- `CloudflareApi.BotSettings` – manage zone bot management configuration.
+- `CloudflareApi.BotnetThreatFeed` – read Botnet Threat Feed reports and ASN configs.
+- `CloudflareApi.BuildTokens` – manage Cloudflare Builds tokens.
 
 Further modules will be added iteratively; progress is tracked in
 `FULL_IMPLEMENTATION_PROGRESS.md`.
