@@ -1,41 +1,93 @@
 defmodule CloudflareApi.Zones do
   @moduledoc ~S"""
-  Lightweight wrapper around Cloudflare zone listing.
-
-  This module currently exposes a single `list/2` function that maps directly
-  to `GET /zones` and returns the raw zone maps from Cloudflare. For a richer
-  struct representation, see `CloudflareApi.Zone`.
+  Thin wrapper around `GET/POST/DELETE/PATCH` zone endpoints plus activation
+  checks and cache purges. For struct helpers, see `CloudflareApi.Zone`.
   """
 
-  @doc ~S"""
-  List zones visible to the authenticated account.
-
-  - `client` – a `Tesla.Client.t()` or a zero-arity function returning one
-  - `opts` – optional keyword list of query parameters as defined by the
-    Cloudflare API (`name`, `status`, `"account.id"`, `"account.name"`, `page`,
-    `per_page`, etc.)
-
-  On success, returns `{:ok, zones}` where `zones` is the raw `"result"` list
-  from Cloudflare. If Cloudflare responds with an `errors` list, returns
-  `{:error, errors}`; other failures are wrapped as `{:error, err}`.
+  @doc """
+  List zones visible to the authenticated account (`GET /zones`).
   """
-  def list(client, opts \\ nil) do
-    case Tesla.get(c(client), list_url(opts)) do
-      {:ok, %Tesla.Env{status: 200, body: body}} -> {:ok, body["result"]}
-      {:ok, %Tesla.Env{body: %{"errors" => errs}}} -> {:error, errs}
-      err -> {:error, err}
-    end
+  def list(client, opts \\ [])
+
+  def list(client, nil), do: list(client, [])
+
+  def list(client, opts) do
+    c(client)
+    |> Tesla.get(with_query("/zones", opts))
+    |> handle_response()
   end
 
-  defp list_url(opts) do
-    case opts do
-      nil -> "/zones"
-      _ -> "/zones?#{CloudflareApi.uri_encode_opts(opts)}"
-    end
+  @doc """
+  Create a zone (`POST /zones`).
+  """
+  def create(client, params) when is_map(params) do
+    c(client)
+    |> Tesla.post("/zones", params)
+    |> handle_response()
   end
+
+  @doc """
+  Delete a zone (`DELETE /zones/:zone_id`).
+  """
+  def delete(client, zone_id) do
+    c(client)
+    |> Tesla.delete(zone_path(zone_id), body: %{})
+    |> handle_response()
+  end
+
+  @doc """
+  Fetch a zone (`GET /zones/:zone_id`).
+  """
+  def get(client, zone_id) do
+    c(client)
+    |> Tesla.get(zone_path(zone_id))
+    |> handle_response()
+  end
+
+  @doc """
+  Patch a zone (`PATCH /zones/:zone_id`).
+  """
+  def patch(client, zone_id, params) when is_map(params) do
+    c(client)
+    |> Tesla.patch(zone_path(zone_id), params)
+    |> handle_response()
+  end
+
+  @doc """
+  Trigger an activation check (`PUT /zones/:zone_id/activation_check`).
+  """
+  def activation_check(client, zone_id) do
+    c(client)
+    |> Tesla.put(zone_path(zone_id) <> "/activation_check", %{})
+    |> handle_response()
+  end
+
+  @doc """
+  Purge cache (`POST /zones/:zone_id/purge_cache`).
+  """
+  def purge_cache(client, zone_id, params) when is_map(params) do
+    c(client)
+    |> Tesla.post(zone_path(zone_id) <> "/purge_cache", params)
+    |> handle_response()
+  end
+
+  defp zone_path(zone_id), do: "/zones/#{zone_id}"
+
+  defp with_query(path, []), do: path
+  defp with_query(path, opts), do: path <> "?" <> CloudflareApi.uri_encode_opts(opts)
+
+  defp handle_response({:ok, %Tesla.Env{status: status, body: %{"result" => result}}})
+       when status in 200..299,
+       do: {:ok, result}
+
+  defp handle_response({:ok, %Tesla.Env{status: status, body: body}}) when status in 200..299,
+    do: {:ok, body}
+
+  defp handle_response({:ok, %Tesla.Env{body: %{"errors" => errs}}}), do: {:error, errs}
+  defp handle_response(other), do: {:error, other}
 
   defp c(%Tesla.Client{} = client), do: client
-  defp c(client), do: client.()
+  defp c(fun) when is_function(fun, 0), do: fun.()
 end
 
 # HTTP

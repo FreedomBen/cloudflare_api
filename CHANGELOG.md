@@ -168,6 +168,9 @@ derived from tags and version-bump commits in `mix.exs`.
 - Completed the next Zero Trust slice: proxy endpoints, gateway rules, hostname routes, risk scoring
   (behaviors/summary/user reset), risk scoring integrations, and SSH settings—each with thin modules
   and deterministic tests.
+- Added Zero Trust subnets, accounts (device settings + gateway config/logging), application review
+  status, certificates, lists, organization (plus DoH/revoke), and seats coverage with matching
+  tests to keep whittling down the remaining Zero Trust tags.
 
 ### Changed
 

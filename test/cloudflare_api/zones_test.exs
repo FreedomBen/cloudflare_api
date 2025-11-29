@@ -129,4 +129,73 @@ defmodule CloudflareApi.ZonesTest do
       assert {:error, {:error, :timeout}} = Zones.list(client(), nil)
     end
   end
+
+  describe "mutations" do
+    test "create/2 posts JSON" do
+      params = %{"name" => "example.com"}
+
+      mock(fn %Tesla.Env{method: :post, url: url, body: body} = env ->
+        assert url == "https://api.cloudflare.com/client/v4/zones"
+        assert Jason.decode!(body) == params
+        {:ok, %Tesla.Env{env | status: 200, body: %{"result" => params}}}
+      end)
+
+      assert {:ok, ^params} = Zones.create(client(), params)
+    end
+
+    test "delete/2 sends empty body" do
+      mock(fn %Tesla.Env{method: :delete, url: url, body: body} = env ->
+        assert url == "https://api.cloudflare.com/client/v4/zones/zone%2F1"
+        assert Jason.decode!(body) == %{}
+        {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{}}}}
+      end)
+
+      assert {:ok, %{}} = Zones.delete(client(), "zone/1")
+    end
+
+    test "get/2 fetches zone" do
+      mock(fn %Tesla.Env{method: :get, url: url} = env ->
+        assert url == "https://api.cloudflare.com/client/v4/zones/zone"
+        {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{"id" => "zone"}}}}
+      end)
+
+      assert {:ok, %{"id" => "zone"}} = Zones.get(client(), "zone")
+    end
+
+    test "patch/3 sends JSON" do
+      params = %{"paused" => true}
+
+      mock(fn %Tesla.Env{method: :patch, url: url, body: body} = env ->
+        assert url == "https://api.cloudflare.com/client/v4/zones/zone"
+        assert Jason.decode!(body) == params
+        {:ok, %Tesla.Env{env | status: 200, body: %{"result" => params}}}
+      end)
+
+      assert {:ok, ^params} = Zones.patch(client(), "zone", params)
+    end
+
+    test "activation_check/2 PUTs empty body" do
+      mock(fn %Tesla.Env{method: :put, url: url, body: body} = env ->
+        assert url ==
+                 "https://api.cloudflare.com/client/v4/zones/zone/activation_check"
+
+        assert Jason.decode!(body) == %{}
+        {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{}}}}
+      end)
+
+      assert {:ok, %{}} = Zones.activation_check(client(), "zone")
+    end
+
+    test "purge_cache/3 posts payload" do
+      params = %{"purge_everything" => true}
+
+      mock(fn %Tesla.Env{method: :post, url: url, body: body} = env ->
+        assert url == "https://api.cloudflare.com/client/v4/zones/zone/purge_cache"
+        assert Jason.decode!(body) == params
+        {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{}}}}
+      end)
+
+      assert {:ok, %{}} = Zones.purge_cache(client(), "zone", params)
+    end
+  end
 end

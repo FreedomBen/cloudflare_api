@@ -9,7 +9,7 @@ roughly by the OpenAPI tag they represent.
 | Module | Endpoints Covered | Notes |
 | --- | --- | --- |
 | `CloudflareApi.DnsRecords` | `GET/POST/PUT/DELETE /zones/:zone/dns_records` plus helpers | Legacy handwritten module, aligned with OpenAPI spec. |
-| `CloudflareApi.Zones` | `GET /zones` | Returns raw zone maps; relies on `opts` keyword list for filters. |
+| `CloudflareApi.Zones` | `GET/POST/DELETE/PATCH /zones` + activation check + purge cache | Zone CRUD helpers plus cache/activation utilities. |
 | `CloudflareApi.Accounts` | `GET /accounts`, `GET /accounts/:id` | Newly created manual module mirroring the spec section. |
 | `CloudflareApi.WorkerRoutes` | `GET/POST/PUT/DELETE /zones/:zone/workers/routes` | Covers list/create/get/update/delete for worker routes. |
 | `CloudflareApi.AiGatewayDatasets` | `GET/POST/PUT/DELETE /accounts/:account_id/ai-gateway/gateways/:gateway_id/datasets` | Dataset CRUD for AI Gateway. |
@@ -376,6 +376,18 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.ZeroTrustRiskScoring` | `/zt_risk_scoring` behaviors/summary/user/reset | Risk scoring behavior + summary + user reset helpers. |
 | `CloudflareApi.ZeroTrustRiskScoringIntegrations` | `/zt_risk_scoring/integrations*` | Integration list/create/update/delete + reference lookup. |
 | `CloudflareApi.ZeroTrustSshSettings` | `/gateway/audit_ssh_settings*` | SSH audit settings get/update/rotate seed. |
+| `CloudflareApi.ZeroTrustSubnets` | `/zerotrust/subnets*` | Subnet listing plus Cloudflare source updates. |
+| `CloudflareApi.ZeroTrustAccounts` | `/devices/settings`, `/gateway`, `/gateway/configuration`, `/gateway/logging` | Device settings + Zero Trust account info/config/logging helpers. |
+| `CloudflareApi.ZeroTrustApplicationsReviewStatus` | `/gateway/apps/review_status` GET/PUT | Review status fetch/update. |
+| `CloudflareApi.ZeroTrustCertificates` | `/gateway/certificates*` | Certificate list/create/get/delete + activate/deactivate. |
+| `CloudflareApi.ZeroTrustLists` | `/gateway/lists*` + `/items` | Zero Trust list CRUD and item listing. |
+| `CloudflareApi.ZeroTrustOrganization` | `/access/organizations*` + DoH + revoke user | Organization CRUD + DoH + token revocation. |
+| `CloudflareApi.ZeroTrustSeats` | `/access/seats` PATCH | Zero Trust seat updates. |
+| `CloudflareApi.ZeroTrustUsers` | `/access/users*` | Zero Trust user listing plus active session, failed login, and last-seen lookups. |
+| `CloudflareApi.ZoneAnalyticsDeprecated` | `/zones/:zone_id/analytics/dashboard`, `/analytics/colos` | Deprecated analytics dashboard and colo helpers. |
+| `CloudflareApi.ZoneCacheSettings` | `/zones/:zone_id/cache/*` | Cache reserve, reserve clear, regional tiered cache, and variants endpoints. |
+| `CloudflareApi.ZoneCloudConnectorRules` | `/zones/:zone_id/cloud_connector/rules` GET/PUT | Cloud Connector rule retrieval and replacement. |
+| `CloudflareApi.ZoneHolds` | `/zones/:zone_id/hold` GET/POST/PATCH/DELETE | Zone hold lifecycle management. |
 | `CloudflareApi.WhoisRecord` | `GET /accounts/:account_id/intel/whois` | WHOIS record lookup helper. |
 
 ## Remaining Modules
@@ -396,20 +408,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Environment Variables
 - Event
 - Feedback
-- Zero Trust Subnets
-- Zero Trust accounts
-- Zero Trust applications review status
-- Zero Trust certificates
-- Zero Trust lists
-- Zero Trust organization
-- Zero Trust seats
-- Zero Trust users
-- Zone
-- Zone Analytics (Deprecated)
-- Zone Cache Settings
-- Zone Cloud Connector Rules GET
-- Zone Cloud Connector Rules PUT
-- Zone Holds
 - Zone Lockdown
 - Zone Rate Plan
 - Zone Rulesets
