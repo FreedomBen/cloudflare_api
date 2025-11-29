@@ -1,0 +1,297 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# Zones, DNS Records, and DNS Settings
+
+## Section
+
+This notebook shows how to use `cloudflare_api` to:
+
+* List and mutate **zones** (activation checks, cache purges, safe updates)
+* Manage **DNS records** (list, create, update, delete, existence checks)
+* Read and update **DNS settings** at the zone and account level
+
+> ⚠️ **Important:** Many of these calls change live Cloudflare state.
+> Prefer running this notebook against a dedicated **test account/zone**
+> and double‑check each section before executing it.
+
+## 1. Setup
+
+Configure your Cloudflare credentials and IDs. The recommended approach is to
+use environment variables:
+
+* `CLOUDFLARE_API_TOKEN`
+* `CLOUDFLARE_API_ACCOUNT_ID`
+* `CLOUDFLARE_API_ZONE_ID`
+
+```elixir
+token = System.fetch_env!("CLOUDFLARE_API_TOKEN")
+account_id = System.fetch_env!("CLOUDFLARE_API_ACCOUNT_ID")
+zone_id = System.fetch_env!("CLOUDFLARE_API_ZONE_ID")
+
+# Zero-arity client function, convenient to pass around
+c = CloudflareApi.client(token)
+```
+
+If you prefer, you can hard‑code values instead (not recommended for shared
+notebooks):
+
+```elixir
+# token = "your-api-token"
+# account_id = "your-account-id"
+# zone_id = "your-zone-id"
+# c = CloudflareApi.client(token)
+```
+
+---
+
+## 2. Zones – read operations
+
+### 2.1 List zones
+
+```elixir
+{:ok, zones} = CloudflareApi.Zones.list(c)
+
+zones
+|> Enum.map(fn z -> {z["id"], z["name"]} end)
+```
+
+### 2.2 Fetch a specific zone
+
+```elixir
+{:ok, zone} = CloudflareApi.Zones.get(c, zone_id)
+
+zone
+```
+
+---
+
+## 3. Zones – write operations
+
+> ⚠️ **These calls modify zone state.**
+> Use a test zone if possible, and review parameters carefully.
+
+### 3.1 Safe no‑op patch (write path)
+
+This exercises `patch/3` while preserving the current `paused` value.
+
+```elixir
+{:ok, zone} = CloudflareApi.Zones.get(c, zone_id)
+paused = Map.fetch!(zone, "paused")
+
+{:ok, patched} = CloudflareApi.Zones.patch(c, zone_id, %{"paused" => paused})
+
+patched["paused"]
+```
+
+### 3.2 Trigger an activation check
+
+```elixir
+CloudflareApi.Zones.activation_check(c, zone_id)
+```
+
+### 3.3 Purge cache for a zone
+
+> ⚠️ This clears cached content. It does **not** remove DNS or settings, but
+> may increase origin load temporarily.
+
+```elixir
+CloudflareApi.Zones.purge_cache(c, zone_id, %{"purge_everything" => true})
+```
+
+### 3.4 (Optional) Create and delete a zone
+
+Creating/deleting zones is usually only appropriate in automated
+provisioning flows. This shows the call pattern but may fail unless the
+domain is properly configured on Cloudflare.
+
+```elixir
+new_zone_params = %{
+  "name" => "your-test-domain.example"
+  # Add other fields as required by the Cloudflare API,
+  # e.g.: "account" => %{"id" => account_id}
+}
+
+# Create a new zone (may fail if the domain is not valid/owned)
+# {:ok, created_zone} = CloudflareApi.Zones.create(c, new_zone_params)
+```
+
+```elixir
+# Once you have a test zone ID you want to remove:
+# test_zone_id = created_zone["id"]
+# CloudflareApi.Zones.delete(c, test_zone_id)
+```
+
+---
+
+## 4. DNS records – read operations
+
+### 4.1 List all DNS records for a zone
+
+```elixir
+{:ok, records} = CloudflareApi.DnsRecords.list(c, zone_id)
+
+Enum.map(records, fn record ->
+  {record.type, record.hostname, record.ip}
+end)
+```
+
+### 4.2 List records for a specific hostname
+
+```elixir
+hostname = "www.example.com"
+
+CloudflareApi.DnsRecords.list_for_hostname(c, zone_id, hostname)
+```
+
+### 4.3 List records using host + domain
+
+```elixir
+host = "www"
+domain = "example.com"
+
+CloudflareApi.DnsRecords.list_for_host_domain(c, zone_id, host, domain)
+```
+
+### 4.4 Existence helper checks
+
+```elixir
+CloudflareApi.DnsRecords.hostname_exists?(c, zone_id, "www.example.com")
+```
+
+```elixir
+CloudflareApi.DnsRecords.host_domain_exists?(c, zone_id, "www", "example.com")
+```
+
+---
+
+## 5. DNS records – write operations
+
+> ⚠️ **These calls create/update/delete DNS records.**
+> Use a test hostname under your zone and avoid touching production records.
+
+### 5.1 Create a test A record
+
+```elixir
+test_hostname = "livebook-test.example.com"
+test_ip = "203.0.113.10" # example IP from RFC 5737
+
+{:ok, record} = CloudflareApi.DnsRecords.create(c, zone_id, test_hostname, test_ip)
+
+record
+```
+
+### 5.2 Update the test record
+
+```elixir
+new_ip = "203.0.113.11"
+
+{:ok, updated_record} =
+  CloudflareApi.DnsRecords.update(
+    c,
+    zone_id,
+    record.id,
+    record.hostname,
+    new_ip
+  )
+
+updated_record
+```
+
+### 5.3 Confirm the hostname exists
+
+```elixir
+CloudflareApi.DnsRecords.hostname_exists?(c, zone_id, record.hostname)
+```
+
+### 5.4 Delete the test record
+
+```elixir
+CloudflareApi.DnsRecords.delete(c, zone_id, record.id)
+```
+
+### 5.5 Verify the hostname no longer exists
+
+```elixir
+CloudflareApi.DnsRecords.hostname_exists?(c, zone_id, record.hostname)
+```
+
+---
+
+## 6. DNS settings – read operations
+
+These helpers use `CloudflareApi.DnsSettings` to fetch DNS settings at the
+zone and account scopes.
+
+### 6.1 Zone DNS settings
+
+```elixir
+{:ok, zone_dns_settings} = CloudflareApi.DnsSettings.zone_settings(c, zone_id)
+
+zone_dns_settings
+```
+
+You can inspect just the defaults, when present:
+
+```elixir
+zone_dns_settings["zone_defaults"]
+```
+
+### 6.2 Account DNS settings
+
+```elixir
+{:ok, account_dns_settings} = CloudflareApi.DnsSettings.account_settings(c, account_id)
+
+account_dns_settings
+```
+
+---
+
+## 7. DNS settings – write operations
+
+> ⚠️ **These calls can change how DNS behaves for your zone/account.**
+> Start by reading the current settings and make only minimal, well‑understood
+> changes.
+
+### 7.1 Safe zone DNS settings round‑trip
+
+This exercises `update_zone_settings/3` by sending back the existing
+`zone_defaults` unchanged (a logical no‑op).
+
+```elixir
+{:ok, zone_dns_settings} = CloudflareApi.DnsSettings.zone_settings(c, zone_id)
+
+zone_defaults = zone_dns_settings["zone_defaults"] || %{}
+
+params = %{"zone_defaults" => zone_defaults}
+
+{:ok, updated_zone_dns_settings} =
+  CloudflareApi.DnsSettings.update_zone_settings(c, zone_id, params)
+
+updated_zone_dns_settings["zone_defaults"] == zone_defaults
+```
+
+### 7.2 Account DNS settings (advanced)
+
+Account‑level DNS settings apply across your entire account, so changes
+here can have wide impact. This section shows how to build the update
+payload starting from the current settings; you should only modify specific
+fields you understand.
+
+```elixir
+{:ok, current_account_settings} =
+  CloudflareApi.DnsSettings.account_settings(c, account_id)
+
+updated_account_settings =
+  current_account_settings
+  # Example: update a nested setting safely, e.g.
+  # |> put_in(["some_group", "some_flag"], true)
+
+CloudflareApi.DnsSettings.update_account_settings(
+  c,
+  account_id,
+  updated_account_settings
+)
+```
+
+If the payload is invalid for your account, `update_account_settings/3`
+returns `{:error, errors}` with the Cloudflare validation messages.

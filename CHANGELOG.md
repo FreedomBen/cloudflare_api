@@ -199,6 +199,9 @@ derived from tags and version-bump commits in `mix.exs`.
   README and top-level moduledoc to explain the manual rollout plan.
 - Polished the `CloudflareApi` moduledoc and client helper documentation,
   adding tested examples and clarifying how to construct and reuse clients.
+ - Added a Livebook walkthrough (`livebooks/zones_dns_settings.livemd`) that
+   exercises zone, DNS record, and DNS settings read/write flows for interactive
+   experimentation.
 
 ## [0.3.0] - 2025-11-28
 
