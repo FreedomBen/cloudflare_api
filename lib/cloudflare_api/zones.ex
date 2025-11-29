@@ -71,7 +71,7 @@ defmodule CloudflareApi.Zones do
     |> handle_response()
   end
 
-  defp zone_path(zone_id), do: "/zones/#{zone_id}"
+  defp zone_path(zone_id), do: "/zones/#{URI.encode_www_form(to_string(zone_id))}"
 
   defp with_query(path, []), do: path
   defp with_query(path, opts), do: path <> "?" <> CloudflareApi.uri_encode_opts(opts)

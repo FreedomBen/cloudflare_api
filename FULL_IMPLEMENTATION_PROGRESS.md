@@ -389,6 +389,13 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.ZoneCloudConnectorRules` | `/zones/:zone_id/cloud_connector/rules` GET/PUT | Cloud Connector rule retrieval and replacement. |
 | `CloudflareApi.ZoneHolds` | `/zones/:zone_id/hold` GET/POST/PATCH/DELETE | Zone hold lifecycle management. |
 | `CloudflareApi.WhoisRecord` | `GET /accounts/:account_id/intel/whois` | WHOIS record lookup helper. |
+| `CloudflareApi.ZoneLockdown` | `GET/POST /zones/:zone_id/firewall/lockdowns` + single rule `GET/PUT/DELETE` | Zone lockdown CRUD with support for all search filters. |
+| `CloudflareApi.ZoneRatePlans` | `GET /zones/:zone_id/available_rate_plans` | Lists the available plans for a zone. |
+| `CloudflareApi.ZoneRulesets` | `/zones/:zone_id/rulesets*` list/create/get/update/delete + rules, versions, entrypoints | Full zone ruleset lifecycle including entrypoint and version helpers. |
+| `CloudflareApi.ZoneSettings` | `/zones/:zone_id/settings*` bulk + single setting endpoints (`aegis`, `fonts`, `origin_*`, `speed_brain`, `ssl_automatic_mode`) | Core zone settings helpers for bulk updates and specific toggles. |
+| `CloudflareApi.ZoneSnippets` | `/zones/:zone_id/snippets*` list/get/put/delete/content + `/snippet_rules` | Manage Workers snippets and snippet rules for a zone. |
+| `CloudflareApi.ZoneSubscription` | `GET/POST/PUT /zones/:zone_id/subscription` | Manage a zone’s subscription record. |
+| `CloudflareApi.ZoneAccessApplications` | `/zones/:zone_id/access/apps*` list/create/get/update/delete + settings, policy tests, token revocation | Zone-scoped Access application management. |
 
 ## Remaining Modules
 
@@ -408,13 +415,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Environment Variables
 - Event
 - Feedback
-- Zone Lockdown
-- Zone Rate Plan
-- Zone Rulesets
-- Zone Settings
-- Zone Snippets
-- Zone Subscription
-- Zone-Level Access applications
 - Zone-Level Access groups
 - Zone-Level Access identity providers
 - Zone-Level Access mTLS authentication

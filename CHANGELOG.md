@@ -12,6 +12,10 @@ derived from tags and version-bump commits in `mix.exs`.
 - Hand-written modules for Cloudflare Accounts and Worker Routes endpoints,
   plus a progress log (`FULL_IMPLEMENTATION_PROGRESS.md`) that tracks manual
   coverage of the OpenAPI spec.
+- Zone Lockdown, Zone Rate Plans, Zone Rulesets, Zone Settings, Zone Snippets,
+  Zone Subscription, and zone-level Access Applications modules (each with
+  matching ExUnit coverage) to keep knocking items off
+  `FULL_IMPLEMENTATION_PROGRESS.md`.
 - Added Keys (Workers telemetry), Leaked Credential Checks, Lists, Live Streams,
   Livestream Analytics, load balancer modules (healthcheck events, monitors,
   pools, regions, zone balancers), Logcontrol CMB config, zone/account Logpush
