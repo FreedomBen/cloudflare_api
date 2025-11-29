@@ -26,6 +26,9 @@ derived from tags and version-bump commits in `mix.exs`.
   to keep expanding account-level management APIs.
 - Cloudflare IPs, Images, and Images Keys modules (with multipart upload
   handling) so media workflows and IP listings are represented in the wrapper.
+- Images variants, Cloudflare Tunnels, tunnel configuration, connectivity
+  services, content scanning, and country helpers with tests to keep the manual
+  rollout moving.
 
 ### Changed
 

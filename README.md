@@ -116,6 +116,9 @@ hand-written approach. Newly added modules include:
 - `CloudflareApi.CloudflareImagesVariants` – create/update/list Images variants.
 - `CloudflareApi.CloudflareTunnels` – CRUD Cloudflare/Warp tunnels, tokens, and connections.
 - `CloudflareApi.CloudflareTunnelConfiguration` – read/update Zero Trust tunnel configs.
+- `CloudflareApi.ConnectivityServices` – manage Connectivity Services directory entries.
+- `CloudflareApi.ContentScanning` – enable/disable content upload scanning and payloads.
+- `CloudflareApi.Country` – fetch Cloudforce One country data.
 
 Further modules will be added iteratively; progress is tracked in
 `FULL_IMPLEMENTATION_PROGRESS.md`.

@@ -86,15 +86,15 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.CloudflareImagesVariants` | `/images/v1/variants` | Images variant CRUD. |
 | `CloudflareApi.CloudflareTunnels` | `/cfd_tunnel`, `/warp_connector`, `/tunnels` | Tunnel CRUD/connectors. |
 | `CloudflareApi.CloudflareTunnelConfiguration` | `/cfd_tunnel/:id/configurations` | Tunnel config management. |
+| `CloudflareApi.ConnectivityServices` | `/connectivity/directory/services` | Connectivity directory APIs. |
+| `CloudflareApi.ContentScanning` | `/content-upload-scan` | Content scanning controls. |
+| `CloudflareApi.Country` | `/cloudforce-one/events/countries` | Country intel lookups. |
 
 ## Remaining Modules
 
 The following OpenAPI tags still require dedicated modules. When you begin work
 on one, move it to the “Completed Modules” table above (and include any notes).
 
-- Connectivity Services
-- Content Scanning
-- Country
 - Credential Management
 - Custom Hostname Fallback Origin for a Zone
 - Custom Hostname for a Zone
