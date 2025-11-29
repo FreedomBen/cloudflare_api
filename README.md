@@ -12,6 +12,94 @@ The library currently includes convenience modules for:
   `CloudflareApi.DnsRecords` and `CloudflareApi.DnsRecord`.
 - An optional in-memory cache for DNS lookups via `CloudflareApi.Cache`.
 
+Recent work is expanding coverage to additional endpoints using the same
+hand-written approach. Newly added modules include:
+
+- `CloudflareApi.Accounts` – list accounts or fetch an individual account.
+- `CloudflareApi.WorkerRoutes` – list/create/update/delete Workers routes.
+- `CloudflareApi.AiGatewayDatasets` – CRUD for AI Gateway datasets under a
+  given account and gateway.
+- `CloudflareApi.AiGatewayDynamicRoutes` – manage AI Gateway dynamic routes,
+  deployments, and versions.
+- `CloudflareApi.AiGatewayEvaluations` – list evaluation types and manage
+  gateway evaluations.
+- `CloudflareApi.AiGatewayGateways` – create, update, and fetch AI Gateway
+  configurations (including provider URLs).
+- `CloudflareApi.AiGatewayLogs` – list/update/delete log records for a gateway.
+- `CloudflareApi.AiGatewayProviderConfigs` – manage provider configs for a
+  gateway.
+- `CloudflareApi.ApiShieldApiDiscovery` – interact with API Shield discovery
+  results and OpenAPI artifacts.
+- `CloudflareApi.ApiShieldEndpointManagement` – CRUD for API Shield operations
+  and schema exports.
+- `CloudflareApi.ApiShieldSchemaValidation` – zone/operation schema validation
+  settings plus user schema management.
+- `CloudflareApi.ApiShieldSettings` – high-level API Shield configuration
+  getter/setter for a zone.
+- `CloudflareApi.AsnIntelligence` – fetch ASN overview and subnet details.
+- `CloudflareApi.AccessBookmarks` – legacy bookmark application helpers.
+- `CloudflareApi.AccessScimUpdateLogs` – list SCIM update logs.
+- `CloudflareApi.AccessAppPolicies` – manage policies scoped to an Access app.
+- `CloudflareApi.AccessApplications` – create/update/delete Access apps and
+  manage tokens/settings.
+- `CloudflareApi.AccessAuthenticationLogs` – list Access authentication events.
+- `CloudflareApi.AccessCustomPages` – CRUD for custom Access pages.
+- `CloudflareApi.AccessGroups` – manage Access groups.
+- `CloudflareApi.AccessIdentityProviders` – manage identity providers and SCIM
+  resources.
+- `CloudflareApi.AccessKeyConfiguration` – view/update/rotate Access keys.
+- `CloudflareApi.AccessMtlsAuthentication` – manage Access mTLS certificates
+  and settings.
+- `CloudflareApi.AccessPolicyTester` – run and inspect policy tests.
+- `CloudflareApi.AccessReusablePolicies` – account-level reusable policy CRUD.
+- `CloudflareApi.AccessServiceTokens` – manage service tokens (including rotate
+  and refresh).
+- `CloudflareApi.AccessShortLivedCertificateCas` – CRUD helpers for Access
+  short-lived certificate CAs.
+- `CloudflareApi.ApiShieldClientCertificates` – client certificate CRUD plus
+  hostname associations.
+- `CloudflareApi.ApiShieldWafExpressionTemplates` – manage expression
+  templates for API Shield WAF.
+- `CloudflareApi.AccessTags` – Access tag CRUD.
+- `CloudflareApi.Account` / `AccountBillingProfile` – account limits and
+  billing profile helpers.
+- `CloudflareApi.AccountLoadBalancerMonitorGroups` – monitor group CRUD and
+  reference listing.
+- `CloudflareApi.AccountLoadBalancerMonitors` – monitor CRUD, preview, and
+  references.
+- `CloudflareApi.AccountLoadBalancerPools` – pool CRUD, health, previews, and
+  references.
+- `CloudflareApi.AccountLoadBalancerSearch` – search across load balancer
+  resources.
+- `CloudflareApi.AccountMembers` – manage account member invites and roles.
+- `CloudflareApi.AccountOwnedApiTokens` – manage account tokens, permission
+  groups, and verification.
+- `CloudflareApi.AccountPermissionGroups` – inspect IAM permission groups.
+- `CloudflareApi.AccountRequestTracer` – trigger request traces for an account.
+- `CloudflareApi.AccountResourceGroups` – IAM resource group CRUD.
+- `CloudflareApi.AccountRoles` – list account roles and details.
+- `CloudflareApi.AccountRulesets` – full account ruleset CRUD, entrypoint, and
+  version helpers.
+- `CloudflareApi.AccountSubscriptions` – manage account subscriptions.
+- `CloudflareApi.AccountUserGroups` – IAM user group and member management.
+- `CloudflareApi.AccountCustomNameservers` – manage custom nameservers and zone
+  usage metadata.
+- `CloudflareApi.RealtimeKitActiveSession` – manage meeting sessions
+  (kick/mute/polls).
+- `CloudflareApi.RealtimeKitAnalytics` – daywise analytics for Realtime Kit
+  apps.
+- `CloudflareApi.RealtimeKitApps` – list/create Realtime Kit apps.
+- `CloudflareApi.AnalyzeCertificate` – analyze SSL certificates for a zone.
+- `CloudflareApi.ArgoAnalyticsGeolocation` – Argo latency analytics by colo.
+- `CloudflareApi.ArgoAnalyticsZone` – Argo analytics aggregated per zone.
+- `CloudflareApi.ArgoSmartRouting` – get/patch Argo Smart Routing settings.
+- `CloudflareApi.Attacker` – list Cloudforce One attacker events.
+- `CloudflareApi.AuditLogs` – fetch account/user audit logs.
+- `CloudflareApi.AutoragJobs` – inspect AutoRAG jobs and logs.
+
+Further modules will be added iteratively; progress is tracked in
+`FULL_IMPLEMENTATION_PROGRESS.md`.
+
 An up-to-date OpenAPI schema for the Cloudflare API is cached locally at
 `priv/cloudflare_api/openapi.json` and used to align request/response shapes.
 
