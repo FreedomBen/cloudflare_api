@@ -326,6 +326,16 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.UserAccountMemberships` | `/memberships*` list/get/update/delete | User account membership helper. |
 | `CloudflareApi.UsersInvites` | `/user/invites*` list/get/respond | User invitation management. |
 | `CloudflareApi.UsersOrganizations` | `/user/organizations*` list/get/delete | User organization membership helper.
+| `CloudflareApi.Values` | `POST /accounts/:account_id/workers/observability/telemetry/values` | Workers telemetry values listing. |
+| `CloudflareApi.Vectorize` | `/accounts/:account_id/vectorize/v2/indexes*` CRUD + vector ops | Vectorize v2 index/vector management. |
+| `CloudflareApi.VectorizeBeta` | `/accounts/:account_id/vectorize/indexes*` (deprecated) | Legacy Vectorize beta helper. |
+| `CloudflareApi.Versions` | `/accounts/:account_id/workers/workers/:worker_id/versions*` | Workers version list/create/get/delete. |
+| `CloudflareApi.WafOverrides` | `/zones/:zone_id/firewall/waf/overrides*` | Zone WAF override CRUD. |
+| `CloudflareApi.WafPackages` | `/zones/:zone_id/firewall/waf/packages*` | WAF package list/get/update. |
+| `CloudflareApi.WafRuleGroups` | `/zones/:zone_id/firewall/waf/packages/:package_id/groups*` | Rule group list/get/update. |
+| `CloudflareApi.WafRules` | `/zones/:zone_id/firewall/waf/packages/:package_id/rules*` | Rule list/get/update. |
+| `CloudflareApi.WarpChangeEvents` | `GET /accounts/:account_id/dex/warp-change-events` | WARP change event listing. |
+| `CloudflareApi.WhoisRecord` | `GET /accounts/:account_id/intel/whois` | WHOIS record lookup helper. |
 
 ## Remaining Modules
 
@@ -345,16 +355,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Environment Variables
 - Event
 - Feedback
-- Values
-- Vectorize
-- Vectorize Beta (Deprecated)
-- Versions
-- WAF overrides
-- WAF packages
-- WAF rule groups
-- WAF rules
-- WARP Change Events
-- WHOIS Record
 - Waiting Room
 - Web Analytics
 - Web3 Hostname

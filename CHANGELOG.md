@@ -144,6 +144,10 @@ derived from tags and version-bump commits in `mix.exs`.
   tenants, API tokens, UA blocking, billing history/profile, subscriptions,
   account memberships, invites, orgs) with matching tests to keep chipping away
   at the remaining user/zone settings list.
+- Covered telemetry `Values`, Vectorize v2 + beta endpoints, Workers versions,
+  WAF overrides/packages/groups/rules, WARP change events, and WHOIS lookups so
+  the analytics/security backlog keeps shrinking with documented wrappers and
+  ExUnit coverage.
 
 ### Changed
 
