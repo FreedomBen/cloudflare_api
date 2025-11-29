@@ -52,17 +52,16 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.AccountRequestTracer` | `/request-tracer/trace` | Trigger request tracer. |
 | `CloudflareApi.AccountResourceGroups` | `/iam/resource_groups` | Resource group CRUD. |
 | `CloudflareApi.AccountRoles` | `/accounts/:id/roles` | List account roles. |
+| `CloudflareApi.AccountRulesets` | `/rulesets` CRUD, entrypoints, versions | Account ruleset helpers. |
+| `CloudflareApi.AccountSubscriptions` | `/subscriptions` CRUD | Manage subscriptions. |
+| `CloudflareApi.AccountUserGroups` | `/iam/user_groups` + members | User group management. |
+| `CloudflareApi.AccountCustomNameservers` | `/custom_ns` + zone usage | Custom nameserver management. |
 
 ## Remaining Modules
 
 The following OpenAPI tags still require dedicated modules. When you begin work
 on one, move it to the “Completed Modules” table above (and include any notes).
 
-- Account Rulesets
-- Account Subscriptions
-- Account User Groups
-- Account-Level Custom Nameservers
-- Account-Level Custom Nameservers Usage for a Zone
 - Active session
 - Analytics
 - Analyze Certificate
