@@ -202,6 +202,8 @@ derived from tags and version-bump commits in `mix.exs`.
  - Added a Livebook walkthrough (`livebooks/zones_dns_settings.livemd`) that
    exercises zone, DNS record, and DNS settings read/write flows for interactive
    experimentation.
+- Updated development-time dependencies (`ex_doc`, `jason` and their formatter
+  stack) to the latest Hex releases.
 
 ## [0.3.0] - 2025-11-28
 

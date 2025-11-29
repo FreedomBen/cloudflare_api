@@ -159,7 +159,7 @@ mix deps.get
 
 ### Supported Elixir / OTP
 
-The project targets Elixir `~> 1.12` and a reasonably recent OTP release.
+The project targets Elixir `~> 1.12` and above, and a reasonably recent OTP release.
 If you are on a newer Elixir (1.13+), it should work as long as your OTP
 version is supported by that Elixir release.
 
