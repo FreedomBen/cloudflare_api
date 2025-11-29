@@ -22,6 +22,8 @@ derived from tags and version-bump commits in `mix.exs`.
   tests to continue the march across the Cloudflare tag list.
 - Builds, CNIs, and Cache Reserve Clear wrappers plus tests so Workers build
   introspection, interconnects, and Smart Shield jobs are now covered.
+- Calls apps, TURN keys, and Magic Catalog Sync helpers with full test coverage
+  to keep expanding account-level management APIs.
 
 ### Changed
 

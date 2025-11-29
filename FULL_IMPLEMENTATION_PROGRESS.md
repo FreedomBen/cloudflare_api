@@ -77,15 +77,15 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.Builds` | `/builds/builds` | Build inspection/log helpers. |
 | `CloudflareApi.Cnis` | `/cni/cnis` | CNI CRUD operations. |
 | `CloudflareApi.CacheReserveClear` | `/smart_shield/cache_reserve_clear` | Cache Reserve Clear trigger/status. |
+| `CloudflareApi.CallsApps` | `/calls/apps` | Calls app CRUD. |
+| `CloudflareApi.CallsTurnKeys` | `/calls/turn_keys` | TURN key management. |
+| `CloudflareApi.CatalogSync` | `/magic/cloud/catalog-syncs` | Catalog sync CRUD + refresh. |
 
 ## Remaining Modules
 
 The following OpenAPI tags still require dedicated modules. When you begin work
 on one, move it to the “Completed Modules” table above (and include any notes).
 
-- Calls Apps
-- Calls TURN Keys
-- Catalog Sync
 - Category
 - Certificate Packs
 - Cloud Integrations

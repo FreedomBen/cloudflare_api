@@ -107,6 +107,9 @@ hand-written approach. Newly added modules include:
 - `CloudflareApi.Builds` – inspect builds, logs, and cancel jobs for Workers scripts.
 - `CloudflareApi.Cnis` – manage Cloudflare Network Interconnects.
 - `CloudflareApi.CacheReserveClear` – inspect or trigger Cache Reserve Clear jobs.
+- `CloudflareApi.CallsApps` – manage Cloudflare Calls applications.
+- `CloudflareApi.CallsTurnKeys` – create/update/delete Calls TURN keys.
+- `CloudflareApi.CatalogSync` – orchestrate Magic Cloud catalog syncs.
 
 Further modules will be added iteratively; progress is tracked in
 `FULL_IMPLEMENTATION_PROGRESS.md`.
