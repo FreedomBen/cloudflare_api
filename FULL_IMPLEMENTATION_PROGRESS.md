@@ -165,6 +165,17 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.Keys` | `POST /accounts/:account_id/workers/observability/telemetry/keys` | Lists Workers Observability telemetry keys for an account. |
 | `CloudflareApi.LeakedCredentialChecks` | `/zones/:zone_id/leaked-credential-checks` status + custom detection CRUD | Manage Leaked Credential Checks status and custom detection patterns. |
 | `CloudflareApi.Lists` | `/accounts/:account_id/rules/lists` CRUD + items/bulk operations | Account filter list definitions, items, and async bulk operations. |
+| `CloudflareApi.LiveStreams` | `/realtime/kit/.../livestreams` CRUD + meeting helpers | Covers Realtime Kit livestream CRUD, meeting controls, and stream key resets. |
+| `CloudflareApi.LivestreamAnalytics` | `/analytics/livestreams` daywise + overall | Fetches livestream analytics aggregates with time filters. |
+| `CloudflareApi.LoadBalancerHealthcheckEvents` | `GET /user/load_balancing_analytics/events` | Lists user-level healthcheck events with pool/origin filters. |
+| `CloudflareApi.LoadBalancerMonitors` | `/user/load_balancers/monitors` CRUD + preview | User-level monitor lifecycle, previews, and references. |
+| `CloudflareApi.LoadBalancerPools` | `/user/load_balancers/pools` CRUD + health/preview references | User-level pool management, bulk patch, health, and previews. |
+| `CloudflareApi.LoadBalancerRegions` | `/accounts/:account_id/load_balancers/regions` list/get | Region mapping helpers for load balancers. |
+| `CloudflareApi.LoadBalancers` | `/zones/:zone_id/load_balancers` CRUD | Zone-level load balancer configuration helpers. |
+| `CloudflareApi.LogcontrolCmbConfig` | `/accounts/:account_id/logs/control/cmb/config` get/update/delete | Account-level CMB log control configuration. |
+| `CloudflareApi.LogpushJobsZone` | `/zones/:zone_id/logpush` jobs + validation endpoints | Zone Logpush jobs, ownership challenges, destination/origin validation. |
+| `CloudflareApi.LogpushJobsAccount` | `/accounts/:account_id/logpush` jobs + validation endpoints | Account Logpush jobs plus helper validations. |
+| `CloudflareApi.LogsReceived` | `/zones/:zone_id/logs/*` retention flag + Logpull data | Zone log retention flag, Logpull data, RayID lookups, and field metadata. |
 
 ## Remaining Modules
 
@@ -184,17 +195,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Environment Variables
 - Event
 - Feedback
-- Live streams
-- LivestreamAnalytics
-- Load Balancer Healthcheck Events
-- Load Balancer Monitors
-- Load Balancer Pools
-- Load Balancer Regions
-- Load Balancers
-- Logcontrol CMB config for an account
-- Logpush jobs for a zone
-- Logpush jobs for an account
-- Logs Received
 - MCP Portal
 - MCP Portal Servers
 - Magic Account Apps

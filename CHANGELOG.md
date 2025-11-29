@@ -12,9 +12,11 @@ derived from tags and version-bump commits in `mix.exs`.
 - Hand-written modules for Cloudflare Accounts and Worker Routes endpoints,
   plus a progress log (`FULL_IMPLEMENTATION_PROGRESS.md`) that tracks manual
   coverage of the OpenAPI spec.
-- Added Keys (Workers telemetry), Leaked Credential Checks, and Lists modules
-  with comprehensive ExUnit coverage to keep the progress log moving down the
-  OpenAPI tag list.
+- Added Keys (Workers telemetry), Leaked Credential Checks, Lists, Live Streams,
+  Livestream Analytics, load balancer modules (healthcheck events, monitors,
+  pools, regions, zone balancers), Logcontrol CMB config, zone/account Logpush
+  jobs, and Logs Received wrappers with comprehensive ExUnit coverage to keep
+  the progress log moving down the OpenAPI tag list.
 - ExUnit coverage for the new Argo analytics, Smart Routing, AutoRAG, attacker,
   and audit log wrappers to keep recent modules guarded by tests.
 - AutoRAG collection management and search helpers to round out the initial
