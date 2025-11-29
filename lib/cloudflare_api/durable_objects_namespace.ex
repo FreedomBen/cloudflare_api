@@ -3,6 +3,20 @@ defmodule CloudflareApi.DurableObjectsNamespace do
   Durable Objects namespace helpers (`/workers/durable_objects/namespaces`).
   """
 
+  @doc ~S"""
+  List namespaces for durable objects namespace.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DurableObjectsNamespace.list_namespaces(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list_namespaces(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(
@@ -10,6 +24,20 @@ defmodule CloudflareApi.DurableObjectsNamespace do
     )
     |> handle()
   end
+
+  @doc ~S"""
+  List objects for durable objects namespace.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DurableObjectsNamespace.list_objects(client, "account_id", "namespace_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
 
   def list_objects(client, account_id, namespace_id, opts \\ []) do
     c(client)

@@ -3,11 +3,39 @@ defmodule CloudflareApi.Turnstile do
   Manage Turnstile widgets under `/accounts/:account_id/challenges/widgets`.
   """
 
+  @doc ~S"""
+  List turnstile.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Turnstile.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(with_query(base(account_id), opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create turnstile.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Turnstile.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     c(client)
@@ -15,11 +43,39 @@ defmodule CloudflareApi.Turnstile do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get turnstile.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Turnstile.get(client, "account_id", "site_key", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, site_key, opts \\ []) do
     c(client)
     |> Tesla.get(with_query(widget_path(account_id, site_key), opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Update turnstile.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Turnstile.update(client, "account_id", "site_key", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, account_id, site_key, params) when is_map(params) do
     c(client)
@@ -27,11 +83,39 @@ defmodule CloudflareApi.Turnstile do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Delete turnstile.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Turnstile.delete(client, "account_id", "site_key")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete(client, account_id, site_key) do
     c(client)
     |> Tesla.delete(widget_path(account_id, site_key), body: %{})
     |> handle_response()
   end
+
+  @doc ~S"""
+  Rotate secret for turnstile.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Turnstile.rotate_secret(client, "account_id", "site_key", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def rotate_secret(client, account_id, site_key, params \\ %{}) do
     c(client)

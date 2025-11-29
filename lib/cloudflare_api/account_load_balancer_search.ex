@@ -3,6 +3,20 @@ defmodule CloudflareApi.AccountLoadBalancerSearch do
   Search load balancer resources within an account.
   """
 
+  @doc ~S"""
+  Search account load balancer search.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountLoadBalancerSearch.search(client, "account_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def search(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(search_url(account_id, opts))

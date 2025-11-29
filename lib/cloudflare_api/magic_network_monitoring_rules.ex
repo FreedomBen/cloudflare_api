@@ -3,29 +3,127 @@ defmodule CloudflareApi.MagicNetworkMonitoringRules do
   Manage Magic Network Monitoring rules (`/accounts/:account_id/mnm/rules`).
   """
 
+  @doc ~S"""
+  List magic network monitoring rules.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicNetworkMonitoringRules.list(client, "account_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id) do
     request(client, :get, base(account_id))
   end
+
+  @doc ~S"""
+  Create magic network monitoring rules.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicNetworkMonitoringRules.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     request(client, :post, base(account_id), params)
   end
 
+  @doc ~S"""
+  Replace magic network monitoring rules.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicNetworkMonitoringRules.replace(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def replace(client, account_id, params) when is_map(params) do
     request(client, :put, base(account_id), params)
   end
+
+  @doc ~S"""
+  Get magic network monitoring rules.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicNetworkMonitoringRules.get(client, "account_id", "rule_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get(client, account_id, rule_id) do
     request(client, :get, rule_path(account_id, rule_id))
   end
 
+  @doc ~S"""
+  Update magic network monitoring rules.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicNetworkMonitoringRules.update(client, "account_id", "rule_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, rule_id, params) when is_map(params) do
     request(client, :patch, rule_path(account_id, rule_id), params)
   end
 
+  @doc ~S"""
+  Update advertisement for magic network monitoring rules.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicNetworkMonitoringRules.update_advertisement(client, "account_id", "rule_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update_advertisement(client, account_id, rule_id, params) when is_map(params) do
     request(client, :patch, rule_path(account_id, rule_id) <> "/advertisement", params)
   end
+
+  @doc ~S"""
+  Delete magic network monitoring rules.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicNetworkMonitoringRules.delete(client, "account_id", "rule_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, rule_id) do
     request(client, :delete, rule_path(account_id, rule_id))

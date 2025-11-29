@@ -3,25 +3,109 @@ defmodule CloudflareApi.MagicSiteAcls do
   Manage Magic Site ACLs (`/accounts/:account_id/magic/sites/:site_id/acls`).
   """
 
+  @doc ~S"""
+  List magic site acls.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicSiteAcls.list(client, "account_id", "site_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, site_id, opts \\ []) do
     request(client, :get, base(account_id, site_id) <> query(opts))
   end
+
+  @doc ~S"""
+  Create magic site acls.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicSiteAcls.create(client, "account_id", "site_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, site_id, params) when is_map(params) do
     request(client, :post, base(account_id, site_id), params)
   end
 
+  @doc ~S"""
+  Get magic site acls.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicSiteAcls.get(client, "account_id", "site_id", "acl_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, site_id, acl_id) do
     request(client, :get, acl_path(account_id, site_id, acl_id))
   end
+
+  @doc ~S"""
+  Update magic site acls.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicSiteAcls.update(client, "account_id", "site_id", "acl_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, account_id, site_id, acl_id, params) when is_map(params) do
     request(client, :put, acl_path(account_id, site_id, acl_id), params)
   end
 
+  @doc ~S"""
+  Patch magic site acls.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicSiteAcls.patch(client, "account_id", "site_id", "acl_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def patch(client, account_id, site_id, acl_id, params) when is_map(params) do
     request(client, :patch, acl_path(account_id, site_id, acl_id), params)
   end
+
+  @doc ~S"""
+  Delete magic site acls.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicSiteAcls.delete(client, "account_id", "site_id", "acl_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, site_id, acl_id) do
     request(client, :delete, acl_path(account_id, site_id, acl_id))

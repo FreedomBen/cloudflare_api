@@ -3,11 +3,39 @@ defmodule CloudflareApi.CallsApps do
   Manage Cloudflare Calls applications for an account.
   """
 
+  @doc ~S"""
+  List calls apps.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CallsApps.list(client, "account_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id) do
     c(client)
     |> Tesla.get(base_path(account_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create calls apps.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CallsApps.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     c(client)
@@ -15,17 +43,59 @@ defmodule CloudflareApi.CallsApps do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get calls apps.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CallsApps.get(client, "account_id", "app_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, app_id) do
     c(client)
     |> Tesla.get(app_path(account_id, app_id))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update calls apps.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CallsApps.update(client, "account_id", "app_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, app_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(app_path(account_id, app_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete calls apps.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CallsApps.delete(client, "account_id", "app_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, app_id) do
     c(client)

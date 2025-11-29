@@ -9,6 +9,9 @@ derived from tags and version-bump commits in `mix.exs`.
 
 ### Added
 
+- Added moduledocs/function docs (with inline examples) across the Cloudflare
+  endpoint wrappers and a helper script (`script/add_endpoint_docs.exs`) so
+  future modules can stay consistently documented.
 - Pay-Per-Crawl configuration + Stripe helpers, SecurityTxt, Tseng abuse report
   processing, WARP Teams device override codes, and Workers Pipelines (legacy
   + v1) modules with comprehensive tests to clear the remaining tags from

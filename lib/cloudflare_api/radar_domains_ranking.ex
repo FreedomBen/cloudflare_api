@@ -3,13 +3,55 @@ defmodule CloudflareApi.RadarDomainsRanking do
   Radar domain ranking endpoints under `/radar/ranking`.
   """
 
+  @doc ~S"""
+  Top domains for radar domains ranking.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarDomainsRanking.top_domains(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def top_domains(client, opts \\ []) do
     fetch(client, "/radar/ranking/top", opts)
   end
 
+  @doc ~S"""
+  Timeseries groups for radar domains ranking.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarDomainsRanking.timeseries_groups(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def timeseries_groups(client, opts \\ []) do
     fetch(client, "/radar/ranking/timeseries_groups", opts)
   end
+
+  @doc ~S"""
+  Domain details for radar domains ranking.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarDomainsRanking.domain_details(client, "domain", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def domain_details(client, domain, opts \\ []) do
     fetch(client, "/radar/ranking/domain/" <> encode(domain), opts)

@@ -3,9 +3,37 @@ defmodule CloudflareApi.Scans do
   Cloudforce One scan configuration APIs under `/accounts/:account_id/cloudforce-one/scans`.
   """
 
+  @doc ~S"""
+  Get config for scans.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Scans.get_config(client, "account_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_config(client, account_id, opts \\ []) do
     fetch(client, "/accounts/#{account_id}/cloudforce-one/scans/config", opts)
   end
+
+  @doc ~S"""
+  Create config for scans.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Scans.create_config(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create_config(client, account_id, params) when is_map(params) do
     c(client)
@@ -13,17 +41,59 @@ defmodule CloudflareApi.Scans do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update config for scans.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Scans.update_config(client, "account_id", %{}, %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update_config(client, account_id, config_id, params) when is_map(params) do
     c(client)
     |> Tesla.patch(config_path(account_id, config_id), params)
     |> handle_response()
   end
 
+  @doc ~S"""
+  Delete config for scans.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Scans.delete_config(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete_config(client, account_id, config_id) do
     c(client)
     |> Tesla.delete(config_path(account_id, config_id), body: %{})
     |> handle_response()
   end
+
+  @doc ~S"""
+  Open ports for scans.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Scans.open_ports(client, "account_id", %{}, [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def open_ports(client, account_id, config_id, opts \\ []) do
     fetch(

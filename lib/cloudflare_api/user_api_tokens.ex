@@ -3,11 +3,39 @@ defmodule CloudflareApi.UserApiTokens do
   Manage user-level API tokens under `/user/tokens`.
   """
 
+  @doc ~S"""
+  List user api tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UserApiTokens.list(client, [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, opts \\ []) do
     c(client)
     |> Tesla.get(with_query("/user/tokens", opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create user api tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UserApiTokens.create(client, %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, params) when is_map(params) do
     c(client)
@@ -15,11 +43,39 @@ defmodule CloudflareApi.UserApiTokens do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Permission groups for user api tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UserApiTokens.permission_groups(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def permission_groups(client, opts \\ []) do
     c(client)
     |> Tesla.get(with_query("/user/tokens/permission_groups", opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Verify user api tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UserApiTokens.verify(client)
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def verify(client) do
     c(client)
@@ -27,11 +83,39 @@ defmodule CloudflareApi.UserApiTokens do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get user api tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UserApiTokens.get(client, "token_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, token_id, opts \\ []) do
     c(client)
     |> Tesla.get(with_query(token_path(token_id), opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Update user api tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UserApiTokens.update(client, "token_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, token_id, params) when is_map(params) do
     c(client)
@@ -39,11 +123,39 @@ defmodule CloudflareApi.UserApiTokens do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Delete user api tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UserApiTokens.delete(client, "token_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete(client, token_id) do
     c(client)
     |> Tesla.delete(token_path(token_id), body: %{})
     |> handle_response()
   end
+
+  @doc ~S"""
+  Roll token for user api tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UserApiTokens.roll_token(client, "token_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def roll_token(client, token_id, params \\ %{}) do
     c(client)

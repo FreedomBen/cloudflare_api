@@ -3,11 +3,39 @@ defmodule CloudflareApi.UserAccountMemberships do
   Manage user account memberships via `/memberships`.
   """
 
+  @doc ~S"""
+  List user account memberships.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UserAccountMemberships.list(client, [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, opts \\ []) do
     c(client)
     |> Tesla.get(with_query("/memberships", opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Get user account memberships.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UserAccountMemberships.get(client, "membership_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get(client, membership_id, opts \\ []) do
     c(client)
@@ -15,11 +43,39 @@ defmodule CloudflareApi.UserAccountMemberships do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update user account memberships.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UserAccountMemberships.update(client, "membership_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, membership_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(membership_path(membership_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete user account memberships.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UserAccountMemberships.delete(client, "membership_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, membership_id) do
     c(client)

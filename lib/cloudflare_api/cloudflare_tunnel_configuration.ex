@@ -3,11 +3,39 @@ defmodule CloudflareApi.CloudflareTunnelConfiguration do
   Manage configurations for Cloudflare Tunnels configured via Zero Trust.
   """
 
+  @doc ~S"""
+  Get cloudflare tunnel configuration.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CloudflareTunnelConfiguration.get(client, "account_id", "tunnel_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, tunnel_id) do
     c(client)
     |> Tesla.get(config_path(account_id, tunnel_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Put cloudflare tunnel configuration.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CloudflareTunnelConfiguration.put(client, "account_id", "tunnel_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def put(client, account_id, tunnel_id, params) when is_map(params) do
     c(client)

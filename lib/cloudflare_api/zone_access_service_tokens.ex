@@ -3,11 +3,39 @@ defmodule CloudflareApi.ZoneAccessServiceTokens do
   Manage zone-level Access service tokens.
   """
 
+  @doc ~S"""
+  List zone access service tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZoneAccessServiceTokens.list(client, "zone_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, zone_id, opts \\ []) do
     c(client)
     |> Tesla.get(with_query(base_path(zone_id), opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create zone access service tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZoneAccessServiceTokens.create(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, zone_id, params) when is_map(params) do
     c(client)
@@ -15,17 +43,59 @@ defmodule CloudflareApi.ZoneAccessServiceTokens do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get zone access service tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZoneAccessServiceTokens.get(client, "zone_id", "token_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, zone_id, token_id) do
     c(client)
     |> Tesla.get(token_path(zone_id, token_id))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update zone access service tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZoneAccessServiceTokens.update(client, "zone_id", "token_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, zone_id, token_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(token_path(zone_id, token_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete zone access service tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZoneAccessServiceTokens.delete(client, "zone_id", "token_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, zone_id, token_id) do
     c(client)

@@ -3,17 +3,59 @@ defmodule CloudflareApi.BuildTokens do
   Manage build tokens for the Cloudflare Builds service.
   """
 
+  @doc ~S"""
+  List build tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.BuildTokens.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(list_url(account_id, opts))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Create build tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.BuildTokens.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def create(client, account_id, params) when is_map(params) do
     c(client)
     |> Tesla.post(base_path(account_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete build tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.BuildTokens.delete(client, "account_id", "token_uuid")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, token_uuid) do
     c(client)

@@ -3,17 +3,59 @@ defmodule CloudflareApi.AutoragJobs do
   Manage AutoRAG jobs.
   """
 
+  @doc ~S"""
+  List autorag jobs.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AutoragJobs.list(client, "account_id", "rag_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, rag_id, opts \\ []) do
     c(client)
     |> Tesla.get(list_url(account_id, rag_id, opts))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get autorag jobs.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AutoragJobs.get(client, "account_id", "rag_id", "job_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, rag_id, job_id) do
     c(client)
     |> Tesla.get(job_path(account_id, rag_id, job_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Logs autorag jobs.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AutoragJobs.logs(client, "account_id", "rag_id", "job_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def logs(client, account_id, rag_id, job_id, opts \\ []) do
     c(client)

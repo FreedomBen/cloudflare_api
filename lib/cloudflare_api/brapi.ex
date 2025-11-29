@@ -3,26 +3,138 @@ defmodule CloudflareApi.Brapi do
   Browser Rendering API (BRAPI) helpers under `/accounts/:account_id/browser-rendering`.
   """
 
+  @doc ~S"""
+  Render content for brapi.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Brapi.render_content(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def render_content(client, account_id, params) when is_map(params),
     do: post(client, account_id, "content", params)
+
+  @doc ~S"""
+  Render json for brapi.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Brapi.render_json(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def render_json(client, account_id, params) when is_map(params),
     do: post(client, account_id, "json", params)
 
+  @doc ~S"""
+  Render links for brapi.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Brapi.render_links(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def render_links(client, account_id, params) when is_map(params),
     do: post(client, account_id, "links", params)
+
+  @doc ~S"""
+  Render markdown for brapi.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Brapi.render_markdown(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def render_markdown(client, account_id, params) when is_map(params),
     do: post(client, account_id, "markdown", params)
 
+  @doc ~S"""
+  Render pdf for brapi.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Brapi.render_pdf(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def render_pdf(client, account_id, params) when is_map(params),
     do: post(client, account_id, "pdf", params)
+
+  @doc ~S"""
+  Scrape brapi.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Brapi.scrape(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def scrape(client, account_id, params) when is_map(params),
     do: post(client, account_id, "scrape", params)
 
+  @doc ~S"""
+  Screenshot brapi.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Brapi.screenshot(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def screenshot(client, account_id, params) when is_map(params),
     do: post(client, account_id, "screenshot", params)
+
+  @doc ~S"""
+  Snapshot brapi.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Brapi.snapshot(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def snapshot(client, account_id, params) when is_map(params),
     do: post(client, account_id, "snapshot", params)

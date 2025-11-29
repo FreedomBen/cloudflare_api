@@ -3,6 +3,20 @@ defmodule CloudflareApi.AccountBillingProfile do
   Fetch account billing profile information (deprecated API).
   """
 
+  @doc ~S"""
+  Get account billing profile.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountBillingProfile.get(client, "account_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id) do
     c(client)
     |> Tesla.get("/accounts/#{account_id}/billing/profile")

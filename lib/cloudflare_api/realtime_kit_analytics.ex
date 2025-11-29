@@ -3,6 +3,20 @@ defmodule CloudflareApi.RealtimeKitAnalytics do
   Retrieve Realtime Kit analytics (daywise stats).
   """
 
+  @doc ~S"""
+  Daywise realtime kit analytics.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RealtimeKitAnalytics.daywise(client, "account_id", "app_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def daywise(client, account_id, app_id, opts \\ []) do
     c(client)
     |> Tesla.get(daywise_url(account_id, app_id, opts))

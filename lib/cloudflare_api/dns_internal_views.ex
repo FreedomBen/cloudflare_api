@@ -3,21 +3,91 @@ defmodule CloudflareApi.DnsInternalViews do
   Manage internal DNS views via `/accounts/:account_id/dns_settings/views`.
   """
 
+  @doc ~S"""
+  List dns internal views.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DnsInternalViews.list(client, "account_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id) do
     request(client, :get, base(account_id))
   end
+
+  @doc ~S"""
+  Create dns internal views.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DnsInternalViews.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     request(client, :post, base(account_id), params)
   end
 
+  @doc ~S"""
+  Get dns internal views.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DnsInternalViews.get(client, "account_id", "view_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, view_id) do
     request(client, :get, view_path(account_id, view_id))
   end
 
+  @doc ~S"""
+  Update dns internal views.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DnsInternalViews.update(client, "account_id", "view_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, view_id, params) when is_map(params) do
     request(client, :patch, view_path(account_id, view_id), params)
   end
+
+  @doc ~S"""
+  Delete dns internal views.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DnsInternalViews.delete(client, "account_id", "view_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, view_id) do
     request(client, :delete, view_path(account_id, view_id), %{})

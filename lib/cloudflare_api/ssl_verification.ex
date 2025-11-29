@@ -3,11 +3,39 @@ defmodule CloudflareApi.SslVerification do
   Manage SSL verification details (`/zones/:zone_id/ssl/verification`).
   """
 
+  @doc ~S"""
+  Details ssl verification.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SslVerification.details(client, "zone_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def details(client, zone_id, opts \\ []) do
     c(client)
     |> Tesla.get(with_query(path(zone_id), opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Update pack method for ssl verification.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SslVerification.update_pack_method(client, "zone_id", "certificate_pack_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update_pack_method(client, zone_id, certificate_pack_id, params) when is_map(params) do
     c(client)

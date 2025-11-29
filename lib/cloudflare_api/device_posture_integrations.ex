@@ -3,21 +3,91 @@ defmodule CloudflareApi.DevicePostureIntegrations do
   Manage device posture integrations (`/accounts/:account_id/devices/posture/integration`).
   """
 
+  @doc ~S"""
+  List device posture integrations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DevicePostureIntegrations.list(client, "account_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id) do
     request(client, :get, base(account_id))
   end
+
+  @doc ~S"""
+  Create device posture integrations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DevicePostureIntegrations.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     request(client, :post, base(account_id), params)
   end
 
+  @doc ~S"""
+  Get device posture integrations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DevicePostureIntegrations.get(client, "account_id", "integration_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, integration_id) do
     request(client, :get, integration_path(account_id, integration_id))
   end
 
+  @doc ~S"""
+  Update device posture integrations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DevicePostureIntegrations.update(client, "account_id", "integration_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, integration_id, params) when is_map(params) do
     request(client, :patch, integration_path(account_id, integration_id), params)
   end
+
+  @doc ~S"""
+  Delete device posture integrations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DevicePostureIntegrations.delete(client, "account_id", "integration_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, integration_id) do
     request(client, :delete, integration_path(account_id, integration_id), %{})

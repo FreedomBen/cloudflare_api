@@ -3,11 +3,39 @@ defmodule CloudflareApi.ConnectivityServices do
   Manage Connectivity Services directory entries.
   """
 
+  @doc ~S"""
+  List connectivity services.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ConnectivityServices.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(base_path(account_id) <> query_suffix(opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create connectivity services.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ConnectivityServices.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     c(client)
@@ -15,17 +43,59 @@ defmodule CloudflareApi.ConnectivityServices do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get connectivity services.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ConnectivityServices.get(client, "account_id", "service_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, service_id) do
     c(client)
     |> Tesla.get(service_path(account_id, service_id))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update connectivity services.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ConnectivityServices.update(client, "account_id", "service_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, service_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(service_path(account_id, service_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete connectivity services.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ConnectivityServices.delete(client, "account_id", "service_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, service_id) do
     c(client)

@@ -3,11 +3,39 @@ defmodule CloudflareApi.CustomOriginTrustStore do
   Manage custom origin trust store certificates for a zone.
   """
 
+  @doc ~S"""
+  List custom origin trust store.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CustomOriginTrustStore.list(client, "zone_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, zone_id, opts \\ []) do
     c(client)
     |> Tesla.get(base_path(zone_id) <> query_suffix(opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create custom origin trust store.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CustomOriginTrustStore.create(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, zone_id, params) when is_map(params) do
     c(client)
@@ -15,11 +43,39 @@ defmodule CloudflareApi.CustomOriginTrustStore do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get custom origin trust store.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CustomOriginTrustStore.get(client, "zone_id", "store_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, zone_id, store_id) do
     c(client)
     |> Tesla.get(item_path(zone_id, store_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete custom origin trust store.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CustomOriginTrustStore.delete(client, "zone_id", "store_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, zone_id, store_id) do
     c(client)

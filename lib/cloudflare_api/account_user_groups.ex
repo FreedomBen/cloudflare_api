@@ -3,29 +3,127 @@ defmodule CloudflareApi.AccountUserGroups do
   Manage IAM user groups for an account (including members).
   """
 
+  @doc ~S"""
+  List account user groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountUserGroups.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     c(client) |> Tesla.get(list_url(account_id, opts)) |> handle_response()
   end
+
+  @doc ~S"""
+  Create account user groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountUserGroups.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     c(client) |> Tesla.post(base_path(account_id), params) |> handle_response()
   end
 
+  @doc ~S"""
+  Get account user groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountUserGroups.get(client, "account_id", "group_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, group_id) do
     c(client) |> Tesla.get(group_path(account_id, group_id)) |> handle_response()
   end
+
+  @doc ~S"""
+  Update account user groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountUserGroups.update(client, "account_id", "group_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, account_id, group_id, params) when is_map(params) do
     c(client) |> Tesla.put(group_path(account_id, group_id), params) |> handle_response()
   end
 
+  @doc ~S"""
+  Delete account user groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountUserGroups.delete(client, "account_id", "group_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete(client, account_id, group_id) do
     c(client) |> Tesla.delete(group_path(account_id, group_id), body: %{}) |> handle_response()
   end
 
+  @doc ~S"""
+  List members for account user groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountUserGroups.list_members(client, "account_id", "group_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list_members(client, account_id, group_id, opts \\ []) do
     c(client) |> Tesla.get(members_url(account_id, group_id, opts)) |> handle_response()
   end
+
+  @doc ~S"""
+  Add member for account user groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountUserGroups.add_member(client, "account_id", "group_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def add_member(client, account_id, group_id, params) when is_map(params) do
     c(client)
@@ -33,11 +131,39 @@ defmodule CloudflareApi.AccountUserGroups do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Replace members for account user groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountUserGroups.replace_members(client, "account_id", "group_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def replace_members(client, account_id, group_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(group_path(account_id, group_id) <> "/members", params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete member for account user groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountUserGroups.delete_member(client, "account_id", "group_id", "member_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete_member(client, account_id, group_id, member_id) do
     c(client)

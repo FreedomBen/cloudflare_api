@@ -3,13 +3,55 @@ defmodule CloudflareApi.LogcontrolCmbConfig do
   Manage account-level CMB log control configuration (`/accounts/:account_id/logs/control/cmb/config`).
   """
 
+  @doc ~S"""
+  Get logcontrol cmb config.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LogcontrolCmbConfig.get(client, "account_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id) do
     request(client, :get, base(account_id))
   end
 
+  @doc ~S"""
+  Update logcontrol cmb config.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LogcontrolCmbConfig.update(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, params) when is_map(params) do
     request(client, :post, base(account_id), params)
   end
+
+  @doc ~S"""
+  Delete logcontrol cmb config.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LogcontrolCmbConfig.delete(client, "account_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id) do
     request(client, :delete, base(account_id), %{})

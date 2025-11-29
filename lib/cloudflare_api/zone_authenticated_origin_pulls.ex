@@ -3,11 +3,39 @@ defmodule CloudflareApi.ZoneAuthenticatedOriginPulls do
   Zone-level Authenticated Origin Pull (AOP) certificate management.
   """
 
+  @doc ~S"""
+  List certificates for zone authenticated origin pulls.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZoneAuthenticatedOriginPulls.list_certificates(client, "zone_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list_certificates(client, zone_id, opts \\ []) do
     c(client)
     |> Tesla.get(with_query(base_path(zone_id), opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Upload certificate for zone authenticated origin pulls.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZoneAuthenticatedOriginPulls.upload_certificate(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def upload_certificate(client, zone_id, params) when is_map(params) do
     c(client)
@@ -15,11 +43,39 @@ defmodule CloudflareApi.ZoneAuthenticatedOriginPulls do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get certificate for zone authenticated origin pulls.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZoneAuthenticatedOriginPulls.get_certificate(client, "zone_id", "certificate_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_certificate(client, zone_id, certificate_id) do
     c(client)
     |> Tesla.get(cert_path(zone_id, certificate_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete certificate for zone authenticated origin pulls.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZoneAuthenticatedOriginPulls.delete_certificate(client, "zone_id", "certificate_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete_certificate(client, zone_id, certificate_id) do
     c(client)
@@ -27,11 +83,39 @@ defmodule CloudflareApi.ZoneAuthenticatedOriginPulls do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get settings for zone authenticated origin pulls.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZoneAuthenticatedOriginPulls.get_settings(client, "zone_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_settings(client, zone_id) do
     c(client)
     |> Tesla.get(settings_path(zone_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Update settings for zone authenticated origin pulls.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZoneAuthenticatedOriginPulls.update_settings(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update_settings(client, zone_id, params) when is_map(params) do
     c(client)

@@ -6,11 +6,39 @@ defmodule CloudflareApi.ZoneCacheSettings do
 
   ## Cache Reserve
 
+  @doc ~S"""
+  Get cache reserve for zone cache settings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZoneCacheSettings.get_cache_reserve(client, "zone_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_cache_reserve(client, zone_id) do
     c(client)
     |> Tesla.get(cache_reserve_path(zone_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Patch cache reserve for zone cache settings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZoneCacheSettings.patch_cache_reserve(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def patch_cache_reserve(client, zone_id, params) when is_map(params) do
     c(client)
@@ -20,11 +48,39 @@ defmodule CloudflareApi.ZoneCacheSettings do
 
   ## Cache Reserve Clear
 
+  @doc ~S"""
+  Get cache reserve clear for zone cache settings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZoneCacheSettings.get_cache_reserve_clear(client, "zone_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_cache_reserve_clear(client, zone_id) do
     c(client)
     |> Tesla.get(cache_reserve_clear_path(zone_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Start cache reserve clear for zone cache settings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZoneCacheSettings.start_cache_reserve_clear(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def start_cache_reserve_clear(client, zone_id, params \\ %{}) do
     c(client)
@@ -34,11 +90,39 @@ defmodule CloudflareApi.ZoneCacheSettings do
 
   ## Regional Tiered Cache
 
+  @doc ~S"""
+  Get regional tiered cache for zone cache settings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZoneCacheSettings.get_regional_tiered_cache(client, "zone_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_regional_tiered_cache(client, zone_id) do
     c(client)
     |> Tesla.get(regional_tiered_cache_path(zone_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Patch regional tiered cache for zone cache settings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZoneCacheSettings.patch_regional_tiered_cache(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def patch_regional_tiered_cache(client, zone_id, params) when is_map(params) do
     c(client)
@@ -48,17 +132,59 @@ defmodule CloudflareApi.ZoneCacheSettings do
 
   ## Variants
 
+  @doc ~S"""
+  Get variants for zone cache settings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZoneCacheSettings.get_variants(client, "zone_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_variants(client, zone_id) do
     c(client)
     |> Tesla.get(variants_path(zone_id))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Patch variants for zone cache settings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZoneCacheSettings.patch_variants(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def patch_variants(client, zone_id, params) when is_map(params) do
     c(client)
     |> Tesla.patch(variants_path(zone_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete variants for zone cache settings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZoneCacheSettings.delete_variants(client, "zone_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete_variants(client, zone_id) do
     c(client)

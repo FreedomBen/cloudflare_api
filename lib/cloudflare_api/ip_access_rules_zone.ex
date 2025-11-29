@@ -3,17 +3,73 @@ defmodule CloudflareApi.IpAccessRulesZone do
   Zone-level IP Access rules (`/zones/:zone_id/firewall/access_rules/rules`).
   """
 
+  @doc ~S"""
+  List ip access rules zone.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAccessRulesZone.list(client, "zone_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, zone_id, opts \\ []) do
     request(client, :get, base_path(zone_id) <> query_suffix(opts))
   end
+
+  @doc ~S"""
+  Create ip access rules zone.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAccessRulesZone.create(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, zone_id, params) when is_map(params) do
     request(client, :post, base_path(zone_id), params)
   end
 
+  @doc ~S"""
+  Update ip access rules zone.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAccessRulesZone.update(client, "zone_id", "rule_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, zone_id, rule_id, params) when is_map(params) do
     request(client, :patch, item_path(zone_id, rule_id), params)
   end
+
+  @doc ~S"""
+  Delete ip access rules zone.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAccessRulesZone.delete(client, "zone_id", "rule_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, zone_id, rule_id, opts \\ []) do
     body =

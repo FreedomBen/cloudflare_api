@@ -4,21 +4,91 @@ defmodule CloudflareApi.IpAddressManagementBgpPrefixes do
   `/accounts/:account_id/addressing/prefixes/:prefix_id/bgp/prefixes`.
   """
 
+  @doc ~S"""
+  List ip address management bgp prefixes.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementBgpPrefixes.list(client, "account_id", "prefix_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, prefix_id) do
     request(client, :get, base_path(account_id, prefix_id))
   end
+
+  @doc ~S"""
+  Create ip address management bgp prefixes.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementBgpPrefixes.create(client, "account_id", "prefix_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, prefix_id, params) when is_map(params) do
     request(client, :post, base_path(account_id, prefix_id), params)
   end
 
+  @doc ~S"""
+  Get ip address management bgp prefixes.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementBgpPrefixes.get(client, "account_id", "prefix_id", "bgp_prefix_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, prefix_id, bgp_prefix_id) do
     request(client, :get, prefix_path(account_id, prefix_id, bgp_prefix_id))
   end
 
+  @doc ~S"""
+  Update ip address management bgp prefixes.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementBgpPrefixes.update(client, "account_id", "prefix_id", "bgp_prefix_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, prefix_id, bgp_prefix_id, params) when is_map(params) do
     request(client, :patch, prefix_path(account_id, prefix_id, bgp_prefix_id), params)
   end
+
+  @doc ~S"""
+  Delete ip address management bgp prefixes.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementBgpPrefixes.delete(client, "account_id", "prefix_id", "bgp_prefix_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, prefix_id, bgp_prefix_id) do
     request(client, :delete, prefix_path(account_id, prefix_id, bgp_prefix_id), %{})

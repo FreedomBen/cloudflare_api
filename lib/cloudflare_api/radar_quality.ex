@@ -3,25 +3,109 @@ defmodule CloudflareApi.RadarQuality do
   Radar quality analytics under `/radar/quality`.
   """
 
+  @doc ~S"""
+  Iqi summary for radar quality.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarQuality.iqi_summary(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def iqi_summary(client, opts \\ []) do
     fetch(client, "/radar/quality/iqi/summary", opts)
   end
+
+  @doc ~S"""
+  Iqi timeseries group for radar quality.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarQuality.iqi_timeseries_group(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def iqi_timeseries_group(client, opts \\ []) do
     fetch(client, "/radar/quality/iqi/timeseries_groups", opts)
   end
 
+  @doc ~S"""
+  Speed histogram for radar quality.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarQuality.speed_histogram(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def speed_histogram(client, opts \\ []) do
     fetch(client, "/radar/quality/speed/histogram", opts)
   end
+
+  @doc ~S"""
+  Speed summary for radar quality.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarQuality.speed_summary(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def speed_summary(client, opts \\ []) do
     fetch(client, "/radar/quality/speed/summary", opts)
   end
 
+  @doc ~S"""
+  Speed top ases for radar quality.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarQuality.speed_top_ases(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def speed_top_ases(client, opts \\ []) do
     fetch(client, "/radar/quality/speed/top/ases", opts)
   end
+
+  @doc ~S"""
+  Speed top locations for radar quality.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarQuality.speed_top_locations(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def speed_top_locations(client, opts \\ []) do
     fetch(client, "/radar/quality/speed/top/locations", opts)

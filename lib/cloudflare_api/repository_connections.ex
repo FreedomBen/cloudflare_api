@@ -3,11 +3,39 @@ defmodule CloudflareApi.RepositoryConnections do
   Manage build repository connections (`/accounts/:account_id/builds/repos/connections`).
   """
 
+  @doc ~S"""
+  Upsert repository connections.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RepositoryConnections.upsert(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def upsert(client, account_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(base_path(account_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete repository connections.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RepositoryConnections.delete(client, "account_id", "repo_connection_uuid")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, repo_connection_uuid) do
     c(client)

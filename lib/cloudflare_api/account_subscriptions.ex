@@ -3,11 +3,39 @@ defmodule CloudflareApi.AccountSubscriptions do
   Manage account-level subscriptions.
   """
 
+  @doc ~S"""
+  List account subscriptions.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountSubscriptions.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(list_url(account_id, opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create account subscriptions.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountSubscriptions.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     c(client)
@@ -15,11 +43,39 @@ defmodule CloudflareApi.AccountSubscriptions do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update account subscriptions.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountSubscriptions.update(client, "account_id", "subscription_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, subscription_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(subscription_path(account_id, subscription_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete account subscriptions.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountSubscriptions.delete(client, "account_id", "subscription_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, subscription_id) do
     c(client)

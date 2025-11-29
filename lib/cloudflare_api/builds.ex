@@ -3,6 +3,20 @@ defmodule CloudflareApi.Builds do
   Inspect and manage Cloudflare Builds under an account.
   """
 
+  @doc ~S"""
+  List by version ids for builds.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Builds.list_by_version_ids(client, "account_id", "version_ids")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list_by_version_ids(client, account_id, version_ids) do
     query = [version_ids: list_to_param(version_ids)]
 
@@ -10,6 +24,20 @@ defmodule CloudflareApi.Builds do
     |> Tesla.get(builds_url(account_id, query))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Latest by scripts for builds.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Builds.latest_by_scripts(client, "account_id", "external_script_ids")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def latest_by_scripts(client, account_id, external_script_ids) do
     query = [external_script_ids: list_to_param(external_script_ids)]
@@ -19,17 +47,59 @@ defmodule CloudflareApi.Builds do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get builds.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Builds.get(client, "account_id", "build_uuid")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, build_uuid) do
     c(client)
     |> Tesla.get(build_path(account_id, build_uuid))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Cancel builds.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Builds.cancel(client, "account_id", "build_uuid")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def cancel(client, account_id, build_uuid) do
     c(client)
     |> Tesla.put(build_path(account_id, build_uuid) <> "/cancel", %{})
     |> handle_response()
   end
+
+  @doc ~S"""
+  Logs builds.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Builds.logs(client, "account_id", "build_uuid", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def logs(client, account_id, build_uuid, opts \\ []) do
     c(client)

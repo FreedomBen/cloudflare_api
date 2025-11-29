@@ -3,11 +3,39 @@ defmodule CloudflareApi.AccessGroups do
   Manage Cloudflare Access groups for an account.
   """
 
+  @doc ~S"""
+  List access groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessGroups.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(list_url(account_id, opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create access groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessGroups.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     c(client)
@@ -15,17 +43,59 @@ defmodule CloudflareApi.AccessGroups do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get access groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessGroups.get(client, "account_id", "group_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, group_id) do
     c(client)
     |> Tesla.get(group_path(account_id, group_id))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update access groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessGroups.update(client, "account_id", "group_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, group_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(group_path(account_id, group_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete access groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessGroups.delete(client, "account_id", "group_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, group_id) do
     c(client)

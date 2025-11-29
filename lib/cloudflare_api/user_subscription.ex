@@ -3,17 +3,59 @@ defmodule CloudflareApi.UserSubscription do
   Manage user subscriptions via `/user/subscriptions`.
   """
 
+  @doc ~S"""
+  List user subscription.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UserSubscription.list(client, [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, opts \\ []) do
     c(client)
     |> Tesla.get(with_query("/user/subscriptions", opts))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update user subscription.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UserSubscription.update(client, "subscription_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, subscription_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(subscription_path(subscription_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete user subscription.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UserSubscription.delete(client, "subscription_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, subscription_id) do
     c(client)

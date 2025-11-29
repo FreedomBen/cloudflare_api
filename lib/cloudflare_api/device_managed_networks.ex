@@ -3,21 +3,91 @@ defmodule CloudflareApi.DeviceManagedNetworks do
   Manage device managed networks via `/accounts/:account_id/devices/networks`.
   """
 
+  @doc ~S"""
+  List device managed networks.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DeviceManagedNetworks.list(client, "account_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id) do
     request(client, :get, base(account_id))
   end
+
+  @doc ~S"""
+  Create device managed networks.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DeviceManagedNetworks.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     request(client, :post, base(account_id), params)
   end
 
+  @doc ~S"""
+  Get device managed networks.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DeviceManagedNetworks.get(client, "account_id", "network_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, network_id) do
     request(client, :get, network_path(account_id, network_id))
   end
 
+  @doc ~S"""
+  Update device managed networks.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DeviceManagedNetworks.update(client, "account_id", "network_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, network_id, params) when is_map(params) do
     request(client, :put, network_path(account_id, network_id), params)
   end
+
+  @doc ~S"""
+  Delete device managed networks.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DeviceManagedNetworks.delete(client, "account_id", "network_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, network_id) do
     request(client, :delete, network_path(account_id, network_id), %{})

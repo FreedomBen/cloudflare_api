@@ -3,9 +3,37 @@ defmodule CloudflareApi.RadarTopLevelDomains do
   Radar top-level domain metadata under `/radar/tlds`.
   """
 
+  @doc ~S"""
+  List radar top level domains.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarTopLevelDomains.list(client, [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, opts \\ []) do
     fetch(client, "/radar/tlds", opts)
   end
+
+  @doc ~S"""
+  Get radar top level domains.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarTopLevelDomains.get(client, "tld", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get(client, tld, opts \\ []) do
     fetch(client, "/radar/tlds/" <> encode(tld), opts)

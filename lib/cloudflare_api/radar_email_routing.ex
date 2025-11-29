@@ -3,9 +3,37 @@ defmodule CloudflareApi.RadarEmailRouting do
   Radar email routing analytics under `/radar/email/routing`.
   """
 
+  @doc ~S"""
+  Summary radar email routing.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarEmailRouting.summary(client, "dimension", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def summary(client, dimension, opts \\ []) do
     fetch(client, "/radar/email/routing/summary/" <> encode(dimension), opts)
   end
+
+  @doc ~S"""
+  Timeseries group for radar email routing.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarEmailRouting.timeseries_group(client, "dimension", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def timeseries_group(client, dimension, opts \\ []) do
     fetch(client, "/radar/email/routing/timeseries_groups/" <> encode(dimension), opts)

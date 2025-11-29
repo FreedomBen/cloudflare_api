@@ -3,21 +3,91 @@ defmodule CloudflareApi.RadarAs112 do
   Radar AS112 analytics under `/radar/as112`.
   """
 
+  @doc ~S"""
+  Summary radar as112.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarAs112.summary(client, "dimension", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def summary(client, dimension, opts \\ []) do
     get(client, with_query("/radar/as112/summary/" <> encode(dimension), opts))
   end
+
+  @doc ~S"""
+  Timeseries radar as112.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarAs112.timeseries(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def timeseries(client, opts \\ []) do
     get(client, with_query("/radar/as112/timeseries", opts))
   end
 
+  @doc ~S"""
+  Timeseries group for radar as112.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarAs112.timeseries_group(client, "dimension", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def timeseries_group(client, dimension, opts \\ []) do
     get(client, with_query("/radar/as112/timeseries_groups/" <> encode(dimension), opts))
   end
 
+  @doc ~S"""
+  Top locations for radar as112.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarAs112.top_locations(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def top_locations(client, opts \\ []) do
     get(client, with_query("/radar/as112/top/locations", opts))
   end
+
+  @doc ~S"""
+  Top locations by for radar as112.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarAs112.top_locations_by(client, "dimension", "value", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def top_locations_by(client, dimension, value, opts \\ []) do
     path = "/radar/as112/top/locations/#{encode(dimension)}/#{encode(value)}"

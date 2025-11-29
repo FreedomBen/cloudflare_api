@@ -3,6 +3,20 @@ defmodule CloudflareApi.DomainHistory do
   Cloudforce One domain history helpers (`/accounts/:account_id/intel/domain-history`).
   """
 
+  @doc ~S"""
+  Get domain history.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DomainHistory.get(client, "account_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get("/accounts/#{account_id}/intel/domain-history" <> query_suffix(opts))

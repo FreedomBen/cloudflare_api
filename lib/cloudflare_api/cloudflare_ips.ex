@@ -3,6 +3,20 @@ defmodule CloudflareApi.CloudflareIps do
   Fetch the list of Cloudflare IP ranges.
   """
 
+  @doc ~S"""
+  List cloudflare ips.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CloudflareIps.list(client, [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, opts \\ []) do
     c(client)
     |> Tesla.get("/ips" <> query_suffix(opts))

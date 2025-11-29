@@ -3,21 +3,91 @@ defmodule CloudflareApi.LogsReceived do
   Retrieve zone-level Logpull data, retention flags, and RayID lookups.
   """
 
+  @doc ~S"""
+  Get retention flag for logs received.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LogsReceived.get_retention_flag(client, "zone_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_retention_flag(client, zone_id) do
     request(client, :get, retention_path(zone_id))
   end
+
+  @doc ~S"""
+  Update retention flag for logs received.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LogsReceived.update_retention_flag(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update_retention_flag(client, zone_id, params) when is_map(params) do
     request(client, :post, retention_path(zone_id), params)
   end
 
+  @doc ~S"""
+  List logs received.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LogsReceived.list(client, "zone_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, zone_id, opts \\ []) do
     request(client, :get, logs_path(zone_id) <> query(opts))
   end
 
+  @doc ~S"""
+  List fields for logs received.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LogsReceived.list_fields(client, "zone_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list_fields(client, zone_id) do
     request(client, :get, logs_path(zone_id) <> "/fields")
   end
+
+  @doc ~S"""
+  Get ray ids for logs received.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LogsReceived.get_ray_ids(client, "zone_id", "ray_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get_ray_ids(client, zone_id, ray_id, opts \\ []) do
     request(client, :get, "/zones/#{zone_id}/logs/rayids/#{ray_id}" <> query(opts))

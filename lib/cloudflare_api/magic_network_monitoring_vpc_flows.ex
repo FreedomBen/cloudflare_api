@@ -3,6 +3,20 @@ defmodule CloudflareApi.MagicNetworkMonitoringVpcFlows do
   Generate authentication tokens for Magic Network Monitoring VPC flow log export.
   """
 
+  @doc ~S"""
+  Generate token for magic network monitoring vpc flows.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicNetworkMonitoringVpcFlows.generate_token(client, "account_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def generate_token(client, account_id) do
     c(client)
     |> Tesla.post("/accounts/#{account_id}/mnm/vpc-flows/token", %{})

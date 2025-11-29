@@ -3,11 +3,39 @@ defmodule CloudflareApi.DevicesResilience do
   Manage global WARP override state via `/accounts/:account_id/devices/resilience/disconnect`.
   """
 
+  @doc ~S"""
+  Get override for devices resilience.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DevicesResilience.get_override(client, "account_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_override(client, account_id) do
     c(client)
     |> Tesla.get(base(account_id))
     |> handle()
   end
+
+  @doc ~S"""
+  Set override for devices resilience.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DevicesResilience.set_override(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def set_override(client, account_id, params) when is_map(params) do
     c(client)

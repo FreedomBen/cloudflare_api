@@ -5,11 +5,39 @@ defmodule CloudflareApi.AccessBookmarks do
   These remain for completeness but may be removed by Cloudflare in the future.
   """
 
+  @doc ~S"""
+  List access bookmarks.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessBookmarks.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(list_url(account_id, opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create access bookmarks.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessBookmarks.create(client, "account_id", "bookmark_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, bookmark_id, params) when is_map(params) do
     c(client)
@@ -17,17 +45,59 @@ defmodule CloudflareApi.AccessBookmarks do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get access bookmarks.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessBookmarks.get(client, "account_id", "bookmark_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, bookmark_id) do
     c(client)
     |> Tesla.get(bookmark_path(account_id, bookmark_id))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update access bookmarks.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessBookmarks.update(client, "account_id", "bookmark_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, bookmark_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(bookmark_path(account_id, bookmark_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete access bookmarks.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessBookmarks.delete(client, "account_id", "bookmark_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, bookmark_id) do
     c(client)

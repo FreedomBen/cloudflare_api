@@ -3,11 +3,39 @@ defmodule CloudflareApi.LoadBalancerRegions do
   List load balancer regions for an account (`/accounts/:account_id/load_balancers/regions`).
   """
 
+  @doc ~S"""
+  List load balancer regions.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LoadBalancerRegions.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(base(account_id) <> query(opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Get load balancer regions.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LoadBalancerRegions.get(client, "account_id", "region_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get(client, account_id, region_id) do
     c(client)

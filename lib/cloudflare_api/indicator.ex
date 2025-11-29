@@ -3,9 +3,37 @@ defmodule CloudflareApi.Indicator do
   Cloudforce One indicator helpers.
   """
 
+  @doc ~S"""
+  List indicator.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Indicator.list(client, "account_id", %{}, [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, dataset_id, opts \\ []) do
     request(client, :get, indicators_path(account_id, dataset_id) <> query_suffix(opts))
   end
+
+  @doc ~S"""
+  List all for indicator.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Indicator.list_all(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
 
   def list_all(client, account_id, opts \\ []) do
     request(
@@ -15,6 +43,20 @@ defmodule CloudflareApi.Indicator do
     )
   end
 
+  @doc ~S"""
+  List tags for indicator.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Indicator.list_tags(client, "account_id", %{}, [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list_tags(client, account_id, dataset_id, opts \\ []) do
     request(
       client,
@@ -23,13 +65,55 @@ defmodule CloudflareApi.Indicator do
     )
   end
 
+  @doc ~S"""
+  Create indicator.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Indicator.create(client, "account_id", %{}, %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def create(client, account_id, dataset_id, params) when is_map(params) do
     request(client, :post, dataset_base(account_id, dataset_id) <> "/indicators/create", params)
   end
 
+  @doc ~S"""
+  Create bulk for indicator.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Indicator.create_bulk(client, "account_id", %{}, %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def create_bulk(client, account_id, dataset_id, params) when is_map(params) do
     request(client, :post, dataset_base(account_id, dataset_id) <> "/indicators/bulk", params)
   end
+
+  @doc ~S"""
+  Get indicator.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Indicator.get(client, "account_id", %{}, "indicator_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get(client, account_id, dataset_id, indicator_id) do
     request(
@@ -39,6 +123,20 @@ defmodule CloudflareApi.Indicator do
     )
   end
 
+  @doc ~S"""
+  Update indicator.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Indicator.update(client, "account_id", %{}, "indicator_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, dataset_id, indicator_id, params) when is_map(params) do
     request(
       client,
@@ -47,6 +145,20 @@ defmodule CloudflareApi.Indicator do
       params
     )
   end
+
+  @doc ~S"""
+  Delete indicator.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Indicator.delete(client, "account_id", %{}, "indicator_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, dataset_id, indicator_id) do
     request(

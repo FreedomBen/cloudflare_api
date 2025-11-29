@@ -3,25 +3,109 @@ defmodule CloudflareApi.Hyperdrive do
   Manage Hyperdrive configurations via `/accounts/:account_id/hyperdrive/configs`.
   """
 
+  @doc ~S"""
+  List hyperdrive.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Hyperdrive.list(client, "account_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id) do
     request(client, :get, base_path(account_id))
   end
+
+  @doc ~S"""
+  Create hyperdrive.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Hyperdrive.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     request(client, :post, base_path(account_id), params)
   end
 
+  @doc ~S"""
+  Get hyperdrive.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Hyperdrive.get(client, "account_id", "hyperdrive_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, hyperdrive_id) do
     request(client, :get, config_path(account_id, hyperdrive_id))
   end
+
+  @doc ~S"""
+  Delete hyperdrive.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Hyperdrive.delete(client, "account_id", "hyperdrive_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, hyperdrive_id) do
     request(client, :delete, config_path(account_id, hyperdrive_id), %{})
   end
 
+  @doc ~S"""
+  Update hyperdrive.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Hyperdrive.update(client, "account_id", "hyperdrive_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, hyperdrive_id, params) when is_map(params) do
     request(client, :put, config_path(account_id, hyperdrive_id), params)
   end
+
+  @doc ~S"""
+  Patch hyperdrive.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Hyperdrive.patch(client, "account_id", "hyperdrive_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def patch(client, account_id, hyperdrive_id, params) when is_map(params) do
     request(client, :patch, config_path(account_id, hyperdrive_id), params)

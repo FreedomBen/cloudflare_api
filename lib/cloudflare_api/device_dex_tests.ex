@@ -3,21 +3,91 @@ defmodule CloudflareApi.DeviceDexTests do
   Manage Device DEX tests via `/accounts/:account_id/dex/devices/dex_tests`.
   """
 
+  @doc ~S"""
+  List device dex tests.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DeviceDexTests.list(client, "account_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id) do
     request(client, :get, base(account_id))
   end
+
+  @doc ~S"""
+  Create device dex tests.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DeviceDexTests.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     request(client, :post, base(account_id), params)
   end
 
+  @doc ~S"""
+  Get device dex tests.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DeviceDexTests.get(client, "account_id", "dex_test_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, dex_test_id) do
     request(client, :get, test_path(account_id, dex_test_id))
   end
 
+  @doc ~S"""
+  Update device dex tests.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DeviceDexTests.update(client, "account_id", "dex_test_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, dex_test_id, params) when is_map(params) do
     request(client, :put, test_path(account_id, dex_test_id), params)
   end
+
+  @doc ~S"""
+  Delete device dex tests.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DeviceDexTests.delete(client, "account_id", "dex_test_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, dex_test_id) do
     request(client, :delete, test_path(account_id, dex_test_id), %{})

@@ -3,6 +3,20 @@ defmodule CloudflareApi.IpIntelligence do
   IP intelligence overview helper (`/accounts/:account_id/intel/ip`).
   """
 
+  @doc ~S"""
+  Get overview for ip intelligence.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpIntelligence.get_overview(client, "account_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_overview(client, account_id, opts \\ []) do
     request(client, "/accounts/#{account_id}/intel/ip" <> query_suffix(opts))
   end

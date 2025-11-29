@@ -3,6 +3,20 @@ defmodule CloudflareApi.RadarSearch do
   Radar global search endpoint (`GET /radar/search/global`).
   """
 
+  @doc ~S"""
+  Global radar search.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarSearch.global(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def global(client, opts \\ []) do
     c(client)
     |> Tesla.get(with_query("/radar/search/global", opts))

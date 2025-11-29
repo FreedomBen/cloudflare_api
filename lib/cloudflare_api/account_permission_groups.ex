@@ -3,11 +3,39 @@ defmodule CloudflareApi.AccountPermissionGroups do
   List account-level permission groups.
   """
 
+  @doc ~S"""
+  List account permission groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountPermissionGroups.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(list_url(account_id, opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Get account permission groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountPermissionGroups.get(client, "account_id", "group_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get(client, account_id, group_id) do
     c(client)

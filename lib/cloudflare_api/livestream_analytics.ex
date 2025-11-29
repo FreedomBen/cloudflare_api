@@ -3,11 +3,39 @@ defmodule CloudflareApi.LivestreamAnalytics do
   Retrieve Realtime Kit livestream analytics (daywise and overall aggregates).
   """
 
+  @doc ~S"""
+  Daywise livestream analytics.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LivestreamAnalytics.daywise(client, "account_id", "app_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def daywise(client, account_id, app_id, opts \\ []) do
     c(client)
     |> Tesla.get(daywise_path(account_id, app_id) <> query(opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Overall livestream analytics.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LivestreamAnalytics.overall(client, "account_id", "app_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def overall(client, account_id, app_id, opts \\ []) do
     c(client)

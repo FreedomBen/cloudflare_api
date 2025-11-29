@@ -3,6 +3,20 @@ defmodule CloudflareApi.ArgoAnalyticsGeolocation do
   Fetch Argo analytics for geolocation (latency by colo).
   """
 
+  @doc ~S"""
+  List colos for argo analytics geolocation.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ArgoAnalyticsGeolocation.list_colos(client, "zone_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list_colos(client, zone_id, opts \\ []) do
     c(client)
     |> Tesla.get(url(zone_id, opts))

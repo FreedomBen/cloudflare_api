@@ -3,21 +3,91 @@ defmodule CloudflareApi.DevicePostureRules do
   Manage device posture rules (`/accounts/:account_id/devices/posture`).
   """
 
+  @doc ~S"""
+  List device posture rules.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DevicePostureRules.list(client, "account_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id) do
     request(client, :get, base(account_id))
   end
+
+  @doc ~S"""
+  Create device posture rules.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DevicePostureRules.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     request(client, :post, base(account_id), params)
   end
 
+  @doc ~S"""
+  Get device posture rules.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DevicePostureRules.get(client, "account_id", "rule_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, rule_id) do
     request(client, :get, rule_path(account_id, rule_id))
   end
 
+  @doc ~S"""
+  Update device posture rules.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DevicePostureRules.update(client, "account_id", "rule_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, rule_id, params) when is_map(params) do
     request(client, :put, rule_path(account_id, rule_id), params)
   end
+
+  @doc ~S"""
+  Delete device posture rules.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DevicePostureRules.delete(client, "account_id", "rule_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, rule_id) do
     request(client, :delete, rule_path(account_id, rule_id), %{})

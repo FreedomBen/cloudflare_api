@@ -3,17 +3,59 @@ defmodule CloudflareApi.User do
   Access authenticated user details via `/user` and `/users/tenants`.
   """
 
+  @doc ~S"""
+  Get user.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.User.get(client)
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client) do
     c(client)
     |> Tesla.get("/user")
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update user.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.User.update(client, %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, params) when is_map(params) do
     c(client)
     |> Tesla.patch("/user", params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  List tenants for user.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.User.list_tenants(client, [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
 
   def list_tenants(client, opts \\ []) do
     c(client)

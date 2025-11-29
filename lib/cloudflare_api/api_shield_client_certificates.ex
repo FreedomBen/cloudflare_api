@@ -3,11 +3,39 @@ defmodule CloudflareApi.ApiShieldClientCertificates do
   Manage API Shield client certificates and hostname associations for a zone.
   """
 
+  @doc ~S"""
+  List certificates for api shield client certificates.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ApiShieldClientCertificates.list_certificates(client, "zone_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list_certificates(client, zone_id, opts \\ []) do
     c(client)
     |> Tesla.get(list_url(zone_id, opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create certificate for api shield client certificates.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ApiShieldClientCertificates.create_certificate(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create_certificate(client, zone_id, params) when is_map(params) do
     c(client)
@@ -15,11 +43,39 @@ defmodule CloudflareApi.ApiShieldClientCertificates do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get certificate for api shield client certificates.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ApiShieldClientCertificates.get_certificate(client, "zone_id", "certificate_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_certificate(client, zone_id, certificate_id) do
     c(client)
     |> Tesla.get(certificate_path(zone_id, certificate_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Update certificate for api shield client certificates.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ApiShieldClientCertificates.update_certificate(client, "zone_id", "certificate_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update_certificate(client, zone_id, certificate_id, params) when is_map(params) do
     c(client)
@@ -27,17 +83,59 @@ defmodule CloudflareApi.ApiShieldClientCertificates do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Delete certificate for api shield client certificates.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ApiShieldClientCertificates.delete_certificate(client, "zone_id", "certificate_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete_certificate(client, zone_id, certificate_id) do
     c(client)
     |> Tesla.delete(certificate_path(zone_id, certificate_id), body: %{})
     |> handle_response()
   end
 
+  @doc ~S"""
+  List hostname associations for api shield client certificates.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ApiShieldClientCertificates.list_hostname_associations(client, "zone_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list_hostname_associations(client, zone_id) do
     c(client)
     |> Tesla.get(hostname_assoc_path(zone_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Update hostname associations for api shield client certificates.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ApiShieldClientCertificates.update_hostname_associations(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update_hostname_associations(client, zone_id, params) when is_map(params) do
     c(client)

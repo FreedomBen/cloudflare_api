@@ -3,11 +3,39 @@ defmodule CloudflareApi.BotnetThreatFeed do
   Work with Botnet Threat Feed reports and ASN configurations.
   """
 
+  @doc ~S"""
+  List asn configs for botnet threat feed.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.BotnetThreatFeed.list_asn_configs(client, "account_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list_asn_configs(client, account_id) do
     c(client)
     |> Tesla.get(configs_path(account_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete asn config for botnet threat feed.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.BotnetThreatFeed.delete_asn_config(client, "account_id", "asn_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete_asn_config(client, account_id, asn_id) do
     c(client)
@@ -15,11 +43,39 @@ defmodule CloudflareApi.BotnetThreatFeed do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Day report for botnet threat feed.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.BotnetThreatFeed.day_report(client, "account_id", "asn_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def day_report(client, account_id, asn_id, opts \\ []) do
     c(client)
     |> Tesla.get(day_report_url(account_id, asn_id, opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Full report for botnet threat feed.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.BotnetThreatFeed.full_report(client, "account_id", "asn_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def full_report(client, account_id, asn_id) do
     c(client)

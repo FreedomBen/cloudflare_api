@@ -3,11 +3,39 @@ defmodule CloudflareApi.CertificatePacks do
   Manage SSL certificate packs for a zone.
   """
 
+  @doc ~S"""
+  List certificate packs.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CertificatePacks.list(client, "zone_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, zone_id, opts \\ []) do
     c(client)
     |> Tesla.get(list_url(zone_id, opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Order certificate packs.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CertificatePacks.order(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def order(client, zone_id, params) when is_map(params) do
     c(client)
@@ -15,11 +43,39 @@ defmodule CloudflareApi.CertificatePacks do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Quota certificate packs.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CertificatePacks.quota(client, "zone_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def quota(client, zone_id) do
     c(client)
     |> Tesla.get(base_path(zone_id) <> "/quota")
     |> handle_response()
   end
+
+  @doc ~S"""
+  Get certificate packs.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CertificatePacks.get(client, "zone_id", "pack_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get(client, zone_id, pack_id) do
     c(client)
@@ -27,11 +83,39 @@ defmodule CloudflareApi.CertificatePacks do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Delete certificate packs.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CertificatePacks.delete(client, "zone_id", "pack_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete(client, zone_id, pack_id) do
     c(client)
     |> Tesla.delete(pack_path(zone_id, pack_id), body: %{})
     |> handle_response()
   end
+
+  @doc ~S"""
+  Restart validation for certificate packs.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CertificatePacks.restart_validation(client, "zone_id", "pack_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def restart_validation(client, zone_id, pack_id, params \\ %{}) when is_map(params) do
     c(client)

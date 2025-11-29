@@ -3,11 +3,39 @@ defmodule CloudflareApi.TokenValidationTokenConfiguration do
   Manage Token Validation configurations under `/zones/:zone_id/token_validation/config`.
   """
 
+  @doc ~S"""
+  List token validation token configuration.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.TokenValidationTokenConfiguration.list(client, "zone_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, zone_id, opts \\ []) do
     c(client)
     |> Tesla.get(with_query(base(zone_id), opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create token validation token configuration.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.TokenValidationTokenConfiguration.create(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, zone_id, params) when is_map(params) do
     c(client)
@@ -15,11 +43,39 @@ defmodule CloudflareApi.TokenValidationTokenConfiguration do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get token validation token configuration.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.TokenValidationTokenConfiguration.get(client, "zone_id", %{}, [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, zone_id, config_id, opts \\ []) do
     c(client)
     |> Tesla.get(with_query(config_path(zone_id, config_id), opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Update token validation token configuration.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.TokenValidationTokenConfiguration.update(client, "zone_id", %{}, %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, zone_id, config_id, params) when is_map(params) do
     c(client)
@@ -27,11 +83,39 @@ defmodule CloudflareApi.TokenValidationTokenConfiguration do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Delete token validation token configuration.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.TokenValidationTokenConfiguration.delete(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete(client, zone_id, config_id) do
     c(client)
     |> Tesla.delete(config_path(zone_id, config_id), body: %{})
     |> handle_response()
   end
+
+  @doc ~S"""
+  Update credentials for token validation token configuration.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.TokenValidationTokenConfiguration.update_credentials(client, "zone_id", %{}, %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update_credentials(client, zone_id, config_id, params) when is_map(params) do
     c(client)

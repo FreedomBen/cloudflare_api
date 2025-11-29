@@ -3,13 +3,55 @@ defmodule CloudflareApi.IpAddressManagementPrefixDelegation do
   Prefix delegation helpers for `/accounts/:account_id/addressing/prefixes/:prefix_id/delegations`.
   """
 
+  @doc ~S"""
+  List ip address management prefix delegation.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementPrefixDelegation.list(client, "account_id", "prefix_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, prefix_id) do
     request(client, :get, base_path(account_id, prefix_id))
   end
 
+  @doc ~S"""
+  Create ip address management prefix delegation.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementPrefixDelegation.create(client, "account_id", "prefix_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def create(client, account_id, prefix_id, params) when is_map(params) do
     request(client, :post, base_path(account_id, prefix_id), params)
   end
+
+  @doc ~S"""
+  Delete ip address management prefix delegation.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementPrefixDelegation.delete(client, "account_id", "prefix_id", "delegation_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, prefix_id, delegation_id) do
     request(client, :delete, base_path(account_id, prefix_id) <> "/#{delegation_id}", %{})

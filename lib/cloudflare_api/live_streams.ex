@@ -3,11 +3,39 @@ defmodule CloudflareApi.LiveStreams do
   Manage Realtime Kit livestreams, meeting livestreaming sessions, and stream keys.
   """
 
+  @doc ~S"""
+  List live streams.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LiveStreams.list(client, "account_id", "app_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, app_id, opts \\ []) do
     c(client)
     |> Tesla.get(livestreams_path(account_id, app_id) <> query(opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create live streams.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LiveStreams.create(client, "account_id", "app_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, app_id, params) when is_map(params) do
     c(client)
@@ -15,17 +43,59 @@ defmodule CloudflareApi.LiveStreams do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get session for live streams.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LiveStreams.get_session(client, "account_id", "app_id", "livestream_session_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_session(client, account_id, app_id, livestream_session_id) do
     c(client)
     |> Tesla.get(base(account_id, app_id) <> "/livestreams/sessions/#{livestream_session_id}")
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get live streams.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LiveStreams.get(client, "account_id", "app_id", "livestream_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, app_id, livestream_id, opts \\ []) do
     c(client)
     |> Tesla.get(base(account_id, app_id) <> "/livestreams/#{livestream_id}" <> query(opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Get active session for live streams.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LiveStreams.get_active_session(client, "account_id", "app_id", "livestream_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get_active_session(client, account_id, app_id, livestream_id) do
     c(client)
@@ -34,6 +104,20 @@ defmodule CloudflareApi.LiveStreams do
     )
     |> handle_response()
   end
+
+  @doc ~S"""
+  Disable live streams.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LiveStreams.disable(client, "account_id", "app_id", "livestream_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def disable(client, account_id, app_id, livestream_id) do
     c(client)
@@ -44,6 +128,20 @@ defmodule CloudflareApi.LiveStreams do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Enable live streams.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LiveStreams.enable(client, "account_id", "app_id", "livestream_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def enable(client, account_id, app_id, livestream_id) do
     c(client)
     |> Tesla.put(
@@ -52,6 +150,20 @@ defmodule CloudflareApi.LiveStreams do
     )
     |> handle_response()
   end
+
+  @doc ~S"""
+  Reset stream key for live streams.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LiveStreams.reset_stream_key(client, "account_id", "app_id", "livestream_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def reset_stream_key(client, account_id, app_id, livestream_id) do
     c(client)
@@ -62,11 +174,39 @@ defmodule CloudflareApi.LiveStreams do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get meeting active for live streams.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LiveStreams.get_meeting_active(client, "account_id", "app_id", "meeting_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_meeting_active(client, account_id, app_id, meeting_id) do
     c(client)
     |> Tesla.get(meetings_base(account_id, app_id, meeting_id) <> "/active-livestream")
     |> handle_response()
   end
+
+  @doc ~S"""
+  Stop meeting for live streams.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LiveStreams.stop_meeting(client, "account_id", "app_id", "meeting_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def stop_meeting(client, account_id, app_id, meeting_id) do
     c(client)
@@ -77,11 +217,39 @@ defmodule CloudflareApi.LiveStreams do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get meeting livestream for live streams.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LiveStreams.get_meeting_livestream(client, "account_id", "app_id", "meeting_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_meeting_livestream(client, account_id, app_id, meeting_id, opts \\ []) do
     c(client)
     |> Tesla.get(meetings_base(account_id, app_id, meeting_id) <> "/livestream" <> query(opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Start meeting livestream for live streams.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LiveStreams.start_meeting_livestream(client, "account_id", "app_id", "meeting_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def start_meeting_livestream(client, account_id, app_id, meeting_id, params)
       when is_map(params) do
@@ -92,6 +260,20 @@ defmodule CloudflareApi.LiveStreams do
     )
     |> handle_response()
   end
+
+  @doc ~S"""
+  Get session livestreams for live streams.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LiveStreams.get_session_livestreams(client, "account_id", "app_id", "session_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get_session_livestreams(client, account_id, app_id, session_id, opts \\ []) do
     c(client)

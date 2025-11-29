@@ -3,11 +3,39 @@ defmodule CloudflareApi.AccountLoadBalancerMonitors do
   Manage load balancer monitors and previews at the account level.
   """
 
+  @doc ~S"""
+  List account load balancer monitors.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountLoadBalancerMonitors.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(list_url(account_id, opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create account load balancer monitors.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountLoadBalancerMonitors.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     c(client)
@@ -15,11 +43,39 @@ defmodule CloudflareApi.AccountLoadBalancerMonitors do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get account load balancer monitors.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountLoadBalancerMonitors.get(client, "account_id", "monitor_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, monitor_id) do
     c(client)
     |> Tesla.get(monitor_path(account_id, monitor_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Update account load balancer monitors.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountLoadBalancerMonitors.update(client, "account_id", "monitor_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, account_id, monitor_id, params) when is_map(params) do
     c(client)
@@ -27,11 +83,39 @@ defmodule CloudflareApi.AccountLoadBalancerMonitors do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Patch account load balancer monitors.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountLoadBalancerMonitors.patch(client, "account_id", "monitor_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def patch(client, account_id, monitor_id, params) when is_map(params) do
     c(client)
     |> Tesla.patch(monitor_path(account_id, monitor_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete account load balancer monitors.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountLoadBalancerMonitors.delete(client, "account_id", "monitor_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, monitor_id) do
     c(client)
@@ -39,17 +123,59 @@ defmodule CloudflareApi.AccountLoadBalancerMonitors do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Preview account load balancer monitors.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountLoadBalancerMonitors.preview(client, "account_id", "monitor_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def preview(client, account_id, monitor_id, params) when is_map(params) do
     c(client)
     |> Tesla.post(monitor_path(account_id, monitor_id) <> "/preview", params)
     |> handle_response()
   end
 
+  @doc ~S"""
+  Preview result for account load balancer monitors.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountLoadBalancerMonitors.preview_result(client, "account_id", "preview_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def preview_result(client, account_id, preview_id) do
     c(client)
     |> Tesla.get("/accounts/#{account_id}/load_balancers/preview/#{preview_id}")
     |> handle_response()
   end
+
+  @doc ~S"""
+  List references for account load balancer monitors.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountLoadBalancerMonitors.list_references(client, "account_id", "monitor_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
 
   def list_references(client, account_id, monitor_id) do
     c(client)

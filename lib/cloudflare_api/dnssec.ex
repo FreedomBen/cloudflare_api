@@ -3,17 +3,59 @@ defmodule CloudflareApi.Dnssec do
   DNSSEC helpers for `/zones/:zone_id/dnssec`.
   """
 
+  @doc ~S"""
+  Details dnssec.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Dnssec.details(client, "zone_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def details(client, zone_id) do
     c(client)
     |> Tesla.get(path(zone_id))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Delete dnssec.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Dnssec.delete(client, "zone_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete(client, zone_id) do
     c(client)
     |> Tesla.delete(path(zone_id), body: %{})
     |> handle_response()
   end
+
+  @doc ~S"""
+  Update dnssec.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Dnssec.update(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, zone_id, params) when is_map(params) do
     c(client)

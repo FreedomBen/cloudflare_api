@@ -3,11 +3,39 @@ defmodule CloudflareApi.RealtimeKitApps do
   Manage Realtime Kit apps.
   """
 
+  @doc ~S"""
+  List realtime kit apps.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RealtimeKitApps.list(client, "account_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id) do
     c(client)
     |> Tesla.get("/accounts/#{account_id}/realtime/kit/apps")
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create realtime kit apps.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RealtimeKitApps.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     c(client)

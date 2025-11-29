@@ -3,11 +3,39 @@ defmodule CloudflareApi.TunnelVirtualNetwork do
   Manage tunnel virtual networks under `/accounts/:account_id/teamnet/virtual_networks`.
   """
 
+  @doc ~S"""
+  List tunnel virtual network.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.TunnelVirtualNetwork.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(with_query(base(account_id), opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create tunnel virtual network.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.TunnelVirtualNetwork.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     c(client)
@@ -15,17 +43,59 @@ defmodule CloudflareApi.TunnelVirtualNetwork do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get tunnel virtual network.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.TunnelVirtualNetwork.get(client, "account_id", "vnet_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, vnet_id) do
     c(client)
     |> Tesla.get(vnet_path(account_id, vnet_id))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update tunnel virtual network.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.TunnelVirtualNetwork.update(client, "account_id", "vnet_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, vnet_id, params) when is_map(params) do
     c(client)
     |> Tesla.patch(vnet_path(account_id, vnet_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete tunnel virtual network.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.TunnelVirtualNetwork.delete(client, "account_id", "vnet_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, vnet_id) do
     c(client)

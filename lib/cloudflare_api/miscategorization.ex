@@ -3,6 +3,20 @@ defmodule CloudflareApi.Miscategorization do
   Create DNS/intel miscategorization reports (`/accounts/:account_id/intel/miscategorization`).
   """
 
+  @doc ~S"""
+  Create miscategorization.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Miscategorization.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def create(client, account_id, params) when is_map(params) do
     c(client)
     |> Tesla.post("/accounts/#{account_id}/intel/miscategorization", params)

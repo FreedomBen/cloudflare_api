@@ -3,11 +3,39 @@ defmodule CloudflareApi.CatalogSync do
   Manage Catalog Syncs for Magic Cloud.
   """
 
+  @doc ~S"""
+  List catalog sync.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CatalogSync.list(client, "account_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id) do
     c(client)
     |> Tesla.get(base_path(account_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create catalog sync.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CatalogSync.create(client, "account_id", %{}, [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params, headers \\ []) when is_map(params) do
     c(client)
@@ -15,11 +43,39 @@ defmodule CloudflareApi.CatalogSync do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Prebuilt policies for catalog sync.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CatalogSync.prebuilt_policies(client, "account_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def prebuilt_policies(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(base_path(account_id) <> "/prebuilt-policies" <> query_suffix(opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Get catalog sync.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CatalogSync.get(client, "account_id", "sync_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get(client, account_id, sync_id) do
     c(client)
@@ -27,11 +83,39 @@ defmodule CloudflareApi.CatalogSync do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update catalog sync.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CatalogSync.update(client, "account_id", "sync_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, sync_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(sync_path(account_id, sync_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Patch catalog sync.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CatalogSync.patch(client, "account_id", "sync_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def patch(client, account_id, sync_id, params) when is_map(params) do
     c(client)
@@ -39,11 +123,39 @@ defmodule CloudflareApi.CatalogSync do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Delete catalog sync.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CatalogSync.delete(client, "account_id", "sync_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete(client, account_id, sync_id, opts \\ []) do
     c(client)
     |> Tesla.delete(sync_path(account_id, sync_id) <> query_suffix(opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Refresh catalog sync.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CatalogSync.refresh(client, "account_id", "sync_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def refresh(client, account_id, sync_id) do
     c(client)

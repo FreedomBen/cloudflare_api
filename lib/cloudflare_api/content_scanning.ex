@@ -3,11 +3,39 @@ defmodule CloudflareApi.ContentScanning do
   Control Content Upload Scanning for a zone.
   """
 
+  @doc ~S"""
+  Enable content scanning.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ContentScanning.enable(client, "zone_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def enable(client, zone_id) do
     c(client)
     |> Tesla.post(base_path(zone_id) <> "/enable", %{})
     |> handle_response()
   end
+
+  @doc ~S"""
+  Disable content scanning.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ContentScanning.disable(client, "zone_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def disable(client, zone_id) do
     c(client)
@@ -15,11 +43,39 @@ defmodule CloudflareApi.ContentScanning do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Settings content scanning.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ContentScanning.settings(client, "zone_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def settings(client, zone_id) do
     c(client)
     |> Tesla.get(base_path(zone_id) <> "/settings")
     |> handle_response()
   end
+
+  @doc ~S"""
+  Update settings for content scanning.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ContentScanning.update_settings(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update_settings(client, zone_id, params) when is_map(params) do
     c(client)
@@ -27,17 +83,59 @@ defmodule CloudflareApi.ContentScanning do
     |> handle_response()
   end
 
+  @doc ~S"""
+  List payloads for content scanning.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ContentScanning.list_payloads(client, "zone_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list_payloads(client, zone_id) do
     c(client)
     |> Tesla.get(base_path(zone_id) <> "/payloads")
     |> handle_response()
   end
 
+  @doc ~S"""
+  Add payloads for content scanning.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ContentScanning.add_payloads(client, "zone_id", "payloads")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def add_payloads(client, zone_id, payloads) when is_list(payloads) do
     c(client)
     |> Tesla.post(base_path(zone_id) <> "/payloads", payloads)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete payload for content scanning.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ContentScanning.delete_payload(client, "zone_id", "expression_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete_payload(client, zone_id, expression_id) do
     c(client)

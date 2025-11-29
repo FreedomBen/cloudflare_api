@@ -3,25 +3,109 @@ defmodule CloudflareApi.MagicAccountApps do
   Manage Magic account applications (`/accounts/:account_id/magic/apps`).
   """
 
+  @doc ~S"""
+  List magic account apps.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicAccountApps.list(client, "account_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id) do
     request(client, :get, base(account_id))
   end
+
+  @doc ~S"""
+  Create magic account apps.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicAccountApps.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     request(client, :post, base(account_id), params)
   end
 
+  @doc ~S"""
+  Get magic account apps.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicAccountApps.get(client, "account_id", "app_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, app_id) do
     request(client, :get, app_path(account_id, app_id))
   end
+
+  @doc ~S"""
+  Update magic account apps.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicAccountApps.update(client, "account_id", "app_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, account_id, app_id, params) when is_map(params) do
     request(client, :put, app_path(account_id, app_id), params)
   end
 
+  @doc ~S"""
+  Patch magic account apps.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicAccountApps.patch(client, "account_id", "app_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def patch(client, account_id, app_id, params) when is_map(params) do
     request(client, :patch, app_path(account_id, app_id), params)
   end
+
+  @doc ~S"""
+  Delete magic account apps.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicAccountApps.delete(client, "account_id", "app_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, app_id) do
     request(client, :delete, app_path(account_id, app_id))

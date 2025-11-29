@@ -3,6 +3,20 @@ defmodule CloudflareApi.IndicatorTypes do
   Indicator type helpers for Cloudforce One datasets.
   """
 
+  @doc ~S"""
+  List indicator types.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IndicatorTypes.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     request(
       client,
@@ -10,12 +24,40 @@ defmodule CloudflareApi.IndicatorTypes do
     )
   end
 
+  @doc ~S"""
+  List legacy for indicator types.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IndicatorTypes.list_legacy(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list_legacy(client, account_id, opts \\ []) do
     request(
       client,
       "/accounts/#{account_id}/cloudforce-one/events/indicatorTypes" <> query_suffix(opts)
     )
   end
+
+  @doc ~S"""
+  Create indicator types.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IndicatorTypes.create(client, "account_id", %{}, %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, dataset_id, params) when is_map(params) do
     request(

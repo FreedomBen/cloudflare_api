@@ -3,13 +3,55 @@ defmodule CloudflareApi.ManagedTransforms do
   Manage zone-level Managed Transforms (`/zones/:zone_id/managed_headers`).
   """
 
+  @doc ~S"""
+  List managed transforms.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ManagedTransforms.list(client, "zone_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, zone_id) do
     request(client, :get, base(zone_id))
   end
 
+  @doc ~S"""
+  Update managed transforms.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ManagedTransforms.update(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, zone_id, params) when is_map(params) do
     request(client, :patch, base(zone_id), params)
   end
+
+  @doc ~S"""
+  Delete managed transforms.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ManagedTransforms.delete(client, "zone_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, zone_id) do
     request(client, :delete, base(zone_id))

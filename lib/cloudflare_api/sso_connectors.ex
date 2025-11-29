@@ -3,9 +3,37 @@ defmodule CloudflareApi.SsoConnectors do
   Manage account-level SSO connectors (`/accounts/:account_id/sso_connectors`).
   """
 
+  @doc ~S"""
+  List sso connectors.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SsoConnectors.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     fetch(client, base_path(account_id), opts)
   end
+
+  @doc ~S"""
+  Init sso connectors.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SsoConnectors.init(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def init(client, account_id, params) when is_map(params) do
     c(client)
@@ -13,9 +41,37 @@ defmodule CloudflareApi.SsoConnectors do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get sso connectors.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SsoConnectors.get(client, "account_id", "connector_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, connector_id, opts \\ []) do
     fetch(client, connector_path(account_id, connector_id), opts)
   end
+
+  @doc ~S"""
+  Update state for sso connectors.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SsoConnectors.update_state(client, "account_id", "connector_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update_state(client, account_id, connector_id, params) when is_map(params) do
     c(client)
@@ -23,11 +79,39 @@ defmodule CloudflareApi.SsoConnectors do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Delete sso connectors.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SsoConnectors.delete(client, "account_id", "connector_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete(client, account_id, connector_id) do
     c(client)
     |> Tesla.delete(connector_path(account_id, connector_id), body: %{})
     |> handle_response()
   end
+
+  @doc ~S"""
+  Begin verification for sso connectors.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SsoConnectors.begin_verification(client, "account_id", "connector_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def begin_verification(client, account_id, connector_id, params) when is_map(params) do
     c(client)

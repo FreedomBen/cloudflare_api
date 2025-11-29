@@ -4,9 +4,37 @@ defmodule CloudflareApi.IpAddressManagementDynamicAdvertisement do
   `/accounts/:account_id/addressing/prefixes/:prefix_id/bgp/status`.
   """
 
+  @doc ~S"""
+  Get status for ip address management dynamic advertisement.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementDynamicAdvertisement.get_status(client, "account_id", "prefix_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_status(client, account_id, prefix_id) do
     request(client, :get, status_path(account_id, prefix_id))
   end
+
+  @doc ~S"""
+  Update status for ip address management dynamic advertisement.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementDynamicAdvertisement.update_status(client, "account_id", "prefix_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update_status(client, account_id, prefix_id, params) when is_map(params) do
     request(client, :patch, status_path(account_id, prefix_id), params)

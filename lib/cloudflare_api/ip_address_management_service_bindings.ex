@@ -3,21 +3,91 @@ defmodule CloudflareApi.IpAddressManagementServiceBindings do
   Service binding helpers for IP Address Management prefixes.
   """
 
+  @doc ~S"""
+  List ip address management service bindings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementServiceBindings.list(client, "account_id", "prefix_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, prefix_id) do
     request(client, :get, bindings_path(account_id, prefix_id))
   end
+
+  @doc ~S"""
+  Get ip address management service bindings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementServiceBindings.get(client, "account_id", "prefix_id", "binding_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get(client, account_id, prefix_id, binding_id) do
     request(client, :get, binding_path(account_id, prefix_id, binding_id))
   end
 
+  @doc ~S"""
+  Create ip address management service bindings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementServiceBindings.create(client, "account_id", "prefix_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def create(client, account_id, prefix_id, params) when is_map(params) do
     request(client, :post, bindings_path(account_id, prefix_id), params)
   end
 
+  @doc ~S"""
+  Delete ip address management service bindings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementServiceBindings.delete(client, "account_id", "prefix_id", "binding_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete(client, account_id, prefix_id, binding_id) do
     request(client, :delete, binding_path(account_id, prefix_id, binding_id), %{})
   end
+
+  @doc ~S"""
+  List services for ip address management service bindings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementServiceBindings.list_services(client, "account_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
 
   def list_services(client, account_id) do
     request(client, :get, "/accounts/#{account_id}/addressing/services")

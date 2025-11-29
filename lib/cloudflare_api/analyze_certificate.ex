@@ -3,6 +3,20 @@ defmodule CloudflareApi.AnalyzeCertificate do
   Analyze SSL certificates for a zone.
   """
 
+  @doc ~S"""
+  Analyze analyze certificate.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AnalyzeCertificate.analyze(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def analyze(client, zone_id, params) when is_map(params) do
     c(client)
     |> Tesla.post("/zones/#{zone_id}/ssl/analyze", params)

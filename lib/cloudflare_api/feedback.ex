@@ -3,11 +3,39 @@ defmodule CloudflareApi.Feedback do
   Bot Management feedback helpers (`/zones/:zone_id/bot_management/feedback`).
   """
 
+  @doc ~S"""
+  List feedback.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Feedback.list(client, "zone_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, zone_id, opts \\ []) do
     c(client)
     |> Tesla.get("/zones/#{zone_id}/bot_management/feedback" <> query(opts))
     |> handle()
   end
+
+  @doc ~S"""
+  Create feedback.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Feedback.create(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, zone_id, params) when is_map(params) do
     c(client)

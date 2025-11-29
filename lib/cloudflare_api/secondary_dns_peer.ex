@@ -3,9 +3,37 @@ defmodule CloudflareApi.SecondaryDnsPeer do
   Manage Secondary DNS peers (`/accounts/:account_id/secondary_dns/peers`).
   """
 
+  @doc ~S"""
+  List secondary dns peer.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SecondaryDnsPeer.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     fetch(client, base_path(account_id), opts)
   end
+
+  @doc ~S"""
+  Create secondary dns peer.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SecondaryDnsPeer.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     c(client)
@@ -13,15 +41,57 @@ defmodule CloudflareApi.SecondaryDnsPeer do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get secondary dns peer.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SecondaryDnsPeer.get(client, "account_id", "peer_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, peer_id, opts \\ []) do
     fetch(client, peer_path(account_id, peer_id), opts)
   end
+
+  @doc ~S"""
+  Update secondary dns peer.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SecondaryDnsPeer.update(client, "account_id", "peer_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, account_id, peer_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(peer_path(account_id, peer_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete secondary dns peer.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SecondaryDnsPeer.delete(client, "account_id", "peer_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, peer_id) do
     c(client)

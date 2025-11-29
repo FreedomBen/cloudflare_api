@@ -3,6 +3,20 @@ defmodule CloudflareApi.WhoisRecord do
   Retrieve WHOIS records via `/accounts/:account_id/intel/whois`.
   """
 
+  @doc ~S"""
+  Get whois record.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.WhoisRecord.get(client, "account_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(with_query("/accounts/#{account_id}/intel/whois", opts))

@@ -3,25 +3,109 @@ defmodule CloudflareApi.LoadBalancers do
   Manage zone-level load balancers (`/zones/:zone_id/load_balancers`).
   """
 
+  @doc ~S"""
+  List load balancers.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LoadBalancers.list(client, "zone_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, zone_id) do
     request(client, :get, base(zone_id))
   end
+
+  @doc ~S"""
+  Create load balancers.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LoadBalancers.create(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, zone_id, params) when is_map(params) do
     request(client, :post, base(zone_id), params)
   end
 
+  @doc ~S"""
+  Get load balancers.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LoadBalancers.get(client, "zone_id", "load_balancer_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, zone_id, load_balancer_id) do
     request(client, :get, lb_path(zone_id, load_balancer_id))
   end
+
+  @doc ~S"""
+  Update load balancers.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LoadBalancers.update(client, "zone_id", "load_balancer_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, zone_id, load_balancer_id, params) when is_map(params) do
     request(client, :put, lb_path(zone_id, load_balancer_id), params)
   end
 
+  @doc ~S"""
+  Patch load balancers.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LoadBalancers.patch(client, "zone_id", "load_balancer_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def patch(client, zone_id, load_balancer_id, params) when is_map(params) do
     request(client, :patch, lb_path(zone_id, load_balancer_id), params)
   end
+
+  @doc ~S"""
+  Delete load balancers.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.LoadBalancers.delete(client, "zone_id", "load_balancer_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, zone_id, load_balancer_id) do
     request(client, :delete, lb_path(zone_id, load_balancer_id), %{})

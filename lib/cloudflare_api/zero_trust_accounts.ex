@@ -7,11 +7,39 @@ defmodule CloudflareApi.ZeroTrustAccounts do
 
   ## Device Settings
 
+  @doc ~S"""
+  Get device settings for zero trust accounts.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZeroTrustAccounts.get_device_settings(client, "account_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_device_settings(client, account_id) do
     c(client)
     |> Tesla.get(device_settings_path(account_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete device settings for zero trust accounts.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZeroTrustAccounts.delete_device_settings(client, "account_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete_device_settings(client, account_id) do
     c(client)
@@ -19,11 +47,39 @@ defmodule CloudflareApi.ZeroTrustAccounts do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Patch device settings for zero trust accounts.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZeroTrustAccounts.patch_device_settings(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def patch_device_settings(client, account_id, params) when is_map(params) do
     c(client)
     |> Tesla.patch(device_settings_path(account_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Update device settings for zero trust accounts.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZeroTrustAccounts.update_device_settings(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update_device_settings(client, account_id, params) when is_map(params) do
     c(client)
@@ -33,11 +89,39 @@ defmodule CloudflareApi.ZeroTrustAccounts do
 
   ## Gateway Account Info
 
+  @doc ~S"""
+  Get account for zero trust accounts.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZeroTrustAccounts.get_account(client, "account_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_account(client, account_id) do
     c(client)
     |> Tesla.get(account_path(account_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create account for zero trust accounts.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZeroTrustAccounts.create_account(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create_account(client, account_id, params \\ %{}) do
     c(client)
@@ -47,11 +131,39 @@ defmodule CloudflareApi.ZeroTrustAccounts do
 
   ## Gateway Configuration
 
+  @doc ~S"""
+  Get configuration for zero trust accounts.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZeroTrustAccounts.get_configuration(client, "account_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_configuration(client, account_id) do
     c(client)
     |> Tesla.get(configuration_path(account_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Patch configuration for zero trust accounts.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZeroTrustAccounts.patch_configuration(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def patch_configuration(client, account_id, params) when is_map(params) do
     c(client)
@@ -59,11 +171,39 @@ defmodule CloudflareApi.ZeroTrustAccounts do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update configuration for zero trust accounts.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZeroTrustAccounts.update_configuration(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update_configuration(client, account_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(configuration_path(account_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Get custom certificate configuration for zero trust accounts.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZeroTrustAccounts.get_custom_certificate_configuration(client, "account_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get_custom_certificate_configuration(client, account_id) do
     c(client)
@@ -73,11 +213,39 @@ defmodule CloudflareApi.ZeroTrustAccounts do
 
   ## Logging Settings
 
+  @doc ~S"""
+  Get logging settings for zero trust accounts.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZeroTrustAccounts.get_logging_settings(client, "account_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_logging_settings(client, account_id) do
     c(client)
     |> Tesla.get(logging_path(account_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Update logging settings for zero trust accounts.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZeroTrustAccounts.update_logging_settings(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update_logging_settings(client, account_id, params) when is_map(params) do
     c(client)

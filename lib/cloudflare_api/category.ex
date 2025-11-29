@@ -3,11 +3,39 @@ defmodule CloudflareApi.Category do
   Manage Cloudforce One event categories.
   """
 
+  @doc ~S"""
+  List category.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Category.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(categories_url(account_id, opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Catalog category.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Category.catalog(client, "account_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def catalog(client, account_id) do
     c(client)
@@ -15,11 +43,39 @@ defmodule CloudflareApi.Category do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Create category.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Category.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def create(client, account_id, params) when is_map(params) do
     c(client)
     |> Tesla.post(base_path(account_id) <> "/create", params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Get category.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Category.get(client, "account_id", "category_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get(client, account_id, category_id) do
     c(client)
@@ -27,17 +83,59 @@ defmodule CloudflareApi.Category do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update patch for category.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Category.update_patch(client, "account_id", "category_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update_patch(client, account_id, category_id, params) when is_map(params) do
     c(client)
     |> Tesla.patch(category_path(account_id, category_id), params)
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update post for category.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Category.update_post(client, "account_id", "category_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update_post(client, account_id, category_id, params) when is_map(params) do
     c(client)
     |> Tesla.post(category_path(account_id, category_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete category.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Category.delete(client, "account_id", "category_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, category_id) do
     c(client)

@@ -3,17 +3,59 @@ defmodule CloudflareApi.UsersInvites do
   Manage user invitations via `/user/invites`.
   """
 
+  @doc ~S"""
+  List users invites.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UsersInvites.list(client, [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, opts \\ []) do
     c(client)
     |> Tesla.get(with_query("/user/invites", opts))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get users invites.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UsersInvites.get(client, "invite_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, invite_id, opts \\ []) do
     c(client)
     |> Tesla.get(with_query(invite_path(invite_id), opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Respond users invites.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UsersInvites.respond(client, "invite_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def respond(client, invite_id, params) when is_map(params) do
     c(client)

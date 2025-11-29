@@ -3,11 +3,39 @@ defmodule CloudflareApi.CloudflareImagesVariants do
   Manage Cloudflare Images variants.
   """
 
+  @doc ~S"""
+  List cloudflare images variants.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CloudflareImagesVariants.list(client, "account_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id) do
     c(client)
     |> Tesla.get(base_path(account_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create cloudflare images variants.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CloudflareImagesVariants.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     c(client)
@@ -15,17 +43,59 @@ defmodule CloudflareApi.CloudflareImagesVariants do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get cloudflare images variants.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CloudflareImagesVariants.get(client, "account_id", "variant_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, variant_id) do
     c(client)
     |> Tesla.get(variant_path(account_id, variant_id))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update cloudflare images variants.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CloudflareImagesVariants.update(client, "account_id", "variant_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, variant_id, params) when is_map(params) do
     c(client)
     |> Tesla.patch(variant_path(account_id, variant_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete cloudflare images variants.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CloudflareImagesVariants.delete(client, "account_id", "variant_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, variant_id) do
     c(client)

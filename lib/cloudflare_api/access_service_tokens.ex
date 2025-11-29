@@ -3,11 +3,39 @@ defmodule CloudflareApi.AccessServiceTokens do
   Manage Access service tokens for an account.
   """
 
+  @doc ~S"""
+  List access service tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessServiceTokens.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(list_url(account_id, opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create access service tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessServiceTokens.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     c(client)
@@ -15,11 +43,39 @@ defmodule CloudflareApi.AccessServiceTokens do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get access service tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessServiceTokens.get(client, "account_id", "token_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, token_id) do
     c(client)
     |> Tesla.get(token_path(account_id, token_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Update access service tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessServiceTokens.update(client, "account_id", "token_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, account_id, token_id, params) when is_map(params) do
     c(client)
@@ -27,17 +83,59 @@ defmodule CloudflareApi.AccessServiceTokens do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Delete access service tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessServiceTokens.delete(client, "account_id", "token_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete(client, account_id, token_id) do
     c(client)
     |> Tesla.delete(token_path(account_id, token_id), body: %{})
     |> handle_response()
   end
 
+  @doc ~S"""
+  Refresh access service tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessServiceTokens.refresh(client, "account_id", "token_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def refresh(client, account_id, token_id) do
     c(client)
     |> Tesla.post(token_path(account_id, token_id) <> "/refresh", %{})
     |> handle_response()
   end
+
+  @doc ~S"""
+  Rotate access service tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessServiceTokens.rotate(client, "account_id", "token_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def rotate(client, account_id, token_id) do
     c(client)

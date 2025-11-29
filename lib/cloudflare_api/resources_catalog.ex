@@ -3,19 +3,75 @@ defmodule CloudflareApi.ResourcesCatalog do
   Manage Magic Cloud resource catalog entries (`/accounts/:account_id/magic/cloud/resources`).
   """
 
+  @doc ~S"""
+  List resources catalog.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ResourcesCatalog.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     fetch(client, base_path(account_id), opts)
   end
 
+  @doc ~S"""
+  Export resources catalog.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ResourcesCatalog.export(client, "account_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def export(client, account_id, opts \\ []) do
     fetch(client, base_path(account_id) <> "/export", opts)
   end
+
+  @doc ~S"""
+  Policy preview for resources catalog.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ResourcesCatalog.policy_preview(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def policy_preview(client, account_id, params) when is_map(params) do
     c(client)
     |> Tesla.post(base_path(account_id) <> "/policy-preview", params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Get resources catalog.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ResourcesCatalog.get(client, "account_id", "resource_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get(client, account_id, resource_id, opts \\ []) do
     fetch(client, base_path(account_id) <> "/#{encode(resource_id)}", opts)

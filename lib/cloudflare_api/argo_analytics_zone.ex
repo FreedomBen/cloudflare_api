@@ -3,6 +3,20 @@ defmodule CloudflareApi.ArgoAnalyticsZone do
   Fetch Argo analytics for a zone.
   """
 
+  @doc ~S"""
+  List argo analytics zone.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ArgoAnalyticsZone.list(client, "zone_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, zone_id, opts \\ []) do
     c(client)
     |> Tesla.get(url(zone_id, opts))

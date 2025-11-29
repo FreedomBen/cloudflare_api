@@ -3,6 +3,20 @@ defmodule CloudflareApi.NamespaceManagement do
   List R2 catalog namespaces (`/accounts/:account_id/r2-catalog/:bucket_name/namespaces`).
   """
 
+  @doc ~S"""
+  List namespace management.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.NamespaceManagement.list(client, "account_id", "bucket_name", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, bucket_name, opts \\ []) do
     c(client)
     |> Tesla.get(base(account_id, bucket_name) <> query(opts))

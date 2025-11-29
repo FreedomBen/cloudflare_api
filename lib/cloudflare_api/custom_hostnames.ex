@@ -3,11 +3,39 @@ defmodule CloudflareApi.CustomHostnames do
   Manage custom hostnames for a zone.
   """
 
+  @doc ~S"""
+  List custom hostnames.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CustomHostnames.list(client, "zone_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, zone_id, opts \\ []) do
     c(client)
     |> Tesla.get(base_path(zone_id) <> query_suffix(opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create custom hostnames.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CustomHostnames.create(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, zone_id, params) when is_map(params) do
     c(client)
@@ -15,11 +43,39 @@ defmodule CloudflareApi.CustomHostnames do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get custom hostnames.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CustomHostnames.get(client, "zone_id", "hostname_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, zone_id, hostname_id) do
     c(client)
     |> Tesla.get(hostname_path(zone_id, hostname_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Update custom hostnames.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CustomHostnames.update(client, "zone_id", "hostname_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, zone_id, hostname_id, params) when is_map(params) do
     c(client)
@@ -27,11 +83,39 @@ defmodule CloudflareApi.CustomHostnames do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Delete custom hostnames.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CustomHostnames.delete(client, "zone_id", "hostname_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete(client, zone_id, hostname_id) do
     c(client)
     |> Tesla.delete(hostname_path(zone_id, hostname_id), body: %{})
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete certificate for custom hostnames.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CustomHostnames.delete_certificate(client, "zone_id", "hostname_id", "pack_id", "certificate_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete_certificate(client, zone_id, hostname_id, pack_id, certificate_id) do
     c(client)
@@ -41,6 +125,20 @@ defmodule CloudflareApi.CustomHostnames do
     )
     |> handle_response()
   end
+
+  @doc ~S"""
+  Update certificate for custom hostnames.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CustomHostnames.update_certificate(client, "zone_id", "hostname_id", "pack_id", "certificate_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update_certificate(client, zone_id, hostname_id, pack_id, certificate_id, params)
       when is_map(params) do

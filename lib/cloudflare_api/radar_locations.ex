@@ -3,9 +3,37 @@ defmodule CloudflareApi.RadarLocations do
   Radar location metadata under `/radar/entities/locations`.
   """
 
+  @doc ~S"""
+  List radar locations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarLocations.list(client, [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, opts \\ []) do
     fetch(client, "/radar/entities/locations", opts)
   end
+
+  @doc ~S"""
+  Get radar locations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarLocations.get(client, "location", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get(client, location, opts \\ []) do
     fetch(client, "/radar/entities/locations/" <> encode(location), opts)

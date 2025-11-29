@@ -3,6 +3,20 @@ defmodule CloudflareApi.AvailablePageRulesSettings do
   List available Page Rules settings for a zone.
   """
 
+  @doc ~S"""
+  List available page rules settings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AvailablePageRulesSettings.list(client, "zone_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, zone_id) do
     c(client)
     |> Tesla.get(path(zone_id))

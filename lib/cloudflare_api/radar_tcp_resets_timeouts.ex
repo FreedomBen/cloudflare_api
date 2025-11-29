@@ -3,9 +3,37 @@ defmodule CloudflareApi.RadarTcpResetsTimeouts do
   Radar TCP resets and timeouts analytics under `/radar/tcp_resets_timeouts`.
   """
 
+  @doc ~S"""
+  Summary radar tcp resets timeouts.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarTcpResetsTimeouts.summary(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def summary(client, opts \\ []) do
     fetch(client, "/radar/tcp_resets_timeouts/summary", opts)
   end
+
+  @doc ~S"""
+  Timeseries groups for radar tcp resets timeouts.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarTcpResetsTimeouts.timeseries_groups(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def timeseries_groups(client, opts \\ []) do
     fetch(client, "/radar/tcp_resets_timeouts/timeseries_groups", opts)

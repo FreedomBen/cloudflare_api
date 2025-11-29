@@ -3,11 +3,39 @@ defmodule CloudflareApi.TokenValidationTokenRules do
   Manage Token Validation rules via `/zones/:zone_id/token_validation/rules`.
   """
 
+  @doc ~S"""
+  List token validation token rules.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.TokenValidationTokenRules.list(client, "zone_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, zone_id, opts \\ []) do
     c(client)
     |> Tesla.get(with_query(base(zone_id), opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create token validation token rules.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.TokenValidationTokenRules.create(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, zone_id, params) when is_map(params) or is_list(params) do
     c(client)
@@ -15,11 +43,39 @@ defmodule CloudflareApi.TokenValidationTokenRules do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Bulk create for token validation token rules.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.TokenValidationTokenRules.bulk_create(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def bulk_create(client, zone_id, params) when is_map(params) do
     c(client)
     |> Tesla.post(base(zone_id) <> "/bulk", params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Bulk update for token validation token rules.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.TokenValidationTokenRules.bulk_update(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def bulk_update(client, zone_id, params) when is_map(params) do
     c(client)
@@ -27,11 +83,39 @@ defmodule CloudflareApi.TokenValidationTokenRules do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Preview token validation token rules.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.TokenValidationTokenRules.preview(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def preview(client, zone_id, params) when is_map(params) do
     c(client)
     |> Tesla.post(base(zone_id) <> "/preview", params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Get token validation token rules.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.TokenValidationTokenRules.get(client, "zone_id", "rule_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get(client, zone_id, rule_id, opts \\ []) do
     c(client)
@@ -39,11 +123,39 @@ defmodule CloudflareApi.TokenValidationTokenRules do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update token validation token rules.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.TokenValidationTokenRules.update(client, "zone_id", "rule_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, zone_id, rule_id, params) when is_map(params) do
     c(client)
     |> Tesla.patch(rule_path(zone_id, rule_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete token validation token rules.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.TokenValidationTokenRules.delete(client, "zone_id", "rule_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, zone_id, rule_id) do
     c(client)

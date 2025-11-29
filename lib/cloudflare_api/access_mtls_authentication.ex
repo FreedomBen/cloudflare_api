@@ -3,11 +3,39 @@ defmodule CloudflareApi.AccessMtlsAuthentication do
   Manage Access mTLS certificates and hostname settings for an account.
   """
 
+  @doc ~S"""
+  List certificates for access mtls authentication.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessMtlsAuthentication.list_certificates(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list_certificates(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(list_url(account_id, opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create certificate for access mtls authentication.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessMtlsAuthentication.create_certificate(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create_certificate(client, account_id, params) when is_map(params) do
     c(client)
@@ -15,11 +43,39 @@ defmodule CloudflareApi.AccessMtlsAuthentication do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get certificate for access mtls authentication.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessMtlsAuthentication.get_certificate(client, "account_id", "certificate_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_certificate(client, account_id, certificate_id) do
     c(client)
     |> Tesla.get(cert_path(account_id, certificate_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Update certificate for access mtls authentication.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessMtlsAuthentication.update_certificate(client, "account_id", "certificate_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update_certificate(client, account_id, certificate_id, params) when is_map(params) do
     c(client)
@@ -27,17 +83,59 @@ defmodule CloudflareApi.AccessMtlsAuthentication do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Delete certificate for access mtls authentication.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessMtlsAuthentication.delete_certificate(client, "account_id", "certificate_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete_certificate(client, account_id, certificate_id) do
     c(client)
     |> Tesla.delete(cert_path(account_id, certificate_id), body: %{})
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get settings for access mtls authentication.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessMtlsAuthentication.get_settings(client, "account_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_settings(client, account_id) do
     c(client)
     |> Tesla.get(settings_path(account_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Update settings for access mtls authentication.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessMtlsAuthentication.update_settings(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update_settings(client, account_id, params) when is_map(params) do
     c(client)

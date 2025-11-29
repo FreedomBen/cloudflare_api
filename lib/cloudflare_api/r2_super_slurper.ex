@@ -3,45 +3,199 @@ defmodule CloudflareApi.R2SuperSlurper do
   Manage Super Slurper jobs under `/accounts/:account_id/slurper`.
   """
 
+  @doc ~S"""
+  List jobs for r2 super slurper.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.R2SuperSlurper.list_jobs(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list_jobs(client, account_id, opts \\ []) do
     request(client, :get, with_query(jobs_base(account_id), opts))
   end
+
+  @doc ~S"""
+  Create job for r2 super slurper.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.R2SuperSlurper.create_job(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create_job(client, account_id, params) when is_map(params) do
     request(client, :post, jobs_base(account_id), params)
   end
 
+  @doc ~S"""
+  Abort all jobs for r2 super slurper.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.R2SuperSlurper.abort_all_jobs(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def abort_all_jobs(client, account_id, params \\ %{}) when is_map(params) do
     request(client, :put, jobs_base(account_id) <> "/abortAll", params)
   end
+
+  @doc ~S"""
+  Get job for r2 super slurper.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.R2SuperSlurper.get_job(client, "account_id", "job_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get_job(client, account_id, job_id) do
     request(client, :get, job_path(account_id, job_id))
   end
 
+  @doc ~S"""
+  Abort job for r2 super slurper.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.R2SuperSlurper.abort_job(client, "account_id", "job_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def abort_job(client, account_id, job_id, params \\ %{}) when is_map(params) do
     request(client, :put, job_path(account_id, job_id) <> "/abort", params)
   end
+
+  @doc ~S"""
+  Pause job for r2 super slurper.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.R2SuperSlurper.pause_job(client, "account_id", "job_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def pause_job(client, account_id, job_id, params \\ %{}) when is_map(params) do
     request(client, :put, job_path(account_id, job_id) <> "/pause", params)
   end
 
+  @doc ~S"""
+  Resume job for r2 super slurper.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.R2SuperSlurper.resume_job(client, "account_id", "job_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def resume_job(client, account_id, job_id, params \\ %{}) when is_map(params) do
     request(client, :put, job_path(account_id, job_id) <> "/resume", params)
   end
+
+  @doc ~S"""
+  Job logs for r2 super slurper.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.R2SuperSlurper.job_logs(client, "account_id", "job_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def job_logs(client, account_id, job_id, opts \\ []) do
     request(client, :get, with_query(job_path(account_id, job_id) <> "/logs", opts))
   end
 
+  @doc ~S"""
+  Job progress for r2 super slurper.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.R2SuperSlurper.job_progress(client, "account_id", "job_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def job_progress(client, account_id, job_id, opts \\ []) do
     request(client, :get, with_query(job_path(account_id, job_id) <> "/progress", opts))
   end
 
+  @doc ~S"""
+  Check source for r2 super slurper.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.R2SuperSlurper.check_source(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def check_source(client, account_id, params) when is_map(params) do
     request(client, :put, "/accounts/#{account_id}/slurper/source/connectivity-precheck", params)
   end
+
+  @doc ~S"""
+  Check target for r2 super slurper.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.R2SuperSlurper.check_target(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def check_target(client, account_id, params) when is_map(params) do
     request(client, :put, "/accounts/#{account_id}/slurper/target/connectivity-precheck", params)

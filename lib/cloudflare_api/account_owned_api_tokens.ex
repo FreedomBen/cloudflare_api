@@ -3,11 +3,39 @@ defmodule CloudflareApi.AccountOwnedApiTokens do
   Manage account-owned API tokens, including permission groups and verification.
   """
 
+  @doc ~S"""
+  List account owned api tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountOwnedApiTokens.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(list_url(account_id, opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create account owned api tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountOwnedApiTokens.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     c(client)
@@ -15,11 +43,39 @@ defmodule CloudflareApi.AccountOwnedApiTokens do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get account owned api tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountOwnedApiTokens.get(client, "account_id", "token_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, token_id) do
     c(client)
     |> Tesla.get(token_path(account_id, token_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Update account owned api tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountOwnedApiTokens.update(client, "account_id", "token_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, account_id, token_id, params) when is_map(params) do
     c(client)
@@ -27,11 +83,39 @@ defmodule CloudflareApi.AccountOwnedApiTokens do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Roll account owned api tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountOwnedApiTokens.roll(client, "account_id", "token_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def roll(client, account_id, token_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(token_path(account_id, token_id) <> "/value", params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete account owned api tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountOwnedApiTokens.delete(client, "account_id", "token_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, token_id) do
     c(client)
@@ -39,11 +123,39 @@ defmodule CloudflareApi.AccountOwnedApiTokens do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Permission groups for account owned api tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountOwnedApiTokens.permission_groups(client, "account_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def permission_groups(client, account_id) do
     c(client)
     |> Tesla.get("/accounts/#{account_id}/tokens/permission_groups")
     |> handle_response()
   end
+
+  @doc ~S"""
+  Verify account owned api tokens.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountOwnedApiTokens.verify(client, "account_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def verify(client, account_id) do
     c(client)

@@ -3,17 +3,59 @@ defmodule CloudflareApi.UsersOrganizations do
   Manage user organizations via `/user/organizations`.
   """
 
+  @doc ~S"""
+  List users organizations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UsersOrganizations.list(client, [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, opts \\ []) do
     c(client)
     |> Tesla.get(with_query("/user/organizations", opts))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get users organizations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UsersOrganizations.get(client, "organization_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, organization_id, opts \\ []) do
     c(client)
     |> Tesla.get(with_query(org_path(organization_id), opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete users organizations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UsersOrganizations.delete(client, "organization_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, organization_id) do
     c(client)

@@ -3,6 +3,20 @@ defmodule CloudflareApi.Country do
   Fetch Cloudforce One country data for an account.
   """
 
+  @doc ~S"""
+  List country.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Country.list(client, "account_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id) do
     c(client)
     |> Tesla.get("/accounts/#{account_id}/cloudforce-one/events/countries")

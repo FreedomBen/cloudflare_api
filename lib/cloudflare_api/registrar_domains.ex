@@ -3,17 +3,59 @@ defmodule CloudflareApi.RegistrarDomains do
   Manage domains registered through Cloudflare Registrar (`/accounts/:account_id/registrar/domains`).
   """
 
+  @doc ~S"""
+  List registrar domains.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RegistrarDomains.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(with_query(base_path(account_id), opts))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get registrar domains.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RegistrarDomains.get(client, "account_id", "domain_name")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, domain_name) do
     c(client)
     |> Tesla.get(domain_path(account_id, domain_name))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Update registrar domains.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RegistrarDomains.update(client, "account_id", "domain_name", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, account_id, domain_name, params) when is_map(params) do
     c(client)

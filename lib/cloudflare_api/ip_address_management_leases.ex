@@ -3,6 +3,20 @@ defmodule CloudflareApi.IpAddressManagementLeases do
   List leases via `/accounts/:account_id/addressing/leases`.
   """
 
+  @doc ~S"""
+  List ip address management leases.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementLeases.list(client, "account_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id) do
     request(client, :get, "/accounts/#{account_id}/addressing/leases")
   end

@@ -3,9 +3,37 @@ defmodule CloudflareApi.RadarTrafficAnomalies do
   Radar traffic anomaly analytics under `/radar/traffic_anomalies`.
   """
 
+  @doc ~S"""
+  List radar traffic anomalies.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarTrafficAnomalies.list(client, [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, opts \\ []) do
     fetch(client, "/radar/traffic_anomalies", opts)
   end
+
+  @doc ~S"""
+  Top locations for radar traffic anomalies.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarTrafficAnomalies.top_locations(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def top_locations(client, opts \\ []) do
     fetch(client, "/radar/traffic_anomalies/locations", opts)

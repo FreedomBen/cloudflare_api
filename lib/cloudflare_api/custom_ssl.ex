@@ -3,11 +3,39 @@ defmodule CloudflareApi.CustomSsl do
   Manage custom SSL certificates for a zone.
   """
 
+  @doc ~S"""
+  List custom ssl.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CustomSsl.list(client, "zone_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, zone_id, opts \\ []) do
     c(client)
     |> Tesla.get(base_path(zone_id) <> query_suffix(opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create custom ssl.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CustomSsl.create(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, zone_id, params) when is_map(params) do
     c(client)
@@ -15,11 +43,39 @@ defmodule CloudflareApi.CustomSsl do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get custom ssl.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CustomSsl.get(client, "zone_id", "certificate_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, zone_id, certificate_id) do
     c(client)
     |> Tesla.get(item_path(zone_id, certificate_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Update custom ssl.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CustomSsl.update(client, "zone_id", "certificate_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, zone_id, certificate_id, params) when is_map(params) do
     c(client)
@@ -27,11 +83,39 @@ defmodule CloudflareApi.CustomSsl do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Delete custom ssl.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CustomSsl.delete(client, "zone_id", "certificate_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete(client, zone_id, certificate_id) do
     c(client)
     |> Tesla.delete(item_path(zone_id, certificate_id), body: %{})
     |> handle_response()
   end
+
+  @doc ~S"""
+  Prioritize custom ssl.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CustomSsl.prioritize(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def prioritize(client, zone_id, params) when is_map(params) do
     c(client)

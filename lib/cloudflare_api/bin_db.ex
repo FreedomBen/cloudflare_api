@@ -5,11 +5,39 @@ defmodule CloudflareApi.BinDb do
 
   alias Tesla.Multipart
 
+  @doc ~S"""
+  Upload bin db.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.BinDb.upload(client, "account_id", "file")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def upload(client, account_id, file) do
     c(client)
     |> Tesla.post(base_path(account_id), file_to_multipart(file))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Get bin db.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.BinDb.get(client, "account_id", "hash")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get(client, account_id, hash) do
     c(client)

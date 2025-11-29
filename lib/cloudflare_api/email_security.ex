@@ -3,49 +3,217 @@ defmodule CloudflareApi.EmailSecurity do
   Investigate and manage Email Security messages (`/accounts/:account_id/email-security`).
   """
 
+  @doc ~S"""
+  List messages for email security.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EmailSecurity.list_messages(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list_messages(client, account_id, opts \\ []) do
     get(client, account_id, "/investigate" <> query(opts))
   end
+
+  @doc ~S"""
+  Get message for email security.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EmailSecurity.get_message(client, "account_id", "postfix_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get_message(client, account_id, postfix_id) do
     get(client, account_id, "/investigate/#{postfix_id}")
   end
 
+  @doc ~S"""
+  Get message detections for email security.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EmailSecurity.get_message_detections(client, "account_id", "postfix_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_message_detections(client, account_id, postfix_id) do
     get(client, account_id, "/investigate/#{postfix_id}/detections")
   end
+
+  @doc ~S"""
+  Get message preview for email security.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EmailSecurity.get_message_preview(client, "account_id", "postfix_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get_message_preview(client, account_id, postfix_id) do
     get(client, account_id, "/investigate/#{postfix_id}/preview")
   end
 
+  @doc ~S"""
+  Get message raw for email security.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EmailSecurity.get_message_raw(client, "account_id", "postfix_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_message_raw(client, account_id, postfix_id) do
     get(client, account_id, "/investigate/#{postfix_id}/raw")
   end
+
+  @doc ~S"""
+  Get message trace for email security.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EmailSecurity.get_message_trace(client, "account_id", "postfix_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get_message_trace(client, account_id, postfix_id) do
     get(client, account_id, "/investigate/#{postfix_id}/trace")
   end
 
+  @doc ~S"""
+  List submissions for email security.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EmailSecurity.list_submissions(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list_submissions(client, account_id, opts \\ []) do
     get(client, account_id, "/submissions" <> query(opts))
   end
+
+  @doc ~S"""
+  Bulk move messages for email security.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EmailSecurity.bulk_move_messages(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def bulk_move_messages(client, account_id, params) when is_map(params) do
     post(client, account_id, "/investigate/move", params)
   end
 
+  @doc ~S"""
+  Move message for email security.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EmailSecurity.move_message(client, "account_id", "postfix_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def move_message(client, account_id, postfix_id, params) when is_map(params) do
     post(client, account_id, "/investigate/#{postfix_id}/move", params)
   end
+
+  @doc ~S"""
+  Preview messages for email security.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EmailSecurity.preview_messages(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def preview_messages(client, account_id, params) when is_map(params) do
     post(client, account_id, "/investigate/preview", params)
   end
 
+  @doc ~S"""
+  Release messages for email security.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EmailSecurity.release_messages(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def release_messages(client, account_id, params) when is_map(params) do
     post(client, account_id, "/investigate/release", params)
   end
+
+  @doc ~S"""
+  Reclassify message for email security.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EmailSecurity.reclassify_message(client, "account_id", "postfix_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def reclassify_message(client, account_id, postfix_id, params) when is_map(params) do
     post(client, account_id, "/investigate/#{postfix_id}/reclassify", params)

@@ -3,17 +3,59 @@ defmodule CloudflareApi.CloudflareImagesKeys do
   Manage Cloudflare Images signing keys.
   """
 
+  @doc ~S"""
+  List cloudflare images keys.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CloudflareImagesKeys.list(client, "account_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id) do
     c(client)
     |> Tesla.get(base_path(account_id))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Put cloudflare images keys.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CloudflareImagesKeys.put(client, "account_id", "key_name", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def put(client, account_id, key_name, params \\ %{}) when is_map(params) do
     c(client)
     |> Tesla.put(key_path(account_id, key_name), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete cloudflare images keys.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CloudflareImagesKeys.delete(client, "account_id", "key_name")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, key_name) do
     c(client)

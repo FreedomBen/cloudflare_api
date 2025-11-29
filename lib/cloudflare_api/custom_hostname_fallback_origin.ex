@@ -3,17 +3,59 @@ defmodule CloudflareApi.CustomHostnameFallbackOrigin do
   Manage fallback origin settings for custom hostnames on a zone.
   """
 
+  @doc ~S"""
+  Get custom hostname fallback origin.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CustomHostnameFallbackOrigin.get(client, "zone_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, zone_id) do
     c(client)
     |> Tesla.get(path(zone_id))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update custom hostname fallback origin.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CustomHostnameFallbackOrigin.update(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, zone_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(path(zone_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete custom hostname fallback origin.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CustomHostnameFallbackOrigin.delete(client, "zone_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, zone_id) do
     c(client)

@@ -3,21 +3,91 @@ defmodule CloudflareApi.MagicSiteNetflowConfig do
   Manage Magic Site NetFlow configuration (`/accounts/:account_id/magic/sites/:site_id/netflow_config`).
   """
 
+  @doc ~S"""
+  Get magic site netflow config.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicSiteNetflowConfig.get(client, "account_id", "site_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, site_id) do
     request(client, :get, base(account_id, site_id))
   end
+
+  @doc ~S"""
+  Create magic site netflow config.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicSiteNetflowConfig.create(client, "account_id", "site_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, site_id, params) when is_map(params) do
     request(client, :post, base(account_id, site_id), params)
   end
 
+  @doc ~S"""
+  Update magic site netflow config.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicSiteNetflowConfig.update(client, "account_id", "site_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, site_id, params) when is_map(params) do
     request(client, :put, base(account_id, site_id), params)
   end
 
+  @doc ~S"""
+  Patch magic site netflow config.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicSiteNetflowConfig.patch(client, "account_id", "site_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def patch(client, account_id, site_id, params) when is_map(params) do
     request(client, :patch, base(account_id, site_id), params)
   end
+
+  @doc ~S"""
+  Delete magic site netflow config.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicSiteNetflowConfig.delete(client, "account_id", "site_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, site_id) do
     request(client, :delete, base(account_id, site_id), %{})

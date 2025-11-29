@@ -3,29 +3,127 @@ defmodule CloudflareApi.EmailRoutingSettings do
   Email Routing settings helpers under `/zones/:zone_id/email/routing`.
   """
 
+  @doc ~S"""
+  Get settings for email routing settings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EmailRoutingSettings.get_settings(client, "zone_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_settings(client, zone_id) do
     request(client, :get, base(zone_id))
   end
+
+  @doc ~S"""
+  Enable email routing settings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EmailRoutingSettings.enable(client, "zone_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def enable(client, zone_id) do
     request(client, :post, base(zone_id) <> "/enable", %{})
   end
 
+  @doc ~S"""
+  Disable email routing settings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EmailRoutingSettings.disable(client, "zone_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def disable(client, zone_id) do
     request(client, :post, base(zone_id) <> "/disable", %{})
   end
+
+  @doc ~S"""
+  Dns settings for email routing settings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EmailRoutingSettings.dns_settings(client, "zone_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def dns_settings(client, zone_id) do
     request(client, :get, base(zone_id) <> "/dns")
   end
 
+  @doc ~S"""
+  Enable dns for email routing settings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EmailRoutingSettings.enable_dns(client, "zone_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def enable_dns(client, zone_id) do
     request(client, :post, base(zone_id) <> "/dns", %{})
   end
 
+  @doc ~S"""
+  Disable dns for email routing settings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EmailRoutingSettings.disable_dns(client, "zone_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def disable_dns(client, zone_id) do
     request(client, :delete, base(zone_id) <> "/dns", %{})
   end
+
+  @doc ~S"""
+  Unlock dns for email routing settings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EmailRoutingSettings.unlock_dns(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def unlock_dns(client, zone_id, params) when is_map(params) do
     request(client, :patch, base(zone_id) <> "/dns", params)

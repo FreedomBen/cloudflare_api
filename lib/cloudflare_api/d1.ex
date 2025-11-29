@@ -3,41 +3,181 @@ defmodule CloudflareApi.D1 do
   Manage Cloudflare D1 databases.
   """
 
+  @doc ~S"""
+  List databases for d1.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.D1.list_databases(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list_databases(client, account_id, opts \\ []) do
     request(:get, base_path(account_id), client, query: opts)
   end
+
+  @doc ~S"""
+  Create database for d1.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.D1.create_database(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create_database(client, account_id, params) when is_map(params) do
     request(:post, base_path(account_id), client, body: params)
   end
 
+  @doc ~S"""
+  Get database for d1.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.D1.get_database(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_database(client, account_id, database_id) do
     request(:get, db_path(account_id, database_id), client)
   end
+
+  @doc ~S"""
+  Delete database for d1.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.D1.delete_database(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete_database(client, account_id, database_id) do
     request(:delete, db_path(account_id, database_id), client, body: %{})
   end
 
+  @doc ~S"""
+  Update database for d1.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.D1.update_database(client, "account_id", %{}, %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update_database(client, account_id, database_id, params) when is_map(params) do
     request(:put, db_path(account_id, database_id), client, body: params)
   end
+
+  @doc ~S"""
+  Update database partial for d1.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.D1.update_database_partial(client, "account_id", %{}, %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update_database_partial(client, account_id, database_id, params) when is_map(params) do
     request(:patch, db_path(account_id, database_id), client, body: params)
   end
 
+  @doc ~S"""
+  Export database for d1.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.D1.export_database(client, "account_id", %{}, %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def export_database(client, account_id, database_id, params) when is_map(params) do
     request(:post, db_path(account_id, database_id) <> "/export", client, body: params)
   end
+
+  @doc ~S"""
+  Import database for d1.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.D1.import_database(client, "account_id", %{}, %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def import_database(client, account_id, database_id, params) when is_map(params) do
     request(:post, db_path(account_id, database_id) <> "/import", client, body: params)
   end
 
+  @doc ~S"""
+  Query database for d1.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.D1.query_database(client, "account_id", %{}, %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def query_database(client, account_id, database_id, params) when is_map(params) do
     request(:post, db_path(account_id, database_id) <> "/query", client, body: params)
   end
+
+  @doc ~S"""
+  Raw query database for d1.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.D1.raw_query_database(client, "account_id", %{}, %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def raw_query_database(client, account_id, database_id, params) when is_map(params) do
     request(:post, db_path(account_id, database_id) <> "/raw", client, body: params)

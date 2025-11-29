@@ -3,9 +3,37 @@ defmodule CloudflareApi.RadarGeolocations do
   Radar geolocation metadata under `/radar/geolocations`.
   """
 
+  @doc ~S"""
+  List radar geolocations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarGeolocations.list(client, [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, opts \\ []) do
     fetch(client, "/radar/geolocations", opts)
   end
+
+  @doc ~S"""
+  Get radar geolocations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarGeolocations.get(client, "geo_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get(client, geo_id, opts \\ []) do
     fetch(client, "/radar/geolocations/" <> encode(geo_id), opts)

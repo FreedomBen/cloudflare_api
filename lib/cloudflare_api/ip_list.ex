@@ -3,6 +3,20 @@ defmodule CloudflareApi.IpList do
   Fetch IP list metadata (`/accounts/:account_id/intel/ip-list`).
   """
 
+  @doc ~S"""
+  List ip list.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpList.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     request(
       client,

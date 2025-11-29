@@ -3,17 +3,73 @@ defmodule CloudflareApi.RadarEmailSecurity do
   Radar email security analytics under `/radar/email/security`.
   """
 
+  @doc ~S"""
+  Summary radar email security.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarEmailSecurity.summary(client, "dimension", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def summary(client, dimension, opts \\ []) do
     fetch(client, "/radar/email/security/summary/" <> encode(dimension), opts)
   end
+
+  @doc ~S"""
+  Timeseries group for radar email security.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarEmailSecurity.timeseries_group(client, "dimension", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def timeseries_group(client, dimension, opts \\ []) do
     fetch(client, "/radar/email/security/timeseries_groups/" <> encode(dimension), opts)
   end
 
+  @doc ~S"""
+  Top tlds for radar email security.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarEmailSecurity.top_tlds(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def top_tlds(client, opts \\ []) do
     fetch(client, "/radar/email/security/top/tlds", opts)
   end
+
+  @doc ~S"""
+  Top tlds by for radar email security.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarEmailSecurity.top_tlds_by(client, "field", "value", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def top_tlds_by(client, field, value, opts \\ []) do
     path = "/radar/email/security/top/tlds/#{encode(field)}/#{encode(value)}"

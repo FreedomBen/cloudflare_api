@@ -3,17 +3,59 @@ defmodule CloudflareApi.AccessPolicyTester do
   Run and inspect Access policy tests for an account.
   """
 
+  @doc ~S"""
+  Create test for access policy tester.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessPolicyTester.create_test(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def create_test(client, account_id, params) when is_map(params) do
     c(client)
     |> Tesla.post(tests_path(account_id), params)
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get test for access policy tester.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessPolicyTester.get_test(client, "account_id", "test_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_test(client, account_id, test_id) do
     c(client)
     |> Tesla.get(test_path(account_id, test_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  List test users for access policy tester.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessPolicyTester.list_test_users(client, "account_id", "test_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
 
   def list_test_users(client, account_id, test_id, opts \\ []) do
     c(client)

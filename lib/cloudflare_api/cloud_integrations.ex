@@ -3,11 +3,39 @@ defmodule CloudflareApi.CloudIntegrations do
   Manage Magic Cloud provider integrations for an account.
   """
 
+  @doc ~S"""
+  List cloud integrations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CloudIntegrations.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(list_url(account_id, opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create cloud integrations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CloudIntegrations.create(client, "account_id", %{}, [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params, headers \\ []) when is_map(params) do
     c(client)
@@ -15,11 +43,39 @@ defmodule CloudflareApi.CloudIntegrations do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Discover all for cloud integrations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CloudIntegrations.discover_all(client, "account_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def discover_all(client, account_id) do
     c(client)
     |> Tesla.post(base_path(account_id) <> "/discover", %{})
     |> handle_response()
   end
+
+  @doc ~S"""
+  Get cloud integrations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CloudIntegrations.get(client, "account_id", "provider_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get(client, account_id, provider_id, opts \\ []) do
     c(client)
@@ -27,11 +83,39 @@ defmodule CloudflareApi.CloudIntegrations do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update cloud integrations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CloudIntegrations.update(client, "account_id", "provider_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, provider_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(provider_path(account_id, provider_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Patch cloud integrations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CloudIntegrations.patch(client, "account_id", "provider_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def patch(client, account_id, provider_id, params) when is_map(params) do
     c(client)
@@ -39,11 +123,39 @@ defmodule CloudflareApi.CloudIntegrations do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Delete cloud integrations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CloudIntegrations.delete(client, "account_id", "provider_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete(client, account_id, provider_id) do
     c(client)
     |> Tesla.delete(provider_path(account_id, provider_id), body: %{})
     |> handle_response()
   end
+
+  @doc ~S"""
+  Discover cloud integrations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CloudIntegrations.discover(client, "account_id", "provider_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def discover(client, account_id, provider_id, opts \\ []) do
     c(client)
@@ -53,6 +165,20 @@ defmodule CloudflareApi.CloudIntegrations do
     )
     |> handle_response()
   end
+
+  @doc ~S"""
+  Initial setup for cloud integrations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CloudIntegrations.initial_setup(client, "account_id", "provider_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def initial_setup(client, account_id, provider_id) do
     c(client)

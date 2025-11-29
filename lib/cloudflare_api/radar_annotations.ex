@@ -3,13 +3,55 @@ defmodule CloudflareApi.RadarAnnotations do
   Radar annotations endpoints under `/radar/annotations`.
   """
 
+  @doc ~S"""
+  List radar annotations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarAnnotations.list(client, [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, opts \\ []) do
     get(client, with_query("/radar/annotations", opts))
   end
 
+  @doc ~S"""
+  Outages radar annotations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarAnnotations.outages(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def outages(client, opts \\ []) do
     get(client, with_query("/radar/annotations/outages", opts))
   end
+
+  @doc ~S"""
+  Outage locations for radar annotations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarAnnotations.outage_locations(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def outage_locations(client, opts \\ []) do
     get(client, with_query("/radar/annotations/outages/locations", opts))

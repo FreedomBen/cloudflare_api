@@ -3,41 +3,181 @@ defmodule CloudflareApi.InfrastructureAccessTargets do
   Manage Access targets under `/accounts/:account_id/infrastructure/targets`.
   """
 
+  @doc ~S"""
+  List infrastructure access targets.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.InfrastructureAccessTargets.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     request(client, :get, base_path(account_id) <> query_suffix(opts))
   end
+
+  @doc ~S"""
+  Create infrastructure access targets.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.InfrastructureAccessTargets.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     request(client, :post, base_path(account_id), params)
   end
 
+  @doc ~S"""
+  Get infrastructure access targets.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.InfrastructureAccessTargets.get(client, "account_id", "target_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, target_id) do
     request(client, :get, target_path(account_id, target_id))
   end
+
+  @doc ~S"""
+  Update infrastructure access targets.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.InfrastructureAccessTargets.update(client, "account_id", "target_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, account_id, target_id, params) when is_map(params) do
     request(client, :put, target_path(account_id, target_id), params)
   end
 
+  @doc ~S"""
+  Delete infrastructure access targets.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.InfrastructureAccessTargets.delete(client, "account_id", "target_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete(client, account_id, target_id) do
     request(client, :delete, target_path(account_id, target_id), %{})
   end
+
+  @doc ~S"""
+  Create targets for infrastructure access targets.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.InfrastructureAccessTargets.create_targets(client, "account_id", "targets")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create_targets(client, account_id, targets) when is_list(targets) do
     request(client, :put, base_path(account_id) <> "/batch", targets)
   end
 
+  @doc ~S"""
+  Delete targets for infrastructure access targets.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.InfrastructureAccessTargets.delete_targets(client, "account_id", "target_ids")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete_targets(client, account_id, target_ids) when is_list(target_ids) do
     request(client, :post, base_path(account_id) <> "/batch_delete", %{"target_ids" => target_ids})
   end
+
+  @doc ~S"""
+  Delete targets deprecated for infrastructure access targets.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.InfrastructureAccessTargets.delete_targets_deprecated(client, "account_id", "targets")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete_targets_deprecated(client, account_id, targets) when is_list(targets) do
     request(client, :delete, base_path(account_id) <> "/batch", targets)
   end
 
+  @doc ~S"""
+  Get status for infrastructure access targets.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.InfrastructureAccessTargets.get_status(client, "account_id", "target_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_status(client, account_id, target_id) do
     request(client, :get, target_path(account_id, target_id) <> "/status")
   end
+
+  @doc ~S"""
+  Get loa for infrastructure access targets.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.InfrastructureAccessTargets.get_loa(client, "account_id", "target_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get_loa(client, account_id, target_id) do
     c(client)

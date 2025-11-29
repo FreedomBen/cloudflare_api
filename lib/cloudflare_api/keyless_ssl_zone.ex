@@ -3,21 +3,91 @@ defmodule CloudflareApi.KeylessSslZone do
   Manage Keyless SSL configurations for a zone.
   """
 
+  @doc ~S"""
+  List keyless ssl zone.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.KeylessSslZone.list(client, "zone_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, zone_id) do
     request(client, :get, base_path(zone_id))
   end
+
+  @doc ~S"""
+  Create keyless ssl zone.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.KeylessSslZone.create(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, zone_id, params) when is_map(params) do
     request(client, :post, base_path(zone_id), params)
   end
 
+  @doc ~S"""
+  Get keyless ssl zone.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.KeylessSslZone.get(client, "zone_id", "keyless_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, zone_id, keyless_id) do
     request(client, :get, item_path(zone_id, keyless_id))
   end
 
+  @doc ~S"""
+  Update keyless ssl zone.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.KeylessSslZone.update(client, "zone_id", "keyless_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, zone_id, keyless_id, params) when is_map(params) do
     request(client, :patch, item_path(zone_id, keyless_id), params)
   end
+
+  @doc ~S"""
+  Delete keyless ssl zone.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.KeylessSslZone.delete(client, "zone_id", "keyless_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, zone_id, keyless_id) do
     request(client, :delete, item_path(zone_id, keyless_id), %{})

@@ -3,6 +3,20 @@ defmodule CloudflareApi.UserBillingProfile do
   Retrieve user billing profile via `/user/billing/profile`.
   """
 
+  @doc ~S"""
+  Get user billing profile.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UserBillingProfile.get(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, opts \\ []) do
     c(client)
     |> Tesla.get(with_query("/user/billing/profile", opts))

@@ -3,11 +3,39 @@ defmodule CloudflareApi.UrlScannerDeprecated do
   Access the legacy URL Scanner endpoints `/accounts/:account_id/urlscanner/*`.
   """
 
+  @doc ~S"""
+  Create scan for url scanner deprecated.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UrlScannerDeprecated.create_scan(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def create_scan(client, account_id, params) when is_map(params) do
     c(client)
     |> Tesla.post(base(account_id) <> "/scan", params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Get scan for url scanner deprecated.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UrlScannerDeprecated.get_scan(client, "account_id", "scan_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get_scan(client, account_id, scan_id) do
     c(client)
@@ -15,11 +43,39 @@ defmodule CloudflareApi.UrlScannerDeprecated do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get har for url scanner deprecated.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UrlScannerDeprecated.get_har(client, "account_id", "scan_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_har(client, account_id, scan_id) do
     c(client)
     |> Tesla.get(base(account_id) <> "/scan/#{encode(scan_id)}/har")
     |> handle_response()
   end
+
+  @doc ~S"""
+  Get screenshot for url scanner deprecated.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UrlScannerDeprecated.get_screenshot(client, "account_id", "scan_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get_screenshot(client, account_id, scan_id) do
     c(client)
@@ -27,11 +83,39 @@ defmodule CloudflareApi.UrlScannerDeprecated do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get response text for url scanner deprecated.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UrlScannerDeprecated.get_response_text(client, "account_id", "response_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_response_text(client, account_id, response_id) do
     c(client)
     |> Tesla.get(base(account_id) <> "/response/#{encode(response_id)}")
     |> handle_response()
   end
+
+  @doc ~S"""
+  Search url scanner deprecated.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UrlScannerDeprecated.search(client, "account_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def search(client, account_id, opts \\ []) do
     c(client)

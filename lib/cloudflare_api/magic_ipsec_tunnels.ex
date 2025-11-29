@@ -3,29 +3,127 @@ defmodule CloudflareApi.MagicIpsecTunnels do
   Manage Magic IPsec tunnels (`/accounts/:account_id/magic/ipsec_tunnels`).
   """
 
+  @doc ~S"""
+  List magic ipsec tunnels.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicIpsecTunnels.list(client, "account_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id) do
     request(client, :get, base(account_id))
   end
+
+  @doc ~S"""
+  Create magic ipsec tunnels.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicIpsecTunnels.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     request(client, :post, base(account_id), params)
   end
 
+  @doc ~S"""
+  Update many for magic ipsec tunnels.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicIpsecTunnels.update_many(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update_many(client, account_id, params) when is_map(params) do
     request(client, :put, base(account_id), params)
   end
+
+  @doc ~S"""
+  Get magic ipsec tunnels.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicIpsecTunnels.get(client, "account_id", "tunnel_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get(client, account_id, tunnel_id) do
     request(client, :get, tunnel_path(account_id, tunnel_id))
   end
 
+  @doc ~S"""
+  Update magic ipsec tunnels.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicIpsecTunnels.update(client, "account_id", "tunnel_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, tunnel_id, params) when is_map(params) do
     request(client, :put, tunnel_path(account_id, tunnel_id), params)
   end
 
+  @doc ~S"""
+  Delete magic ipsec tunnels.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicIpsecTunnels.delete(client, "account_id", "tunnel_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete(client, account_id, tunnel_id) do
     request(client, :delete, tunnel_path(account_id, tunnel_id))
   end
+
+  @doc ~S"""
+  Generate psk for magic ipsec tunnels.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicIpsecTunnels.generate_psk(client, "account_id", "tunnel_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def generate_psk(client, account_id, tunnel_id) do
     request(client, :post, tunnel_path(account_id, tunnel_id) <> "/psk_generate", %{})

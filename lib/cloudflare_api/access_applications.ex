@@ -3,11 +3,39 @@ defmodule CloudflareApi.AccessApplications do
   Manage Cloudflare Access applications for an account.
   """
 
+  @doc ~S"""
+  List access applications.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessApplications.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(list_url(account_id, opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create access applications.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessApplications.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     c(client)
@@ -15,11 +43,39 @@ defmodule CloudflareApi.AccessApplications do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get access applications.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessApplications.get(client, "account_id", "app_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, app_id) do
     c(client)
     |> Tesla.get(app_path(account_id, app_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Update access applications.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessApplications.update(client, "account_id", "app_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, account_id, app_id, params) when is_map(params) do
     c(client)
@@ -27,11 +83,39 @@ defmodule CloudflareApi.AccessApplications do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Delete access applications.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessApplications.delete(client, "account_id", "app_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete(client, account_id, app_id) do
     c(client)
     |> Tesla.delete(app_path(account_id, app_id), body: %{})
     |> handle_response()
   end
+
+  @doc ~S"""
+  Revoke tokens for access applications.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessApplications.revoke_tokens(client, "account_id", "app_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def revoke_tokens(client, account_id, app_id) do
     c(client)
@@ -39,17 +123,59 @@ defmodule CloudflareApi.AccessApplications do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Patch settings for access applications.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessApplications.patch_settings(client, "account_id", "app_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def patch_settings(client, account_id, app_id, params) when is_map(params) do
     c(client)
     |> Tesla.patch(app_path(account_id, app_id) <> "/settings", params)
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update settings for access applications.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessApplications.update_settings(client, "account_id", "app_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update_settings(client, account_id, app_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(app_path(account_id, app_id) <> "/settings", params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Test policies for access applications.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessApplications.test_policies(client, "account_id", "app_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def test_policies(client, account_id, app_id, opts \\ []) do
     c(client)

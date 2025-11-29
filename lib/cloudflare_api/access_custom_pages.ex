@@ -3,11 +3,39 @@ defmodule CloudflareApi.AccessCustomPages do
   Manage Cloudflare Access custom pages for an account.
   """
 
+  @doc ~S"""
+  List access custom pages.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessCustomPages.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(list_url(account_id, opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create access custom pages.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessCustomPages.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     c(client)
@@ -15,17 +43,59 @@ defmodule CloudflareApi.AccessCustomPages do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get access custom pages.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessCustomPages.get(client, "account_id", "custom_page_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, custom_page_id) do
     c(client)
     |> Tesla.get(page_path(account_id, custom_page_id))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update access custom pages.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessCustomPages.update(client, "account_id", "custom_page_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, custom_page_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(page_path(account_id, custom_page_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete access custom pages.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccessCustomPages.delete(client, "account_id", "custom_page_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, custom_page_id) do
     c(client)

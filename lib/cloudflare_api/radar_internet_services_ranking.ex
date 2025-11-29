@@ -3,13 +3,55 @@ defmodule CloudflareApi.RadarInternetServicesRanking do
   Radar internet services ranking endpoints under `/radar/ranking/internet_services`.
   """
 
+  @doc ~S"""
+  Categories radar internet services ranking.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarInternetServicesRanking.categories(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def categories(client, opts \\ []) do
     fetch(client, "/radar/ranking/internet_services/categories", opts)
   end
 
+  @doc ~S"""
+  Top radar internet services ranking.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarInternetServicesRanking.top(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def top(client, opts \\ []) do
     fetch(client, "/radar/ranking/internet_services/top", opts)
   end
+
+  @doc ~S"""
+  Timeseries groups for radar internet services ranking.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarInternetServicesRanking.timeseries_groups(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def timeseries_groups(client, opts \\ []) do
     fetch(client, "/radar/ranking/internet_services/timeseries_groups", opts)

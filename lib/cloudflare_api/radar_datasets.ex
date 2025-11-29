@@ -3,13 +3,55 @@ defmodule CloudflareApi.RadarDatasets do
   Access Radar datasets under `/radar/datasets`.
   """
 
+  @doc ~S"""
+  List radar datasets.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarDatasets.list(client, [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, opts \\ []) do
     fetch(client, "/radar/datasets", opts)
   end
 
+  @doc ~S"""
+  Get radar datasets.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarDatasets.get(client, "alias", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, alias, opts \\ []) do
     fetch(client, "/radar/datasets/" <> encode(alias), opts)
   end
+
+  @doc ~S"""
+  Request download url for radar datasets.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarDatasets.request_download_url(client, %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def request_download_url(client, params) when is_map(params) do
     c(client)

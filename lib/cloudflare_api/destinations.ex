@@ -4,17 +4,73 @@ defmodule CloudflareApi.Destinations do
   `/accounts/:account_id/workers/observability/destinations`.
   """
 
+  @doc ~S"""
+  List destinations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Destinations.list(client, "account_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id) do
     request(client, :get, base(account_id))
   end
+
+  @doc ~S"""
+  Create destinations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Destinations.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     request(client, :post, base(account_id), params)
   end
 
+  @doc ~S"""
+  Update destinations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Destinations.update(client, "account_id", "slug", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, slug, params) when is_map(params) do
     request(client, :patch, destination_path(account_id, slug), params)
   end
+
+  @doc ~S"""
+  Delete destinations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Destinations.delete(client, "account_id", "slug")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, slug) do
     request(client, :delete, destination_path(account_id, slug), %{})

@@ -3,9 +3,37 @@ defmodule CloudflareApi.DnsFirewallAnalytics do
   DNS Firewall analytics helpers for `/dns_analytics/report` and `/bytime`.
   """
 
+  @doc ~S"""
+  Report dns firewall analytics.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DnsFirewallAnalytics.report(client, "account_id", "cluster_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def report(client, account_id, cluster_id, opts \\ []) do
     get(client, analytics_path(account_id, cluster_id) <> query_suffix(opts))
   end
+
+  @doc ~S"""
+  Report by time for dns firewall analytics.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DnsFirewallAnalytics.report_by_time(client, "account_id", "cluster_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def report_by_time(client, account_id, cluster_id, opts \\ []) do
     get(

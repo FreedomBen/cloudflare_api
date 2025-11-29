@@ -3,9 +3,37 @@ defmodule CloudflareApi.RadarRobotsTxt do
   Radar robots.txt analytics under `/radar/robots_txt`.
   """
 
+  @doc ~S"""
+  Top domain categories for radar robots txt.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarRobotsTxt.top_domain_categories(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def top_domain_categories(client, opts \\ []) do
     fetch(client, "/radar/robots_txt/top/domain_categories", opts)
   end
+
+  @doc ~S"""
+  Top user agents by directive for radar robots txt.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarRobotsTxt.top_user_agents_by_directive(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def top_user_agents_by_directive(client, opts \\ []) do
     fetch(client, "/radar/robots_txt/top/user_agents/directive", opts)

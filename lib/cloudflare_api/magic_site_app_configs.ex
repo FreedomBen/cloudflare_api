@@ -3,25 +3,109 @@ defmodule CloudflareApi.MagicSiteAppConfigs do
   Manage Magic Site app configs (`/accounts/:account_id/magic/sites/:site_id/app_configs`).
   """
 
+  @doc ~S"""
+  List magic site app configs.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicSiteAppConfigs.list(client, "account_id", "site_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, site_id, opts \\ []) do
     request(client, :get, base(account_id, site_id) <> query(opts))
   end
+
+  @doc ~S"""
+  Create magic site app configs.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicSiteAppConfigs.create(client, "account_id", "site_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, site_id, params) when is_map(params) do
     request(client, :post, base(account_id, site_id), params)
   end
 
+  @doc ~S"""
+  Get magic site app configs.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicSiteAppConfigs.get(client, "account_id", "site_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, site_id, app_config_id) do
     request(client, :get, config_path(account_id, site_id, app_config_id))
   end
+
+  @doc ~S"""
+  Update magic site app configs.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicSiteAppConfigs.update(client, "account_id", "site_id", %{}, %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, account_id, site_id, app_config_id, params) when is_map(params) do
     request(client, :put, config_path(account_id, site_id, app_config_id), params)
   end
 
+  @doc ~S"""
+  Patch magic site app configs.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicSiteAppConfigs.patch(client, "account_id", "site_id", %{}, %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def patch(client, account_id, site_id, app_config_id, params) when is_map(params) do
     request(client, :patch, config_path(account_id, site_id, app_config_id), params)
   end
+
+  @doc ~S"""
+  Delete magic site app configs.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicSiteAppConfigs.delete(client, "account_id", "site_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, site_id, app_config_id) do
     request(client, :delete, config_path(account_id, site_id, app_config_id))

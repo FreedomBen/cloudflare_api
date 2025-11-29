@@ -3,9 +3,37 @@ defmodule CloudflareApi.SchemaValidationSettings do
   Manage schema validation settings and per-operation overrides.
   """
 
+  @doc ~S"""
+  Get settings for schema validation settings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SchemaValidationSettings.get_settings(client, "zone_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_settings(client, zone_id, opts \\ []) do
     fetch(client, settings_path(zone_id), opts)
   end
+
+  @doc ~S"""
+  Patch settings for schema validation settings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SchemaValidationSettings.patch_settings(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def patch_settings(client, zone_id, params) when is_map(params) do
     c(client)
@@ -13,15 +41,57 @@ defmodule CloudflareApi.SchemaValidationSettings do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update settings for schema validation settings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SchemaValidationSettings.update_settings(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update_settings(client, zone_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(settings_path(zone_id), params)
     |> handle_response()
   end
 
+  @doc ~S"""
+  List operations for schema validation settings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SchemaValidationSettings.list_operations(client, "zone_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list_operations(client, zone_id, opts \\ []) do
     fetch(client, operation_settings_path(zone_id), opts)
   end
+
+  @doc ~S"""
+  Bulk patch operations for schema validation settings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SchemaValidationSettings.bulk_patch_operations(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def bulk_patch_operations(client, zone_id, params) when is_map(params) do
     c(client)
@@ -29,15 +99,57 @@ defmodule CloudflareApi.SchemaValidationSettings do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get operation setting for schema validation settings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SchemaValidationSettings.get_operation_setting(client, "zone_id", "operation_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_operation_setting(client, zone_id, operation_id, opts \\ []) do
     fetch(client, single_operation_path(zone_id, operation_id), opts)
   end
+
+  @doc ~S"""
+  Update operation setting for schema validation settings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SchemaValidationSettings.update_operation_setting(client, "zone_id", "operation_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update_operation_setting(client, zone_id, operation_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(single_operation_path(zone_id, operation_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete operation setting for schema validation settings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SchemaValidationSettings.delete_operation_setting(client, "zone_id", "operation_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete_operation_setting(client, zone_id, operation_id) do
     c(client)

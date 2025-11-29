@@ -3,9 +3,37 @@ defmodule CloudflareApi.RadarLeakedCredentialChecks do
   Radar leaked credential checks analytics under `/radar/leaked_credential_checks`.
   """
 
+  @doc ~S"""
+  Summary radar leaked credential checks.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarLeakedCredentialChecks.summary(client, "dimension", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def summary(client, dimension, opts \\ []) do
     fetch(client, "/radar/leaked_credential_checks/summary/" <> encode(dimension), opts)
   end
+
+  @doc ~S"""
+  Timeseries group for radar leaked credential checks.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarLeakedCredentialChecks.timeseries_group(client, "dimension", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def timeseries_group(client, dimension, opts \\ []) do
     fetch(client, "/radar/leaked_credential_checks/timeseries_groups/" <> encode(dimension), opts)

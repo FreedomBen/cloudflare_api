@@ -3,17 +3,73 @@ defmodule CloudflareApi.IpAccessRulesUser do
   User-level IP Access rules (`/user/firewall/access_rules/rules`).
   """
 
+  @doc ~S"""
+  List ip access rules user.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAccessRulesUser.list(client, [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, opts \\ []) do
     request(client, :get, base_path() <> query_suffix(opts))
   end
+
+  @doc ~S"""
+  Create ip access rules user.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAccessRulesUser.create(client, %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, params) when is_map(params) do
     request(client, :post, base_path(), params)
   end
 
+  @doc ~S"""
+  Update ip access rules user.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAccessRulesUser.update(client, "rule_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, rule_id, params) when is_map(params) do
     request(client, :patch, item_path(rule_id), params)
   end
+
+  @doc ~S"""
+  Delete ip access rules user.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAccessRulesUser.delete(client, "rule_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, rule_id) do
     request(client, :delete, item_path(rule_id), %{})

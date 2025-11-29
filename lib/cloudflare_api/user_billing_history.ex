@@ -3,6 +3,20 @@ defmodule CloudflareApi.UserBillingHistory do
   Retrieve user billing history via `/user/billing/history`.
   """
 
+  @doc ~S"""
+  List user billing history.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UserBillingHistory.list(client, [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, opts \\ []) do
     c(client)
     |> Tesla.get(with_query("/user/billing/history", opts))

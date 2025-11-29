@@ -3,21 +3,91 @@ defmodule CloudflareApi.RadarAiBots do
   Radar AI Bots analytics helpers under `/radar/ai/bots`.
   """
 
+  @doc ~S"""
+  Summary radar ai bots.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarAiBots.summary(client, "dimension", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def summary(client, dimension, opts \\ []) do
     get(client, with_query("/radar/ai/bots/summary/" <> encode(dimension), opts))
   end
+
+  @doc ~S"""
+  Summary user agent for radar ai bots.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarAiBots.summary_user_agent(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def summary_user_agent(client, opts \\ []) do
     get(client, with_query("/radar/ai/bots/summary/user_agent", opts))
   end
 
+  @doc ~S"""
+  Timeseries radar ai bots.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarAiBots.timeseries(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def timeseries(client, opts \\ []) do
     get(client, with_query("/radar/ai/bots/timeseries", opts))
   end
 
+  @doc ~S"""
+  Timeseries group for radar ai bots.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarAiBots.timeseries_group(client, "dimension", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def timeseries_group(client, dimension, opts \\ []) do
     get(client, with_query("/radar/ai/bots/timeseries_groups/" <> encode(dimension), opts))
   end
+
+  @doc ~S"""
+  Timeseries group user agent for radar ai bots.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarAiBots.timeseries_group_user_agent(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def timeseries_group_user_agent(client, opts \\ []) do
     get(client, with_query("/radar/ai/bots/timeseries_groups/user_agent", opts))

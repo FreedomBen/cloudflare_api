@@ -3,9 +3,37 @@ defmodule CloudflareApi.RadarWebCrawlers do
   Radar web crawler analytics under `/radar/bots/crawlers`.
   """
 
+  @doc ~S"""
+  Summary radar web crawlers.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarWebCrawlers.summary(client, "dimension", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def summary(client, dimension, opts \\ []) do
     fetch(client, "/radar/bots/crawlers/summary/" <> encode(dimension), opts)
   end
+
+  @doc ~S"""
+  Timeseries group for radar web crawlers.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarWebCrawlers.timeseries_group(client, "dimension", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def timeseries_group(client, dimension, opts \\ []) do
     fetch(client, "/radar/bots/crawlers/timeseries_groups/" <> encode(dimension), opts)

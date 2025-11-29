@@ -3,9 +3,37 @@ defmodule CloudflareApi.MaintenanceConfiguration do
   Manage R2 catalog maintenance configuration (`/accounts/:account_id/r2-catalog/:bucket_name/maintenance-configs`).
   """
 
+  @doc ~S"""
+  Get maintenance configuration.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MaintenanceConfiguration.get(client, "account_id", "bucket_name")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, bucket_name) do
     request(client, :get, base(account_id, bucket_name))
   end
+
+  @doc ~S"""
+  Update maintenance configuration.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MaintenanceConfiguration.update(client, "account_id", "bucket_name", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, account_id, bucket_name, params) when is_map(params) do
     request(client, :post, base(account_id, bucket_name), params)

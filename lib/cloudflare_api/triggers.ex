@@ -3,11 +3,39 @@ defmodule CloudflareApi.Triggers do
   Manage build triggers under `/accounts/:account_id/builds/triggers`.
   """
 
+  @doc ~S"""
+  Create triggers.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Triggers.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def create(client, account_id, params) when is_map(params) do
     c(client)
     |> Tesla.post(base(account_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Update triggers.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Triggers.update(client, "account_id", "trigger_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, account_id, trigger_id, params) when is_map(params) do
     c(client)
@@ -15,17 +43,59 @@ defmodule CloudflareApi.Triggers do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Delete triggers.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Triggers.delete(client, "account_id", "trigger_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete(client, account_id, trigger_id) do
     c(client)
     |> Tesla.delete(trigger_path(account_id, trigger_id), body: %{})
     |> handle_response()
   end
 
+  @doc ~S"""
+  Create manual build for triggers.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Triggers.create_manual_build(client, "account_id", "trigger_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def create_manual_build(client, account_id, trigger_id, params \\ %{}) do
     c(client)
     |> Tesla.post(trigger_path(account_id, trigger_id) <> "/builds", params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Purge build cache for triggers.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Triggers.purge_build_cache(client, "account_id", "trigger_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def purge_build_cache(client, account_id, trigger_id, params \\ %{}) do
     c(client)

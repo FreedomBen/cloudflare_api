@@ -3,9 +3,37 @@ defmodule CloudflareApi.RadarVerifiedBots do
   Radar verified bot analytics under `/radar/verified_bots`.
   """
 
+  @doc ~S"""
+  Top bots for radar verified bots.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarVerifiedBots.top_bots(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def top_bots(client, opts \\ []) do
     fetch(client, "/radar/verified_bots/top/bots", opts)
   end
+
+  @doc ~S"""
+  Top categories for radar verified bots.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarVerifiedBots.top_categories(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def top_categories(client, opts \\ []) do
     fetch(client, "/radar/verified_bots/top/categories", opts)

@@ -3,6 +3,20 @@ defmodule CloudflareApi.AccountRequestTracer do
   Trigger the account request tracer.
   """
 
+  @doc ~S"""
+  Trace account request tracer.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountRequestTracer.trace(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def trace(client, account_id, params) when is_map(params) do
     c(client)
     |> Tesla.post("/accounts/#{account_id}/request-tracer/trace", params)

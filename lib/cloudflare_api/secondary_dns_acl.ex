@@ -3,9 +3,37 @@ defmodule CloudflareApi.SecondaryDnsAcl do
   Manage Secondary DNS ACLs (`/accounts/:account_id/secondary_dns/acls`).
   """
 
+  @doc ~S"""
+  List secondary dns acl.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SecondaryDnsAcl.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     fetch(client, base_path(account_id), opts)
   end
+
+  @doc ~S"""
+  Create secondary dns acl.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SecondaryDnsAcl.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     c(client)
@@ -13,15 +41,57 @@ defmodule CloudflareApi.SecondaryDnsAcl do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get secondary dns acl.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SecondaryDnsAcl.get(client, "account_id", "acl_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, acl_id, opts \\ []) do
     fetch(client, acl_path(account_id, acl_id), opts)
   end
+
+  @doc ~S"""
+  Update secondary dns acl.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SecondaryDnsAcl.update(client, "account_id", "acl_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, account_id, acl_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(acl_path(account_id, acl_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete secondary dns acl.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SecondaryDnsAcl.delete(client, "account_id", "acl_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, acl_id) do
     c(client)

@@ -3,17 +3,59 @@ defmodule CloudflareApi.UrlNormalization do
   Access URL Normalization settings at `/zones/:zone_id/url_normalization`.
   """
 
+  @doc ~S"""
+  Get url normalization.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UrlNormalization.get(client, "zone_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, zone_id) do
     c(client)
     |> Tesla.get(path(zone_id))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update url normalization.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UrlNormalization.update(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, zone_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(path(zone_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete url normalization.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UrlNormalization.delete(client, "zone_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, zone_id) do
     c(client)

@@ -3,6 +3,20 @@ defmodule CloudflareApi.SslTlsModeRecommendation do
   Fetch SSL/TLS mode recommendation (`GET /zones/:zone_id/ssl/recommendation`).
   """
 
+  @doc ~S"""
+  Recommendation ssl tls mode recommendation.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.SslTlsModeRecommendation.recommendation(client, "zone_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def recommendation(client, zone_id, opts \\ []) do
     c(client)
     |> Tesla.get(with_query("/zones/#{zone_id}/ssl/recommendation", opts))

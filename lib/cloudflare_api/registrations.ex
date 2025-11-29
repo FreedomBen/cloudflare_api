@@ -3,11 +3,39 @@ defmodule CloudflareApi.Registrations do
   Manage device registrations (`/accounts/:account_id/devices/registrations`).
   """
 
+  @doc ~S"""
+  List registrations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Registrations.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(with_query(base_path(account_id), opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Get registrations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Registrations.get(client, "account_id", "registration_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get(client, account_id, registration_id) do
     c(client)
@@ -15,17 +43,59 @@ defmodule CloudflareApi.Registrations do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Delete registrations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Registrations.delete(client, "account_id", "registration_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete(client, account_id, registration_id) do
     c(client)
     |> Tesla.delete(registration_path(account_id, registration_id), body: %{})
     |> handle_response()
   end
 
+  @doc ~S"""
+  Revoke registrations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Registrations.revoke(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def revoke(client, account_id, params) when is_map(params) do
     c(client)
     |> Tesla.post(base_path(account_id) <> "/revoke", params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Unrevoke registrations.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Registrations.unrevoke(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def unrevoke(client, account_id, params) when is_map(params) do
     c(client)

@@ -4,17 +4,73 @@ defmodule CloudflareApi.EmailRoutingDestinationAddresses do
   `/accounts/:account_id/email/routing/addresses`.
   """
 
+  @doc ~S"""
+  List email routing destination addresses.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EmailRoutingDestinationAddresses.list(client, "account_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id) do
     request(client, :get, base(account_id))
   end
+
+  @doc ~S"""
+  Create email routing destination addresses.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EmailRoutingDestinationAddresses.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     request(client, :post, base(account_id), params)
   end
 
+  @doc ~S"""
+  Get email routing destination addresses.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EmailRoutingDestinationAddresses.get(client, "account_id", "destination_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, destination_id) do
     request(client, :get, address_path(account_id, destination_id))
   end
+
+  @doc ~S"""
+  Delete email routing destination addresses.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EmailRoutingDestinationAddresses.delete(client, "account_id", "destination_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, destination_id) do
     request(client, :delete, address_path(account_id, destination_id), %{})

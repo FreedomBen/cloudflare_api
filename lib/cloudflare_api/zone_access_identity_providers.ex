@@ -3,11 +3,39 @@ defmodule CloudflareApi.ZoneAccessIdentityProviders do
   Manage zone-scoped Access identity providers.
   """
 
+  @doc ~S"""
+  List zone access identity providers.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZoneAccessIdentityProviders.list(client, "zone_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, zone_id, opts \\ []) do
     c(client)
     |> Tesla.get(with_query(base_path(zone_id), opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create zone access identity providers.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZoneAccessIdentityProviders.create(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, zone_id, params) when is_map(params) do
     c(client)
@@ -15,17 +43,59 @@ defmodule CloudflareApi.ZoneAccessIdentityProviders do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get zone access identity providers.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZoneAccessIdentityProviders.get(client, "zone_id", "provider_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, zone_id, provider_id) do
     c(client)
     |> Tesla.get(provider_path(zone_id, provider_id))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update zone access identity providers.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZoneAccessIdentityProviders.update(client, "zone_id", "provider_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, zone_id, provider_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(provider_path(zone_id, provider_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete zone access identity providers.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.ZoneAccessIdentityProviders.delete(client, "zone_id", "provider_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, zone_id, provider_id) do
     c(client)

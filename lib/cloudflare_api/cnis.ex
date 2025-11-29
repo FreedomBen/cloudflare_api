@@ -3,11 +3,39 @@ defmodule CloudflareApi.Cnis do
   Manage Cloudflare Network Interconnects (CNIs) for an account.
   """
 
+  @doc ~S"""
+  List cnis.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Cnis.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(list_url(account_id, opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create cnis.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Cnis.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     c(client)
@@ -15,17 +43,59 @@ defmodule CloudflareApi.Cnis do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get cnis.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Cnis.get(client, "account_id", "cni_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, cni_id) do
     c(client)
     |> Tesla.get(cni_path(account_id, cni_id))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update cnis.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Cnis.update(client, "account_id", "cni_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, cni_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(cni_path(account_id, cni_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete cnis.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Cnis.delete(client, "account_id", "cni_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, cni_id) do
     c(client)

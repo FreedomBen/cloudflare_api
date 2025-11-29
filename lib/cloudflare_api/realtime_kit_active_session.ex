@@ -3,25 +3,109 @@ defmodule CloudflareApi.RealtimeKitActiveSession do
   Manage active sessions in Realtime Kit meetings.
   """
 
+  @doc ~S"""
+  Get realtime kit active session.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RealtimeKitActiveSession.get(client, "account_id", "app_id", "meeting_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, app_id, meeting_id) do
     get_request(client, base_path(account_id, app_id, meeting_id))
   end
+
+  @doc ~S"""
+  Kick realtime kit active session.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RealtimeKitActiveSession.kick(client, "account_id", "app_id", "meeting_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def kick(client, account_id, app_id, meeting_id, params) when is_map(params) do
     post_request(client, action_path(account_id, app_id, meeting_id, "kick"), params)
   end
 
+  @doc ~S"""
+  Kick all for realtime kit active session.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RealtimeKitActiveSession.kick_all(client, "account_id", "app_id", "meeting_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def kick_all(client, account_id, app_id, meeting_id) do
     post_request(client, action_path(account_id, app_id, meeting_id, "kick-all"), %{})
   end
+
+  @doc ~S"""
+  Mute realtime kit active session.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RealtimeKitActiveSession.mute(client, "account_id", "app_id", "meeting_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def mute(client, account_id, app_id, meeting_id, params) when is_map(params) do
     post_request(client, action_path(account_id, app_id, meeting_id, "mute"), params)
   end
 
+  @doc ~S"""
+  Mute all for realtime kit active session.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RealtimeKitActiveSession.mute_all(client, "account_id", "app_id", "meeting_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def mute_all(client, account_id, app_id, meeting_id) do
     post_request(client, action_path(account_id, app_id, meeting_id, "mute-all"), %{})
   end
+
+  @doc ~S"""
+  Create poll for realtime kit active session.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RealtimeKitActiveSession.create_poll(client, "account_id", "app_id", "meeting_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create_poll(client, account_id, app_id, meeting_id, params) when is_map(params) do
     post_request(client, action_path(account_id, app_id, meeting_id, "poll"), params)

@@ -3,6 +3,20 @@ defmodule CloudflareApi.RadarIp do
   Radar IP metadata (`GET /radar/entities/ip`).
   """
 
+  @doc ~S"""
+  Lookup radar ip.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarIp.lookup(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def lookup(client, opts \\ []) do
     c(client)
     |> Tesla.get(with_query("/radar/entities/ip", opts))

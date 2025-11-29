@@ -3,21 +3,91 @@ defmodule CloudflareApi.IpAccessRulesAccount do
   Account-level IP Access rules (`/accounts/:account_id/firewall/access_rules/rules`).
   """
 
+  @doc ~S"""
+  List ip access rules account.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAccessRulesAccount.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     request(client, :get, base_path(account_id) <> query_suffix(opts))
   end
+
+  @doc ~S"""
+  Create ip access rules account.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAccessRulesAccount.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     request(client, :post, base_path(account_id), params)
   end
 
+  @doc ~S"""
+  Get ip access rules account.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAccessRulesAccount.get(client, "account_id", "rule_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, rule_id) do
     request(client, :get, item_path(account_id, rule_id))
   end
 
+  @doc ~S"""
+  Update ip access rules account.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAccessRulesAccount.update(client, "account_id", "rule_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, rule_id, params) when is_map(params) do
     request(client, :patch, item_path(account_id, rule_id), params)
   end
+
+  @doc ~S"""
+  Delete ip access rules account.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAccessRulesAccount.delete(client, "account_id", "rule_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, rule_id) do
     request(client, :delete, item_path(account_id, rule_id), %{})

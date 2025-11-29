@@ -3,25 +3,109 @@ defmodule CloudflareApi.Interconnects do
   Manage Cloudflare Network Interconnects via `/accounts/:account_id/cni/interconnects`.
   """
 
+  @doc ~S"""
+  List interconnects.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Interconnects.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     request(client, :get, base_path(account_id) <> query_suffix(opts))
   end
+
+  @doc ~S"""
+  Create interconnects.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Interconnects.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     request(client, :post, base_path(account_id), params)
   end
 
+  @doc ~S"""
+  Get interconnects.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Interconnects.get(client, "account_id", "interconnect_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, interconnect_id) do
     request(client, :get, interconnect_path(account_id, interconnect_id))
   end
+
+  @doc ~S"""
+  Delete interconnects.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Interconnects.delete(client, "account_id", "interconnect_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, interconnect_id) do
     request(client, :delete, interconnect_path(account_id, interconnect_id), %{})
   end
 
+  @doc ~S"""
+  Get status for interconnects.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Interconnects.get_status(client, "account_id", "interconnect_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_status(client, account_id, interconnect_id) do
     request(client, :get, interconnect_path(account_id, interconnect_id) <> "/status")
   end
+
+  @doc ~S"""
+  Get loa for interconnects.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Interconnects.get_loa(client, "account_id", "interconnect_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get_loa(client, account_id, interconnect_id) do
     c(client)

@@ -3,29 +3,127 @@ defmodule CloudflareApi.IpAddressManagementPrefixes do
   Prefix management helpers for the IP Address Management API.
   """
 
+  @doc ~S"""
+  List ip address management prefixes.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementPrefixes.list(client, "account_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id) do
     request(client, :get, base_path(account_id))
   end
+
+  @doc ~S"""
+  Create ip address management prefixes.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementPrefixes.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     request(client, :post, base_path(account_id), params)
   end
 
+  @doc ~S"""
+  Get ip address management prefixes.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementPrefixes.get(client, "account_id", "prefix_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, prefix_id) do
     request(client, :get, prefix_path(account_id, prefix_id))
   end
+
+  @doc ~S"""
+  Update ip address management prefixes.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementPrefixes.update(client, "account_id", "prefix_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, account_id, prefix_id, params) when is_map(params) do
     request(client, :patch, prefix_path(account_id, prefix_id), params)
   end
 
+  @doc ~S"""
+  Delete ip address management prefixes.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementPrefixes.delete(client, "account_id", "prefix_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete(client, account_id, prefix_id) do
     request(client, :delete, prefix_path(account_id, prefix_id), %{})
   end
 
+  @doc ~S"""
+  Validate ip address management prefixes.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementPrefixes.validate(client, "account_id", "prefix_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def validate(client, account_id, prefix_id) do
     request(client, :post, prefix_path(account_id, prefix_id) <> "/validate", %{})
   end
+
+  @doc ~S"""
+  Download loa document for ip address management prefixes.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementPrefixes.download_loa_document(client, "account_id", "loa_document_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def download_loa_document(client, account_id, loa_document_id) do
     request(

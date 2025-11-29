@@ -3,39 +3,165 @@ defmodule CloudflareApi.RadarHttp do
   Radar HTTP analytics under `/radar/http`.
   """
 
+  @doc ~S"""
+  Summary radar http.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarHttp.summary(client, "dimension", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def summary(client, dimension, opts \\ []) do
     fetch(client, "/radar/http/summary/" <> encode(dimension), opts)
   end
+
+  @doc ~S"""
+  Timeseries radar http.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarHttp.timeseries(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def timeseries(client, opts \\ []) do
     fetch(client, "/radar/http/timeseries", opts)
   end
 
+  @doc ~S"""
+  Timeseries group for radar http.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarHttp.timeseries_group(client, "dimension", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def timeseries_group(client, dimension, opts \\ []) do
     fetch(client, "/radar/http/timeseries_groups/" <> encode(dimension), opts)
   end
 
+  @doc ~S"""
+  Top ases for radar http.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarHttp.top_ases(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def top_ases(client, opts \\ []) do
     fetch(client, "/radar/http/top/ases", opts)
   end
+
+  @doc ~S"""
+  Top ases by for radar http.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarHttp.top_ases_by(client, "dimension", "value", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def top_ases_by(client, dimension, value, opts \\ []) do
     path = "/radar/http/top/ases/#{encode(dimension)}/#{encode(value)}"
     fetch(client, path, opts)
   end
 
+  @doc ~S"""
+  Top locations for radar http.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarHttp.top_locations(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def top_locations(client, opts \\ []) do
     fetch(client, "/radar/http/top/locations", opts)
   end
+
+  @doc ~S"""
+  Top locations by for radar http.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarHttp.top_locations_by(client, "dimension", "value", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def top_locations_by(client, dimension, value, opts \\ []) do
     path = "/radar/http/top/locations/#{encode(dimension)}/#{encode(value)}"
     fetch(client, path, opts)
   end
 
+  @doc ~S"""
+  Top browsers for radar http.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarHttp.top_browsers(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def top_browsers(client, opts \\ []) do
     fetch(client, "/radar/http/top/browser", opts)
   end
+
+  @doc ~S"""
+  Top browser families for radar http.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RadarHttp.top_browser_families(client, [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def top_browser_families(client, opts \\ []) do
     fetch(client, "/radar/http/top/browser_family", opts)

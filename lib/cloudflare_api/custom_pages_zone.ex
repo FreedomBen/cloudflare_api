@@ -3,17 +3,59 @@ defmodule CloudflareApi.CustomPagesZone do
   Manage custom pages scoped to a zone.
   """
 
+  @doc ~S"""
+  List custom pages zone.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CustomPagesZone.list(client, "zone_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, zone_id) do
     c(client)
     |> Tesla.get(base_path(zone_id))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get custom pages zone.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CustomPagesZone.get(client, "zone_id", "page_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, zone_id, page_id) do
     c(client)
     |> Tesla.get(page_path(zone_id, page_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Update custom pages zone.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CustomPagesZone.update(client, "zone_id", "page_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, zone_id, page_id, params) when is_map(params) do
     c(client)

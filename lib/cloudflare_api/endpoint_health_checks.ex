@@ -3,21 +3,91 @@ defmodule CloudflareApi.EndpointHealthChecks do
   Manage diagnostic endpoint health checks (`/accounts/:account_id/diagnostics/endpoint-healthchecks`).
   """
 
+  @doc ~S"""
+  List endpoint health checks.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EndpointHealthChecks.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     request(client, :get, base(account_id) <> query(opts))
   end
+
+  @doc ~S"""
+  Create endpoint health checks.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EndpointHealthChecks.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     request(client, :post, base(account_id), params)
   end
 
+  @doc ~S"""
+  Get endpoint health checks.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EndpointHealthChecks.get(client, "account_id", "check_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, check_id) do
     request(client, :get, check_path(account_id, check_id))
   end
 
+  @doc ~S"""
+  Update endpoint health checks.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EndpointHealthChecks.update(client, "account_id", "check_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, check_id, params) when is_map(params) do
     request(client, :put, check_path(account_id, check_id), params)
   end
+
+  @doc ~S"""
+  Delete endpoint health checks.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.EndpointHealthChecks.delete(client, "account_id", "check_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, check_id) do
     request(client, :delete, check_path(account_id, check_id), %{})

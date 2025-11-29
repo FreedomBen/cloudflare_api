@@ -3,9 +3,37 @@ defmodule CloudflareApi.DomainIntelligence do
   Domain intelligence helpers (`/accounts/:account_id/intel/domain` and `/bulk`).
   """
 
+  @doc ~S"""
+  Get domain intelligence.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DomainIntelligence.get(client, "account_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, opts \\ []) do
     request(client, "/accounts/#{account_id}/intel/domain" <> query_suffix(opts))
   end
+
+  @doc ~S"""
+  Bulk get for domain intelligence.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.DomainIntelligence.bulk_get(client, "account_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def bulk_get(client, account_id, opts \\ []) do
     request(client, "/accounts/#{account_id}/intel/domain/bulk" <> query_suffix(opts))

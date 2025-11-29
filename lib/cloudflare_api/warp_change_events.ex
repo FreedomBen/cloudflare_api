@@ -3,6 +3,20 @@ defmodule CloudflareApi.WarpChangeEvents do
   List WARP change events via `/accounts/:account_id/dex/warp-change-events`.
   """
 
+  @doc ~S"""
+  List warp change events.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.WarpChangeEvents.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(with_query("/accounts/#{account_id}/dex/warp-change-events", opts))

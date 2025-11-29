@@ -3,45 +3,199 @@ defmodule CloudflareApi.Lists do
   Manage Cloudflare Filter Lists for an account (`/accounts/:account_id/rules/lists`).
   """
 
+  @doc ~S"""
+  List lists.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Lists.list(client, "account_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id) do
     request(client, :get, base_path(account_id))
   end
+
+  @doc ~S"""
+  Create lists.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Lists.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     request(client, :post, base_path(account_id), params)
   end
 
+  @doc ~S"""
+  Get lists.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Lists.get(client, "account_id", "list_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, list_id) do
     request(client, :get, list_path(account_id, list_id))
   end
+
+  @doc ~S"""
+  Update lists.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Lists.update(client, "account_id", "list_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, account_id, list_id, params) when is_map(params) do
     request(client, :put, list_path(account_id, list_id), params)
   end
 
+  @doc ~S"""
+  Delete lists.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Lists.delete(client, "account_id", "list_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete(client, account_id, list_id) do
     request(client, :delete, list_path(account_id, list_id), %{})
   end
+
+  @doc ~S"""
+  Get items for lists.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Lists.get_items(client, "account_id", "list_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get_items(client, account_id, list_id, opts \\ []) do
     request(client, :get, items_path(account_id, list_id) <> query(opts))
   end
 
+  @doc ~S"""
+  Create items for lists.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Lists.create_items(client, "account_id", "list_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def create_items(client, account_id, list_id, params) when is_map(params) do
     request(client, :post, items_path(account_id, list_id), params)
   end
+
+  @doc ~S"""
+  Replace items for lists.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Lists.replace_items(client, "account_id", "list_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def replace_items(client, account_id, list_id, params) when is_map(params) do
     request(client, :put, items_path(account_id, list_id), params)
   end
 
+  @doc ~S"""
+  Delete items for lists.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Lists.delete_items(client, "account_id", "list_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete_items(client, account_id, list_id, params) when is_map(params) do
     request(client, :delete, items_path(account_id, list_id), params)
   end
 
+  @doc ~S"""
+  Get item for lists.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Lists.get_item(client, "account_id", "list_id", "item_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_item(client, account_id, list_id, item_id) do
     request(client, :get, item_path(account_id, list_id, item_id))
   end
+
+  @doc ~S"""
+  Get bulk operation for lists.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Lists.get_bulk_operation(client, "account_id", "operation_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get_bulk_operation(client, account_id, operation_id) do
     request(client, :get, bulk_path(account_id, operation_id))

@@ -3,25 +3,109 @@ defmodule CloudflareApi.IpAddressManagementAddressMaps do
   Address Map helpers under `/accounts/:account_id/addressing/address_maps`.
   """
 
+  @doc ~S"""
+  List ip address management address maps.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementAddressMaps.list(client, "account_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id) do
     request(client, :get, base_path(account_id))
   end
+
+  @doc ~S"""
+  Create ip address management address maps.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementAddressMaps.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     request(client, :post, base_path(account_id), params)
   end
 
+  @doc ~S"""
+  Get ip address management address maps.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementAddressMaps.get(client, "account_id", "address_map_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, address_map_id) do
     request(client, :get, map_path(account_id, address_map_id))
   end
+
+  @doc ~S"""
+  Update ip address management address maps.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementAddressMaps.update(client, "account_id", "address_map_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, account_id, address_map_id, params) when is_map(params) do
     request(client, :patch, map_path(account_id, address_map_id), params)
   end
 
+  @doc ~S"""
+  Delete ip address management address maps.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementAddressMaps.delete(client, "account_id", "address_map_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete(client, account_id, address_map_id) do
     request(client, :delete, map_path(account_id, address_map_id), %{})
   end
+
+  @doc ~S"""
+  Add account membership for ip address management address maps.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementAddressMaps.add_account_membership(client, "account_id", "address_map_id", "member_account_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def add_account_membership(client, account_id, address_map_id, member_account_id) do
     request(
@@ -32,6 +116,20 @@ defmodule CloudflareApi.IpAddressManagementAddressMaps do
     )
   end
 
+  @doc ~S"""
+  Remove account membership for ip address management address maps.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementAddressMaps.remove_account_membership(client, "account_id", "address_map_id", "member_account_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def remove_account_membership(client, account_id, address_map_id, member_account_id) do
     request(
       client,
@@ -40,6 +138,20 @@ defmodule CloudflareApi.IpAddressManagementAddressMaps do
       %{}
     )
   end
+
+  @doc ~S"""
+  Add ip for ip address management address maps.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementAddressMaps.add_ip(client, "account_id", "address_map_id", "ip_address")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def add_ip(client, account_id, address_map_id, ip_address) do
     request(
@@ -50,6 +162,20 @@ defmodule CloudflareApi.IpAddressManagementAddressMaps do
     )
   end
 
+  @doc ~S"""
+  Remove ip for ip address management address maps.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementAddressMaps.remove_ip(client, "account_id", "address_map_id", "ip_address")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def remove_ip(client, account_id, address_map_id, ip_address) do
     request(
       client,
@@ -59,6 +185,20 @@ defmodule CloudflareApi.IpAddressManagementAddressMaps do
     )
   end
 
+  @doc ~S"""
+  Add zone membership for ip address management address maps.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementAddressMaps.add_zone_membership(client, "account_id", "address_map_id", "zone_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def add_zone_membership(client, account_id, address_map_id, zone_id) do
     request(
       client,
@@ -67,6 +207,20 @@ defmodule CloudflareApi.IpAddressManagementAddressMaps do
       %{}
     )
   end
+
+  @doc ~S"""
+  Remove zone membership for ip address management address maps.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.IpAddressManagementAddressMaps.remove_zone_membership(client, "account_id", "address_map_id", "zone_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def remove_zone_membership(client, account_id, address_map_id, zone_id) do
     request(

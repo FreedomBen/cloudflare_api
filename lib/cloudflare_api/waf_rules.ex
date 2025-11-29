@@ -4,17 +4,59 @@ defmodule CloudflareApi.WafRules do
   `/zones/:zone_id/firewall/waf/packages/:package_id/rules`.
   """
 
+  @doc ~S"""
+  List waf rules.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.WafRules.list(client, "zone_id", "package_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, zone_id, package_id, opts \\ []) do
     c(client)
     |> Tesla.get(with_query(base(zone_id, package_id), opts))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get waf rules.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.WafRules.get(client, "zone_id", "package_id", "rule_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, zone_id, package_id, rule_id, opts \\ []) do
     c(client)
     |> Tesla.get(with_query(rule_path(zone_id, package_id, rule_id), opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Update waf rules.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.WafRules.update(client, "zone_id", "package_id", "rule_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, zone_id, package_id, rule_id, params) when is_map(params) do
     c(client)

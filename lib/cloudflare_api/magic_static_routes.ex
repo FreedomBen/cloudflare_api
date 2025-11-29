@@ -3,29 +3,127 @@ defmodule CloudflareApi.MagicStaticRoutes do
   Manage Magic static routes (`/accounts/:account_id/magic/routes`).
   """
 
+  @doc ~S"""
+  List magic static routes.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicStaticRoutes.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     request(client, :get, base(account_id) <> query(opts))
   end
+
+  @doc ~S"""
+  Create magic static routes.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicStaticRoutes.create(client, "account_id", %{}, [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params, opts \\ []) when is_map(params) do
     request(client, :post, base(account_id) <> query(opts), params)
   end
 
+  @doc ~S"""
+  Update many for magic static routes.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicStaticRoutes.update_many(client, "account_id", %{}, [])
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update_many(client, account_id, params, opts \\ []) when is_map(params) do
     request(client, :put, base(account_id) <> query(opts), params)
   end
+
+  @doc ~S"""
+  Delete many for magic static routes.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicStaticRoutes.delete_many(client, "account_id", %{}, [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete_many(client, account_id, params, opts \\ []) when is_map(params) do
     request(client, :delete, base(account_id) <> query(opts), params)
   end
 
+  @doc ~S"""
+  Get magic static routes.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicStaticRoutes.get(client, "account_id", "route_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, route_id) do
     request(client, :get, route_path(account_id, route_id))
   end
 
+  @doc ~S"""
+  Update magic static routes.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicStaticRoutes.update(client, "account_id", "route_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, route_id, params) when is_map(params) do
     request(client, :put, route_path(account_id, route_id), params)
   end
+
+  @doc ~S"""
+  Delete magic static routes.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.MagicStaticRoutes.delete(client, "account_id", "route_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, route_id) do
     request(client, :delete, route_path(account_id, route_id))

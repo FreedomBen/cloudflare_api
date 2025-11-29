@@ -3,11 +3,39 @@ defmodule CloudflareApi.CallsTurnKeys do
   Manage TURN keys for Cloudflare Calls.
   """
 
+  @doc ~S"""
+  List calls turn keys.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CallsTurnKeys.list(client, "account_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id) do
     c(client)
     |> Tesla.get(base_path(account_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create calls turn keys.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CallsTurnKeys.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     c(client)
@@ -15,17 +43,59 @@ defmodule CloudflareApi.CallsTurnKeys do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get calls turn keys.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CallsTurnKeys.get(client, "account_id", "key_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, key_id) do
     c(client)
     |> Tesla.get(key_path(account_id, key_id))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update calls turn keys.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CallsTurnKeys.update(client, "account_id", "key_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, key_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(key_path(account_id, key_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete calls turn keys.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.CallsTurnKeys.delete(client, "account_id", "key_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, key_id) do
     c(client)

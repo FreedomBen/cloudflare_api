@@ -3,11 +3,39 @@ defmodule CloudflareApi.UrlScanner do
   Access the modern URL Scanner v2 endpoints under `/accounts/:account_id/urlscanner/v2`.
   """
 
+  @doc ~S"""
+  Create scan for url scanner.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UrlScanner.create_scan(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def create_scan(client, account_id, params) when is_map(params) do
     c(client)
     |> Tesla.post(base(account_id) <> "/scan", params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create scan bulk for url scanner.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UrlScanner.create_scan_bulk(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create_scan_bulk(client, account_id, params) when is_map(params) do
     c(client)
@@ -15,11 +43,39 @@ defmodule CloudflareApi.UrlScanner do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get scan for url scanner.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UrlScanner.get_scan(client, "account_id", "scan_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_scan(client, account_id, scan_id) do
     c(client)
     |> Tesla.get(base(account_id) <> "/result/#{encode(scan_id)}")
     |> handle_response()
   end
+
+  @doc ~S"""
+  Get dom for url scanner.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UrlScanner.get_dom(client, "account_id", "scan_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get_dom(client, account_id, scan_id) do
     c(client)
@@ -27,11 +83,39 @@ defmodule CloudflareApi.UrlScanner do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get har for url scanner.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UrlScanner.get_har(client, "account_id", "scan_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_har(client, account_id, scan_id) do
     c(client)
     |> Tesla.get(base(account_id) <> "/har/#{encode(scan_id)}")
     |> handle_response()
   end
+
+  @doc ~S"""
+  Get screenshot for url scanner.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UrlScanner.get_screenshot(client, "account_id", "scan_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get_screenshot(client, account_id, scan_id) do
     c(client)
@@ -39,11 +123,39 @@ defmodule CloudflareApi.UrlScanner do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get response for url scanner.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UrlScanner.get_response(client, "account_id", "response_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get_response(client, account_id, response_id) do
     c(client)
     |> Tesla.get(base(account_id) <> "/responses/#{encode(response_id)}")
     |> handle_response()
   end
+
+  @doc ~S"""
+  Search url scanner.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.UrlScanner.search(client, "account_id", [])
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def search(client, account_id, opts \\ []) do
     c(client)

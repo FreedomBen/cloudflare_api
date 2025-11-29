@@ -3,11 +3,39 @@ defmodule CloudflareApi.AccountLoadBalancerMonitorGroups do
   Manage account-level load balancer monitor groups.
   """
 
+  @doc ~S"""
+  List account load balancer monitor groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountLoadBalancerMonitorGroups.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(list_url(account_id, opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create account load balancer monitor groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountLoadBalancerMonitorGroups.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     c(client)
@@ -15,11 +43,39 @@ defmodule CloudflareApi.AccountLoadBalancerMonitorGroups do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get account load balancer monitor groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountLoadBalancerMonitorGroups.get(client, "account_id", "group_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, group_id) do
     c(client)
     |> Tesla.get(group_path(account_id, group_id))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Update account load balancer monitor groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountLoadBalancerMonitorGroups.update(client, "account_id", "group_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, account_id, group_id, params) when is_map(params) do
     c(client)
@@ -27,17 +83,59 @@ defmodule CloudflareApi.AccountLoadBalancerMonitorGroups do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Patch account load balancer monitor groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountLoadBalancerMonitorGroups.patch(client, "account_id", "group_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def patch(client, account_id, group_id, params) when is_map(params) do
     c(client)
     |> Tesla.patch(group_path(account_id, group_id), params)
     |> handle_response()
   end
 
+  @doc ~S"""
+  Delete account load balancer monitor groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountLoadBalancerMonitorGroups.delete(client, "account_id", "group_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete(client, account_id, group_id) do
     c(client)
     |> Tesla.delete(group_path(account_id, group_id), body: %{})
     |> handle_response()
   end
+
+  @doc ~S"""
+  List references for account load balancer monitor groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountLoadBalancerMonitorGroups.list_references(client, "account_id", "group_id")
+      {:ok, [%{"id" => "example"}]}
+
+  """
 
   def list_references(client, account_id, group_id) do
     c(client)

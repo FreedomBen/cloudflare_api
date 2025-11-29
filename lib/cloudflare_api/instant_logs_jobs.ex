@@ -3,9 +3,37 @@ defmodule CloudflareApi.InstantLogsJobs do
   Instant Logs job helpers for `/zones/:zone_id/logpush/edge/jobs`.
   """
 
+  @doc ~S"""
+  List instant logs jobs.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.InstantLogsJobs.list(client, "zone_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, zone_id, opts \\ []) do
     request(client, :get, base_path(zone_id) <> query_suffix(opts))
   end
+
+  @doc ~S"""
+  Create instant logs jobs.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.InstantLogsJobs.create(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, zone_id, params) when is_map(params) do
     request(client, :post, base_path(zone_id), params)

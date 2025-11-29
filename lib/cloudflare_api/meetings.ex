@@ -3,25 +3,109 @@ defmodule CloudflareApi.Meetings do
   Manage Realtime Kit meetings and participants (`/accounts/:account_id/realtime/kit/:app_id/meetings`).
   """
 
+  @doc ~S"""
+  List meetings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Meetings.list(client, "account_id", "app_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, app_id, opts \\ []) do
     request(client, :get, meetings_path(account_id, app_id) <> query(opts))
   end
+
+  @doc ~S"""
+  Create meetings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Meetings.create(client, "account_id", "app_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, app_id, params) when is_map(params) do
     request(client, :post, meetings_path(account_id, app_id), params)
   end
 
+  @doc ~S"""
+  Get meetings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Meetings.get(client, "account_id", "app_id", "meeting_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, app_id, meeting_id) do
     request(client, :get, meeting_path(account_id, app_id, meeting_id))
   end
+
+  @doc ~S"""
+  Update meetings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Meetings.update(client, "account_id", "app_id", "meeting_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update(client, account_id, app_id, meeting_id, params) when is_map(params) do
     request(client, :patch, meeting_path(account_id, app_id, meeting_id), params)
   end
 
+  @doc ~S"""
+  Replace meetings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Meetings.replace(client, "account_id", "app_id", "meeting_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def replace(client, account_id, app_id, meeting_id, params) when is_map(params) do
     request(client, :put, meeting_path(account_id, app_id, meeting_id), params)
   end
+
+  @doc ~S"""
+  List participants for meetings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Meetings.list_participants(client, "account_id", "app_id", "meeting_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
 
   def list_participants(client, account_id, app_id, meeting_id, opts \\ []) do
     request(
@@ -31,9 +115,37 @@ defmodule CloudflareApi.Meetings do
     )
   end
 
+  @doc ~S"""
+  Add participant for meetings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Meetings.add_participant(client, "account_id", "app_id", "meeting_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def add_participant(client, account_id, app_id, meeting_id, params) when is_map(params) do
     request(client, :post, participants_path(account_id, app_id, meeting_id), params)
   end
+
+  @doc ~S"""
+  Get participant for meetings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Meetings.get_participant(client, "account_id", "app_id", "meeting_id", "participant_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def get_participant(client, account_id, app_id, meeting_id, participant_id) do
     request(
@@ -42,6 +154,20 @@ defmodule CloudflareApi.Meetings do
       participant_path(account_id, app_id, meeting_id, participant_id)
     )
   end
+
+  @doc ~S"""
+  Update participant for meetings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Meetings.update_participant(client, "account_id", "app_id", "meeting_id", "participant_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def update_participant(client, account_id, app_id, meeting_id, participant_id, params)
       when is_map(params) do
@@ -53,6 +179,20 @@ defmodule CloudflareApi.Meetings do
     )
   end
 
+  @doc ~S"""
+  Delete participant for meetings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Meetings.delete_participant(client, "account_id", "app_id", "meeting_id", "participant_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def delete_participant(client, account_id, app_id, meeting_id, participant_id) do
     request(
       client,
@@ -60,6 +200,20 @@ defmodule CloudflareApi.Meetings do
       participant_path(account_id, app_id, meeting_id, participant_id)
     )
   end
+
+  @doc ~S"""
+  Regenerate participant token for meetings.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.Meetings.regenerate_participant_token(client, "account_id", "app_id", "meeting_id", "participant_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def regenerate_participant_token(client, account_id, app_id, meeting_id, participant_id) do
     request(

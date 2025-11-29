@@ -3,11 +3,39 @@ defmodule CloudflareApi.AccountResourceGroups do
   Manage IAM resource groups for an account.
   """
 
+  @doc ~S"""
+  List account resource groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountResourceGroups.list(client, "account_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, account_id, opts \\ []) do
     c(client)
     |> Tesla.get(list_url(account_id, opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create account resource groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountResourceGroups.create(client, "account_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, account_id, params) when is_map(params) do
     c(client)
@@ -15,17 +43,59 @@ defmodule CloudflareApi.AccountResourceGroups do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get account resource groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountResourceGroups.get(client, "account_id", "group_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, account_id, group_id) do
     c(client)
     |> Tesla.get(group_path(account_id, group_id))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update account resource groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountResourceGroups.update(client, "account_id", "group_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, account_id, group_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(group_path(account_id, group_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete account resource groups.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.AccountResourceGroups.delete(client, "account_id", "group_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, account_id, group_id) do
     c(client)

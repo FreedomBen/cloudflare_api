@@ -3,11 +3,39 @@ defmodule CloudflareApi.RateLimits do
   Manage zone-level rate limits (`/zones/:zone_id/rate_limits`).
   """
 
+  @doc ~S"""
+  List rate limits.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RateLimits.list(client, "zone_id", [])
+      {:ok, [%{"id" => "example"}]}
+
+  """
+
   def list(client, zone_id, opts \\ []) do
     c(client)
     |> Tesla.get(with_query(base_path(zone_id), opts))
     |> handle_response()
   end
+
+  @doc ~S"""
+  Create rate limits.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RateLimits.create(client, "zone_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def create(client, zone_id, params) when is_map(params) do
     c(client)
@@ -15,17 +43,59 @@ defmodule CloudflareApi.RateLimits do
     |> handle_response()
   end
 
+  @doc ~S"""
+  Get rate limits.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RateLimits.get(client, "zone_id", "rate_limit_id")
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def get(client, zone_id, rate_limit_id) do
     c(client)
     |> Tesla.get(rule_path(zone_id, rate_limit_id))
     |> handle_response()
   end
 
+  @doc ~S"""
+  Update rate limits.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RateLimits.update(client, "zone_id", "rate_limit_id", %{})
+      {:ok, %{"id" => "example"}}
+
+  """
+
   def update(client, zone_id, rate_limit_id, params) when is_map(params) do
     c(client)
     |> Tesla.put(rule_path(zone_id, rate_limit_id), params)
     |> handle_response()
   end
+
+  @doc ~S"""
+  Delete rate limits.
+
+  Calls the Cloudflare API endpoint described in the moduledoc and
+  returns `{:ok, result}` on success or `{:error, reason}` when the request fails.
+
+  ## Examples
+
+      iex> client = CloudflareApi.client("api-token")
+      iex> CloudflareApi.RateLimits.delete(client, "zone_id", "rate_limit_id")
+      {:ok, %{"id" => "example"}}
+
+  """
 
   def delete(client, zone_id, rate_limit_id) do
     c(client)
