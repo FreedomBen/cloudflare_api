@@ -15,8 +15,9 @@ derived from tags and version-bump commits in `mix.exs`.
 - Added Keys (Workers telemetry), Leaked Credential Checks, Lists, Live Streams,
   Livestream Analytics, load balancer modules (healthcheck events, monitors,
   pools, regions, zone balancers), Logcontrol CMB config, zone/account Logpush
-  jobs, and Logs Received wrappers with comprehensive ExUnit coverage to keep
-  the progress log moving down the OpenAPI tag list.
+  jobs, Logs Received, and the Magic WAN app/connector/tunnel wrappers with
+  comprehensive ExUnit coverage to keep the progress log moving down the
+  OpenAPI tag list.
 - ExUnit coverage for the new Argo analytics, Smart Routing, AutoRAG, attacker,
   and audit log wrappers to keep recent modules guarded by tests.
 - AutoRAG collection management and search helpers to round out the initial

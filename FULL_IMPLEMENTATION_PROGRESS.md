@@ -176,6 +176,10 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.LogpushJobsZone` | `/zones/:zone_id/logpush` jobs + validation endpoints | Zone Logpush jobs, ownership challenges, destination/origin validation. |
 | `CloudflareApi.LogpushJobsAccount` | `/accounts/:account_id/logpush` jobs + validation endpoints | Account Logpush jobs plus helper validations. |
 | `CloudflareApi.LogsReceived` | `/zones/:zone_id/logs/*` retention flag + Logpull data | Zone log retention flag, Logpull data, RayID lookups, and field metadata. |
+| `CloudflareApi.MagicAccountApps` | `/accounts/:account_id/magic/apps` CRUD | Manage Magic WAN account applications. |
+| `CloudflareApi.MagicConnectors` | `/accounts/:account_id/magic/connectors` CRUD + telemetry | Connector management plus telemetry events/snapshots helpers. |
+| `CloudflareApi.MagicGreTunnels` | `/accounts/:account_id/magic/gre_tunnels` CRUD + bulk update | GRE tunnel lifecycle helpers including batch update. |
+| `CloudflareApi.MagicIpsecTunnels` | `/accounts/:account_id/magic/ipsec_tunnels` CRUD + PSK generation | IPsec tunnel management, bulk updates, and PSK generation. |
 
 ## Remaining Modules
 
@@ -197,10 +201,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Feedback
 - MCP Portal
 - MCP Portal Servers
-- Magic Account Apps
-- Magic Connectors
-- Magic GRE tunnels
-- Magic IPsec tunnels
 - Magic Interconnects
 - Magic Network Monitoring Configuration
 - Magic Network Monitoring Rules
