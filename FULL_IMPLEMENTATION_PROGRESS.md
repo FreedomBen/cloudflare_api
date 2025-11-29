@@ -396,6 +396,13 @@ roughly by the OpenAPI tag they represent.
 | `CloudflareApi.ZoneSnippets` | `/zones/:zone_id/snippets*` list/get/put/delete/content + `/snippet_rules` | Manage Workers snippets and snippet rules for a zone. |
 | `CloudflareApi.ZoneSubscription` | `GET/POST/PUT /zones/:zone_id/subscription` | Manage a zone’s subscription record. |
 | `CloudflareApi.ZoneAccessApplications` | `/zones/:zone_id/access/apps*` list/create/get/update/delete + settings, policy tests, token revocation | Zone-scoped Access application management. |
+| `CloudflareApi.ZoneAccessGroups` | `/zones/:zone_id/access/groups*` | Zone-level Access group CRUD with query filtering support. |
+| `CloudflareApi.ZoneAccessIdentityProviders` | `/zones/:zone_id/access/identity_providers*` | Manage zone-scoped identity providers. |
+| `CloudflareApi.ZoneAccessMtlsAuthentication` | `/zones/:zone_id/access/certificates*` + `/settings` | Zone Access mTLS certificate CRUD plus hostname settings. |
+| `CloudflareApi.ZoneAccessPolicies` | `/zones/:zone_id/access/apps/:app_id/policies*` | Manage Access policies under a zone application. |
+| `CloudflareApi.ZoneAccessServiceTokens` | `/zones/:zone_id/access/service_tokens*` | Zone-level service token CRUD operations. |
+| `CloudflareApi.ZoneAccessShortLivedCertificateCas` | `/zones/:zone_id/access/apps/ca` + `/apps/:app_id/ca` | List and manage short-lived certificate CAs for zone apps. |
+| `CloudflareApi.ZoneAuthenticatedOriginPulls` | `/zones/:zone_id/origin_tls_client_auth*` | Zone-level Authenticated Origin Pull certificates and settings. |
 
 ## Remaining Modules
 
@@ -415,13 +422,6 @@ on one, move it to the “Completed Modules” table above (and include any note
 - Environment Variables
 - Event
 - Feedback
-- Zone-Level Access groups
-- Zone-Level Access identity providers
-- Zone-Level Access mTLS authentication
-- Zone-Level Access policies
-- Zone-Level Access service tokens
-- Zone-Level Access short-lived certificate CAs
-- Zone-Level Authenticated Origin Pulls
 - Zone-Level Zero Trust organization
 - brand_protection
 - brapi

@@ -16,6 +16,10 @@ derived from tags and version-bump commits in `mix.exs`.
   Zone Subscription, and zone-level Access Applications modules (each with
   matching ExUnit coverage) to keep knocking items off
   `FULL_IMPLEMENTATION_PROGRESS.md`.
+- Added zone-level Access groups, identity providers, mTLS authentication,
+  policies, service tokens, short-lived certificate CAs, and Authenticated
+  Origin Pull helpers so the remaining Access/AOP rows in
+  `FULL_IMPLEMENTATION_PROGRESS.md` now have documented wrappers and tests.
 - Added Keys (Workers telemetry), Leaked Credential Checks, Lists, Live Streams,
   Livestream Analytics, load balancer modules (healthcheck events, monitors,
   pools, regions, zone balancers), Logcontrol CMB config, zone/account Logpush
