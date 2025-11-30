@@ -63,9 +63,10 @@ defmodule CloudflareApi.DnsRecords do
   """
   def list_for_host_domain(client, zone_id, host, domain, type \\ nil) do
     hostname =
-      cond do
-        String.ends_with?(host, domain) -> host
-        true -> "#{host}.#{domain}"
+      if String.ends_with?(host, domain) do
+        host
+      else
+        "#{host}.#{domain}"
       end
 
     list_for_hostname(client, zone_id, hostname, type)
@@ -203,9 +204,8 @@ defmodule CloudflareApi.DnsRecords do
   returns an error tuple, a `MatchError` will be raised.
   """
   def hostname_exists?(client, zone_id, hostname, type \\ nil) do
-    with {:ok, records} = list_for_hostname(client, zone_id, hostname, type) do
-      Enum.count(records) > 0
-    end
+    {:ok, records} = list_for_hostname(client, zone_id, hostname, type)
+    Enum.count(records) > 0
   end
 
   @doc ~S"""
@@ -216,9 +216,8 @@ defmodule CloudflareApi.DnsRecords do
   will be raised if the underlying call returns an error tuple.
   """
   def host_domain_exists?(client, zone_id, host, domain, type \\ nil) do
-    with {:ok, records} = list_for_host_domain(client, zone_id, host, domain, type) do
-      Enum.count(records) > 0
-    end
+    {:ok, records} = list_for_host_domain(client, zone_id, host, domain, type)
+    Enum.count(records) > 0
   end
 
   defp list_url(zone_id, opts) do

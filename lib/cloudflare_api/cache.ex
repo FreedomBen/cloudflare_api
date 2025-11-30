@@ -331,10 +331,7 @@ defmodule CloudflareApi.Cache do
   end
 
   defp get_entry_from_cache(%Cache{hostnames: hostnames} = _cache, hostname, :even_if_expired) do
-    cond do
-      Map.has_key?(hostnames, hostname) -> hostnames[hostname]
-      true -> nil
-    end
+    Map.get(hostnames, hostname)
   end
 
   defp expired?(%Cache{} = cache, hostname) do

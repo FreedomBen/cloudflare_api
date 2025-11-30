@@ -23,12 +23,10 @@ defmodule CloudflareApi.ZoneSnippetsTest do
   test "snippet CRUD and content helpers hit expected routes", %{client: client} do
     mock(fn
       %Tesla.Env{method: :get, url: url} = env ->
-        cond do
-          String.ends_with?(url, "/content") ->
-            {:ok, %Tesla.Env{env | status: 200, body: %{"result" => "console.log('hi')"}}}
-
-          true ->
-            {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{"name" => "foo"}}}}
+        if String.ends_with?(url, "/content") do
+          {:ok, %Tesla.Env{env | status: 200, body: %{"result" => "console.log('hi')"}}}
+        else
+          {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{"name" => "foo"}}}}
         end
 
       %Tesla.Env{method: :put, url: url, body: body} = env ->

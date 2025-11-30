@@ -18,14 +18,12 @@ defmodule CloudflareApi.ZoneZeroTrustOrganizationTest do
         {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{"name" => "org"}}}}
 
       %Tesla.Env{method: :post, url: url, body: body} = env ->
-        cond do
-          String.ends_with?(url, "/revoke_user") ->
-            assert Jason.decode!(body) == %{"email" => "user@example.com"}
-            {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{}}}}
-
-          true ->
-            assert Jason.decode!(body) == %{"name" => "org"}
-            {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{"name" => "org"}}}}
+        if String.ends_with?(url, "/revoke_user") do
+          assert Jason.decode!(body) == %{"email" => "user@example.com"}
+          {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{}}}}
+        else
+          assert Jason.decode!(body) == %{"name" => "org"}
+          {:ok, %Tesla.Env{env | status: 200, body: %{"result" => %{"name" => "org"}}}}
         end
 
       %Tesla.Env{method: :put, url: url, body: body} = env ->

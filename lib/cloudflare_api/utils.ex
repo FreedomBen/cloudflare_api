@@ -390,8 +390,7 @@ defmodule CloudflareApi.Utils do
   """
   @spec list_to_string(list :: list() | String.Chars.t(), mask_keys :: list(binary())) :: binary()
   def list_to_string(list, mask_keys \\ []) do
-    list
-    |> Enum.map(fn val ->
+    Enum.map_join(list, ", ", fn val ->
       case val do
         %{} -> map_to_string(val, mask_keys)
         l when is_list(l) -> list_to_string(l, mask_keys)
@@ -399,7 +398,6 @@ defmodule CloudflareApi.Utils do
         _ -> Kernel.to_string(val)
       end
     end)
-    |> Enum.join(", ")
   end
 
   @doc """
@@ -419,10 +417,14 @@ defmodule CloudflareApi.Utils do
 
   def tuple_to_string({key, value}, mask_keys) do
     # mask value if key is supposed to be masked.  Otherwise pass on
-    cond do
-      key in list_to_strings_and_atoms(mask_keys) -> {key, mask_str(value)}
-      true -> {key, value}
-    end
+    value =
+      if key in list_to_strings_and_atoms(mask_keys) do
+        mask_str(value)
+      else
+        value
+      end
+
+    {key, value}
     |> Tuple.to_list()
     |> list_to_string(mask_keys)
   end
@@ -478,8 +480,7 @@ defmodule CloudflareApi.Utils do
         _ -> {key, val}
       end
     end)
-    |> Enum.map(fn {key, val} -> "#{key}: '#{val}'" end)
-    |> Enum.join(", ")
+    |> Enum.map_join(", ", fn {key, val} -> "#{key}: '#{val}'" end)
   end
 
   def map_to_string(not_a_map, _mask_keys), do: Kernel.to_string(not_a_map)

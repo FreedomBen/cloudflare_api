@@ -239,6 +239,9 @@ derived from tags and version-bump commits in `mix.exs`.
 - Normalized large numeric literals in the radar, botnet feed, keyless SSL,
   and IP address management tests to use underscore separators so credo's
   readability checks pass without changing the underlying values.
+- Applied credo-driven refactors (swapping single-branch `cond` blocks for `if`,
+  simplifying DNS record existence helpers, and using `Enum.map_join/3` in string
+  utils) to keep the helpers more idiomatic and efficient.
 
 ## [0.3.0] - 2025-11-28
 
