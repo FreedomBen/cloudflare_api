@@ -233,6 +233,12 @@ derived from tags and version-bump commits in `mix.exs`.
   cache tests so expiry semantics match the documented behaviour.
 - Tighten doctest HTTP mocking by pattern matching on `%Tesla.Env{}` to keep
   type checks quiet while preserving the existing doctest behaviour.
+- Removed the deprecated `CloudflareApi.Utils.is_uuid?/1` and
+  `is_uuid_or_nil?/1` aliases now that `uuid?/1` helpers cover the same
+  behaviour, satisfying credo's predicate naming rule.
+- Normalized large numeric literals in the radar, botnet feed, keyless SSL,
+  and IP address management tests to use underscore separators so credo's
+  readability checks pass without changing the underlying values.
 
 ## [0.3.0] - 2025-11-28
 

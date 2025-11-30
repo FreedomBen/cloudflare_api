@@ -18,11 +18,11 @@ defmodule CloudflareApi.BotnetThreatFeedTest do
        %Tesla.Env{
          env
          | status: 200,
-           body: %{"result" => [%{"asn" => 13335}]}
+           body: %{"result" => [%{"asn" => 13_335}]}
        }}
     end)
 
-    assert {:ok, [%{"asn" => 13335}]} = BotnetThreatFeed.list_asn_configs(client, "acc")
+    assert {:ok, [%{"asn" => 13_335}]} = BotnetThreatFeed.list_asn_configs(client, "acc")
   end
 
   test "day_report/4 encodes optional date filter", %{client: client} do

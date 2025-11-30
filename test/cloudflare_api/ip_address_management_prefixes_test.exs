@@ -21,7 +21,7 @@ defmodule CloudflareApi.IpAddressManagementPrefixesTest do
   end
 
   test "create/3 posts prefix payload", %{client: client} do
-    params = %{"cidr" => "198.51.100.0/24", "asn" => 64512}
+    params = %{"cidr" => "198.51.100.0/24", "asn" => 64_512}
 
     mock(fn %Tesla.Env{method: :post, body: body} = env ->
       assert Jason.decode!(body) == params

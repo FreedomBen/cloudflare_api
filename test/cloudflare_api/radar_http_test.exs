@@ -21,10 +21,10 @@ defmodule CloudflareApi.RadarHttpTest do
   test "top_ases_by/4 encodes dimension/value", %{client: client} do
     mock(fn %Tesla.Env{url: url} = env ->
       assert url == "https://api.cloudflare.com/client/v4/radar/http/top/ases/ip_version/IPv6"
-      {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"asn" => 13335}]}}}
+      {:ok, %Tesla.Env{env | status: 200, body: %{"result" => [%{"asn" => 13_335}]}}}
     end)
 
-    assert {:ok, [%{"asn" => 13335}]} = RadarHttp.top_ases_by(client, "ip_version", "IPv6")
+    assert {:ok, [%{"asn" => 13_335}]} = RadarHttp.top_ases_by(client, "ip_version", "IPv6")
   end
 
   test "top_locations/2 surfaces errors", %{client: client} do

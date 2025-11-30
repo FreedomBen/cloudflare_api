@@ -21,7 +21,7 @@ defmodule CloudflareApi.KeylessSslZoneTest do
   end
 
   test "create/3 posts configuration", %{client: client} do
-    params = %{"host" => "keyless.example.com", "port" => 24008, "certificate" => "PEM"}
+    params = %{"host" => "keyless.example.com", "port" => 24_008, "certificate" => "PEM"}
 
     mock(fn %Tesla.Env{method: :post, body: body} = env ->
       assert Jason.decode!(body) == params
