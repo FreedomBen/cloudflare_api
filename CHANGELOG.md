@@ -242,6 +242,9 @@ derived from tags and version-bump commits in `mix.exs`.
 - Applied credo-driven refactors (swapping single-branch `cond` blocks for `if`,
   simplifying DNS record existence helpers, and using `Enum.map_join/3` in string
   utils) to keep the helpers more idiomatic and efficient.
+- Tightened dialyzer coverage by enhancing the auto-generated specs, adding
+  manual specs for binary/multipart helpers, and teaching dialyzer about Mix/IEx
+  dependencies so `mix dialyzer` can run without spurious warnings.
 
 ## [0.3.0] - 2025-11-28
 

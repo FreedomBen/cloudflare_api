@@ -9,6 +9,12 @@ defmodule CloudflareApi.WorkersAiObjectDetection do
   Execute the Facebook Omni DETR ResNet-50 model
   (`POST /accounts/:account_id/ai/run/@cf/facebook/omni-detr-resnet-50`).
   """
+  @spec run_cf_facebook_omni_detr_resnet_50(
+          CloudflareApi.client(),
+          String.t(),
+          iodata(),
+          CloudflareApi.options()
+        ) :: CloudflareApi.result(term())
   def run_cf_facebook_omni_detr_resnet_50(client, account_id, body \\ <<>>, opts \\ []) do
     post_run(client, account_id, "@cf/facebook/omni-detr-resnet-50", body, opts)
   end

@@ -67,6 +67,13 @@ defmodule CloudflareApi.DlpDatasets do
   Upload raw bytes for a dataset version
   (`POST /accounts/:account_id/dlp/datasets/:dataset_id/upload/:version`).
   """
+  @spec upload_version(
+          CloudflareApi.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          iodata()
+        ) :: CloudflareApi.result(term())
   def upload_version(client, account_id, dataset_id, version, data)
       when is_binary(data) or is_list(data) do
     c(client)
@@ -95,6 +102,14 @@ defmodule CloudflareApi.DlpDatasets do
   Upload an entry for a multi-column dataset
   (`POST /accounts/:account_id/dlp/datasets/:dataset_id/versions/:version/entries/:entry_id`).
   """
+  @spec upload_dataset_column(
+          CloudflareApi.client(),
+          String.t(),
+          String.t(),
+          String.t(),
+          String.t(),
+          iodata()
+        ) :: CloudflareApi.result(term())
   def upload_dataset_column(client, account_id, dataset_id, version, entry_id, data)
       when is_binary(data) or is_list(data) do
     c(client)

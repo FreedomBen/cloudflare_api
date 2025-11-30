@@ -54,7 +54,7 @@ defmodule CloudflareApi do
   @type options :: keyword() | map() | nil
 
   @typedoc "Standard error reasons returned by this library when wrapping HTTP calls."
-  @type error_reason :: Tesla.Env.t() | Tesla.Error.t() | term()
+  @type error_reason :: Tesla.Env.t() | %Tesla.Error{} | term()
 
   @typedoc "Helper type for `{:ok, value}` / `{:error, reason}` tuples."
   @type result(result) :: {:ok, result} | {:error, error_reason()}

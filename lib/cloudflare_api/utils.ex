@@ -46,7 +46,7 @@ defmodule CloudflareApi.Utils do
   """
   @spec extract(
           Access.t() | list() | tuple() | any(),
-          integer() | String.t() | (... -> any())
+          integer() | atom() | String.t() | (... -> any())
         ) :: any()
   def extract(list, key) when is_list(list) and is_integer(key) do
     Enum.at(list, key)
@@ -74,13 +74,13 @@ defmodule CloudflareApi.Utils do
 
   @spec process(
           Access.t() | list() | tuple() | any(),
-          integer() | String.t() | (... -> any())
+          integer() | atom() | String.t() | (... -> any())
         ) :: any()
   def process(thing, arg), do: extract(thing, arg)
 
   @spec transform(
           Access.t() | list() | tuple() | any(),
-          integer() | String.t() | (... -> any())
+          integer() | atom() | String.t() | (... -> any())
         ) :: any()
   def transform(thing, arg), do: extract(thing, arg)
 

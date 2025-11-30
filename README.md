@@ -129,9 +129,6 @@ hand-written approach. Newly added modules include:
 - `CloudflareApi.CustomPagesAccount` – list/update account-scoped custom pages.
 - `CloudflareApi.D1` – manage Cloudflare D1 databases, imports/exports, and queries.
 
-Further modules will be added iteratively; progress is tracked in
-`FULL_IMPLEMENTATION_PROGRESS.md`.
-
 An up-to-date OpenAPI schema for the Cloudflare API is cached locally at
 `priv/cloudflare_api/openapi.json` and used to align request/response shapes.
 
@@ -268,7 +265,9 @@ mix credo
 Run Dialyzer (if you have PLT caches set up):
 
 ```bash
-MIX_ENV=dev mix dialyzer
+mix dialyzer --plt          # If haven't run before or after changes
+mix dialyzer --plt --force  # After changing Elixir/OTP versions or dependencies
+mix dialyzer
 ```
 
 Generate docs:

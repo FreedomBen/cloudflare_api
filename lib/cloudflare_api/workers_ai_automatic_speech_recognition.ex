@@ -49,6 +49,12 @@ defmodule CloudflareApi.WorkersAiAutomaticSpeechRecognition do
 
   Accepts binary audio payloads.
   """
+  @spec run_cf_openai_whisper(
+          CloudflareApi.client(),
+          String.t(),
+          iodata(),
+          CloudflareApi.options()
+        ) :: CloudflareApi.result(term())
   def run_cf_openai_whisper(client, account_id, body \\ <<>>, opts \\ []) do
     post_run(client, account_id, "@cf/openai/whisper", body, opts)
   end
@@ -65,6 +71,12 @@ defmodule CloudflareApi.WorkersAiAutomaticSpeechRecognition do
 
   Accepts binary audio payloads.
   """
+  @spec run_cf_openai_whisper_tiny_en(
+          CloudflareApi.client(),
+          String.t(),
+          iodata(),
+          CloudflareApi.options()
+        ) :: CloudflareApi.result(term())
   def run_cf_openai_whisper_tiny_en(client, account_id, body \\ <<>>, opts \\ []) do
     post_run(client, account_id, "@cf/openai/whisper-tiny-en", body, opts)
   end

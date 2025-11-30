@@ -14,7 +14,8 @@ defmodule CloudflareApi.MixProject do
       package: package(),
       deps: deps(),
       docs: docs(),
-      aliases: aliases()
+      aliases: aliases(),
+      dialyzer: dialyzer()
     ]
   end
 
@@ -61,6 +62,12 @@ defmodule CloudflareApi.MixProject do
       source_url: @source_url,
       extra_section: [],
       api_reference: false
+    ]
+  end
+
+  defp dialyzer do
+    [
+      plt_add_apps: [:mix, :iex]
     ]
   end
 end

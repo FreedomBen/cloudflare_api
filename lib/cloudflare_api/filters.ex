@@ -52,6 +52,11 @@ defmodule CloudflareApi.Filters do
   `filter_ids` can be a single id (binary) or a list of ids. Cloudflare expects
   repeated `id` query parameters, which this function assembles automatically.
   """
+  @spec delete_many(
+          CloudflareApi.client(),
+          String.t(),
+          [String.t() | integer()] | String.t() | integer()
+        ) :: CloudflareApi.result(term()) | {:error, :no_filter_ids}
   def delete_many(client, zone_id, filter_ids)
       when is_list(filter_ids) and filter_ids != [] do
     query =

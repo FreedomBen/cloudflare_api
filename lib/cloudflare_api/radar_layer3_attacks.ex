@@ -91,6 +91,11 @@ defmodule CloudflareApi.RadarLayer3Attacks do
 
   """
 
+  @spec top_locations(
+          CloudflareApi.client(),
+          :origin | :target,
+          CloudflareApi.options()
+        ) :: CloudflareApi.result(term())
   def top_locations(client, type, opts \\ []) when type in [:origin, :target] do
     fetch(client, "/radar/attacks/layer3/top/locations/" <> to_string(type), opts)
   end

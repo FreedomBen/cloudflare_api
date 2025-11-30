@@ -114,9 +114,10 @@ defmodule CloudflareApi.Typespecs do
     defs = Module.get_attribute(env.module, :cf_auto_specs)
     manual_specs = manual_specs(Module.get_attribute(env.module, :spec))
     specs = build_specs(defs, manual_specs)
+    spec_asts = Enum.map(specs, &spec_ast(&1, env))
 
     quote do
-      (unquote_splicing(specs))
+      (unquote_splicing(spec_asts))
     end
   end
 
@@ -172,11 +173,10 @@ defmodule CloudflareApi.Typespecs do
     end)
     |> elem(0)
     |> Enum.reverse()
-    |> Enum.map(&spec_ast/1)
   end
-
-  defp spec_ast({name, args}) do
-    arg_types = Enum.map(args, &infer_arg_type/1)
+ 
+  defp spec_ast({name, args}, env) do
+    arg_types = Enum.map(args, &infer_arg_type(&1, env))
     return_type = infer_return_type(name, args)
 
     quote do
@@ -184,11 +184,19 @@ defmodule CloudflareApi.Typespecs do
     end
   end
 
-  defp infer_arg_type({:\\, _, [pattern, _default]}), do: infer_arg_type(pattern)
-  defp infer_arg_type({:=, _, [pattern, _value]}), do: infer_arg_type(pattern)
+  defp infer_arg_type({:\\, _, [pattern, default]}, env) do
+    type = infer_arg_type(pattern, env)
 
-  defp infer_arg_type({:%, _, [{:__aliases__, _, _} = alias_ast, _]}) do
-    module = Module.concat(alias_parts(alias_ast))
+    case default do
+      nil -> quote(do: unquote(type) | nil)
+      _ -> type
+    end
+  end
+
+  defp infer_arg_type({:=, _, [pattern, _value]}, env), do: infer_arg_type(pattern, env)
+
+  defp infer_arg_type({:%, _, [{:__aliases__, _, _} = alias_ast, _]}, env) do
+    module = expand_alias(alias_ast, env)
 
     quote do
       unquote(module).t()
@@ -197,22 +205,31 @@ defmodule CloudflareApi.Typespecs do
     _ -> quote(do: struct())
   end
 
-  defp infer_arg_type({:%, _, [{:__MODULE__, _, _}, _]}), do: quote(do: struct())
-  defp infer_arg_type({:%{}, _, _}), do: quote(do: map())
-  defp infer_arg_type([{_, _, _} | _]), do: quote(do: list())
-  defp infer_arg_type(list) when is_list(list), do: quote(do: list())
-  defp infer_arg_type(literal) when is_binary(literal), do: quote(do: String.t())
-  defp infer_arg_type(literal) when is_integer(literal), do: quote(do: integer())
-  defp infer_arg_type(literal) when is_float(literal), do: quote(do: float())
-  defp infer_arg_type(literal) when is_map(literal), do: quote(do: map())
+  defp infer_arg_type({:%, _, [{:__MODULE__, _, _}, _]}, _env), do: quote(do: struct())
+  defp infer_arg_type({:%{}, _, _}, _env), do: quote(do: map())
+  defp infer_arg_type([{_, _, _} | _], _env), do: quote(do: list())
+  defp infer_arg_type(list, _env) when is_list(list), do: quote(do: list())
+  defp infer_arg_type(literal, _env) when is_binary(literal), do: quote(do: String.t())
+  defp infer_arg_type(literal, _env) when is_integer(literal), do: quote(do: integer())
+  defp infer_arg_type(literal, _env) when is_float(literal), do: quote(do: float())
+  defp infer_arg_type(literal, _env) when is_map(literal), do: quote(do: map())
 
-  defp infer_arg_type({name, _, _}) when is_atom(name) do
+  defp infer_arg_type({name, _, _}, _env) when is_atom(name) do
     name
     |> Atom.to_string()
     |> infer_type_from_name(name)
   end
 
-  defp infer_arg_type(_), do: quote(do: term())
+  defp infer_arg_type(_, _env), do: quote(do: term())
+
+  defp expand_alias(alias_ast, env) do
+    alias_ast
+    |> Macro.expand(env)
+    |> case do
+      atom when is_atom(atom) -> atom
+      {:__aliases__, _, parts} -> Module.concat(parts)
+    end
+  end
 
   defp infer_type_from_name(_, name) when name in @client_names do
     quote(do: Tesla.Client.t() | (-> Tesla.Client.t()))
@@ -264,14 +281,6 @@ defmodule CloudflareApi.Typespecs do
       true ->
         quote(do: term())
     end
-  end
-
-  defp alias_parts({:__aliases__, _, parts}), do: parts
-
-  defp alias_parts(module) when is_atom(module) do
-    module
-    |> Module.split()
-    |> Enum.map(&String.to_atom/1)
   end
 
   defp infer_return_type(name, args) do

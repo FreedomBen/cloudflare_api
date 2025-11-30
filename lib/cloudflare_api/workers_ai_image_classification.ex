@@ -9,6 +9,12 @@ defmodule CloudflareApi.WorkersAiImageClassification do
   Execute the Microsoft ResNet-50 classifier
   (`POST /accounts/:account_id/ai/run/@cf/microsoft/resnet-50`).
   """
+  @spec run_cf_microsoft_resnet_50(
+          CloudflareApi.client(),
+          String.t(),
+          iodata(),
+          CloudflareApi.options()
+        ) :: CloudflareApi.result(term())
   def run_cf_microsoft_resnet_50(client, account_id, body \\ <<>>, opts \\ []) do
     post_run(client, account_id, "@cf/microsoft/resnet-50", body, opts)
   end

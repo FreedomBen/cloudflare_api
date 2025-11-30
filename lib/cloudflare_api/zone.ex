@@ -31,6 +31,27 @@ defmodule CloudflareApi.Zone do
     :name_servers
   ]
 
+  @type t :: %__MODULE__{
+          id: String.t(),
+          name: String.t() | nil,
+          development_mode: boolean() | nil,
+          original_name_servers: list(String.t()) | nil,
+          original_registrar: String.t() | nil,
+          original_dnshost: String.t() | nil,
+          created_on: String.t() | nil,
+          modified_on: String.t() | nil,
+          activated_on: String.t() | nil,
+          owner: map() | nil,
+          account: map() | nil,
+          permissions: list(String.t()) | nil,
+          plan: map() | nil,
+          plan_pending: map() | nil,
+          status: String.t() | nil,
+          paused: boolean() | nil,
+          type: String.t() | nil,
+          name_servers: list(String.t()) | nil
+        }
+
   @doc ~S"""
   Build the Cloudflare DNS records URL for a given zone.
 
@@ -47,6 +68,7 @@ defmodule CloudflareApi.Zone do
   Internally this delegates to `CloudflareApi.Utils.struct_to_map/2` so that
   the resulting map is suitable for JSON encoding.
   """
+  @spec to_cf_json(t()) :: map()
   def to_cf_json(zone) do
     Utils.struct_to_map(zone)
   end
@@ -57,6 +79,7 @@ defmodule CloudflareApi.Zone do
   The input can use either string keys (as returned directly by the API) or
   atom keys. Keys are normalized to atoms before the struct is constructed.
   """
+  @spec from_cf_json(map() | struct()) :: t()
   def from_cf_json(zone) do
     zone
     |> normalize_keys()

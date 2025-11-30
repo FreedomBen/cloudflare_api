@@ -144,7 +144,6 @@ defmodule CloudflareApi.MagicStaticRoutes do
         {:get, _} -> Tesla.get(client, url)
         {:post, %{} = params} -> Tesla.post(client, url, params)
         {:put, %{} = params} -> Tesla.put(client, url, params)
-        {:patch, %{} = params} -> Tesla.patch(client, url, params)
         {:delete, %{} = params} -> Tesla.delete(client, url, body: params)
         {:delete, nil} -> Tesla.delete(client, url)
       end

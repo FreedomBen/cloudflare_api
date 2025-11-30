@@ -199,6 +199,8 @@ defmodule CloudflareApi.LogpushJobsZone do
 
   """
 
+  @spec destination_exists?(CloudflareApi.client(), String.t(), map()) ::
+          CloudflareApi.result(term())
   def destination_exists?(client, zone_id, params) when is_map(params) do
     request(client, :post, base(zone_id) <> "/validate/destination/exists", params)
   end
