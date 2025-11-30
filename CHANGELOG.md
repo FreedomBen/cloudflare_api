@@ -262,9 +262,9 @@ derived from tags and version-bump commits in `mix.exs`.
 - Added explicit typespecs across the DNS modules (records, settings, firewall,
   analytics, and helpers) so their return types are documented without relying
   solely on the automatic spec generator.
-- Fixed the CI workflow matrix definition to use inline version lists instead
-  of the unavailable `env.*` context so GitHub Actions no longer errors while
-  parsing the YAML.
+- Fixed the CI workflow by inlining the Elixir/OTP matrices and removing the
+  unsupported `cache` input from `erlef/setup-beam`, eliminating the parsing and
+  warning noise on GitHub Actions.
 
 
 ## [0.3.0] - 2025-11-28
