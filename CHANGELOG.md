@@ -211,6 +211,8 @@ derived from tags and version-bump commits in `mix.exs`.
   tags (e.g. `v0.3.0`) and creates a GitHub release with the package attached.
 - Centralized the GitHub Actions Elixir/OTP version matrix into top-level
   workflow variables so supported versions are declared once.
+- Restored the Elixir-based `script/update_version.exs` helper and added a
+  `mix update_version` alias so release bumps are easy to invoke.
 
 ### Fixed
 

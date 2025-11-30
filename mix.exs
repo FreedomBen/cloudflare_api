@@ -50,7 +50,8 @@ defmodule CloudflareApi.MixProject do
 
   defp aliases do
     [
-      fetch_openapi: ["cloudflare_api.fetch_openapi"]
+      fetch_openapi: ["cloudflare_api.fetch_openapi"],
+      update_version: ["run script/update_version.exs"]
     ]
   end
 
