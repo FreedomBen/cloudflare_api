@@ -262,6 +262,9 @@ derived from tags and version-bump commits in `mix.exs`.
 - Added explicit typespecs across the DNS modules (records, settings, firewall,
   analytics, and helpers) so their return types are documented without relying
   solely on the automatic spec generator.
+- Fixed the CI workflow matrix definition to use inline version lists instead
+  of the unavailable `env.*` context so GitHub Actions no longer errors while
+  parsing the YAML.
 
 
 ## [0.3.0] - 2025-11-28
@@ -362,4 +365,3 @@ Initial early release series.
 
 - Removed an accidental dependency on `Bonny` and pruned unused password-related
   helpers to keep the dependency set minimal.
-

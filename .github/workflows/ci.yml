@@ -8,8 +8,6 @@ on:
       - "v*.*.*"
 
 env:
-  ELIXIR_VERSIONS: '["1.15.x"]'
-  OTP_VERSIONS: '["26.x"]'
   RELEASE_ELIXIR: "1.15.x"
   RELEASE_OTP: "26.x"
 
@@ -20,8 +18,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        elixir: ${{ fromJson(env.ELIXIR_VERSIONS) }}
-        otp: ${{ fromJson(env.OTP_VERSIONS) }}
+        elixir:
+          - "1.15.x"
+        otp:
+          - "26.x"
 
     steps:
       - name: Checkout code
@@ -50,8 +50,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        elixir: ${{ fromJson(env.ELIXIR_VERSIONS) }}
-        otp: ${{ fromJson(env.OTP_VERSIONS) }}
+        elixir:
+          - "1.15.x"
+        otp:
+          - "26.x"
 
     steps:
       - name: Checkout code
