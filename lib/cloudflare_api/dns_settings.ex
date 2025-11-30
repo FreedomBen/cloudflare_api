@@ -3,6 +3,8 @@ defmodule CloudflareApi.DnsSettings do
   DNS settings helpers for accounts and zones.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Show DNS settings for a zone (`GET /zones/:zone_id/dns_settings`).
   """

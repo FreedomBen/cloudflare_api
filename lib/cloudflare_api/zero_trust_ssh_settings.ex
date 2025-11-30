@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZeroTrustSshSettings do
   Manage Zero Trust SSH audit settings (`/accounts/:account_id/gateway/audit_ssh_settings`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc """
   Fetch SSH settings (`GET /accounts/:account_id/gateway/audit_ssh_settings`).
   """

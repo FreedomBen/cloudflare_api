@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarCertificateTransparency do
   Radar certificate transparency endpoints under `/radar/ct`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Authorities radar certificate transparency.
 

@@ -3,6 +3,8 @@ defmodule CloudflareApi.WorkersAiTranslation do
   Workers AI translation helpers.
   """
 
+  use CloudflareApi.Typespecs
+
   @json_models [
     {:run_cf_ai4bharat_indictrans2_en_indic_1b, "@cf/ai4bharat/indictrans2-en-indic-1B"},
     {:run_cf_meta_m2m100_1_2b, "@cf/meta/m2m100-1.2b"}

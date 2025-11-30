@@ -3,6 +3,8 @@ defmodule CloudflareApi.SecretsStore do
   Account-level Secrets Store helper wrapping `/accounts/:account_id/secrets_store`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Fetch usage/quota info (`GET /secrets_store/quota`).
   """

@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZoneCloudConnectorRules do
   Manage cloud connector rules (`/zones/:zone_id/cloud_connector/rules`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc """
   Fetch rules (`GET /zones/:zone_id/cloud_connector/rules`).
   """

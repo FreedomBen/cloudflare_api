@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccountPermissionGroups do
   List account-level permission groups.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List account permission groups.
 

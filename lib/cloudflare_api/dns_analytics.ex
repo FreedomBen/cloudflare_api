@@ -3,6 +3,8 @@ defmodule CloudflareApi.DnsAnalytics do
   DNS analytics helpers wrapping `/zones/:zone_id/dns_analytics`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Retrieve DNS analytics table data (`GET /zones/:zone_id/dns_analytics/report`).
   """

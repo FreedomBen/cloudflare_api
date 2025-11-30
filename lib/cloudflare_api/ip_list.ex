@@ -3,6 +3,8 @@ defmodule CloudflareApi.IpList do
   Fetch IP list metadata (`/accounts/:account_id/intel/ip-list`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List ip list.
 

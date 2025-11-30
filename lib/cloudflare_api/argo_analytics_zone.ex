@@ -3,6 +3,8 @@ defmodule CloudflareApi.ArgoAnalyticsZone do
   Fetch Argo analytics for a zone.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List argo analytics zone.
 

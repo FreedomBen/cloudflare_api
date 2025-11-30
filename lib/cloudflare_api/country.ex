@@ -3,6 +3,8 @@ defmodule CloudflareApi.Country do
   Fetch Cloudforce One country data for an account.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List country.
 

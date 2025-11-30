@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarRobotsTxt do
   Radar robots.txt analytics under `/radar/robots_txt`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Top domain categories for radar robots txt.
 

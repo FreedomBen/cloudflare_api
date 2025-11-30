@@ -3,6 +3,8 @@ defmodule CloudflareApi.MagicStaticRoutes do
   Manage Magic static routes (`/accounts/:account_id/magic/routes`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List magic static routes.
 

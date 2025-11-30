@@ -4,6 +4,8 @@ defmodule CloudflareApi.PriorityIntelligenceRequirements do
   `/accounts/:account_id/cloudforce-one/requests/priority`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List priority requests (`POST /requests/priority`).
   """

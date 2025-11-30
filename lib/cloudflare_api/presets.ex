@@ -3,6 +3,8 @@ defmodule CloudflareApi.Presets do
   Manage Realtime Kit presets (`/accounts/:account_id/realtime/kit/:app_id/presets`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List presets for an app (`GET /presets`).
   """

@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccessShortLivedCertificateCas do
   Manage short-lived certificate CAs for Access applications.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List access short lived certificate cas.
 

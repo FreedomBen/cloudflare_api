@@ -6,6 +6,8 @@ defmodule CloudflareApi.PpcConfig do
   configuration and the `zones_can_be_enabled` account flag list.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Fetch the Pay-Per-Crawl configuration for a zone (`GET /zones/:zone_id/pay-per-crawl/configuration`).
 

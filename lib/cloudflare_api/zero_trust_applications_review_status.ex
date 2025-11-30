@@ -4,6 +4,8 @@ defmodule CloudflareApi.ZeroTrustApplicationsReviewStatus do
   (`/accounts/:account_id/gateway/apps/review_status`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc """
   Fetch review status (`GET /accounts/:account_id/gateway/apps/review_status`).
   """

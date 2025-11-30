@@ -3,6 +3,8 @@ defmodule CloudflareApi.WorkersAiFinetune do
   Workers AI finetune helpers for listing, creating, and uploading finetune assets.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List finetunes for an account (`GET /accounts/:account_id/ai/finetunes`).
   """

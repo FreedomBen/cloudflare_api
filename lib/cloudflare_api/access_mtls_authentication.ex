@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccessMtlsAuthentication do
   Manage Access mTLS certificates and hostname settings for an account.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List certificates for access mtls authentication.
 

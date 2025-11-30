@@ -3,6 +3,8 @@ defmodule CloudflareApi.UsersInvites do
   Manage user invitations via `/user/invites`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List users invites.
 

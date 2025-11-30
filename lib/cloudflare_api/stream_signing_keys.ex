@@ -3,6 +3,8 @@ defmodule CloudflareApi.StreamSigningKeys do
   Manage Stream signing keys under `/accounts/:account_id/stream/keys`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List signing keys (`GET /stream/keys`).
   """

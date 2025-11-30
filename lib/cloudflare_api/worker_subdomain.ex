@@ -3,6 +3,8 @@ defmodule CloudflareApi.WorkerSubdomain do
   Account-level Worker subdomain helpers under `/accounts/:account_id/workers/subdomain`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Fetch the Workers subdomain for an account (`GET /accounts/:account_id/workers/subdomain`).
   """

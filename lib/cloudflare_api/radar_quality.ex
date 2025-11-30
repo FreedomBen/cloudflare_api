@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarQuality do
   Radar quality analytics under `/radar/quality`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Iqi summary for radar quality.
 

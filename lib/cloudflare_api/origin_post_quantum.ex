@@ -4,6 +4,8 @@ defmodule CloudflareApi.OriginPostQuantum do
   (`/zones/:zone_id/cache/origin_post_quantum_encryption`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Retrieve the setting (`GET /origin_post_quantum_encryption`).
   """

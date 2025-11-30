@@ -3,6 +3,8 @@ defmodule CloudflareApi.MagicNetworkMonitoringConfiguration do
   Manage Magic Network Monitoring account configuration (`/accounts/:account_id/mnm/config`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get magic network monitoring configuration.
 

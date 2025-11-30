@@ -3,6 +3,8 @@ defmodule CloudflareApi.TieredCaching do
   Manage classic Argo Tiered Caching via `/zones/:zone_id/argo/tiered_caching`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Retrieve tiered caching settings (`GET /argo/tiered_caching`).
   """

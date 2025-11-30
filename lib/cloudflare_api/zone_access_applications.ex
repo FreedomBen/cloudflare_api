@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZoneAccessApplications do
   Manage Access applications scoped to a zone (`/zones/:zone_id/access/apps`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List zone access applications.
 

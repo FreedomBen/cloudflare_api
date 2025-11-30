@@ -4,6 +4,8 @@ defmodule CloudflareApi.Zones do
   checks and cache purges. For struct helpers, see `CloudflareApi.Zone`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc """
   List zones visible to the authenticated account (`GET /zones`).
   """

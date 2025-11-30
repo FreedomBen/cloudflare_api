@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccessAuthenticationLogs do
   List Access authentication logs for an account.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Fetch authentication logs (`GET /accounts/:account_id/access/logs/access_requests`).
   Accepts optional query parameters via `opts`.

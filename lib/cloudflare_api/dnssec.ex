@@ -3,6 +3,8 @@ defmodule CloudflareApi.Dnssec do
   DNSSEC helpers for `/zones/:zone_id/dnssec`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Details dnssec.
 

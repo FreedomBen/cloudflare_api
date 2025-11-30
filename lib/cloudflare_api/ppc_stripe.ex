@@ -5,6 +5,8 @@ defmodule CloudflareApi.PpcStripe do
   The underlying endpoints live under `/accounts/:account_id/pay-per-crawl`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Fetch the crawler Stripe configuration (`GET /accounts/:account_id/pay-per-crawl/crawler/stripe`).
   """

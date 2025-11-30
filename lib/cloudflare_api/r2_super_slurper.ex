@@ -3,6 +3,8 @@ defmodule CloudflareApi.R2SuperSlurper do
   Manage Super Slurper jobs under `/accounts/:account_id/slurper`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List jobs for r2 super slurper.
 

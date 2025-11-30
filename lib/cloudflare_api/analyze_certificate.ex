@@ -3,6 +3,8 @@ defmodule CloudflareApi.AnalyzeCertificate do
   Analyze SSL certificates for a zone.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Analyze analyze certificate.
 

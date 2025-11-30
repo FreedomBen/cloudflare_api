@@ -3,6 +3,8 @@ defmodule CloudflareApi.LivestreamAnalytics do
   Retrieve Realtime Kit livestream analytics (daywise and overall aggregates).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Daywise livestream analytics.
 

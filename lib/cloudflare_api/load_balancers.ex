@@ -3,6 +3,8 @@ defmodule CloudflareApi.LoadBalancers do
   Manage zone-level load balancers (`/zones/:zone_id/load_balancers`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List load balancers.
 

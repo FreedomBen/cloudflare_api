@@ -3,6 +3,8 @@ defmodule CloudflareApi.R2Account do
   Fetch account-level R2 metrics (`GET /accounts/:account_id/r2/metrics`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Retrieve metrics for an account's R2 usage.
   """

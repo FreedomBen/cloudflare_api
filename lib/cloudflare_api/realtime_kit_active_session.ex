@@ -3,6 +3,8 @@ defmodule CloudflareApi.RealtimeKitActiveSession do
   Manage active sessions in Realtime Kit meetings.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get realtime kit active session.
 

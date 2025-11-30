@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccessTags do
   Manage Access tags for an account.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List access tags.
 

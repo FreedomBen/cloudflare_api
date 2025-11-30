@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZoneAccessMtlsAuthentication do
   Manage zone-level Access mTLS certificates and hostname settings.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List certificates for zone access mtls authentication.
 

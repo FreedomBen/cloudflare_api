@@ -6,6 +6,8 @@ defmodule CloudflareApi.DlpDatasets do
   envelopes as `{:ok, result}` / `{:error, errors}` tuples.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List datasets for an account (`GET /accounts/:account_id/dlp/datasets`).
   """

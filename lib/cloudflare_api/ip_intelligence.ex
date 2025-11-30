@@ -3,6 +3,8 @@ defmodule CloudflareApi.IpIntelligence do
   IP intelligence overview helper (`/accounts/:account_id/intel/ip`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get overview for ip intelligence.
 

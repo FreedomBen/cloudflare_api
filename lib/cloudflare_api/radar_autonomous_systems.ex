@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarAutonomousSystems do
   Radar autonomous systems endpoints under `/radar/entities/asns`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List radar autonomous systems.
 

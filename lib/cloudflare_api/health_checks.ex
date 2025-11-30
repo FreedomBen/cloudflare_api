@@ -3,6 +3,8 @@ defmodule CloudflareApi.HealthChecks do
   Manage Health Checks and Smart Shield Health Checks.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List health checks for a zone (`GET /zones/:zone_id/healthchecks`).
   """

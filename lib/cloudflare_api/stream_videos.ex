@@ -3,6 +3,8 @@ defmodule CloudflareApi.StreamVideos do
   Manage Stream videos under `/accounts/:account_id/stream`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List videos (`GET /stream`).
   """

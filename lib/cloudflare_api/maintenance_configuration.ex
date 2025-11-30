@@ -3,6 +3,8 @@ defmodule CloudflareApi.MaintenanceConfiguration do
   Manage R2 catalog maintenance configuration (`/accounts/:account_id/r2-catalog/:bucket_name/maintenance-configs`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get maintenance configuration.
 

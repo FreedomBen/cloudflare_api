@@ -3,6 +3,8 @@ defmodule CloudflareApi.DevicePostureRules do
   Manage device posture rules (`/accounts/:account_id/devices/posture`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List device posture rules.
 

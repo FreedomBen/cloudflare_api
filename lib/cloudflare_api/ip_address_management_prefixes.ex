@@ -3,6 +3,8 @@ defmodule CloudflareApi.IpAddressManagementPrefixes do
   Prefix management helpers for the IP Address Management API.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List ip address management prefixes.
 

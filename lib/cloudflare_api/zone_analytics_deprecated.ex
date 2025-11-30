@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZoneAnalyticsDeprecated do
   Access the deprecated zone analytics dashboard and colo endpoints.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc """
   Fetch analytics dashboard (`GET /zones/:zone_id/analytics/dashboard`).
   """

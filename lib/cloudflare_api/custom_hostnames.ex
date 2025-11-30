@@ -3,6 +3,8 @@ defmodule CloudflareApi.CustomHostnames do
   Manage custom hostnames for a zone.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List custom hostnames.
 

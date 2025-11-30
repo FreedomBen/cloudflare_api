@@ -4,6 +4,8 @@ defmodule CloudflareApi.ZoneRulesets do
   `/zones/:zone_id/rulesets`.
   """
 
+  use CloudflareApi.Typespecs
+
   ## Rulesets
 
   @doc ~S"""

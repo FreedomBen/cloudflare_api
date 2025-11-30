@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccessScimUpdateLogs do
   List SCIM update logs for an account.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List access scim update logs.
 

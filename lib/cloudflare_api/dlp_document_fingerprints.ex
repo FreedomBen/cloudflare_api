@@ -4,6 +4,8 @@ defmodule CloudflareApi.DlpDocumentFingerprints do
   `/accounts/:account_id/dlp/document_fingerprints`.
   """
 
+  use CloudflareApi.Typespecs
+
   alias Tesla.Multipart
 
   @doc ~S"""

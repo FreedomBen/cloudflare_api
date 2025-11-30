@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarBots do
   Radar bot analytics endpoints under `/radar/bots`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Overview radar bots.
 

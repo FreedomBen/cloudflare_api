@@ -3,6 +3,8 @@ defmodule CloudflareApi.SmartTieredCache do
   Manage Smart Tiered Cache settings at `/zones/:zone_id/cache/tiered_cache_smart_topology_enable`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Fetch the Smart Tiered Cache configuration (`GET /cache/tiered_cache_smart_topology_enable`).
   """

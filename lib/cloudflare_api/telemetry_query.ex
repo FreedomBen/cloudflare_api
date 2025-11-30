@@ -4,6 +4,8 @@ defmodule CloudflareApi.TelemetryQuery do
   `POST /accounts/:account_id/workers/observability/telemetry/query`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Execute a telemetry query.
   """

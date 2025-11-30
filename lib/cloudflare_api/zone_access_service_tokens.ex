@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZoneAccessServiceTokens do
   Manage zone-level Access service tokens.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List zone access service tokens.
 

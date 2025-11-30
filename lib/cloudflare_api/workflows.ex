@@ -4,6 +4,8 @@ defmodule CloudflareApi.Workflows do
   workflow definitions, instances, batch termination, events, and versions.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc """
   List workflows (`GET /accounts/:account_id/workflows`).
 

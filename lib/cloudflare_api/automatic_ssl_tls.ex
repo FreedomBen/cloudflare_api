@@ -3,6 +3,8 @@ defmodule CloudflareApi.AutomaticSslTls do
   Inspect or update Automatic SSL/TLS enrollment for a zone.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get automatic ssl tls.
 

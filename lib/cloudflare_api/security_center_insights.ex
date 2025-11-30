@@ -3,6 +3,8 @@ defmodule CloudflareApi.SecurityCenterInsights do
   Wrap Security Center insight and legacy attack-surface-report endpoints for accounts and zones.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List legacy attack surface issue types (`GET /intel/attack-surface-report/issue-types`).
   """

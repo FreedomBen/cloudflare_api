@@ -3,6 +3,8 @@ defmodule CloudflareApi.ArgoSmartRouting do
   Manage Argo Smart Routing setting for a zone.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get argo smart routing.
 

@@ -3,6 +3,8 @@ defmodule CloudflareApi.WorkerDeployments do
   Wraps Worker deployment endpoints (`/accounts/:account_id/workers/scripts/:script_name/deployments`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List deployments for a Worker (`GET /accounts/:account_id/workers/scripts/:script_name/deployments`).
   """

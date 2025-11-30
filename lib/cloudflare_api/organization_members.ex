@@ -3,6 +3,8 @@ defmodule CloudflareApi.OrganizationMembers do
   Manage members of an organization (`/organizations/:organization_id/members`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List organization members (`GET /organizations/:organization_id/members`).
   """

@@ -7,6 +7,8 @@ defmodule CloudflareApi.WorkersPipelinesOther do
   sinks, streams, and SQL validation jobs directly from Elixir.
   """
 
+  use CloudflareApi.Typespecs
+
   ## Deprecated `/pipelines` surface
 
   @doc ~S"""

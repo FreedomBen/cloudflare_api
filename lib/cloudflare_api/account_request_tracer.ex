@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccountRequestTracer do
   Trigger the account request tracer.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Trace account request tracer.
 

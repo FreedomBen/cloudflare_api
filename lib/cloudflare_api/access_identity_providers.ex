@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccessIdentityProviders do
   Manage Cloudflare Access identity providers and SCIM resources.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List access identity providers.
 

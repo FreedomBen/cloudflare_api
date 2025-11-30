@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZoneAccessGroups do
   Manage Access groups scoped to a zone.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List Access groups (`GET /zones/:zone_id/access/groups`).
   """

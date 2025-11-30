@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarIp do
   Radar IP metadata (`GET /radar/entities/ip`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Lookup radar ip.
 

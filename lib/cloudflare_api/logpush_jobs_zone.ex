@@ -3,6 +3,8 @@ defmodule CloudflareApi.LogpushJobsZone do
   Manage zone-level Logpush jobs, ownership challenges, and destination/origin validation.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List logpush jobs zone.
 

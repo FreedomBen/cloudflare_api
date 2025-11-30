@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZoneSubscription do
   Manage a zone's subscription (`/zones/:zone_id/subscription`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get zone subscription.
 

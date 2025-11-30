@@ -3,6 +3,8 @@ defmodule CloudflareApi.SecondaryDnsAcl do
   Manage Secondary DNS ACLs (`/accounts/:account_id/secondary_dns/acls`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List secondary dns acl.
 

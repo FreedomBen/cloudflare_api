@@ -1,7 +1,5 @@
 defmodule CloudflareApi.Cache do
   @moduledoc """
-  use CloudflareApi.Typespecs
-
   An optional short-term cache for API lookups.
 
   This lets you repeat the same requests multiple times without
@@ -46,12 +44,15 @@ defmodule CloudflareApi.Cache do
   Fetch a cached `CloudflareApi.DnsRecord` for the given hostname.
 
   If the hostname is not in the cache or the entry has expired, this function
-  returns `nil`.
+  returns `nil` or raises (for example when pattern matching on the result).
   """
   def get(hostname) do
     case get_entry(hostname) do
-      %CacheEntry{dns_record: dns_record} -> dns_record
-      nil -> nil
+      %CacheEntry{dns_record: dns_record} ->
+        dns_record
+
+      nil ->
+        raise KeyError, message: "hostname #{hostname} not found in cache"
     end
   end
 
@@ -62,10 +63,7 @@ defmodule CloudflareApi.Cache do
   and returns whatever entry is stored for `hostname`, if any.
   """
   def get(hostname, :even_if_expired) do
-    case get_entry(hostname, :even_if_expired) do
-      %CacheEntry{dns_record: dns_record} -> dns_record
-      nil -> nil
-    end
+    get_entry(hostname, :even_if_expired).dns_record
   end
 
   @doc ~S"""
@@ -117,8 +115,6 @@ defmodule CloudflareApi.Cache do
 
   @doc ~S"""
   Check whether the cache currently includes a non-expired record for `hostname`.
-
-  Returns `true` when a valid (non-expired) entry exists and `false` otherwise.
   """
   def includes?(hostname) do
     # GenServer.call(@self, {:includes, hostname})
@@ -128,11 +124,12 @@ defmodule CloudflareApi.Cache do
   @doc ~S"""
   Check whether `hostname` has ever been added to the cache, ignoring expiry.
 
-  Returns `true` when the hostname exists in the cache map (even if expired) and
-  `false` otherwise.
+  This is currently a thin wrapper around `get_entry/1` and is mainly useful
+  for debugging.
   """
   def includes?(hostname, :even_if_expired) do
-    GenServer.call(@self, {:includes, hostname, :even_if_expired}, 15_000)
+    # TODO
+    get_entry(hostname).dns_record
   end
 
   @doc ~S"""
@@ -183,10 +180,7 @@ defmodule CloudflareApi.Cache do
   @doc ~S"""
   Force a single hostname to be treated as expired.
 
-  This keeps the cached entry (so `includes?/2` with `:even_if_expired` and
-  `get/2` with `:even_if_expired` still work) but adjusts its timestamp so the
-  regular cache lookups treat it as expired. Returns `:ok` even when the
-  hostname is missing, making it safe to call in cleanup code.
+  This is primarily used by tests and debugging tools.
   """
   def expire(hostname) do
     # GenServer.call(@self, {:expire, hostname})
@@ -370,31 +364,17 @@ defmodule CloudflareApi.Cache do
   end
 
   @spec expire_entry(cache :: Cache.t(), hostname :: String.t()) :: Cache.t()
-  defp expire_entry(%Cache{} = cache, hostname) when is_binary(hostname) do
-    case Map.fetch(cache.hostnames, hostname) do
-      {:ok, %CacheEntry{} = entry} ->
-        Logger.debug(
-          __ENV__,
-          "Marking cache entry as expired hostname='#{hostname}', entry='#{Utils.to_string(entry)}'"
-        )
-
-        expired_entry = %CacheEntry{
-          entry
-          | timestamp: cur_seconds() - cache.expire_seconds - 1
-        }
-
-        cache
-        |> Kernel.struct(hostnames: Map.put(cache.hostnames, hostname, expired_entry))
-
-      :error ->
-        Logger.debug(
-          __ENV__,
-          "No cache entry found to expire for hostname='#{hostname}'"
-        )
-
-        cache
-    end
+  defp expire_entry(%Cache{} = cache, _hostname) do
+    # TODO - WIP
+    cache
+    # |> Kernel.struct(
+    #  hostnames: Map.put(cache.hostnames, cache_entry.dns_record.hostname, cache_entry)
+    # )
+    # cache.hostnames[hostname]
+    # entry = cache.hostnames[hostname]
+    # entry = struct(entry, timestamp: cur_seconds() - 10)
+    # cache.hostnames[hostname] = entry
+    # Map.update!(cache.hostnames[hostname], entry)
+    # Map.update!(cache, cache_entry.dns_record.hostname, fun)
   end
-
-  defp expire_entry(%Cache{} = cache, _hostname), do: cache
 end

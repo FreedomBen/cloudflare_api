@@ -3,6 +3,8 @@ defmodule CloudflareApi.Indicator do
   Cloudforce One indicator helpers.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List indicator.
 

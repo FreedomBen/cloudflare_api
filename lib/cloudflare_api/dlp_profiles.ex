@@ -3,6 +3,8 @@ defmodule CloudflareApi.DlpProfiles do
   Manage DLP profiles under `/accounts/:account_id/dlp/profiles`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List dlp profiles.
 

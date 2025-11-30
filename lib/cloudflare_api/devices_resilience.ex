@@ -3,6 +3,8 @@ defmodule CloudflareApi.DevicesResilience do
   Manage global WARP override state via `/accounts/:account_id/devices/resilience/disconnect`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get override for devices resilience.
 

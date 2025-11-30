@@ -3,6 +3,8 @@ defmodule CloudflareApi.Versions do
   Manage Workers versions under `/accounts/:account_id/workers/workers/:worker_id/versions`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List versions.
 

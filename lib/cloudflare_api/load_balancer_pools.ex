@@ -3,6 +3,8 @@ defmodule CloudflareApi.LoadBalancerPools do
   Manage user-level load balancer pools (`/user/load_balancers/pools`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List load balancer pools.
 

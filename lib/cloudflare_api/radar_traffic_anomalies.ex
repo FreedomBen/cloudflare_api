@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarTrafficAnomalies do
   Radar traffic anomaly analytics under `/radar/traffic_anomalies`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List radar traffic anomalies.
 

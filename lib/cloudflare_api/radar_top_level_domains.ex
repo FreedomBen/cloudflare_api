@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarTopLevelDomains do
   Radar top-level domain metadata under `/radar/tlds`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List radar top level domains.
 

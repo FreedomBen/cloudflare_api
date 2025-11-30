@@ -6,6 +6,8 @@ defmodule CloudflareApi.ApiShieldEndpointManagement do
   return `{:ok, result}` / `{:error, errors}` tuples.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List operations configured on a zone.
   """

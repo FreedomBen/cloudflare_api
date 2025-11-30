@@ -3,6 +3,8 @@ defmodule CloudflareApi.StreamAudioTracks do
   Manage Stream audio tracks for a video via `/accounts/:account_id/stream/:identifier/audio`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List audio tracks for a Stream video (`GET /audio`).
   """

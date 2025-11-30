@@ -3,6 +3,8 @@ defmodule CloudflareApi.WorkerCronTrigger do
   Manage Worker cron schedules (`/accounts/:account_id/workers/scripts/:script_name/schedules`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List cron triggers for a Worker script (`GET /accounts/:account_id/workers/scripts/:script_name/schedules`).
   """

@@ -4,6 +4,8 @@ defmodule CloudflareApi.WaitingRoom do
   listings plus zone-level waiting rooms, events, rules, and settings.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List waiting rooms scoped to an account (`GET /accounts/:account_id/waiting_rooms`).
 

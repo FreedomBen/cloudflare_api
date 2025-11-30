@@ -3,6 +3,8 @@ defmodule CloudflareApi.MagicSiteAppConfigs do
   Manage Magic Site app configs (`/accounts/:account_id/magic/sites/:site_id/app_configs`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List magic site app configs.
 

@@ -3,6 +3,8 @@ defmodule CloudflareApi.Settings do
   Manage Magic WAN / CNI account settings under `/accounts/:account_id/cni/settings`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Retrieve account settings (`GET /cni/settings`).
   """

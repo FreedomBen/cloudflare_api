@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZoneAccessPolicies do
   Manage Access policies for a specific zone application.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List zone access policies.
 

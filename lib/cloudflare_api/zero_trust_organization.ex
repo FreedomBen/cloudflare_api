@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZeroTrustOrganization do
   Manage Zero Trust organizations (`/accounts/:account_id/access/organizations`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc """
   Fetch organization (`GET /accounts/:account_id/access/organizations`).
   """

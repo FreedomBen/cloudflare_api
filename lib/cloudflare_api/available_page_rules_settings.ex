@@ -3,6 +3,8 @@ defmodule CloudflareApi.AvailablePageRulesSettings do
   List available Page Rules settings for a zone.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List available page rules settings.
 

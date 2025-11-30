@@ -4,6 +4,8 @@ defmodule CloudflareApi.ResourceSharing do
   `/organizations/:organization_id/shares`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List resource sharing.
 

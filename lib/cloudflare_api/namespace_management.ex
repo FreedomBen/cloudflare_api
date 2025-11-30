@@ -3,6 +3,8 @@ defmodule CloudflareApi.NamespaceManagement do
   List R2 catalog namespaces (`/accounts/:account_id/r2-catalog/:bucket_name/namespaces`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List namespace management.
 

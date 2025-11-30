@@ -4,6 +4,8 @@ defmodule CloudflareApi.PerHostnameTlsSettings do
   `/zones/:zone_id/hostnames/settings/:setting_id`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List hostname overrides for a TLS setting (`GET /hostnames/settings/:setting_id`).
   """

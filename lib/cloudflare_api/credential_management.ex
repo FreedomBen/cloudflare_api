@@ -3,6 +3,8 @@ defmodule CloudflareApi.CredentialManagement do
   Store credentials for R2 catalog buckets.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Store credential management.
 

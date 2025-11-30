@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccessServiceTokens do
   Manage Access service tokens for an account.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List access service tokens.
 

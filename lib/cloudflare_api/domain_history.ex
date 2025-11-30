@@ -3,6 +3,8 @@ defmodule CloudflareApi.DomainHistory do
   Cloudforce One domain history helpers (`/accounts/:account_id/intel/domain-history`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get domain history.
 

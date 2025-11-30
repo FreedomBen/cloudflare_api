@@ -3,6 +3,8 @@ defmodule CloudflareApi.CallsTurnKeys do
   Manage TURN keys for Cloudflare Calls.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List calls turn keys.
 

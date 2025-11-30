@@ -4,6 +4,8 @@ defmodule CloudflareApi.Destinations do
   `/accounts/:account_id/workers/observability/destinations`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List destinations.
 

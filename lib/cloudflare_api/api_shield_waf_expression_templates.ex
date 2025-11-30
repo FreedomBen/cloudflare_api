@@ -3,6 +3,8 @@ defmodule CloudflareApi.ApiShieldWafExpressionTemplates do
   Manage API Shield WAF expression templates for a zone.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Create or update the fallthrough expression template (`POST /api_gateway/expression-template/fallthrough`).
   """

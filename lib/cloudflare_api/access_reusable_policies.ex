@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccessReusablePolicies do
   Manage reusable Access policies at the account level.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List access reusable policies.
 

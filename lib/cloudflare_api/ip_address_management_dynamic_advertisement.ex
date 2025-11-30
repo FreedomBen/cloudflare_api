@@ -4,6 +4,8 @@ defmodule CloudflareApi.IpAddressManagementDynamicAdvertisement do
   `/accounts/:account_id/addressing/prefixes/:prefix_id/bgp/status`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get status for ip address management dynamic advertisement.
 

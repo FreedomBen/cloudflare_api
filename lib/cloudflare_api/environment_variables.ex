@@ -4,6 +4,8 @@ defmodule CloudflareApi.EnvironmentVariables do
   (`/accounts/:account_id/builds/triggers/:trigger_uuid/environment_variables`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List environment variables.
 

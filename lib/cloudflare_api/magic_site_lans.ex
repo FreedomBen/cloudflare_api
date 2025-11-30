@@ -3,6 +3,8 @@ defmodule CloudflareApi.MagicSiteLans do
   Manage Magic Site LANs (`/accounts/:account_id/magic/sites/:site_id/lans`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List magic site lans.
 

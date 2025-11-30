@@ -3,6 +3,8 @@ defmodule CloudflareApi.CloudflareImages do
   Manage Cloudflare Images resources.
   """
 
+  use CloudflareApi.Typespecs
+
   alias Tesla.Multipart
 
   @doc ~S"""

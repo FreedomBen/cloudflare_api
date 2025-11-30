@@ -5,6 +5,8 @@ defmodule CloudflareApi.AiGatewayProviderConfigs do
   These functions wrap `/accounts/:account_id/ai-gateway/gateways/:gateway_id/provider_configs`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List provider configs. Optional filters can be supplied via `opts`.
   """

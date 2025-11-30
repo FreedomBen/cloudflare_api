@@ -3,6 +3,8 @@ defmodule CloudflareApi.Turnstile do
   Manage Turnstile widgets under `/accounts/:account_id/challenges/widgets`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List turnstile.
 

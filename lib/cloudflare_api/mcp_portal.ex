@@ -4,6 +4,8 @@ defmodule CloudflareApi.McpPortal do
   (`/accounts/:account_id/access/ai-controls/mcp/portals`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List all MCP portals for an account.
 

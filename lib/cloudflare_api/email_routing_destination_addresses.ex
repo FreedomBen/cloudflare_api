@@ -4,6 +4,8 @@ defmodule CloudflareApi.EmailRoutingDestinationAddresses do
   `/accounts/:account_id/email/routing/addresses`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List email routing destination addresses.
 

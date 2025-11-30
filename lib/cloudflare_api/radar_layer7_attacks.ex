@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarLayer7Attacks do
   Radar Layer 7 attack analytics under `/radar/attacks/layer7`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Summary radar layer7 attacks.
 

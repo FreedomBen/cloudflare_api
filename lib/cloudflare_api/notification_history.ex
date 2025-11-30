@@ -3,6 +3,8 @@ defmodule CloudflareApi.NotificationHistory do
   List alert delivery history entries via `/accounts/:account_id/alerting/v3/history`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Retrieve account alert history entries (`GET /accounts/:account_id/alerting/v3/history`).
   Supply `opts` for pagination or filtering.

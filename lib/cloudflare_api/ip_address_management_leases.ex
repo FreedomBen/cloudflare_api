@@ -3,6 +3,8 @@ defmodule CloudflareApi.IpAddressManagementLeases do
   List leases via `/accounts/:account_id/addressing/leases`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List ip address management leases.
 

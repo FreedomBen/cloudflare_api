@@ -3,6 +3,8 @@ defmodule CloudflareApi.InfrastructureAccessTargets do
   Manage Access targets under `/accounts/:account_id/infrastructure/targets`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List infrastructure access targets.
 

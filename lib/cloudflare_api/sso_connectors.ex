@@ -3,6 +3,8 @@ defmodule CloudflareApi.SsoConnectors do
   Manage account-level SSO connectors (`/accounts/:account_id/sso_connectors`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List sso connectors.
 

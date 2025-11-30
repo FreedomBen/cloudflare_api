@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccessApplications do
   Manage Cloudflare Access applications for an account.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List access applications.
 

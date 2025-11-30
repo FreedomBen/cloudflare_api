@@ -3,6 +3,8 @@ defmodule CloudflareApi.SinkholeConfig do
   List account sinkhole configurations via `/accounts/:account_id/intel/sinkholes`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List sinkholes owned by an account (`GET /intel/sinkholes`).
   """

@@ -3,6 +3,8 @@ defmodule CloudflareApi.UserAgentBlockingRules do
   Manage zone user-agent blocking rules under `/zones/:zone_id/firewall/ua_rules`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List user agent blocking rules.
 

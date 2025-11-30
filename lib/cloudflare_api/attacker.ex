@@ -3,6 +3,8 @@ defmodule CloudflareApi.Attacker do
   Fetch Cloudforce One attacker events.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List attacker.
 

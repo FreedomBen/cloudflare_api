@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarAiBots do
   Radar AI Bots analytics helpers under `/radar/ai/bots`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Summary radar ai bots.
 

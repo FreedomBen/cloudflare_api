@@ -3,6 +3,8 @@ defmodule CloudflareApi.RegistrarDomains do
   Manage domains registered through Cloudflare Registrar (`/accounts/:account_id/registrar/domains`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List registrar domains.
 

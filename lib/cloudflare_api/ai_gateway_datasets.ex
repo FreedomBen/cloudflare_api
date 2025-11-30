@@ -7,6 +7,8 @@ defmodule CloudflareApi.AiGatewayDatasets do
   caching or heavy abstractions.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List datasets for a gateway.
 

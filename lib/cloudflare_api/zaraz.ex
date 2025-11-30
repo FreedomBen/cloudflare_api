@@ -3,6 +3,8 @@ defmodule CloudflareApi.Zaraz do
   Manage Zaraz zone settings (`/zones/:zone_id/settings/zaraz/*`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc """
   Fetch the Zaraz configuration (`GET /zones/:zone_id/settings/zaraz/config`).
   """

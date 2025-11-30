@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccountRulesets do
   Manage Rulesets at the account level (Ruleset Engine).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List account rulesets.
 

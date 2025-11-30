@@ -3,6 +3,8 @@ defmodule CloudflareApi.WorkersAiTextClassification do
   Workers AI text classification helpers.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Execute BAAI BGE Reranker Base
   (`POST /accounts/:account_id/ai/run/@cf/baai/bge-reranker-base`).

@@ -3,6 +3,8 @@ defmodule CloudflareApi.WarpChangeEvents do
   List WARP change events via `/accounts/:account_id/dex/warp-change-events`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List warp change events.
 

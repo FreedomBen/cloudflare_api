@@ -3,6 +3,8 @@ defmodule CloudflareApi.LogoMatch do
   Manage logo uploads and matching for Brand Protection.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List logo matches for logo match.
 

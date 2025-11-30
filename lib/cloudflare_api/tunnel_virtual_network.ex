@@ -3,6 +3,8 @@ defmodule CloudflareApi.TunnelVirtualNetwork do
   Manage tunnel virtual networks under `/accounts/:account_id/teamnet/virtual_networks`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List tunnel virtual network.
 

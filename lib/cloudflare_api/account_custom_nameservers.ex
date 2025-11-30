@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccountCustomNameservers do
   Manage account-level custom nameservers and zone usage metadata.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List account custom nameservers.
 

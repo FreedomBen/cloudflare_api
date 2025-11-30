@@ -3,6 +3,8 @@ defmodule CloudflareApi.Sessions do
   Access Realtime Kit session analytics under `/accounts/:account_id/realtime/kit/:app_id/sessions`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List sessions for an app (`GET /sessions`).
   """

@@ -121,5 +121,4 @@ defmodule CloudflareApi.CacheTest do
       ttl: 15
     }
   end
-
 end

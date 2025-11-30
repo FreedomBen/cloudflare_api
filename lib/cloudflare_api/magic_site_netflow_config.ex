@@ -3,6 +3,8 @@ defmodule CloudflareApi.MagicSiteNetflowConfig do
   Manage Magic Site NetFlow configuration (`/accounts/:account_id/magic/sites/:site_id/netflow_config`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get magic site netflow config.
 

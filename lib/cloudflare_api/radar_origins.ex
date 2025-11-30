@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarOrigins do
   Radar origins analytics under `/radar/origins`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List radar origins.
 

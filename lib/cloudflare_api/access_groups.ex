@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccessGroups do
   Manage Cloudflare Access groups for an account.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List access groups.
 

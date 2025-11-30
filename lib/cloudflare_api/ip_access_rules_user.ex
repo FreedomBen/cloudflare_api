@@ -3,6 +3,8 @@ defmodule CloudflareApi.IpAccessRulesUser do
   User-level IP Access rules (`/user/firewall/access_rules/rules`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List ip access rules user.
 

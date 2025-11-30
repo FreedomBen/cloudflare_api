@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccountMembers do
   Manage account members.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List account members.
 

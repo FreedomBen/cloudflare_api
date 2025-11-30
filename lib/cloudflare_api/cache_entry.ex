@@ -1,5 +1,7 @@
 defmodule CloudflareApi.CacheEntry do
   @moduledoc """
+  use CloudflareApi.Typespecs
+
   Internal struct used by `CloudflareApi.Cache`.
 
   Each entry stores the cached `CloudflareApi.DnsRecord` along with the

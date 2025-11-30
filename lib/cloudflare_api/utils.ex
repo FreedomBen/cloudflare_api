@@ -10,6 +10,8 @@ defmodule CloudflareApi.Utils do
   standard library modules such as `Enum` and `Kernel`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Using either `key` or `extract_func`, extract the specified thing.
 

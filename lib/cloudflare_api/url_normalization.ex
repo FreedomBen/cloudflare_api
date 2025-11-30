@@ -3,6 +3,8 @@ defmodule CloudflareApi.UrlNormalization do
   Access URL Normalization settings at `/zones/:zone_id/url_normalization`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get url normalization.
 

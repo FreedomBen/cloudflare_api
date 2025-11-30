@@ -4,6 +4,8 @@ defmodule CloudflareApi.Values do
   `/accounts/:account_id/workers/observability/telemetry/values`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Request telemetry values (`POST /telemetry/values`).
   """

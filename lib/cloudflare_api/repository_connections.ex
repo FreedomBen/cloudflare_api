@@ -3,6 +3,8 @@ defmodule CloudflareApi.RepositoryConnections do
   Manage build repository connections (`/accounts/:account_id/builds/repos/connections`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Upsert repository connections.
 

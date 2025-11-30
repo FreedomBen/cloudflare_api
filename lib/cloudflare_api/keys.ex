@@ -3,6 +3,8 @@ defmodule CloudflareApi.Keys do
   List Workers Observability telemetry keys for an account (`/accounts/:account_id/workers/observability/telemetry/keys`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc """
   List telemetry keys (POST /accounts/:account_id/workers/observability/telemetry/keys).
 

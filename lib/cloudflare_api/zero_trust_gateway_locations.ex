@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZeroTrustGatewayLocations do
   Manage Zero Trust Gateway locations (`/accounts/:account_id/gateway/locations`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc """
   List locations (`GET /accounts/:account_id/gateway/locations`).
 

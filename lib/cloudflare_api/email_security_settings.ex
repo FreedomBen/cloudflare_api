@@ -3,6 +3,8 @@ defmodule CloudflareApi.EmailSecuritySettings do
   Manage Email Security settings (`/accounts/:account_id/email-security/settings`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List allow policies for email security settings.
 

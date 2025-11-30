@@ -3,6 +3,8 @@ defmodule CloudflareApi.NotificationSilences do
   Manage alert silences (`/accounts/:account_id/alerting/v3/silences`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List configured silences via `GET /accounts/:account_id/alerting/v3/silences`.
   """

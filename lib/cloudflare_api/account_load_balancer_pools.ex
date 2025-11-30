@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccountLoadBalancerPools do
   Manage load balancer pools for an account, including health and previews.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List account load balancer pools.
 

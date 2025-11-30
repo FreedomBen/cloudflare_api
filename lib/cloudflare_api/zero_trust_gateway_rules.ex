@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZeroTrustGatewayRules do
   Manage Zero Trust Gateway rules (`/accounts/:account_id/gateway/rules`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc """
   List rules (`GET /accounts/:account_id/gateway/rules`).
   """

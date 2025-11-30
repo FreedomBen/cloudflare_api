@@ -3,6 +3,8 @@ defmodule CloudflareApi.NotificationPolicies do
   Manage alerting notification policies (`/accounts/:account_id/alerting/v3/policies`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List policies for an account (`GET /accounts/:account_id/alerting/v3/policies`).
   """

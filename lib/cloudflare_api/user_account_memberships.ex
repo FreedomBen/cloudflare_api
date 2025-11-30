@@ -3,6 +3,8 @@ defmodule CloudflareApi.UserAccountMemberships do
   Manage user account memberships via `/memberships`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List user account memberships.
 

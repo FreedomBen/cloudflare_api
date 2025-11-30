@@ -3,6 +3,8 @@ defmodule CloudflareApi.IpAccessRulesAccount do
   Account-level IP Access rules (`/accounts/:account_id/firewall/access_rules/rules`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List ip access rules account.
 

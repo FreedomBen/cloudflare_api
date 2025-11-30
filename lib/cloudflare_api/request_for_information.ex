@@ -4,6 +4,8 @@ defmodule CloudflareApi.RequestForInformation do
   `/accounts/:account_id/cloudforce-one/requests`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List request for information.
 

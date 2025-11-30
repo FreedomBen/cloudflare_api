@@ -3,6 +3,8 @@ defmodule CloudflareApi.WorkersAiTextGeneration do
   Workers AI text generation helpers for the large catalog of `/ai/run` models.
   """
 
+  use CloudflareApi.Typespecs
+
   @json_models [
     {:run_cf_aisingapore_gemma_sea_lion_v4_27b_it, "@cf/aisingapore/gemma-sea-lion-v4-27b-it"},
     {:run_cf_deepseek_ai_deepseek_math_7b_instruct, "@cf/deepseek-ai/deepseek-math-7b-instruct"},

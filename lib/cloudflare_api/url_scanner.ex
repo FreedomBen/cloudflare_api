@@ -3,6 +3,8 @@ defmodule CloudflareApi.UrlScanner do
   Access the modern URL Scanner v2 endpoints under `/accounts/:account_id/urlscanner/v2`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Create scan for url scanner.
 

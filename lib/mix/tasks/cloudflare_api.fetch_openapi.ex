@@ -1,5 +1,7 @@
 defmodule Mix.Tasks.CloudflareApi.FetchOpenapi do
   @moduledoc """
+  use CloudflareApi.Typespecs
+
   Fetches and caches the latest Cloudflare API OpenAPI schema.
 
   The schema is downloaded from the official Cloudflare API schemas

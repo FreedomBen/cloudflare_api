@@ -3,6 +3,8 @@ defmodule CloudflareApi.LoadBalancerRegions do
   List load balancer regions for an account (`/accounts/:account_id/load_balancers/regions`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List load balancer regions.
 

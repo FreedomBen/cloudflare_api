@@ -3,6 +3,8 @@ defmodule CloudflareApi.MtlsCertificateManagement do
   Account-level mTLS certificate management helpers.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List certificates for mtls certificate management.
 

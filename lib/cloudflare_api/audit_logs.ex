@@ -3,6 +3,8 @@ defmodule CloudflareApi.AuditLogs do
   Fetch audit logs at account or user scope.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List account for audit logs.
 

@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccountOwnedApiTokens do
   Manage account-owned API tokens, including permission groups and verification.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List account owned api tokens.
 

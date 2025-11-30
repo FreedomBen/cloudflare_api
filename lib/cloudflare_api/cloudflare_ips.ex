@@ -3,6 +3,8 @@ defmodule CloudflareApi.CloudflareIps do
   Fetch the list of Cloudflare IP ranges.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List cloudflare ips.
 

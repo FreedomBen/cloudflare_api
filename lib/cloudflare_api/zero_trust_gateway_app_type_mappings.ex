@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZeroTrustGatewayAppTypeMappings do
   List Zero Trust Gateway application/application-type mappings.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc """
   List mappings (`GET /accounts/:account_id/gateway/app_types`).
   """

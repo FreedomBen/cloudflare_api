@@ -3,6 +3,8 @@ defmodule CloudflareApi.DnsFirewallAnalytics do
   DNS Firewall analytics helpers for `/dns_analytics/report` and `/bytime`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Report dns firewall analytics.
 

@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarLeakedCredentialChecks do
   Radar leaked credential checks analytics under `/radar/leaked_credential_checks`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Summary radar leaked credential checks.
 

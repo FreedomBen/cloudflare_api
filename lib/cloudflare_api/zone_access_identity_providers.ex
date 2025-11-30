@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZoneAccessIdentityProviders do
   Manage zone-scoped Access identity providers.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List zone access identity providers.
 

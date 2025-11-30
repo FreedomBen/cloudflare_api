@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarWebCrawlers do
   Radar web crawler analytics under `/radar/bots/crawlers`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Summary radar web crawlers.
 

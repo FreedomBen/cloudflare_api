@@ -3,6 +3,8 @@ defmodule CloudflareApi.StreamWebhook do
   Manage Stream webhooks under `/accounts/:account_id/stream/webhook`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Retrieve webhook configuration (`GET /stream/webhook`).
   """

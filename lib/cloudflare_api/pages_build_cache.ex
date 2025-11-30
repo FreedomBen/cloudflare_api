@@ -3,6 +3,8 @@ defmodule CloudflareApi.PagesBuildCache do
   Purge the Pages build cache (`/accounts/:account_id/pages/projects/:project_name/purge_build_cache`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Purge cached build artifacts for a Pages project.
   """

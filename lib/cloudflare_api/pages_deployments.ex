@@ -3,6 +3,8 @@ defmodule CloudflareApi.PagesDeployments do
   Manage Pages deployments (`/accounts/:account_id/pages/projects/:project_name/deployments`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List deployments for a project (`GET /deployments`).
   """

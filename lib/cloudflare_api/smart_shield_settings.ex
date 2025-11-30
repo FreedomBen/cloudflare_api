@@ -3,6 +3,8 @@ defmodule CloudflareApi.SmartShieldSettings do
   Manage Smart Shield settings under `/zones/:zone_id/smart_shield`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Retrieve Smart Shield settings (`GET /zones/:zone_id/smart_shield`).
   """

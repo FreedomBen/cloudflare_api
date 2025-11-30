@@ -3,6 +3,8 @@ defmodule CloudflareApi.CloudIntegrations do
   Manage Magic Cloud provider integrations for an account.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List cloud integrations.
 

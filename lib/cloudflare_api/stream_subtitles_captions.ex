@@ -3,6 +3,8 @@ defmodule CloudflareApi.StreamSubtitlesCaptions do
   Manage Stream subtitles and captions at `/accounts/:account_id/stream/:identifier/captions`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List captions/subtitles for a video (`GET /captions`).
   """

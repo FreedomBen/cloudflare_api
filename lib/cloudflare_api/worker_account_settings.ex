@@ -3,6 +3,8 @@ defmodule CloudflareApi.WorkerAccountSettings do
   Manage Workers account settings (`/accounts/:account_id/workers/account-settings`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Fetch Worker account settings (`GET /accounts/:account_id/workers/account-settings`).
   """

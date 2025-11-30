@@ -3,6 +3,8 @@ defmodule CloudflareApi.Feedback do
   Bot Management feedback helpers (`/zones/:zone_id/bot_management/feedback`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List feedback.
 

@@ -3,6 +3,8 @@ defmodule CloudflareApi.RateLimits do
   Manage zone-level rate limits (`/zones/:zone_id/rate_limits`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List rate limits.
 

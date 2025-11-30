@@ -3,6 +3,8 @@ defmodule CloudflareApi.MagicSites do
   Manage Magic Sites (`/accounts/:account_id/magic/sites`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List magic sites.
 

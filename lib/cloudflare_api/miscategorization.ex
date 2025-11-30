@@ -3,6 +3,8 @@ defmodule CloudflareApi.Miscategorization do
   Create DNS/intel miscategorization reports (`/accounts/:account_id/intel/miscategorization`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Create miscategorization.
 

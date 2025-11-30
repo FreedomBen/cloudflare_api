@@ -3,6 +3,8 @@ defmodule CloudflareApi.MagicNetworkMonitoringVpcFlows do
   Generate authentication tokens for Magic Network Monitoring VPC flow log export.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Generate token for magic network monitoring vpc flows.
 

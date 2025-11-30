@@ -5,6 +5,8 @@ defmodule CloudflareApi.AccessBookmarks do
   These remain for completeness but may be removed by Cloudflare in the future.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List access bookmarks.
 

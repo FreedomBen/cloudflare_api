@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZeroTrustSubnets do
   Zero Trust subnet helpers (`/accounts/:account_id/zerotrust/subnets`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc """
   List subnets (`GET /accounts/:account_id/zerotrust/subnets`).
 

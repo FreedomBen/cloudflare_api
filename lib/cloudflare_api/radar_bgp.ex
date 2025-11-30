@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarBgp do
   Radar BGP endpoints under `/radar/bgp`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Hijacks events for radar bgp.
 

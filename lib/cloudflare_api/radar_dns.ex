@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarDns do
   Radar DNS analytics helpers under `/radar/dns`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Summary radar dns.
 

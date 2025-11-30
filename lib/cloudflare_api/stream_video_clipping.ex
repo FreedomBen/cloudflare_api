@@ -3,6 +3,8 @@ defmodule CloudflareApi.StreamVideoClipping do
   Clip Stream videos via `/accounts/:account_id/stream/clip`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Create a clip from a Stream video (`POST /stream/clip`).
   """

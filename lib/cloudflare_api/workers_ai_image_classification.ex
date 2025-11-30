@@ -3,6 +3,8 @@ defmodule CloudflareApi.WorkersAiImageClassification do
   Workers AI image classification helpers.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Execute the Microsoft ResNet-50 classifier
   (`POST /accounts/:account_id/ai/run/@cf/microsoft/resnet-50`).

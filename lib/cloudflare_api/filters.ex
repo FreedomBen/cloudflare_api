@@ -3,6 +3,8 @@ defmodule CloudflareApi.Filters do
   Firewall filter management helpers for `/zones/:zone_id/filters`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List filters for a zone (`GET /zones/:zone_id/filters`).
 

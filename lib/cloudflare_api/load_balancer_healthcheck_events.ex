@@ -3,6 +3,8 @@ defmodule CloudflareApi.LoadBalancerHealthcheckEvents do
   List user-level load balancer healthcheck events (`/user/load_balancing_analytics/events`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc """
   List healthcheck events.
 

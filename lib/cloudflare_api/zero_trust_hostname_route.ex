@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZeroTrustHostnameRoute do
   Manage Zero Trust hostname routes (`/accounts/:account_id/zerotrust/routes/hostname`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc """
   List hostname routes (`GET /accounts/:account_id/zerotrust/routes/hostname`).
   """

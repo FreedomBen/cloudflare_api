@@ -3,6 +3,8 @@ defmodule CloudflareApi.CustomSsl do
   Manage custom SSL certificates for a zone.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List custom ssl.
 

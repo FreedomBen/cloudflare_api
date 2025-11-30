@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZoneHolds do
   Manage zone holds (`/zones/:zone_id/hold`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc """
   Get hold status (`GET /zones/:zone_id/hold`).
   """

@@ -5,6 +5,8 @@ defmodule CloudflareApi.DnsRecord do
   See Cloudflare docs:  https://api.cloudflare.com/#dns-records-for-a-zone-properties
   """
 
+  use CloudflareApi.Typespecs
+
   alias CloudflareApi.Utils
 
   @enforce_keys [:zone_id, :hostname, :ip]

@@ -3,6 +3,8 @@ defmodule CloudflareApi.IpAccessRulesZone do
   Zone-level IP Access rules (`/zones/:zone_id/firewall/access_rules/rules`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List ip access rules zone.
 

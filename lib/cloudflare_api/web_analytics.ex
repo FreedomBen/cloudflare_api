@@ -3,6 +3,8 @@ defmodule CloudflareApi.WebAnalytics do
   Web Analytics (RUM) helpers for managing sites, rules, and zone settings.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Create a Web Analytics site (`POST /accounts/:account_id/rum/site_info`).
   """

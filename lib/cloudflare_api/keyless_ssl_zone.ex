@@ -3,6 +3,8 @@ defmodule CloudflareApi.KeylessSslZone do
   Manage Keyless SSL configurations for a zone.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List keyless ssl zone.
 

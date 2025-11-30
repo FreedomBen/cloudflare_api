@@ -3,6 +3,8 @@ defmodule CloudflareApi.TargetIndustry do
   Access Cloudforce One target industry metadata via `/accounts/:account_id/cloudforce-one/events`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List target industries (`GET /events/targetIndustries`).
   """

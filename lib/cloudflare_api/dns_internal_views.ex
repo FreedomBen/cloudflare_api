@@ -3,6 +3,8 @@ defmodule CloudflareApi.DnsInternalViews do
   Manage internal DNS views via `/accounts/:account_id/dns_settings/views`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List dns internal views.
 

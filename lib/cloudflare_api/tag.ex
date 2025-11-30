@@ -3,6 +3,8 @@ defmodule CloudflareApi.Tag do
   Manage Cloudforce One tags under `/accounts/:account_id/cloudforce-one/events/tags`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List tags (`GET /events/tags`).
   """

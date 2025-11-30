@@ -4,6 +4,8 @@ defmodule CloudflareApi.PassiveDnsByIp do
   `GET /accounts/:account_id/intel/dns`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Fetch passive DNS data for an account.
 

@@ -3,6 +3,8 @@ defmodule CloudflareApi.User do
   Access authenticated user details via `/user` and `/users/tenants`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get user.
 

@@ -5,6 +5,8 @@ defmodule CloudflareApi.Zone do
   See Cloudflare docs:  https://api.cloudflare.com/#zone-properties
   """
 
+  use CloudflareApi.Typespecs
+
   alias CloudflareApi.Utils
 
   @enforce_keys [:id]

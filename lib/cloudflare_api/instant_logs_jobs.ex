@@ -3,6 +3,8 @@ defmodule CloudflareApi.InstantLogsJobs do
   Instant Logs job helpers for `/zones/:zone_id/logpush/edge/jobs`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List instant logs jobs.
 

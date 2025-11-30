@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZeroTrustSeats do
   Manage Zero Trust Access seats (`PATCH /accounts/:account_id/access/seats`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc """
   Update user seats (`PATCH /accounts/:account_id/access/seats`).
   """

@@ -3,6 +3,8 @@ defmodule CloudflareApi.Account do
   Account-specific helpers (currently account limits).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Retrieve account limits (`GET /accounts/:account_id/builds/account/limits`).
   """

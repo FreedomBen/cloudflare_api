@@ -3,6 +3,8 @@ defmodule CloudflareApi.DnsFirewall do
   Manage DNS Firewall clusters under `/accounts/:account_id/dns_firewall`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List DNS firewall clusters (`GET /accounts/:account_id/dns_firewall`).
   """

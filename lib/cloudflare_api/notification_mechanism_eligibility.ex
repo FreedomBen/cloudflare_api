@@ -3,6 +3,8 @@ defmodule CloudflareApi.NotificationMechanismEligibility do
   Determine alert destination eligibility (`/accounts/:account_id/alerting/v3/destinations/eligible`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Fetch delivery mechanism eligibility for an account (`GET /accounts/:account_id/alerting/v3/destinations/eligible`).
   Optional query params can be provided via `opts`.

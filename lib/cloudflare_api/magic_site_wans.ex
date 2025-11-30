@@ -3,6 +3,8 @@ defmodule CloudflareApi.MagicSiteWans do
   Manage Magic Site WANs (`/accounts/:account_id/magic/sites/:site_id/wans`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List magic site wans.
 

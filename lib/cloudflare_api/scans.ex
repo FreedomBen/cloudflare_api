@@ -3,6 +3,8 @@ defmodule CloudflareApi.Scans do
   Cloudforce One scan configuration APIs under `/accounts/:account_id/cloudforce-one/scans`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get config for scans.
 

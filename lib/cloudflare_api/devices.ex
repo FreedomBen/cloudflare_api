@@ -4,6 +4,8 @@ defmodule CloudflareApi.Devices do
   split tunnel lists, override codes, certificates, etc.).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List devices.
 

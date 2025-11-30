@@ -3,6 +3,8 @@ defmodule CloudflareApi.UserBillingHistory do
   Retrieve user billing history via `/user/billing/history`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List user billing history.
 

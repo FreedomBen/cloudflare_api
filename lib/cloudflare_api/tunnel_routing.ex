@@ -3,6 +3,8 @@ defmodule CloudflareApi.TunnelRouting do
   Manage tunnel routes under `/accounts/:account_id/teamnet/routes`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List tunnel routing.
 

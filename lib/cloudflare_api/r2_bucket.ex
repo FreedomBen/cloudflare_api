@@ -4,6 +4,8 @@ defmodule CloudflareApi.R2Bucket do
   temporary credentials under `/accounts/:account_id/r2`.
   """
 
+  use CloudflareApi.Typespecs
+
   ## Buckets
 
   @doc ~S"""

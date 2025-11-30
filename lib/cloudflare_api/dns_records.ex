@@ -11,6 +11,8 @@ defmodule CloudflareApi.DnsRecords do
   `CloudflareApi.new/1` or a zero-arity function returned by `CloudflareApi.client/1`.
   """
 
+  use CloudflareApi.Typespecs
+
   alias CloudflareApi.DnsRecord
 
   @doc ~S"""

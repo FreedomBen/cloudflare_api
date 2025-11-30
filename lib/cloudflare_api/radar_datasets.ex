@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarDatasets do
   Access Radar datasets under `/radar/datasets`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List radar datasets.
 

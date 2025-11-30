@@ -6,6 +6,8 @@ defmodule CloudflareApi.DexRemoteCommands do
   `{:error, errors}` without any caching behaviour.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List remote commands for an account (`GET /accounts/:account_id/dex/commands`).
 

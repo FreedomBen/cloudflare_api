@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarNetflows do
   Radar NetFlows analytics under `/radar/netflows`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Summary radar netflows.
 

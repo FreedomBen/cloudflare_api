@@ -3,6 +3,8 @@ defmodule CloudflareApi.MagicConnectors do
   Manage Magic WAN connectors and telemetry endpoints (`/accounts/:account_id/magic/connectors`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List magic connectors.
 

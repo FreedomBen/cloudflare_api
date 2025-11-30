@@ -3,6 +3,8 @@ defmodule CloudflareApi.Category do
   Manage Cloudforce One event categories.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List category.
 

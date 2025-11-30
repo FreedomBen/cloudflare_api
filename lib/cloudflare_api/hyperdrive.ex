@@ -3,6 +3,8 @@ defmodule CloudflareApi.Hyperdrive do
   Manage Hyperdrive configurations via `/accounts/:account_id/hyperdrive/configs`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List hyperdrive.
 

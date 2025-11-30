@@ -3,6 +3,8 @@ defmodule CloudflareApi.CloudflareImagesKeys do
   Manage Cloudflare Images signing keys.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List cloudflare images keys.
 

@@ -3,6 +3,8 @@ defmodule CloudflareApi.WorkersAi do
   Workers AI helpers for model metadata, execution, and markdown conversion.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Search authors (`GET /accounts/:account_id/ai/authors/search`).
   """

@@ -3,6 +3,8 @@ defmodule CloudflareApi.BinDb do
   Upload binaries to or fetch binaries from the Cloudforce One BinDB service.
   """
 
+  use CloudflareApi.Typespecs
+
   alias Tesla.Multipart
 
   @doc ~S"""

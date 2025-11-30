@@ -3,6 +3,8 @@ defmodule CloudflareApi.PagesProject do
   Manage Pages projects under `/accounts/:account_id/pages/projects`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List projects in an account (`GET /accounts/:account_id/pages/projects`).
   """

@@ -3,6 +3,8 @@ defmodule CloudflareApi.TagCategory do
   Manage Cloudforce One tag categories via `/accounts/:account_id/cloudforce-one/events/tags/categories`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List tag categories (`GET /tags/categories`).
   """

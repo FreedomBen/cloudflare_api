@@ -3,6 +3,8 @@ defmodule CloudflareApi.OnRamps do
   Manage Magic WAN On-ramps (`/accounts/:account_id/magic/cloud/onramps`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List on-ramps for an account (`GET /magic/cloud/onramps`).
   """

@@ -3,6 +3,8 @@ defmodule CloudflareApi.IndicatorTypes do
   Indicator type helpers for Cloudforce One datasets.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List indicator types.
 

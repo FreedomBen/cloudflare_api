@@ -6,6 +6,8 @@ defmodule CloudflareApi.AiGatewayEvaluations do
   paths as well as the account-level evaluation types list.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List available evaluation types for an account (`GET /accounts/:account_id/ai-gateway/evaluation-types`).
   """

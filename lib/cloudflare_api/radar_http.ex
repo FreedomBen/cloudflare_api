@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarHttp do
   Radar HTTP analytics under `/radar/http`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Summary radar http.
 

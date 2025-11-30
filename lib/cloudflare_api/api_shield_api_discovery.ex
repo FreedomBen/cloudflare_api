@@ -6,6 +6,8 @@ defmodule CloudflareApi.ApiShieldApiDiscovery do
   OpenAPI document.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Retrieve the discovered operations as an OpenAPI document
   (`GET /zones/:zone_id/api_gateway/discovery`).

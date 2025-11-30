@@ -3,6 +3,8 @@ defmodule CloudflareApi.UserBillingProfile do
   Retrieve user billing profile via `/user/billing/profile`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get user billing profile.
 

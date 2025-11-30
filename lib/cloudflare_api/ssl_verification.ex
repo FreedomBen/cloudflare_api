@@ -3,6 +3,8 @@ defmodule CloudflareApi.SslVerification do
   Manage SSL verification details (`/zones/:zone_id/ssl/verification`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Details ssl verification.
 

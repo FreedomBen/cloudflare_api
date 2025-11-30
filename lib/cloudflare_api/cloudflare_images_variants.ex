@@ -3,6 +3,8 @@ defmodule CloudflareApi.CloudflareImagesVariants do
   Manage Cloudflare Images variants.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List cloudflare images variants.
 

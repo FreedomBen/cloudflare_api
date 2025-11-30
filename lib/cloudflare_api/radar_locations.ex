@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarLocations do
   Radar location metadata under `/radar/entities/locations`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List radar locations.
 

@@ -5,6 +5,8 @@ defmodule CloudflareApi.ZeroTrustAccounts do
   - Account info/config/logging (`/accounts/:account_id/gateway`).
   """
 
+  use CloudflareApi.Typespecs
+
   ## Device Settings
 
   @doc ~S"""

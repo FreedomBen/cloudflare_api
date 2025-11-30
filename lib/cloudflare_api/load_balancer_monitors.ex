@@ -3,6 +3,8 @@ defmodule CloudflareApi.LoadBalancerMonitors do
   Manage user-level load balancer monitors (`/user/load_balancers/monitors`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List load balancer monitors.
 

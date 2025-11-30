@@ -3,6 +3,8 @@ defmodule CloudflareApi.WhoisRecord do
   Retrieve WHOIS records via `/accounts/:account_id/intel/whois`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get whois record.
 

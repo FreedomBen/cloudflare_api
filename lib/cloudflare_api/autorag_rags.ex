@@ -3,6 +3,8 @@ defmodule CloudflareApi.AutoragRags do
   Manage AutoRAG resources (RAGs) for an account.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List autorag rags.
 

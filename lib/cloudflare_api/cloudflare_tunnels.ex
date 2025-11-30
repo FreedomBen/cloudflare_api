@@ -3,6 +3,8 @@ defmodule CloudflareApi.CloudflareTunnels do
   Manage Cloudflare Tunnels and Warp Connector tunnels.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List cfd for cloudflare tunnels.
 

@@ -3,6 +3,8 @@ defmodule CloudflareApi.DlpIntegrationEntries do
   Manage integration entries under `/accounts/:account_id/dlp/entries/integration`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Create an integration entry (`POST /accounts/:account_id/dlp/entries/integration`).
   """

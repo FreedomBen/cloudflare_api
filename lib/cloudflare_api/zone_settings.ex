@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZoneSettings do
   General zone settings helpers for `/zones/:zone_id/settings`.
   """
 
+  use CloudflareApi.Typespecs
+
   ## Bulk settings
 
   @doc ~S"""

@@ -3,6 +3,8 @@ defmodule CloudflareApi.Event do
   Cloudforce One event helpers for `/accounts/:account_id/cloudforce-one/events`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List event.
 

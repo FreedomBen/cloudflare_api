@@ -3,6 +3,8 @@ defmodule CloudflareApi.PhysicalDevices do
   Manage physical device registrations via `/accounts/:account_id/devices` endpoints.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List physical devices (`GET /devices/physical-devices`).
   """

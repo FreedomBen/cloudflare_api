@@ -7,6 +7,8 @@ defmodule CloudflareApi.DcvDelegation do
   (`CloudflareApi.new/1` or a zero-arity client function).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Retrieve the delegated DCV UUID for a zone (`GET /zones/:zone_id/dcv_delegation/uuid`).
 

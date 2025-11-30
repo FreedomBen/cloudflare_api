@@ -3,6 +3,8 @@ defmodule CloudflareApi.Diagnostics do
   Diagnostics helpers for `/accounts/:account_id/diagnostics/traceroute`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Trigger a traceroute diagnostic (`POST /accounts/:account_id/diagnostics/traceroute`).
   """

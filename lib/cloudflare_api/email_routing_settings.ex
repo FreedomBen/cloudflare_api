@@ -3,6 +3,8 @@ defmodule CloudflareApi.EmailRoutingSettings do
   Email Routing settings helpers under `/zones/:zone_id/email/routing`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get settings for email routing settings.
 

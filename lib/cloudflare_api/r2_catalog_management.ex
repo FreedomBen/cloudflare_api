@@ -3,6 +3,8 @@ defmodule CloudflareApi.R2CatalogManagement do
   Manage R2 catalog buckets via `/accounts/:account_id/r2-catalog`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List R2 catalogs for an account.
   """

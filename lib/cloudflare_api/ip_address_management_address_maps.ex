@@ -3,6 +3,8 @@ defmodule CloudflareApi.IpAddressManagementAddressMaps do
   Address Map helpers under `/accounts/:account_id/addressing/address_maps`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List ip address management address maps.
 

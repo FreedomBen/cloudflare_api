@@ -3,6 +3,8 @@ defmodule CloudflareApi.SecondaryDnsSecondaryZone do
   Manage secondary DNS *incoming* zone configurations under `/zones/:zone_id/secondary_dns`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Fetch the incoming/secondary configuration for a zone (`GET /secondary_dns/incoming`).
   """

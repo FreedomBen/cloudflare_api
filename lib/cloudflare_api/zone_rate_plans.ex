@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZoneRatePlans do
   List the available subscriptions (rate plans) for a zone.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Fetch the available rate plans (`GET /zones/:zone_id/available_rate_plans`).
   """

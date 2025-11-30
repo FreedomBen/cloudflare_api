@@ -4,6 +4,8 @@ defmodule CloudflareApi.DlsRegionalServices do
   account/zone endpoints (DLS Regional Services tag).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List available regions (`GET /accounts/:account_id/addressing/regional_hostnames/regions`).
   """

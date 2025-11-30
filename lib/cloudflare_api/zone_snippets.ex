@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZoneSnippets do
   Manage zone Workers snippets and snippet rules.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List zone snippets.
 

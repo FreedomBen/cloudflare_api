@@ -3,6 +3,8 @@ defmodule CloudflareApi.UserSubscription do
   Manage user subscriptions via `/user/subscriptions`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List user subscription.
 

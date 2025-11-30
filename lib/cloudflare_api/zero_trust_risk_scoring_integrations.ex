@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZeroTrustRiskScoringIntegrations do
   Manage Zero Trust risk scoring integrations (`/accounts/:account_id/zt_risk_scoring/integrations`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc """
   List integrations (`GET /accounts/:account_id/zt_risk_scoring/integrations`).
   """

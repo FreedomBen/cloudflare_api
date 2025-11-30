@@ -3,6 +3,8 @@ defmodule CloudflareApi.BuildTokens do
   Manage build tokens for the Cloudflare Builds service.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List build tokens.
 

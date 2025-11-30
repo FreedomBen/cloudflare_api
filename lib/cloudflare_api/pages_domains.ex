@@ -3,6 +3,8 @@ defmodule CloudflareApi.PagesDomains do
   Manage Pages project domains under `/accounts/:account_id/pages/projects/:project_name/domains`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List all custom domains for a Pages project (`GET /domains`).
   """

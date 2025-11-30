@@ -45,6 +45,23 @@ defmodule CloudflareApi do
   additional end-to-end examples.
   """
 
+  use CloudflareApi.Typespecs
+
+  @typedoc "A configured Tesla client or a zero-arity function that returns one."
+  @type client :: Tesla.Client.t() | (-> Tesla.Client.t())
+
+  @typedoc "Common keyword or map options passed to Cloudflare endpoints."
+  @type options :: keyword() | map() | nil
+
+  @typedoc "Standard error reasons returned by this library when wrapping HTTP calls."
+  @type error_reason :: Tesla.Env.t() | Tesla.Error.t() | term()
+
+  @typedoc "Helper type for `{:ok, value}` / `{:error, reason}` tuples."
+  @type result(result) :: {:ok, result} | {:error, error_reason()}
+
+  @typedoc "Generic identifier helper for Cloudflare resource IDs."
+  @type id :: String.t()
+
   @doc ~S"""
   Build a `Tesla.Client.t()` configured for the Cloudflare v4 API.
 

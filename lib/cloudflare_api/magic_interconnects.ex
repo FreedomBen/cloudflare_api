@@ -3,6 +3,8 @@ defmodule CloudflareApi.MagicInterconnects do
   Manage Magic WAN interconnects via `/accounts/:account_id/magic/cf_interconnects`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List Magic Interconnects for an account (`GET /accounts/:account_id/magic/cf_interconnects`).
   Optional `opts` are encoded onto the query string (pagination, filters, etc.).

@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarVerifiedBots do
   Radar verified bot analytics under `/radar/verified_bots`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Top bots for radar verified bots.
 

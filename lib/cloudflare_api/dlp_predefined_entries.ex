@@ -3,6 +3,8 @@ defmodule CloudflareApi.DlpPredefinedEntries do
   Manage predefined entries via `/accounts/:account_id/dlp/entries/predefined`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Create a predefined entry (`POST /accounts/:account_id/dlp/entries/predefined`).
   """

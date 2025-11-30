@@ -3,6 +3,8 @@ defmodule CloudflareApi.CatalogSync do
   Manage Catalog Syncs for Magic Cloud.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List catalog sync.
 

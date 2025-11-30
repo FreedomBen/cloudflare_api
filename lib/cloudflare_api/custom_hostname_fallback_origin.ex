@@ -3,6 +3,8 @@ defmodule CloudflareApi.CustomHostnameFallbackOrigin do
   Manage fallback origin settings for custom hostnames on a zone.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get custom hostname fallback origin.
 

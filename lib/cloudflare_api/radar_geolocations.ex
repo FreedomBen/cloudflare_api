@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarGeolocations do
   Radar geolocation metadata under `/radar/geolocations`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List radar geolocations.
 

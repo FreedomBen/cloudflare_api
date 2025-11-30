@@ -3,6 +3,8 @@ defmodule CloudflareApi.RealtimeKitApps do
   Manage Realtime Kit apps.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List realtime kit apps.
 

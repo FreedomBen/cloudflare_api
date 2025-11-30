@@ -4,6 +4,8 @@ defmodule CloudflareApi.IpAddressManagementBgpPrefixes do
   `/accounts/:account_id/addressing/prefixes/:prefix_id/bgp/prefixes`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List ip address management bgp prefixes.
 

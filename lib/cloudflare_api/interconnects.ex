@@ -3,6 +3,8 @@ defmodule CloudflareApi.Interconnects do
   Manage Cloudflare Network Interconnects via `/accounts/:account_id/cni/interconnects`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List interconnects.
 

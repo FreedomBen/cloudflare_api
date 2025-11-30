@@ -3,6 +3,8 @@ defmodule CloudflareApi.WorkersAiTextToSpeech do
   Workers AI text-to-speech helpers (Deepgram Aura family + MyShell models).
   """
 
+  use CloudflareApi.Typespecs
+
   @json_models [
     {:run_cf_deepgram_aura_1, "@cf/deepgram/aura-1"},
     {:run_cf_deepgram_aura_2_en, "@cf/deepgram/aura-2-en"},

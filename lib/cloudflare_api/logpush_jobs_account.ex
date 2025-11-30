@@ -3,6 +3,8 @@ defmodule CloudflareApi.LogpushJobsAccount do
   Manage account-level Logpush jobs, ownership challenges, and validation helpers.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List logpush jobs account.
 

@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZeroTrustLists do
   Manage Zero Trust lists (`/accounts/:account_id/gateway/lists`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc """
   List lists (`GET /accounts/:account_id/gateway/lists`), with optional `:type` filter.
   """

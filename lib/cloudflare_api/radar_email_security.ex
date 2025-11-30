@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarEmailSecurity do
   Radar email security analytics under `/radar/email/security`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Summary radar email security.
 

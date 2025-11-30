@@ -3,6 +3,8 @@ defmodule CloudflareApi.CertificatePacks do
   Manage SSL certificate packs for a zone.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List certificate packs.
 

@@ -3,6 +3,8 @@ defmodule CloudflareApi.Brapi do
   Browser Rendering API (BRAPI) helpers under `/accounts/:account_id/browser-rendering`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Render content for brapi.
 

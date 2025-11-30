@@ -4,6 +4,8 @@ defmodule CloudflareApi.Queues do
   `/accounts/:account_id/queues` and `/event_subscriptions`.
   """
 
+  use CloudflareApi.Typespecs
+
   ## Event Subscriptions
 
   @doc ~S"""

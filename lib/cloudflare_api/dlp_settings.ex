@@ -3,6 +3,8 @@ defmodule CloudflareApi.DlpSettings do
   DLP settings helpers (limits, payload log, pattern validation).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Fetch account DLP limits (`GET /accounts/:account_id/dlp/limits`).
   """

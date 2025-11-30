@@ -3,6 +3,8 @@ defmodule CloudflareApi.TokenValidationTokenRules do
   Manage Token Validation rules via `/zones/:zone_id/token_validation/rules`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List token validation token rules.
 

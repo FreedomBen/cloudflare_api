@@ -4,6 +4,8 @@ defmodule CloudflareApi.WarpTeamsDeviceApiOther do
   (`/accounts/:account_id/devices/registrations/:registration_id/override_codes`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Retrieve one-time override codes for a registration (`GET .../override_codes`).
   """

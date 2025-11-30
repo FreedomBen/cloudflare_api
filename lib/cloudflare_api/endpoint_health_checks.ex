@@ -3,6 +3,8 @@ defmodule CloudflareApi.EndpointHealthChecks do
   Manage diagnostic endpoint health checks (`/accounts/:account_id/diagnostics/endpoint-healthchecks`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List endpoint health checks.
 

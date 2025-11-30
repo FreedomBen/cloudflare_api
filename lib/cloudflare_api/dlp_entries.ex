@@ -3,6 +3,8 @@ defmodule CloudflareApi.DlpEntries do
   Manage DLP entries via `/accounts/:account_id/dlp/entries`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List entries (`GET /accounts/:account_id/dlp/entries`).
   """

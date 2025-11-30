@@ -3,6 +3,8 @@ defmodule CloudflareApi.DevicePostureIntegrations do
   Manage device posture integrations (`/accounts/:account_id/devices/posture/integration`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List device posture integrations.
 

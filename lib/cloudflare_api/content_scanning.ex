@@ -3,6 +3,8 @@ defmodule CloudflareApi.ContentScanning do
   Control Content Upload Scanning for a zone.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Enable content scanning.
 

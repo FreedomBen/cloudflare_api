@@ -3,6 +3,8 @@ defmodule CloudflareApi.ApiShieldSettings do
   Manage API Shield configuration properties at the zone level.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Retrieve settings (`GET /api_gateway/configuration`).
   """

@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccountLoadBalancerMonitorGroups do
   Manage account-level load balancer monitor groups.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List account load balancer monitor groups.
 

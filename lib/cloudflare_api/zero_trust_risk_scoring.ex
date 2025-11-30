@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZeroTrustRiskScoring do
   Manage Zero Trust risk scoring behaviors, summaries, and per-user insights.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc """
   List scoring behaviors (`GET /accounts/:account_id/zt_risk_scoring/behaviors`).
   """

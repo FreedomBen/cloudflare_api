@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarLayer3Attacks do
   Radar Layer 3 attack analytics under `/radar/attacks/layer3`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Summary radar layer3 attacks.
 

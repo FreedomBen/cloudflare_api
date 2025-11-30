@@ -3,6 +3,8 @@ defmodule CloudflareApi.Lists do
   Manage Cloudflare Filter Lists for an account (`/accounts/:account_id/rules/lists`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List lists.
 

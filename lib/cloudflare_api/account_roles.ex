@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccountRoles do
   List account roles.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List account roles.
 

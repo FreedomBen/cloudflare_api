@@ -3,6 +3,8 @@ defmodule CloudflareApi.Tenants do
   Expose tenant metadata from `/tenants/:tenant_id`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Retrieve tenant details (`GET /tenants/:tenant_id`).
   """

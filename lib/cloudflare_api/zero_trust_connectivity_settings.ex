@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZeroTrustConnectivitySettings do
   Manage Zero Trust connectivity settings (`/accounts/:account_id/zerotrust/connectivity_settings`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc """
   Fetch connectivity settings (`GET /accounts/:account_id/zerotrust/connectivity_settings`).
   """

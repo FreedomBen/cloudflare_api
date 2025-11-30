@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarSearch do
   Radar global search endpoint (`GET /radar/search/global`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Global radar search.
 

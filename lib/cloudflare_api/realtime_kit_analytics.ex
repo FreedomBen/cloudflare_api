@@ -3,6 +3,8 @@ defmodule CloudflareApi.RealtimeKitAnalytics do
   Retrieve Realtime Kit analytics (daywise stats).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Daywise realtime kit analytics.
 

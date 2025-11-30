@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarEmailRouting do
   Radar email routing analytics under `/radar/email/routing`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Summary radar email routing.
 

@@ -3,6 +3,8 @@ defmodule CloudflareApi.SecondaryDnsTsig do
   Manage Secondary DNS TSIG keys under `/accounts/:account_id/secondary_dns/tsigs`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List TSIG keys for an account (`GET /secondary_dns/tsigs`).
   """

@@ -3,6 +3,8 @@ defmodule CloudflareApi.FirewallRules do
   Zone firewall rule helpers for `/zones/:zone_id/firewall/rules`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List firewall rules for a zone (`GET /zones/:zone_id/firewall/rules`).
 

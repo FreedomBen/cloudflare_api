@@ -3,6 +3,8 @@ defmodule CloudflareApi.CallsApps do
   Manage Cloudflare Calls applications for an account.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List calls apps.
 

@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZoneLockdown do
   Manage zone-level firewall lockdown rules.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List existing zone lockdown rules (`GET /zones/:zone_id/firewall/lockdowns`).
 

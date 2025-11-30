@@ -4,6 +4,8 @@ defmodule CloudflareApi.Workers do
   build metadata under `/accounts/:account_id/builds/workers/:external_script_id`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List builds for a script (`GET .../builds`).
 

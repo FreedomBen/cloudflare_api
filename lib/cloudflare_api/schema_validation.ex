@@ -3,6 +3,8 @@ defmodule CloudflareApi.SchemaValidation do
   Manage schema validation schemas for a zone (`/zones/:zone_id/schema_validation`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List schemas for schema validation.
 

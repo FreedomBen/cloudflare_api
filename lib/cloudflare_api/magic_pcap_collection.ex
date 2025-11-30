@@ -3,6 +3,8 @@ defmodule CloudflareApi.MagicPcapCollection do
   Manage Magic packet capture requests and bucket ownership (`/accounts/:account_id/pcaps`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List requests for magic pcap collection.
 

@@ -3,6 +3,8 @@ defmodule CloudflareApi.WafPackages do
   Manage WAF packages via `/zones/:zone_id/firewall/waf/packages`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List waf packages.
 

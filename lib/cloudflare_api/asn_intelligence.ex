@@ -6,6 +6,8 @@ defmodule CloudflareApi.AsnIntelligence do
   rest of the library.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Retrieve ASN overview information (`GET /intel/asn/:asn`).
   """

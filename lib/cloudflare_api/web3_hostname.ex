@@ -4,6 +4,8 @@ defmodule CloudflareApi.Web3Hostname do
   content list management.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List Web3 hostnames (`GET /zones/:zone_id/web3/hostnames`).
   """

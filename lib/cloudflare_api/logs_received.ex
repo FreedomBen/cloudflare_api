@@ -3,6 +3,8 @@ defmodule CloudflareApi.LogsReceived do
   Retrieve zone-level Logpull data, retention flags, and RayID lookups.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get retention flag for logs received.
 

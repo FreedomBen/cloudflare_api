@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarInternetServicesRanking do
   Radar internet services ranking endpoints under `/radar/ranking/internet_services`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Categories radar internet services ranking.
 

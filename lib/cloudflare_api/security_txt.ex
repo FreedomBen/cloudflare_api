@@ -5,6 +5,8 @@ defmodule CloudflareApi.SecurityTxt do
   These endpoints live under the Security Center portion of the Cloudflare API.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Fetch the current `security.txt` document (`GET /zones/:zone_id/security-center/securitytxt`).
 

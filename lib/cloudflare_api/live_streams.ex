@@ -3,6 +3,8 @@ defmodule CloudflareApi.LiveStreams do
   Manage Realtime Kit livestreams, meeting livestreaming sessions, and stream keys.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List live streams.
 

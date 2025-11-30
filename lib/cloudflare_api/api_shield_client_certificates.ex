@@ -3,6 +3,8 @@ defmodule CloudflareApi.ApiShieldClientCertificates do
   Manage API Shield client certificates and hostname associations for a zone.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List certificates for api shield client certificates.
 

@@ -4,6 +4,8 @@ defmodule CloudflareApi.TableManagement do
   `/accounts/:account_id/r2-catalog/:bucket/namespaces/:namespace/tables`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List tables (`GET /tables`).
   """

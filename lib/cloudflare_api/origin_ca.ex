@@ -3,6 +3,8 @@ defmodule CloudflareApi.OriginCa do
   Manage Origin CA certificates (`/certificates`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List Origin CA certificates (`GET /certificates`).
   """

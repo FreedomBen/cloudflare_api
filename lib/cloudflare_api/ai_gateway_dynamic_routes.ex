@@ -6,6 +6,8 @@ defmodule CloudflareApi.AiGatewayDynamicRoutes do
   routes endpoints.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List dynamic routes for a gateway.
   """

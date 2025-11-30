@@ -3,6 +3,8 @@ defmodule CloudflareApi.DlpEmail do
   Email DLP scanner helpers wrapping `/accounts/:account_id/dlp/email`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Retrieve the current account mapping (`GET /accounts/:account_id/dlp/email/account_mapping`).
   """

@@ -6,6 +6,8 @@ defmodule CloudflareApi.AiGatewayLogs do
   endpoints and return `{:ok, result}` / `{:error, errors}` tuples.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List logs for a gateway. Supports pagination/filters via `opts`.
   """

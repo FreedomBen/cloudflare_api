@@ -3,6 +3,8 @@ defmodule CloudflareApi.MagicGreTunnels do
   Manage Magic GRE tunnels (`/accounts/:account_id/magic/gre_tunnels`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List magic gre tunnels.
 

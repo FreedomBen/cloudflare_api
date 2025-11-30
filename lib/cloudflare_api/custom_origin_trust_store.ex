@@ -3,6 +3,8 @@ defmodule CloudflareApi.CustomOriginTrustStore do
   Manage custom origin trust store certificates for a zone.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List custom origin trust store.
 

@@ -4,6 +4,8 @@ defmodule CloudflareApi.NotificationWebhooks do
   (`/accounts/:account_id/alerting/v3/destinations/webhooks`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List webhook destinations (`GET /accounts/:account_id/alerting/v3/destinations/webhooks`).
   """

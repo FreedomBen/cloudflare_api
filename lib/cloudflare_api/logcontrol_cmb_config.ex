@@ -3,6 +3,8 @@ defmodule CloudflareApi.LogcontrolCmbConfig do
   Manage account-level CMB log control configuration (`/accounts/:account_id/logs/control/cmb/config`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get logcontrol cmb config.
 

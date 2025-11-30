@@ -3,6 +3,8 @@ defmodule CloudflareApi.ArgoAnalyticsGeolocation do
   Fetch Argo analytics for geolocation (latency by colo).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List colos for argo analytics geolocation.
 

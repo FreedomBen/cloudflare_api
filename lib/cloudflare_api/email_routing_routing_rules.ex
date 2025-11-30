@@ -3,6 +3,8 @@ defmodule CloudflareApi.EmailRoutingRoutingRules do
   Manage Email Routing rules via `/zones/:zone_id/email/routing/rules`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List email routing routing rules.
 

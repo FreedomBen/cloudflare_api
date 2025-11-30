@@ -3,6 +3,8 @@ defmodule CloudflareApi.Organizations do
   Organization management helpers (`/organizations`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List organizations accessible to the token (`GET /organizations`).
   """

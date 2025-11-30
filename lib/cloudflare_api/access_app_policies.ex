@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccessAppPolicies do
   Manage application-scoped Access policies for an app.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List access app policies.
 

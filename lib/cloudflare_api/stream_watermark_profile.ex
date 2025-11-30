@@ -3,6 +3,8 @@ defmodule CloudflareApi.StreamWatermarkProfile do
   Manage Stream watermark profiles via `/accounts/:account_id/stream/watermarks`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List watermark profiles (`GET /stream/watermarks`).
   """

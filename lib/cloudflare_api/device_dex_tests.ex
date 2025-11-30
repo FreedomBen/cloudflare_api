@@ -3,6 +3,8 @@ defmodule CloudflareApi.DeviceDexTests do
   Manage Device DEX tests via `/accounts/:account_id/dex/devices/dex_tests`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List device dex tests.
 

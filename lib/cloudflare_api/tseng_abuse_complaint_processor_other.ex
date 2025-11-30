@@ -4,6 +4,8 @@ defmodule CloudflareApi.TsengAbuseComplaintProcessorOther do
   mitigations, and mitigation appeals under `/accounts/:account_id/abuse-reports`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List abuse reports for an account (`GET /accounts/:account_id/abuse-reports`).
 

@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccessPolicyTester do
   Run and inspect Access policy tests for an account.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Create test for access policy tester.
 

@@ -4,6 +4,8 @@ defmodule CloudflareApi.PageShield do
   (`/zones/:zone_id/page_shield`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Fetch zone Page Shield settings (`GET /page_shield`).
   """

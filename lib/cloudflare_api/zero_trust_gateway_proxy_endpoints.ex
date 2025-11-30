@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZeroTrustGatewayProxyEndpoints do
   Manage Zero Trust Gateway proxy endpoints (`/accounts/:account_id/gateway/proxy_endpoints`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc """
   List proxy endpoints (`GET /accounts/:account_id/gateway/proxy_endpoints`).
   """

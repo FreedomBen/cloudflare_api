@@ -3,6 +3,8 @@ defmodule CloudflareApi.DomainSearch do
   Brand Protection domain search helpers.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List matches for domain search.
 

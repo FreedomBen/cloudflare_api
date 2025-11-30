@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZeroTrustUsers do
   Access Zero Trust user information (`/accounts/:account_id/access/users`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc """
   List users (`GET /accounts/:account_id/access/users`).
   """

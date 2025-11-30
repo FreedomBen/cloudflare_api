@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZeroTrustCertificates do
   Manage Zero Trust Gateway certificates (`/accounts/:account_id/gateway/certificates`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc """
   List certificates (`GET /accounts/:account_id/gateway/certificates`).
   """

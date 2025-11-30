@@ -3,6 +3,8 @@ defmodule CloudflareApi.DeviceManagedNetworks do
   Manage device managed networks via `/accounts/:account_id/devices/networks`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List device managed networks.
 

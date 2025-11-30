@@ -3,6 +3,8 @@ defmodule CloudflareApi.CloudflareTunnelConfiguration do
   Manage configurations for Cloudflare Tunnels configured via Zero Trust.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get cloudflare tunnel configuration.
 

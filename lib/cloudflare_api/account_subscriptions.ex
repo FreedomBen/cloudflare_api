@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccountSubscriptions do
   Manage account-level subscriptions.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List account subscriptions.
 

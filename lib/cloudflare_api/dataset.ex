@@ -4,6 +4,8 @@ defmodule CloudflareApi.Dataset do
   `/accounts/:account_id/cloudforce-one/events/dataset`.
   """
 
+  use CloudflareApi.Typespecs
+
   def list(client, account_id) do
     request(client, :get, base(account_id))
   end

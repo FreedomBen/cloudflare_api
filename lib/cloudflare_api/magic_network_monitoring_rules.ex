@@ -3,6 +3,8 @@ defmodule CloudflareApi.MagicNetworkMonitoringRules do
   Manage Magic Network Monitoring rules (`/accounts/:account_id/mnm/rules`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List magic network monitoring rules.
 

@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarTcpResetsTimeouts do
   Radar TCP resets and timeouts analytics under `/radar/tcp_resets_timeouts`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Summary radar tcp resets timeouts.
 

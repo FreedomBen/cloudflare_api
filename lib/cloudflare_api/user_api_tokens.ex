@@ -3,6 +3,8 @@ defmodule CloudflareApi.UserApiTokens do
   Manage user-level API tokens under `/user/tokens`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List user api tokens.
 

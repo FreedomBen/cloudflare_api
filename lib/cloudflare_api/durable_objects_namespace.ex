@@ -3,6 +3,8 @@ defmodule CloudflareApi.DurableObjectsNamespace do
   Durable Objects namespace helpers (`/workers/durable_objects/namespaces`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List namespaces for durable objects namespace.
 

@@ -3,6 +3,8 @@ defmodule CloudflareApi.Recordings do
   Manage Realtime Kit recordings (`/accounts/:account_id/realtime/kit/:app_id/recordings`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List recordings.
 

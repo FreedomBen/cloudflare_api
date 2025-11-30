@@ -3,6 +3,8 @@ defmodule CloudflareApi.WorkersForPlatforms do
   Helpers for Workers for Platforms (`/workers/dispatch/namespaces`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List dispatch namespaces (`GET /accounts/:account_id/workers/dispatch/namespaces`).
   """

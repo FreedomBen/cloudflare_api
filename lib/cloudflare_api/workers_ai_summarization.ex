@@ -3,6 +3,8 @@ defmodule CloudflareApi.WorkersAiSummarization do
   Workers AI summarization helpers.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Execute Facebook BART Large CNN
   (`POST /accounts/:account_id/ai/run/@cf/facebook/bart-large-cnn`).

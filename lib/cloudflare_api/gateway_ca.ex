@@ -4,6 +4,8 @@ defmodule CloudflareApi.GatewayCa do
   `/accounts/:account_id/access/gateway_ca`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List existing SSH certificate authorities (`GET /accounts/:account_id/access/gateway_ca`).
   """

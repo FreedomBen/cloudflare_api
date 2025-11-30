@@ -3,6 +3,8 @@ defmodule CloudflareApi.Slots do
   Access Magic WAN slot metadata (`/accounts/:account_id/cni/slots`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List slots for an account (`GET /cni/slots`).
   """

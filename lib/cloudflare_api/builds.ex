@@ -3,6 +3,8 @@ defmodule CloudflareApi.Builds do
   Inspect and manage Cloudflare Builds under an account.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List by version ids for builds.
 

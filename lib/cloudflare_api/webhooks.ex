@@ -3,6 +3,8 @@ defmodule CloudflareApi.Webhooks do
   Manage Realtime Kit webhooks (`/accounts/:account_id/realtime/kit/:app_id/webhooks`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List all webhooks for an app (`GET /accounts/:account_id/realtime/kit/:app_id/webhooks`).
   """

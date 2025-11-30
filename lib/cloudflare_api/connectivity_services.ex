@@ -3,6 +3,8 @@ defmodule CloudflareApi.ConnectivityServices do
   Manage Connectivity Services directory entries.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List connectivity services.
 

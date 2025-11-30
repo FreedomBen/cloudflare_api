@@ -4,6 +4,8 @@ defmodule CloudflareApi.PerHostnameAuthenticatedOriginPull do
   `/zones/:zone_id/origin_tls_client_auth/hostnames`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Enable/disable hostnames for authenticated origin pulls (`PUT /hostnames`).
   """

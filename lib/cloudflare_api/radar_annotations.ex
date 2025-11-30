@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarAnnotations do
   Radar annotations endpoints under `/radar/annotations`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List radar annotations.
 

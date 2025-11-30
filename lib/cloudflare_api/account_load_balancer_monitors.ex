@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccountLoadBalancerMonitors do
   Manage load balancer monitors and previews at the account level.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List account load balancer monitors.
 

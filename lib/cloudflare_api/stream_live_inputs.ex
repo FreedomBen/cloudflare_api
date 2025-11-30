@@ -3,6 +3,8 @@ defmodule CloudflareApi.StreamLiveInputs do
   Manage Stream live inputs and their outputs under `/accounts/:account_id/stream/live_inputs`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List live inputs (`GET /stream/live_inputs`).
   """

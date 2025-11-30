@@ -3,6 +3,8 @@ defmodule CloudflareApi.LeakedCredentialChecks do
   Manage Cloudflare Leaked Credential Checks for a zone (`/zones/:zone_id/leaked-credential-checks`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get status for leaked credential checks.
 

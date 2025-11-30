@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccountBillingProfile do
   Fetch account billing profile information (deprecated API).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get account billing profile.
 

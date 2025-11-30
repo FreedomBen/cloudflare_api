@@ -7,6 +7,8 @@ defmodule CloudflareApi.WorkerRoutes do
   `{:ok, result}` / `{:error, errors}` tuples.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List worker routes for the given zone (`GET /zones/:zone_id/workers/routes`).
   """

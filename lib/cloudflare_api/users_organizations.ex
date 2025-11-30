@@ -3,6 +3,8 @@ defmodule CloudflareApi.UsersOrganizations do
   Manage user organizations via `/user/organizations`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List users organizations.
 

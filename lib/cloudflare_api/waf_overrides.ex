@@ -3,6 +3,8 @@ defmodule CloudflareApi.WafOverrides do
   Manage WAF overrides under `/zones/:zone_id/firewall/waf/overrides`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List waf overrides.
 

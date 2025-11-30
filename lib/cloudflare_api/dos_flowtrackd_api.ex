@@ -3,6 +3,8 @@ defmodule CloudflareApi.DosFlowtrackdApi do
   Configure Magic Advanced DDoS (Flowtrackd) protections for DNS and TCP.
   """
 
+  use CloudflareApi.Typespecs
+
   ## DNS protection rules
 
   @doc ~S"""

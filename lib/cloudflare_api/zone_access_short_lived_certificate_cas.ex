@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZoneAccessShortLivedCertificateCas do
   Manage short-lived certificate CAs for zone-level Access applications.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List all short-lived certificate CAs (`GET /zones/:zone_id/access/apps/ca`).
   """

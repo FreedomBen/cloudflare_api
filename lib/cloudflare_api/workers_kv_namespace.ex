@@ -3,6 +3,8 @@ defmodule CloudflareApi.WorkersKvNamespace do
   Manage Workers KV namespaces plus key, metadata, and bulk operations.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List namespaces (`GET /accounts/:account_id/storage/kv/namespaces`).
 

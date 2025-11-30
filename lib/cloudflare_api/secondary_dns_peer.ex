@@ -3,6 +3,8 @@ defmodule CloudflareApi.SecondaryDnsPeer do
   Manage Secondary DNS peers (`/accounts/:account_id/secondary_dns/peers`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List secondary dns peer.
 

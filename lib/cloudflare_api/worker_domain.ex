@@ -6,6 +6,8 @@ defmodule CloudflareApi.WorkerDomain do
   individual domain records, and detaching domains.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List domains for an account (`GET /accounts/:account_id/workers/domains`).
 

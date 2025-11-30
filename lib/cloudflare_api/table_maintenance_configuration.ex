@@ -4,6 +4,8 @@ defmodule CloudflareApi.TableMaintenanceConfiguration do
   `/accounts/:account_id/r2-catalog/:bucket/namespaces/:namespace/tables/:table/maintenance-configs`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Fetch maintenance configuration (`GET /maintenance-configs`).
   """

@@ -3,6 +3,8 @@ defmodule CloudflareApi.DomainIntelligence do
   Domain intelligence helpers (`/accounts/:account_id/intel/domain` and `/bulk`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get domain intelligence.
 

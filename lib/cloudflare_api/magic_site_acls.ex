@@ -3,6 +3,8 @@ defmodule CloudflareApi.MagicSiteAcls do
   Manage Magic Site ACLs (`/accounts/:account_id/magic/sites/:site_id/acls`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List magic site acls.
 

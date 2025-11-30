@@ -3,6 +3,8 @@ defmodule CloudflareApi.Meetings do
   Manage Realtime Kit meetings and participants (`/accounts/:account_id/realtime/kit/:app_id/meetings`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List meetings.
 

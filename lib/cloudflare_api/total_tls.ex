@@ -3,6 +3,8 @@ defmodule CloudflareApi.TotalTls do
   Manage Total TLS settings via `/zones/:zone_id/acm/total_tls`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get total tls.
 

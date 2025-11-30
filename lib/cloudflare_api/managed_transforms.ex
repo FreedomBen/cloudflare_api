@@ -3,6 +3,8 @@ defmodule CloudflareApi.ManagedTransforms do
   Manage zone-level Managed Transforms (`/zones/:zone_id/managed_headers`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List managed transforms.
 

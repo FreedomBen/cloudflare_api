@@ -3,6 +3,8 @@ defmodule CloudflareApi.CustomPagesAccount do
   Manage custom pages scoped to an account.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List custom pages account.
 

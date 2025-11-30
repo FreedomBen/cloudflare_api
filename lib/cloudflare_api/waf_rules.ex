@@ -4,6 +4,8 @@ defmodule CloudflareApi.WafRules do
   `/zones/:zone_id/firewall/waf/packages/:package_id/rules`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List waf rules.
 

@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccountUserGroups do
   Manage IAM user groups for an account (including members).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List account user groups.
 

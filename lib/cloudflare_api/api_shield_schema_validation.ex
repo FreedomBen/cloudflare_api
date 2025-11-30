@@ -6,6 +6,8 @@ defmodule CloudflareApi.ApiShieldSchemaValidation do
   schema management.
   """
 
+  use CloudflareApi.Typespecs
+
   # Zone-level settings
   @doc ~S"""
   Get zone settings for api shield schema validation.

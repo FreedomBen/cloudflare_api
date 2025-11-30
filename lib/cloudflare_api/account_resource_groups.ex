@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccountResourceGroups do
   Manage IAM resource groups for an account.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List account resource groups.
 

@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarDomainsRanking do
   Radar domain ranking endpoints under `/radar/ranking`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Top domains for radar domains ranking.
 

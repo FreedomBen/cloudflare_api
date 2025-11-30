@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarAiInference do
   Radar AI inference analytics under `/radar/ai/inference`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Summary radar ai inference.
 

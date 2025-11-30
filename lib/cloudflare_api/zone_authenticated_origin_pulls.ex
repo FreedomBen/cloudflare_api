@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZoneAuthenticatedOriginPulls do
   Zone-level Authenticated Origin Pull (AOP) certificate management.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List certificates for zone authenticated origin pulls.
 

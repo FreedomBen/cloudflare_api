@@ -3,6 +3,8 @@ defmodule CloudflareApi.IpAddressManagementPrefixDelegation do
   Prefix delegation helpers for `/accounts/:account_id/addressing/prefixes/:prefix_id/delegations`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List ip address management prefix delegation.
 

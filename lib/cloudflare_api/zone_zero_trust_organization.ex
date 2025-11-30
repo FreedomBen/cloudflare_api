@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZoneZeroTrustOrganization do
   Manage the Zero Trust organization configured at the zone scope.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Fetch the Zero Trust organization for a zone (`GET /zones/:zone_id/access/organizations`).
   """

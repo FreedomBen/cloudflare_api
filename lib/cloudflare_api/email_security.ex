@@ -3,6 +3,8 @@ defmodule CloudflareApi.EmailSecurity do
   Investigate and manage Email Security messages (`/accounts/:account_id/email-security`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List messages for email security.
 

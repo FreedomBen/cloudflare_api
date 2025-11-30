@@ -3,6 +3,8 @@ defmodule CloudflareApi.CacheReserveClear do
   Inspect and trigger Smart Shield Cache Reserve Clear jobs for a zone.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get cache reserve clear.
 

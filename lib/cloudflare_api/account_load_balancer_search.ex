@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccountLoadBalancerSearch do
   Search load balancer resources within an account.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Search account load balancer search.
 

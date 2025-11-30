@@ -4,6 +4,8 @@ defmodule CloudflareApi.NotificationAlertTypes do
   (`/accounts/:account_id/alerting/v3/available_alerts`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List alert types available to the account via
   `GET /accounts/:account_id/alerting/v3/available_alerts`.

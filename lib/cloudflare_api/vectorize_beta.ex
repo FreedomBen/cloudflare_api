@@ -3,6 +3,8 @@ defmodule CloudflareApi.VectorizeBeta do
   Deprecated Vectorize API wrapper under `/accounts/:account_id/vectorize/indexes`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List indexes for vectorize beta.
 

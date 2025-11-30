@@ -3,6 +3,8 @@ defmodule CloudflareApi.MagicAccountApps do
   Manage Magic account applications (`/accounts/:account_id/magic/apps`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List magic account apps.
 

@@ -3,6 +3,8 @@ defmodule CloudflareApi.SchemaValidationSettings do
   Manage schema validation settings and per-operation overrides.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get settings for schema validation settings.
 

@@ -3,6 +3,8 @@ defmodule CloudflareApi.BotSettings do
   Fetch or update bot management settings for a zone.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get bot settings.
 

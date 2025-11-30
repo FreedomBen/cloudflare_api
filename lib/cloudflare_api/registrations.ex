@@ -3,6 +3,8 @@ defmodule CloudflareApi.Registrations do
   Manage device registrations (`/accounts/:account_id/devices/registrations`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List registrations.
 

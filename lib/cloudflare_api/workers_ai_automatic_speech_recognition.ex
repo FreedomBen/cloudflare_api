@@ -4,6 +4,8 @@ defmodule CloudflareApi.WorkersAiAutomaticSpeechRecognition do
   `/accounts/:account_id/ai/run`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Open the websocket endpoint for Deepgram Flux
   (`GET /accounts/:account_id/ai/run/@cf/deepgram/flux`).

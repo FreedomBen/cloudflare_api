@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccessCustomPages do
   Manage Cloudflare Access custom pages for an account.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List access custom pages.
 

@@ -4,6 +4,8 @@ defmodule CloudflareApi.Observatory do
   `/zones/:zone_id/speed_api`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List availability statistics for monitored pages (`GET /speed_api/availabilities`).
   """

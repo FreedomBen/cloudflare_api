@@ -4,6 +4,8 @@ defmodule CloudflareApi.WorkerEnvironment do
   `/accounts/:account_id/workers/services/:service_name/environments/:environment_name`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Fetch the script content for an environment (`GET .../content`).
   """

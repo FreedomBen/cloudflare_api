@@ -3,6 +3,8 @@ defmodule CloudflareApi.StreamMp4Downloads do
   Manage Stream MP4 downloads for a video via `/accounts/:account_id/stream/:identifier/downloads`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List downloads for a video (`GET /downloads`).
   """

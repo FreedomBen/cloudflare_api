@@ -3,6 +3,8 @@ defmodule CloudflareApi.WorkersAiObjectDetection do
   Workers AI object detection helpers.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Execute the Facebook Omni DETR ResNet-50 model
   (`POST /accounts/:account_id/ai/run/@cf/facebook/omni-detr-resnet-50`).

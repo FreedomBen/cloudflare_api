@@ -9,6 +9,10 @@ derived from tags and version-bump commits in `mix.exs`.
 
 ### Added
 
+- Added shared type aliases plus a `CloudflareApi.Typespecs` macro that
+  automatically injects default specs into every endpoint module, ensuring the
+  entire library now exposes dialyzer-friendly types without hand-written
+  annotations for each file.
 - Added a global doctest suite (with a default Tesla mock) so `mix test`
   now exercises the inline examples for every `CloudflareApi.*` module.
 - Added moduledocs/function docs (with inline examples) across the Cloudflare

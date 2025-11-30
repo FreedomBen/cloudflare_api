@@ -3,6 +3,8 @@ defmodule CloudflareApi.WorkersAiTextToImage do
   Workers AI text-to-image helpers, covering POST runs and websocket/test pipe endpoints.
   """
 
+  use CloudflareApi.Typespecs
+
   @json_models [
     {:run_cf_black_forest_labs_flux_1_schnell, "@cf/black-forest-labs/flux-1-schnell"},
     {:run_cf_bytedance_stable_diffusion_xl_lightning,

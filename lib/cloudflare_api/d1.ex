@@ -3,6 +3,8 @@ defmodule CloudflareApi.D1 do
   Manage Cloudflare D1 databases.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List databases for d1.
 

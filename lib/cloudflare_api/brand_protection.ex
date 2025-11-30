@@ -3,6 +3,8 @@ defmodule CloudflareApi.BrandProtection do
   Brand Protection API helpers under `/accounts/:account_id/brand-protection`.
   """
 
+  use CloudflareApi.Typespecs
+
   ## Alerts
 
   @doc ~S"""

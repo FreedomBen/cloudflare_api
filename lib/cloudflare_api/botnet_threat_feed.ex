@@ -3,6 +3,8 @@ defmodule CloudflareApi.BotnetThreatFeed do
   Work with Botnet Threat Feed reports and ASN configurations.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List asn configs for botnet threat feed.
 

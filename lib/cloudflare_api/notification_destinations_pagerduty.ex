@@ -4,6 +4,8 @@ defmodule CloudflareApi.NotificationDestinationsPagerduty do
   (`/accounts/:account_id/alerting/v3/destinations/pagerduty`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List connected PagerDuty services (`GET /accounts/:account_id/alerting/v3/destinations/pagerduty`).
   """

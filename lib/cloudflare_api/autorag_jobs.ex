@@ -3,6 +3,8 @@ defmodule CloudflareApi.AutoragJobs do
   Manage AutoRAG jobs.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List autorag jobs.
 

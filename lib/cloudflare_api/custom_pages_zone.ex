@@ -3,6 +3,8 @@ defmodule CloudflareApi.CustomPagesZone do
   Manage custom pages scoped to a zone.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List custom pages zone.
 

@@ -4,6 +4,8 @@ defmodule CloudflareApi.WorkersAiTextEmbeddings do
   embedding models.
   """
 
+  use CloudflareApi.Typespecs
+
   @json_models [
     {:run_cf_baai_bge_base_en_v1_5, "@cf/baai/bge-base-en-v1.5"},
     {:run_cf_baai_bge_large_en_v1_5, "@cf/baai/bge-large-en-v1.5"},

@@ -6,6 +6,8 @@ defmodule CloudflareApi.WorkerScript do
   managing settings, secrets, subdomains, usage models, and asset uploads.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Upload static assets (`POST /accounts/:account_id/workers/assets/upload`).
 

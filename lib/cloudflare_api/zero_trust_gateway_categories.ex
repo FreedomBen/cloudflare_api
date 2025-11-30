@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZeroTrustGatewayCategories do
   List Zero Trust Gateway categories (`/accounts/:account_id/gateway/categories`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc """
   List categories (`GET /accounts/:account_id/gateway/categories`).
   """

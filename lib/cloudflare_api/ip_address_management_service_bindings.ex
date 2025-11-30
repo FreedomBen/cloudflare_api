@@ -3,6 +3,8 @@ defmodule CloudflareApi.IpAddressManagementServiceBindings do
   Service binding helpers for IP Address Management prefixes.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List ip address management service bindings.
 

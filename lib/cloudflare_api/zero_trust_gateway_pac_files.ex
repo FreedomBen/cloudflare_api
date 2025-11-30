@@ -3,6 +3,8 @@ defmodule CloudflareApi.ZeroTrustGatewayPacFiles do
   Manage Zero Trust Gateway PAC files (`/accounts/:account_id/gateway/pacfiles`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc """
   List PAC files (`GET /accounts/:account_id/gateway/pacfiles`).
   """

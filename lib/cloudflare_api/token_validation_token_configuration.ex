@@ -3,6 +3,8 @@ defmodule CloudflareApi.TokenValidationTokenConfiguration do
   Manage Token Validation configurations under `/zones/:zone_id/token_validation/config`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List token validation token configuration.
 

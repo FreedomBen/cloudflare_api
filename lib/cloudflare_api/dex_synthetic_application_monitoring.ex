@@ -7,6 +7,8 @@ defmodule CloudflareApi.DexSyntheticApplicationMonitoring do
   payload from the Cloudflare JSON envelope (or an error tuple).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List Cloudflare colocation facilities aggregated by DEX
   (`GET /accounts/:account_id/dex/colos`).

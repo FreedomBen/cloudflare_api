@@ -3,6 +3,8 @@ defmodule CloudflareApi.SpectrumAnalytics do
   Wrap Spectrum analytics endpoints under `/zones/:zone_id/spectrum/analytics`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Fetch current aggregate metrics (`GET /aggregate/current`).
   """

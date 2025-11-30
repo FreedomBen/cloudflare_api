@@ -3,6 +3,8 @@ defmodule CloudflareApi.CustomIndicatorFeeds do
   Manage Cloudforce One custom indicator feeds.
   """
 
+  use CloudflareApi.Typespecs
+
   alias Tesla.Multipart
 
   @doc ~S"""

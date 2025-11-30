@@ -3,6 +3,8 @@ defmodule CloudflareApi.UrlScannerDeprecated do
   Access the legacy URL Scanner endpoints `/accounts/:account_id/urlscanner/*`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Create scan for url scanner deprecated.
 

@@ -3,6 +3,8 @@ defmodule CloudflareApi.RadarAs112 do
   Radar AS112 analytics under `/radar/as112`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Summary radar as112.
 

@@ -4,6 +4,8 @@ defmodule CloudflareApi.GitHubIntegration do
   `/accounts/:account_id/builds/repos/:provider_type/:provider_account_id/:repo_id`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Retrieve the repository configuration autofill
   (`GET /accounts/:account_id/builds/repos/:provider_type/:provider_account_id/:repo_id/config_autofill`).

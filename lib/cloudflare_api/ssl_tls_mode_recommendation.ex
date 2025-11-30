@@ -3,6 +3,8 @@ defmodule CloudflareApi.SslTlsModeRecommendation do
   Fetch SSL/TLS mode recommendation (`GET /zones/:zone_id/ssl/recommendation`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Recommendation ssl tls mode recommendation.
 

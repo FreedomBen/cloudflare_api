@@ -3,6 +3,8 @@ defmodule CloudflareApi.UniversalSslSettings do
   Manage Universal SSL settings for a zone via `/zones/:zone_id/ssl/universal/settings`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Retrieve Universal SSL settings.
   """

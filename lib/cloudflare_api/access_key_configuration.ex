@@ -3,6 +3,8 @@ defmodule CloudflareApi.AccessKeyConfiguration do
   Manage Access key configuration for an account.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Retrieve the current key configuration.
   """

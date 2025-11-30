@@ -3,6 +3,8 @@ defmodule CloudflareApi.Cnis do
   Manage Cloudflare Network Interconnects (CNIs) for an account.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List cnis.
 

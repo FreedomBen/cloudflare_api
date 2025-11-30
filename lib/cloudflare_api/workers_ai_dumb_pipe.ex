@@ -3,6 +3,8 @@ defmodule CloudflareApi.WorkersAiDumbPipe do
   Websocket endpoints for Workers AI Dumb Pipe models.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Open the websocket endpoint for Pipecat Smart Turn V2
   (`GET /accounts/:account_id/ai/run/@cf/pipecat-ai/smart-turn-v2`).

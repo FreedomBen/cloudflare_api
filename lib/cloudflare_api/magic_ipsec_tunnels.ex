@@ -3,6 +3,8 @@ defmodule CloudflareApi.MagicIpsecTunnels do
   Manage Magic IPsec tunnels (`/accounts/:account_id/magic/ipsec_tunnels`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List magic ipsec tunnels.
 

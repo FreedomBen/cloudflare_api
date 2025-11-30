@@ -7,6 +7,8 @@ defmodule CloudflareApi.Accounts do
   function returned by `CloudflareApi.client/1`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List accounts available to the authenticated user.
 

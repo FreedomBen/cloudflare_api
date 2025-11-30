@@ -3,6 +3,8 @@ defmodule CloudflareApi.ResourcesCatalog do
   Manage Magic Cloud resource catalog entries (`/accounts/:account_id/magic/cloud/resources`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List resources catalog.
 

@@ -3,6 +3,8 @@ defmodule CloudflareApi.Triggers do
   Manage build triggers under `/accounts/:account_id/builds/triggers`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Create triggers.
 

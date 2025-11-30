@@ -4,6 +4,8 @@ defmodule CloudflareApi.ZoneCacheSettings do
   variants for a zone.
   """
 
+  use CloudflareApi.Typespecs
+
   ## Cache Reserve
 
   @doc ~S"""

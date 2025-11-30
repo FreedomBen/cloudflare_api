@@ -3,6 +3,8 @@ defmodule CloudflareApi.Vectorize do
   Manage Vectorize v2 indexes under `/accounts/:account_id/vectorize/v2/indexes`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List indexes for vectorize.
 

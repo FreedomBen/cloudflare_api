@@ -4,6 +4,8 @@ defmodule CloudflareApi.WorkerTailLogs do
   `/accounts/:account_id/workers/scripts/:script_name/tails`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List tail sessions (`GET .../tails`).
   """

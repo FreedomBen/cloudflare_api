@@ -3,6 +3,8 @@ defmodule CloudflareApi.AutoragRagSearch do
   Execute searches against AutoRAG collections.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Search autorag rag search.
 

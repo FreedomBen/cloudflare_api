@@ -3,6 +3,8 @@ defmodule CloudflareApi.SecondaryDnsPrimaryZone do
   Manage secondary DNS primary zone (outgoing) configurations under `/zones/:zone_id/secondary_dns/outgoing`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   Get secondary dns primary zone.
 

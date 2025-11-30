@@ -3,6 +3,8 @@ defmodule CloudflareApi.SpectrumApplications do
   Manage Spectrum applications under `/zones/:zone_id/spectrum/apps`.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List Spectrum applications (`GET /spectrum/apps`).
   """

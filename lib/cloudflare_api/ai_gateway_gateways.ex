@@ -6,6 +6,8 @@ defmodule CloudflareApi.AiGatewayGateways do
   functions for fetching provider URLs.
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List gateways for an account. Supports pagination/filter opts.
   """

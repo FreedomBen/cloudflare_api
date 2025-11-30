@@ -3,6 +3,8 @@ defmodule CloudflareApi.PageRules do
   Manage zone-level Page Rules (`/zones/:zone_id/pagerules`).
   """
 
+  use CloudflareApi.Typespecs
+
   @doc ~S"""
   List Page Rules (`GET /pagerules`).
   """
