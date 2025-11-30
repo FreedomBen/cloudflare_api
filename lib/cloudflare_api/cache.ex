@@ -115,6 +115,8 @@ defmodule CloudflareApi.Cache do
 
   @doc ~S"""
   Check whether the cache currently includes a non-expired record for `hostname`.
+
+  Returns `true` when a valid (non-expired) entry exists and `false` otherwise.
   """
   def includes?(hostname) do
     # GenServer.call(@self, {:includes, hostname})
@@ -124,12 +126,11 @@ defmodule CloudflareApi.Cache do
   @doc ~S"""
   Check whether `hostname` has ever been added to the cache, ignoring expiry.
 
-  This is currently a thin wrapper around `get_entry/1` and is mainly useful
-  for debugging.
+  Returns `true` when the hostname exists in the cache map (even if expired) and
+  `false` otherwise.
   """
   def includes?(hostname, :even_if_expired) do
-    # TODO
-    get_entry(hostname).dns_record
+    GenServer.call(@self, {:includes, hostname, :even_if_expired}, 15_000)
   end
 
   @doc ~S"""

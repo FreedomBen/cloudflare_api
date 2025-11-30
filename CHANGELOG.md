@@ -216,6 +216,9 @@ derived from tags and version-bump commits in `mix.exs`.
 
 ### Fixed
 
+- Ensure `CloudflareApi.Cache.includes?/2` honours the `:even_if_expired` flag by
+  returning booleans instead of cached structs, and update the docs/tests to
+  cover missing + expired hostnames.
 - Ensure `CloudflareApi.Cache.get/1` and `get/2` return `nil` for missing
   hostnames (while preserving the `:even_if_expired` escape hatch) and update
   cache tests so expiry semantics match the documented behaviour.
