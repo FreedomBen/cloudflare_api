@@ -14,6 +14,11 @@ defmodule CloudflareApi.DnsRecords do
   use CloudflareApi.Typespecs
 
   alias CloudflareApi.DnsRecord
+  @type client :: CloudflareApi.client()
+  @type options :: CloudflareApi.options()
+  @type zone_id :: CloudflareApi.id()
+  @type dns_record :: DnsRecord.t()
+  @type record_type :: String.t() | nil
 
   @doc ~S"""
   List DNS records for a zone.
@@ -29,6 +34,7 @@ defmodule CloudflareApi.DnsRecords do
   responds with an `errors` list, returns `{:error, errors}`. Any other
   unexpected response shape is wrapped as `{:error, err}`.
   """
+  @spec list(client(), zone_id(), options()) :: CloudflareApi.result([dns_record()])
   def list(client, zone_id, opts \\ nil) do
     case Tesla.get(c(client), list_url(zone_id, opts)) do
       {:ok, %Tesla.Env{status: 200, body: body}} -> {:ok, to_structs(body["result"])}
@@ -44,6 +50,8 @@ defmodule CloudflareApi.DnsRecords do
   fully-qualified `hostname` and optionally by record `type` (for example `"A"`,
   `"AAAA"`, `"CNAME"`).
   """
+  @spec list_for_hostname(client(), zone_id(), String.t(), record_type()) ::
+          CloudflareApi.result([dns_record()])
   def list_for_hostname(client, zone_id, hostname, type \\ nil) do
     opts =
       case type do
@@ -61,6 +69,8 @@ defmodule CloudflareApi.DnsRecords do
   to `list_for_hostname/4`. If `host` already ends with `domain`, it will be
   used as-is; otherwise `"#{host}.#{domain}"` is used.
   """
+  @spec list_for_host_domain(client(), zone_id(), String.t(), String.t(), record_type()) ::
+          CloudflareApi.result([dns_record()])
   def list_for_host_domain(client, zone_id, host, domain, type \\ nil) do
     hostname =
       if String.ends_with?(host, domain) do
@@ -86,6 +96,8 @@ defmodule CloudflareApi.DnsRecords do
     * `{:error, errors}` when Cloudflare returns an `errors` list
     * `{:error, err}` for any other unexpected response
   """
+  @spec create(client(), zone_id(), dns_record()) ::
+          CloudflareApi.result(dns_record() | :already_exists)
   def create(client, zone_id, %DnsRecord{} = record) do
     case Tesla.post(c(client), "/zones/#{zone_id}/dns_records", DnsRecord.to_cf_json(record)) do
       {:ok, %Tesla.Env{status: 200, body: body}} ->
@@ -115,6 +127,8 @@ defmodule CloudflareApi.DnsRecords do
   Returns the same tuple shapes as `create/3`, but uses `{:ok, :already_created}`
   when Cloudflare reports that the record already exists.
   """
+  @spec create(client(), zone_id(), String.t(), String.t(), String.t()) ::
+          CloudflareApi.result(dns_record() | :already_created)
   def create(client, zone_id, hostname, ip, type \\ "A") do
     case Tesla.post(c(client), "/zones/#{zone_id}/dns_records", %{
            type: type,
@@ -147,6 +161,8 @@ defmodule CloudflareApi.DnsRecords do
   responds with an `errors` list, it returns `{:error, errors}`; all other
   failures are normalized as `{:error, err}`.
   """
+  @spec update(client(), zone_id(), String.t(), String.t(), String.t(), String.t()) ::
+          CloudflareApi.result(dns_record())
   def update(client, zone_id, record_id, hostname, ip, type \\ "A") do
     case Tesla.put(c(client), "/zones/#{zone_id}/dns_records/#{record_id}", %{
            type: type,
@@ -178,6 +194,8 @@ defmodule CloudflareApi.DnsRecords do
     * `{:error, errors}` when Cloudflare returns an `errors` list
     * `{:error, err}` for other failures
   """
+  @spec delete(client(), zone_id(), String.t()) ::
+          CloudflareApi.result(String.t() | :already_deleted)
   def delete(client, zone_id, record_id) do
     # The OpenAPI schema models this endpoint with a required (but empty) JSON
     # request body, so we send an empty map here to align with that shape.
@@ -203,6 +221,7 @@ defmodule CloudflareApi.DnsRecords do
   returned list is non-empty. If the underlying `list_for_hostname/4` call
   returns an error tuple, a `MatchError` will be raised.
   """
+  @spec hostname_exists?(client(), zone_id(), String.t(), record_type()) :: boolean()
   def hostname_exists?(client, zone_id, hostname, type \\ nil) do
     {:ok, records} = list_for_hostname(client, zone_id, hostname, type)
     Enum.count(records) > 0
@@ -215,6 +234,8 @@ defmodule CloudflareApi.DnsRecords do
   to `list_for_host_domain/5`. As with `hostname_exists?/4`, a `MatchError`
   will be raised if the underlying call returns an error tuple.
   """
+  @spec host_domain_exists?(client(), zone_id(), String.t(), String.t(), record_type()) ::
+          boolean()
   def host_domain_exists?(client, zone_id, host, domain, type \\ nil) do
     {:ok, records} = list_for_host_domain(client, zone_id, host, domain, type)
     Enum.count(records) > 0

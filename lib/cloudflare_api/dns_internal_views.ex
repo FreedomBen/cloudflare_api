@@ -4,6 +4,10 @@ defmodule CloudflareApi.DnsInternalViews do
   """
 
   use CloudflareApi.Typespecs
+  @type client :: CloudflareApi.client()
+  @type account_id :: CloudflareApi.id()
+  @type view_id :: String.t()
+  @type result :: CloudflareApi.result(term())
 
   @doc ~S"""
   List dns internal views.
@@ -19,6 +23,7 @@ defmodule CloudflareApi.DnsInternalViews do
 
   """
 
+  @spec list(client(), account_id()) :: result()
   def list(client, account_id) do
     request(client, :get, base(account_id))
   end
@@ -37,6 +42,7 @@ defmodule CloudflareApi.DnsInternalViews do
 
   """
 
+  @spec create(client(), account_id(), map()) :: result()
   def create(client, account_id, params) when is_map(params) do
     request(client, :post, base(account_id), params)
   end
@@ -55,6 +61,7 @@ defmodule CloudflareApi.DnsInternalViews do
 
   """
 
+  @spec get(client(), account_id(), view_id()) :: result()
   def get(client, account_id, view_id) do
     request(client, :get, view_path(account_id, view_id))
   end
@@ -73,6 +80,7 @@ defmodule CloudflareApi.DnsInternalViews do
 
   """
 
+  @spec update(client(), account_id(), view_id(), map()) :: result()
   def update(client, account_id, view_id, params) when is_map(params) do
     request(client, :patch, view_path(account_id, view_id), params)
   end
@@ -91,6 +99,7 @@ defmodule CloudflareApi.DnsInternalViews do
 
   """
 
+  @spec delete(client(), account_id(), view_id()) :: result()
   def delete(client, account_id, view_id) do
     request(client, :delete, view_path(account_id, view_id), %{})
   end

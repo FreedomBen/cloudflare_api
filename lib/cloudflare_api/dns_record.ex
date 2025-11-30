@@ -67,6 +67,7 @@ defmodule CloudflareApi.DnsRecord do
   This is primarily useful for debugging or when you need to reason about the
   REST endpoint for a specific record.
   """
+  @spec cf_url(t()) :: String.t()
   def cf_url(record) do
     "https://api.cloudflare.com/client/v4/zones/#{record.zone_id}/dns_records"
   end
@@ -75,6 +76,7 @@ defmodule CloudflareApi.DnsRecord do
   Convert a `CloudflareApi.DnsRecord` struct into the JSON body Cloudflare
   expects when creating or updating a record.
   """
+  @spec to_cf_json(t()) :: map()
   def to_cf_json(record) do
     %{
       type: record.type,
@@ -110,6 +112,7 @@ defmodule CloudflareApi.DnsRecord do
       iex> {record.id, record.zone_id, record.hostname, record.ip}
       {"id", "zone-id", "www.example.com", "1.2.3.4"}
   """
+  @spec from_cf_json(map()) :: t()
   def from_cf_json(%{zone_id: _} = record) do
     record
     |> Utils.map_atom_keys_to_strings()

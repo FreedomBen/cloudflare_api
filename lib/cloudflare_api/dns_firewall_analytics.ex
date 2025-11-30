@@ -4,6 +4,8 @@ defmodule CloudflareApi.DnsFirewallAnalytics do
   """
 
   use CloudflareApi.Typespecs
+  @type client :: CloudflareApi.client()
+  @type options :: CloudflareApi.options()
 
   @doc ~S"""
   Report dns firewall analytics.
@@ -19,6 +21,7 @@ defmodule CloudflareApi.DnsFirewallAnalytics do
 
   """
 
+  @spec report(client(), String.t(), String.t(), options()) :: CloudflareApi.result(term())
   def report(client, account_id, cluster_id, opts \\ []) do
     get(client, analytics_path(account_id, cluster_id) <> query_suffix(opts))
   end
@@ -37,6 +40,8 @@ defmodule CloudflareApi.DnsFirewallAnalytics do
 
   """
 
+  @spec report_by_time(client(), String.t(), String.t(), options()) ::
+          CloudflareApi.result(term())
   def report_by_time(client, account_id, cluster_id, opts \\ []) do
     get(
       client,

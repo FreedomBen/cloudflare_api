@@ -245,6 +245,9 @@ derived from tags and version-bump commits in `mix.exs`.
 - Tightened dialyzer coverage by enhancing the auto-generated specs, adding
   manual specs for binary/multipart helpers, and teaching dialyzer about Mix/IEx
   dependencies so `mix dialyzer` can run without spurious warnings.
+- Added explicit typespecs across the DNS modules (records, settings, firewall,
+  analytics, and helpers) so their return types are documented without relying
+  solely on the automatic spec generator.
 
 ## [0.3.0] - 2025-11-28
 

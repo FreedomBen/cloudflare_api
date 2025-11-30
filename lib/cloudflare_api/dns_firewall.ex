@@ -4,10 +4,15 @@ defmodule CloudflareApi.DnsFirewall do
   """
 
   use CloudflareApi.Typespecs
+  @type client :: CloudflareApi.client()
+  @type account_id :: CloudflareApi.id()
+  @type cluster_id :: String.t()
+  @type result :: CloudflareApi.result(term())
 
   @doc ~S"""
   List DNS firewall clusters (`GET /accounts/:account_id/dns_firewall`).
   """
+  @spec list(client(), account_id()) :: result()
   def list(client, account_id) do
     request(client, :get, base(account_id))
   end
@@ -15,6 +20,7 @@ defmodule CloudflareApi.DnsFirewall do
   @doc ~S"""
   Create a cluster (`POST /accounts/:account_id/dns_firewall`).
   """
+  @spec create(client(), account_id(), map()) :: result()
   def create(client, account_id, params) when is_map(params) do
     request(client, :post, base(account_id), params)
   end
@@ -22,6 +28,7 @@ defmodule CloudflareApi.DnsFirewall do
   @doc ~S"""
   Fetch cluster details (`GET /accounts/:account_id/dns_firewall/:id`).
   """
+  @spec get(client(), account_id(), cluster_id()) :: result()
   def get(client, account_id, cluster_id) do
     request(client, :get, cluster_path(account_id, cluster_id))
   end
@@ -29,6 +36,7 @@ defmodule CloudflareApi.DnsFirewall do
   @doc ~S"""
   Update a cluster (`PATCH /accounts/:account_id/dns_firewall/:id`).
   """
+  @spec update(client(), account_id(), cluster_id(), map()) :: result()
   def update(client, account_id, cluster_id, params) when is_map(params) do
     request(client, :patch, cluster_path(account_id, cluster_id), params)
   end
@@ -36,6 +44,7 @@ defmodule CloudflareApi.DnsFirewall do
   @doc ~S"""
   Delete a cluster (`DELETE /accounts/:account_id/dns_firewall/:id`).
   """
+  @spec delete(client(), account_id(), cluster_id()) :: result()
   def delete(client, account_id, cluster_id) do
     request(client, :delete, cluster_path(account_id, cluster_id), %{})
   end
@@ -43,6 +52,7 @@ defmodule CloudflareApi.DnsFirewall do
   @doc ~S"""
   Show reverse DNS settings (`GET /accounts/:account_id/dns_firewall/:id/reverse_dns`).
   """
+  @spec reverse_dns(client(), account_id(), cluster_id()) :: result()
   def reverse_dns(client, account_id, cluster_id) do
     request(client, :get, cluster_path(account_id, cluster_id) <> "/reverse_dns")
   end
@@ -50,6 +60,7 @@ defmodule CloudflareApi.DnsFirewall do
   @doc ~S"""
   Update reverse DNS (`PATCH /accounts/:account_id/dns_firewall/:id/reverse_dns`).
   """
+  @spec update_reverse_dns(client(), account_id(), cluster_id(), map()) :: result()
   def update_reverse_dns(client, account_id, cluster_id, params) when is_map(params) do
     request(client, :patch, cluster_path(account_id, cluster_id) <> "/reverse_dns", params)
   end

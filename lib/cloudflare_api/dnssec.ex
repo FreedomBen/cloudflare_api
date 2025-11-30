@@ -4,6 +4,9 @@ defmodule CloudflareApi.Dnssec do
   """
 
   use CloudflareApi.Typespecs
+  @type client :: CloudflareApi.client()
+  @type zone_id :: CloudflareApi.id()
+  @type result :: CloudflareApi.result(term())
 
   @doc ~S"""
   Details dnssec.
@@ -19,6 +22,7 @@ defmodule CloudflareApi.Dnssec do
 
   """
 
+  @spec details(client(), zone_id()) :: result()
   def details(client, zone_id) do
     c(client)
     |> Tesla.get(path(zone_id))
@@ -39,6 +43,7 @@ defmodule CloudflareApi.Dnssec do
 
   """
 
+  @spec delete(client(), zone_id()) :: result()
   def delete(client, zone_id) do
     c(client)
     |> Tesla.delete(path(zone_id), body: %{})
@@ -59,6 +64,7 @@ defmodule CloudflareApi.Dnssec do
 
   """
 
+  @spec update(client(), zone_id(), map()) :: result()
   def update(client, zone_id, params) when is_map(params) do
     c(client)
     |> Tesla.patch(path(zone_id), params)

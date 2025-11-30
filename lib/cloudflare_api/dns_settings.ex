@@ -4,10 +4,14 @@ defmodule CloudflareApi.DnsSettings do
   """
 
   use CloudflareApi.Typespecs
+  @type client :: CloudflareApi.client()
+  @type id :: CloudflareApi.id()
+  @type result :: CloudflareApi.result(term())
 
   @doc ~S"""
   Show DNS settings for a zone (`GET /zones/:zone_id/dns_settings`).
   """
+  @spec zone_settings(client(), id()) :: result()
   def zone_settings(client, zone_id) do
     request(client, :get, "/zones/#{zone_id}/dns_settings")
   end
@@ -15,6 +19,7 @@ defmodule CloudflareApi.DnsSettings do
   @doc ~S"""
   Update DNS settings for a zone (`PATCH /zones/:zone_id/dns_settings`).
   """
+  @spec update_zone_settings(client(), id(), map()) :: result()
   def update_zone_settings(client, zone_id, params) when is_map(params) do
     request(client, :patch, "/zones/#{zone_id}/dns_settings", params)
   end
@@ -22,6 +27,7 @@ defmodule CloudflareApi.DnsSettings do
   @doc ~S"""
   Show DNS settings for an account (`GET /accounts/:account_id/dns_settings`).
   """
+  @spec account_settings(client(), id()) :: result()
   def account_settings(client, account_id) do
     request(client, :get, "/accounts/#{account_id}/dns_settings")
   end
@@ -29,6 +35,7 @@ defmodule CloudflareApi.DnsSettings do
   @doc ~S"""
   Update DNS settings for an account (`PATCH /accounts/:account_id/dns_settings`).
   """
+  @spec update_account_settings(client(), id(), map()) :: result()
   def update_account_settings(client, account_id, params) when is_map(params) do
     request(client, :patch, "/accounts/#{account_id}/dns_settings", params)
   end

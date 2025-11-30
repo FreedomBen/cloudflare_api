@@ -174,7 +174,7 @@ defmodule CloudflareApi.Typespecs do
     |> elem(0)
     |> Enum.reverse()
   end
- 
+
   defp spec_ast({name, args}, env) do
     arg_types = Enum.map(args, &infer_arg_type(&1, env))
     return_type = infer_return_type(name, args)

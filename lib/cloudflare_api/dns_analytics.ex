@@ -4,10 +4,13 @@ defmodule CloudflareApi.DnsAnalytics do
   """
 
   use CloudflareApi.Typespecs
+  @type client :: CloudflareApi.client()
+  @type options :: CloudflareApi.options()
 
   @doc ~S"""
   Retrieve DNS analytics table data (`GET /zones/:zone_id/dns_analytics/report`).
   """
+  @spec report(client(), String.t(), options()) :: CloudflareApi.result(term())
   def report(client, zone_id, opts \\ []) do
     c(client)
     |> Tesla.get(report_path(zone_id) <> query_suffix(opts))
@@ -17,6 +20,7 @@ defmodule CloudflareApi.DnsAnalytics do
   @doc ~S"""
   Retrieve DNS analytics by time (`GET /zones/:zone_id/dns_analytics/report/bytime`).
   """
+  @spec report_by_time(client(), String.t(), options()) :: CloudflareApi.result(term())
   def report_by_time(client, zone_id, opts \\ []) do
     c(client)
     |> Tesla.get(report_path(zone_id) <> "/bytime" <> query_suffix(opts))
