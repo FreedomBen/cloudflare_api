@@ -181,7 +181,10 @@ defmodule CloudflareApi.Cache do
   @doc ~S"""
   Force a single hostname to be treated as expired.
 
-  This is primarily used by tests and debugging tools.
+  This keeps the cached entry (so `includes?/2` with `:even_if_expired` and
+  `get/2` with `:even_if_expired` still work) but adjusts its timestamp so the
+  regular cache lookups treat it as expired. Returns `:ok` even when the
+  hostname is missing, making it safe to call in cleanup code.
   """
   def expire(hostname) do
     # GenServer.call(@self, {:expire, hostname})
@@ -365,17 +368,31 @@ defmodule CloudflareApi.Cache do
   end
 
   @spec expire_entry(cache :: Cache.t(), hostname :: String.t()) :: Cache.t()
-  defp expire_entry(%Cache{} = cache, _hostname) do
-    # TODO - WIP
-    cache
-    # |> Kernel.struct(
-    #  hostnames: Map.put(cache.hostnames, cache_entry.dns_record.hostname, cache_entry)
-    # )
-    # cache.hostnames[hostname]
-    # entry = cache.hostnames[hostname]
-    # entry = struct(entry, timestamp: cur_seconds() - 10)
-    # cache.hostnames[hostname] = entry
-    # Map.update!(cache.hostnames[hostname], entry)
-    # Map.update!(cache, cache_entry.dns_record.hostname, fun)
+  defp expire_entry(%Cache{} = cache, hostname) when is_binary(hostname) do
+    case Map.fetch(cache.hostnames, hostname) do
+      {:ok, %CacheEntry{} = entry} ->
+        Logger.debug(
+          __ENV__,
+          "Marking cache entry as expired hostname='#{hostname}', entry='#{Utils.to_string(entry)}'"
+        )
+
+        expired_entry = %CacheEntry{
+          entry
+          | timestamp: cur_seconds() - cache.expire_seconds - 1
+        }
+
+        cache
+        |> Kernel.struct(hostnames: Map.put(cache.hostnames, hostname, expired_entry))
+
+      :error ->
+        Logger.debug(
+          __ENV__,
+          "No cache entry found to expire for hostname='#{hostname}'"
+        )
+
+        cache
+    end
   end
+
+  defp expire_entry(%Cache{} = cache, _hostname), do: cache
 end

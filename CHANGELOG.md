@@ -213,9 +213,14 @@ derived from tags and version-bump commits in `mix.exs`.
   workflow variables so supported versions are declared once.
 - Restored the Elixir-based `script/update_version.exs` helper and added a
   `mix update_version` alias so release bumps are easy to invoke.
+- Added debug logging inside `CloudflareApi.Cache.expire/1` so forced expirations
+  emit a trace when an entry is touched or when nothing matches the hostname.
 
 ### Fixed
 
+- Implement `CloudflareApi.Cache.expire/1` so forced expirations update timestamps
+  instead of requiring manual state tweaks, plus document/test the behaviour (no-op
+  on missing hostnames).
 - Ensure `CloudflareApi.Cache.includes?/2` honours the `:even_if_expired` flag by
   returning booleans instead of cached structs, and update the docs/tests to
   cover missing + expired hostnames.

@@ -3,7 +3,6 @@ defmodule CloudflareApi.CacheTest do
   doctest CloudflareApi.Cache
 
   alias CloudflareApi.{Cache, DnsRecord}
-  alias CloudflareApi.CacheEntry
 
   @test_hostname "test.example.com"
 
@@ -24,22 +23,11 @@ defmodule CloudflareApi.CacheTest do
       assert Cache.includes?(hostname)
       assert dns_record == Cache.get(hostname)
 
-      cache = :sys.get_state(:cloudflare_api_cache)
-
-      expired_entry = %CacheEntry{dns_record: dns_record, timestamp: -1_000_000_000}
-
-      expired_cache =
-        cache
-        |> Kernel.struct(hostnames: Map.put(cache.hostnames, hostname, expired_entry))
-
-      _old =
-        :sys.replace_state(:cloudflare_api_cache, fn _old ->
-          expired_cache
-        end)
-
+      assert :ok == Cache.expire(hostname)
       refute Cache.includes?(hostname)
       assert Cache.get(hostname) == nil
       assert Cache.get(hostname, :even_if_expired) == dns_record
+      assert Cache.includes?(hostname, :even_if_expired)
     end
 
     test "includes, update, get, flush, dump, delete all work" do
@@ -105,24 +93,21 @@ defmodule CloudflareApi.CacheTest do
       Cache.add_or_update(dns_record)
       assert Cache.includes?(hostname, :even_if_expired)
 
-      cache = :sys.get_state(:cloudflare_api_cache)
-      expired_entry = %CacheEntry{dns_record: dns_record, timestamp: -1_000_000_000}
-
-      expired_cache =
-        cache
-        |> Kernel.struct(hostnames: Map.put(cache.hostnames, hostname, expired_entry))
-
-      _old =
-        :sys.replace_state(:cloudflare_api_cache, fn _old ->
-          expired_cache
-        end)
-
+      assert :ok == Cache.expire(hostname)
       refute Cache.includes?(hostname)
       assert Cache.includes?(hostname, :even_if_expired)
     end
 
     test "includes?/2 returns false for an unknown hostname" do
       refute Cache.includes?("still-missing.example.com", :even_if_expired)
+    end
+
+    test "expire/1 is a no-op for unknown hostnames" do
+      hostname = "missing.example.com"
+      refute Cache.includes?(hostname)
+      assert :ok == Cache.expire(hostname)
+      refute Cache.includes?(hostname)
+      refute Cache.includes?(hostname, :even_if_expired)
     end
   end
 
