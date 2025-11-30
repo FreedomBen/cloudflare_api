@@ -88,7 +88,7 @@ from the OpenAPI spec.
 
 ## Version and Packaging
 
-Current version: 0.3.0 (see `mix.exs` and `CHANGELOG.md` for details)
+Current version: 0.4.0 (see `mix.exs` and `CHANGELOG.md` for details)
 Package name: `cloudflare_api`
 Source: https://github.com/freedomben/cloudflare_api
 

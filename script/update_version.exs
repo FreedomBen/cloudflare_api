@@ -1,7 +1,5 @@
 #!/usr/bin/env elixir
 
-Mix.install([])
-
 defmodule UpdateVersion do
   @root Path.expand("..", __DIR__)
   @mix Path.join(@root, "mix.exs")

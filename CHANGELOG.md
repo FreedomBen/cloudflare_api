@@ -9,6 +9,20 @@ derived from tags and version-bump commits in `mix.exs`.
 
 ### Added
 
+- _Nothing yet_
+
+### Changed
+
+- _Nothing yet_
+
+### Fixed
+
+- _Nothing yet_
+
+## [0.4.0] - 2025-11-30
+
+### Added
+
 - Added shared type aliases plus a `CloudflareApi.Typespecs` macro that
   automatically injects default specs into every endpoint module, ensuring the
   entire library now exposes dialyzer-friendly types without hand-written
@@ -249,6 +263,7 @@ derived from tags and version-bump commits in `mix.exs`.
   analytics, and helpers) so their return types are documented without relying
   solely on the automatic spec generator.
 
+
 ## [0.3.0] - 2025-11-28
 
 Changes since `v0.2.3`.
@@ -347,3 +362,4 @@ Initial early release series.
 
 - Removed an accidental dependency on `Bonny` and pruned unused password-related
   helpers to keep the dependency set minimal.
+
