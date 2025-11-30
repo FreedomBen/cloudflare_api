@@ -207,6 +207,10 @@ derived from tags and version-bump commits in `mix.exs`.
 - Add a dedicated `build` job to the CI workflow that compiles the project,
   runs `mix hex.build`, and uploads the resulting Hex tarball as a GitHub
   Actions artifact.
+- Add a tag-triggered `release` job that re-builds the Hex tarball for version
+  tags (e.g. `v0.3.0`) and creates a GitHub release with the package attached.
+- Centralized the GitHub Actions Elixir/OTP version matrix into top-level
+  workflow variables so supported versions are declared once.
 
 ### Fixed
 
