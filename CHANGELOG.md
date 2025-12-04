@@ -17,7 +17,8 @@ derived from tags and version-bump commits in `mix.exs`.
 
 ### Fixed
 
-- _Nothing yet_
+- Handle Cloudflare DNS create error code `81058` (duplicate record) the same as
+  `81057`, ensuring duplicate record attempts return `:already_exists`/`:already_created`.
 
 ## [0.4.0] - 2025-11-30
 

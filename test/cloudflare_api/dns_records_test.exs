@@ -314,6 +314,39 @@ defmodule CloudflareApi.DnsRecordsTest do
       assert {:ok, :already_exists} = DnsRecords.create(client(), "zone-id", dns_struct)
     end
 
+    test "create/3 with struct returns :already_exists on 81058" do
+      mock(fn
+        %Tesla.Env{method: :post} ->
+          %Tesla.Env{
+            status: 400,
+            body: %{
+              "success" => false,
+              "errors" => [
+                %{"code" => 81_058, "message" => "An identical record already exists."}
+              ],
+              "messages" => [],
+              "result" => nil
+            }
+          }
+      end)
+
+      dns_struct = %DnsRecord{
+        id: nil,
+        zone_id: "zone-id",
+        zone_name: nil,
+        hostname: "www.example.com",
+        ip: "1.2.3.4",
+        created_on: nil,
+        type: :A,
+        ttl: 120,
+        proxied: false,
+        proxiable: true,
+        locked: false
+      }
+
+      assert {:ok, :already_exists} = DnsRecords.create(client(), "zone-id", dns_struct)
+    end
+
     test "create/4 with fields returns struct on success" do
       result_json = %{
         "id" => "new-id",
@@ -357,6 +390,26 @@ defmodule CloudflareApi.DnsRecordsTest do
             body: %{
               "success" => false,
               "errors" => [%{"code" => 81_057, "message" => "already exists"}],
+              "messages" => [],
+              "result" => nil
+            }
+          }
+      end)
+
+      assert {:ok, :already_created} =
+               DnsRecords.create(client(), "zone-id", "www.example.com", "1.2.3.4")
+    end
+
+    test "create/4 returns :already_created on 81058" do
+      mock(fn
+        %Tesla.Env{method: :post} ->
+          %Tesla.Env{
+            status: 400,
+            body: %{
+              "success" => false,
+              "errors" => [
+                %{"code" => 81_058, "message" => "An identical record already exists."}
+              ],
               "messages" => [],
               "result" => nil
             }

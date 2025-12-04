@@ -91,7 +91,7 @@ defmodule CloudflareApi.DnsRecords do
   Returns:
 
     * `{:ok, %CloudflareApi.DnsRecord{}}` on success
-    * `{:ok, :already_exists}` when Cloudflare reports error code `81057`
+    * `{:ok, :already_exists}` when Cloudflare reports error code `81057` or `81058`
       (record already exists)
     * `{:error, errors}` when Cloudflare returns an `errors` list
     * `{:error, err}` for any other unexpected response
@@ -103,7 +103,8 @@ defmodule CloudflareApi.DnsRecords do
       {:ok, %Tesla.Env{status: 200, body: body}} ->
         {:ok, to_struct(body["result"])}
 
-      {:ok, %Tesla.Env{status: 400, body: %{"errors" => [%{"code" => 81_057}]}}} ->
+      {:ok, %Tesla.Env{status: 400, body: %{"errors" => [%{"code" => code}]}}}
+      when code in [81_057, 81_058] ->
         {:ok, :already_exists}
 
       {:ok, %Tesla.Env{body: %{"errors" => errs}}} ->
@@ -125,7 +126,8 @@ defmodule CloudflareApi.DnsRecords do
   - `type` – the Cloudflare DNS record type, defaulting to `"A"`
 
   Returns the same tuple shapes as `create/3`, but uses `{:ok, :already_created}`
-  when Cloudflare reports that the record already exists.
+  when Cloudflare reports that the record already exists (error codes `81057`
+  or `81058`).
   """
   @spec create(client(), zone_id(), String.t(), String.t(), String.t()) ::
           CloudflareApi.result(dns_record() | :already_created)
@@ -140,7 +142,8 @@ defmodule CloudflareApi.DnsRecords do
       {:ok, %Tesla.Env{status: 200, body: body}} ->
         {:ok, to_struct(body["result"])}
 
-      {:ok, %Tesla.Env{status: 400, body: %{"errors" => [%{"code" => 81_057}]}}} ->
+      {:ok, %Tesla.Env{status: 400, body: %{"errors" => [%{"code" => code}]}}}
+      when code in [81_057, 81_058] ->
         {:ok, :already_created}
 
       {:ok, %Tesla.Env{body: %{"errors" => errs}}} ->
