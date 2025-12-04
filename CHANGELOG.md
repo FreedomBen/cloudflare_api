@@ -7,18 +7,13 @@ derived from tags and version-bump commits in `mix.exs`.
 
 ## [unreleased]
 
-### Added
-
-- _Nothing yet_
-
-### Changed
-
-- _Nothing yet_
+## [0.4.2] - 2025-12-04
 
 ### Fixed
 
 - Handle Cloudflare DNS create error code `81058` (duplicate record) the same as
   `81057`, ensuring duplicate record attempts return `:already_exists`/`:already_created`.
+
 
 ## [0.4.0] - 2025-11-30
 
@@ -366,3 +361,4 @@ Initial early release series.
 
 - Removed an accidental dependency on `Bonny` and pruned unused password-related
   helpers to keep the dependency set minimal.
+
