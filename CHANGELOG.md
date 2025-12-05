@@ -7,7 +7,19 @@ derived from tags and version-bump commits in `mix.exs`.
 
 ## [unreleased]
 
-## [0.4.2] - 2025-12-04
+### Added
+
+- _Nothing yet_
+
+### Changed
+
+- _Nothing yet_
+
+### Fixed
+
+- _Nothing yet_
+
+## [0.5.0] - 2025-12-05
 
 ### Fixed
 
@@ -363,3 +375,5 @@ Initial early release series.
 
 - Removed an accidental dependency on `Bonny` and pruned unused password-related
   helpers to keep the dependency set minimal.
+
+
