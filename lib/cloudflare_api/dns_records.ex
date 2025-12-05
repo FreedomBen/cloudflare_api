@@ -32,15 +32,19 @@ defmodule CloudflareApi.DnsRecords do
 
   On success, returns `{:ok, [CloudflareApi.DnsRecord.t()]}`. If Cloudflare
   responds with an `errors` list, returns `{:error, errors}`. Any other
-  unexpected response shape is wrapped as `{:error, err}`.
+  unexpected response shape is wrapped as `{:error, err}`. When `zone_id` is
+  blank (or whitespace), it returns `{:error, :missing_zone_id}` without making
+  an HTTP request.
   """
   @spec list(client(), zone_id(), options()) :: CloudflareApi.result([dns_record()])
   def list(client, zone_id, opts \\ nil) do
-    case Tesla.get(c(client), list_url(zone_id, opts)) do
-      {:ok, %Tesla.Env{status: 200, body: body}} -> {:ok, to_structs(body["result"])}
-      {:ok, %Tesla.Env{body: %{"errors" => errs}}} -> {:error, errs}
-      err -> {:error, err}
-    end
+    with_zone_id(zone_id, fn zone_id ->
+      case Tesla.get(c(client), list_url(zone_id, opts)) do
+        {:ok, %Tesla.Env{status: 200, body: body}} -> {:ok, to_structs(body["result"])}
+        {:ok, %Tesla.Env{body: %{"errors" => errs}}} -> {:error, errs}
+        err -> {:error, err}
+      end
+    end)
   end
 
   @doc ~S"""
@@ -93,26 +97,29 @@ defmodule CloudflareApi.DnsRecords do
     * `{:ok, %CloudflareApi.DnsRecord{}}` on success
     * `{:ok, :already_exists}` when Cloudflare reports error code `81057` or `81058`
       (record already exists)
+    * `{:error, :missing_zone_id}` when `zone_id` is blank
     * `{:error, errors}` when Cloudflare returns an `errors` list
     * `{:error, err}` for any other unexpected response
   """
   @spec create(client(), zone_id(), dns_record()) ::
           CloudflareApi.result(dns_record() | :already_exists)
   def create(client, zone_id, %DnsRecord{} = record) do
-    case Tesla.post(c(client), "/zones/#{zone_id}/dns_records", DnsRecord.to_cf_json(record)) do
-      {:ok, %Tesla.Env{status: 200, body: body}} ->
-        {:ok, to_struct(body["result"])}
+    with_zone_id(zone_id, fn zone_id ->
+      case Tesla.post(c(client), "/zones/#{zone_id}/dns_records", DnsRecord.to_cf_json(record)) do
+        {:ok, %Tesla.Env{status: 200, body: body}} ->
+          {:ok, to_struct(body["result"])}
 
-      {:ok, %Tesla.Env{status: 400, body: %{"errors" => [%{"code" => code}]}}}
-      when code in [81_057, 81_058] ->
-        {:ok, :already_exists}
+        {:ok, %Tesla.Env{status: 400, body: %{"errors" => [%{"code" => code}]}}}
+        when code in [81_057, 81_058] ->
+          {:ok, :already_exists}
 
-      {:ok, %Tesla.Env{body: %{"errors" => errs}}} ->
-        {:error, errs}
+        {:ok, %Tesla.Env{body: %{"errors" => errs}}} ->
+          {:error, errs}
 
-      err ->
-        {:error, err}
-    end
+        err ->
+          {:error, err}
+      end
+    end)
   end
 
   @doc ~S"""
@@ -127,31 +134,34 @@ defmodule CloudflareApi.DnsRecords do
 
   Returns the same tuple shapes as `create/3`, but uses `{:ok, :already_created}`
   when Cloudflare reports that the record already exists (error codes `81057`
-  or `81058`).
+  or `81058`). When `zone_id` is blank (or whitespace), it returns
+  `{:error, :missing_zone_id}` immediately.
   """
   @spec create(client(), zone_id(), String.t(), String.t(), String.t()) ::
           CloudflareApi.result(dns_record() | :already_created)
   def create(client, zone_id, hostname, ip, type \\ "A") do
-    case Tesla.post(c(client), "/zones/#{zone_id}/dns_records", %{
-           type: type,
-           name: hostname,
-           content: ip,
-           ttl: 1,
-           proxied: false
-         }) do
-      {:ok, %Tesla.Env{status: 200, body: body}} ->
-        {:ok, to_struct(body["result"])}
+    with_zone_id(zone_id, fn zone_id ->
+      case Tesla.post(c(client), "/zones/#{zone_id}/dns_records", %{
+             type: type,
+             name: hostname,
+             content: ip,
+             ttl: 1,
+             proxied: false
+           }) do
+        {:ok, %Tesla.Env{status: 200, body: body}} ->
+          {:ok, to_struct(body["result"])}
 
-      {:ok, %Tesla.Env{status: 400, body: %{"errors" => [%{"code" => code}]}}}
-      when code in [81_057, 81_058] ->
-        {:ok, :already_created}
+        {:ok, %Tesla.Env{status: 400, body: %{"errors" => [%{"code" => code}]}}}
+        when code in [81_057, 81_058] ->
+          {:ok, :already_created}
 
-      {:ok, %Tesla.Env{body: %{"errors" => errs}}} ->
-        {:error, errs}
+        {:ok, %Tesla.Env{body: %{"errors" => errs}}} ->
+          {:error, errs}
 
-      err ->
-        {:error, err}
-    end
+        err ->
+          {:error, err}
+      end
+    end)
   end
 
   @doc ~S"""
@@ -162,27 +172,30 @@ defmodule CloudflareApi.DnsRecords do
 
   On success it returns `{:ok, %CloudflareApi.DnsRecord{}}`. When Cloudflare
   responds with an `errors` list, it returns `{:error, errors}`; all other
-  failures are normalized as `{:error, err}`.
+  failures are normalized as `{:error, err}`. If `zone_id` is blank, it returns
+  `{:error, :missing_zone_id}` before attempting the HTTP call.
   """
   @spec update(client(), zone_id(), String.t(), String.t(), String.t(), String.t()) ::
           CloudflareApi.result(dns_record())
   def update(client, zone_id, record_id, hostname, ip, type \\ "A") do
-    case Tesla.put(c(client), "/zones/#{zone_id}/dns_records/#{record_id}", %{
-           type: type,
-           name: hostname,
-           content: ip,
-           ttl: 1,
-           proxied: false
-         }) do
-      {:ok, %Tesla.Env{status: 200, body: body}} ->
-        {:ok, to_struct(body["result"])}
+    with_zone_id(zone_id, fn zone_id ->
+      case Tesla.put(c(client), "/zones/#{zone_id}/dns_records/#{record_id}", %{
+             type: type,
+             name: hostname,
+             content: ip,
+             ttl: 1,
+             proxied: false
+           }) do
+        {:ok, %Tesla.Env{status: 200, body: body}} ->
+          {:ok, to_struct(body["result"])}
 
-      {:ok, %Tesla.Env{body: %{"errors" => errs}}} ->
-        {:error, errs}
+        {:ok, %Tesla.Env{body: %{"errors" => errs}}} ->
+          {:error, errs}
 
-      err ->
-        {:error, err}
-    end
+        err ->
+          {:error, err}
+      end
+    end)
   end
 
   @doc ~S"""
@@ -196,25 +209,28 @@ defmodule CloudflareApi.DnsRecords do
     * `{:ok, :already_deleted}` when Cloudflare reports error code `81044`
     * `{:error, errors}` when Cloudflare returns an `errors` list
     * `{:error, err}` for other failures
+    * `{:error, :missing_zone_id}` when `zone_id` is blank
   """
   @spec delete(client(), zone_id(), String.t()) ::
           CloudflareApi.result(String.t() | :already_deleted)
   def delete(client, zone_id, record_id) do
-    # The OpenAPI schema models this endpoint with a required (but empty) JSON
-    # request body, so we send an empty map here to align with that shape.
-    case Tesla.delete(c(client), "/zones/#{zone_id}/dns_records/#{record_id}", body: %{}) do
-      {:ok, %Tesla.Env{status: 200, body: body}} ->
-        {:ok, body["result"]["id"]}
+    with_zone_id(zone_id, fn zone_id ->
+      # The OpenAPI schema models this endpoint with a required (but empty) JSON
+      # request body, so we send an empty map here to align with that shape.
+      case Tesla.delete(c(client), "/zones/#{zone_id}/dns_records/#{record_id}", body: %{}) do
+        {:ok, %Tesla.Env{status: 200, body: body}} ->
+          {:ok, body["result"]["id"]}
 
-      {:ok, %Tesla.Env{status: 404, body: %{"errors" => [%{"code" => 81_044}]}}} ->
-        {:ok, :already_deleted}
+        {:ok, %Tesla.Env{status: 404, body: %{"errors" => [%{"code" => 81_044}]}}} ->
+          {:ok, :already_deleted}
 
-      {:ok, %Tesla.Env{body: %{"errors" => errs}}} ->
-        {:error, errs}
+        {:ok, %Tesla.Env{body: %{"errors" => errs}}} ->
+          {:error, errs}
 
-      err ->
-        {:error, err}
-    end
+        err ->
+          {:error, err}
+      end
+    end)
   end
 
   @doc ~S"""
@@ -243,6 +259,20 @@ defmodule CloudflareApi.DnsRecords do
     {:ok, records} = list_for_host_domain(client, zone_id, host, domain, type)
     Enum.count(records) > 0
   end
+
+  defp with_zone_id(nil, _fun), do: {:error, :missing_zone_id}
+
+  defp with_zone_id(zone_id, fun) when is_binary(zone_id) do
+    zone_id = String.trim(zone_id)
+
+    if zone_id == "" do
+      {:error, :missing_zone_id}
+    else
+      fun.(zone_id)
+    end
+  end
+
+  defp with_zone_id(zone_id, fun), do: with_zone_id(to_string(zone_id), fun)
 
   defp list_url(zone_id, opts) do
     case opts do

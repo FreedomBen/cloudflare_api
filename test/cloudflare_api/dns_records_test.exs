@@ -233,6 +233,54 @@ defmodule CloudflareApi.DnsRecordsTest do
     end
   end
 
+  describe "zone_id validation" do
+    test "list/3 returns {:error, :missing_zone_id} when zone_id blank" do
+      assert {:error, :missing_zone_id} = DnsRecords.list(client(), "")
+    end
+
+    test "list_for_hostname/4 returns {:error, :missing_zone_id} when zone_id blank" do
+      assert {:error, :missing_zone_id} =
+               DnsRecords.list_for_hostname(client(), "", "www.example.com")
+    end
+
+    test "list_for_host_domain/5 returns {:error, :missing_zone_id} when zone_id blank" do
+      assert {:error, :missing_zone_id} =
+               DnsRecords.list_for_host_domain(client(), "", "www", "example.com")
+    end
+
+    test "create/3 returns {:error, :missing_zone_id} when zone_id blank" do
+      dns_struct = %DnsRecord{
+        id: nil,
+        zone_id: "zone-id",
+        zone_name: nil,
+        hostname: "www.example.com",
+        ip: "1.2.3.4",
+        created_on: nil,
+        type: :A,
+        ttl: 120,
+        proxied: false,
+        proxiable: true,
+        locked: false
+      }
+
+      assert {:error, :missing_zone_id} = DnsRecords.create(client(), "", dns_struct)
+    end
+
+    test "create/4 returns {:error, :missing_zone_id} when zone_id blank" do
+      assert {:error, :missing_zone_id} =
+               DnsRecords.create(client(), "", "www.example.com", "1.2.3.4")
+    end
+
+    test "update/5 returns {:error, :missing_zone_id} when zone_id blank" do
+      assert {:error, :missing_zone_id} =
+               DnsRecords.update(client(), "", "record-id", "www.example.com", "1.2.3.4")
+    end
+
+    test "delete/3 returns {:error, :missing_zone_id} when zone_id blank" do
+      assert {:error, :missing_zone_id} = DnsRecords.delete(client(), "", "record-id")
+    end
+  end
+
   describe "create/3 and create/4" do
     test "create/3 with struct returns {:ok, DnsRecord} on success" do
       dns_struct = %DnsRecord{
