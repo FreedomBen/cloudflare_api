@@ -39,6 +39,23 @@ defmodule CloudflareApiTest do
     assert match?(%Tesla.Client{}, client1)
   end
 
+  test "new/1 does not include rate-limit retry middleware" do
+    client = CloudflareApi.new("token")
+
+    refute Enum.any?(client.pre, fn {mod, _fun, _args} -> mod == CloudflareApi.RateLimitRetry end)
+  end
+
+  test "new/2 can enable rate-limit retries" do
+    client = CloudflareApi.new("token", rate_limit_retry: [max_retries: 5])
+
+    assert %Tesla.Client{pre: middleware} = client
+
+    {CloudflareApi.RateLimitRetry, _fun, [retry_opts]} =
+      Enum.find(middleware, fn {mod, _fun, _args} -> mod == CloudflareApi.RateLimitRetry end)
+
+    assert Keyword.get(retry_opts, :max_retries) == 5
+  end
+
   test "uri_encode_opts/1 encodes according to RFC3986" do
     opts = [{:name, "example domain"}, {:q, "a&b=c"}, {"weird", "value!"}]
 

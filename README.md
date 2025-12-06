@@ -5,6 +5,19 @@
 you close to the underlying REST endpoints while providing a small set of
 ergonomic helpers.
 
+## Rate-limit retries
+
+To automatically retry HTTP `429` responses, build your client with
+`rate_limit_retry: true` (or pass retry options):
+
+```elixir
+client = CloudflareApi.new("api-token", rate_limit_retry: [max_retries: 2])
+{:ok, zones} = CloudflareApi.Zones.list(client)
+```
+
+You can also wrap a single request with `CloudflareApi.RateLimitRetry.run/2`
+and customize `max_retries`, `base_backoff`, or the `sleep` callback for tests.
+
 The library currently includes convenience modules for:
 
 - Zones – listing zones and working with `CloudflareApi.Zone` structs.

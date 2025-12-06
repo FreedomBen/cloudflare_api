@@ -77,13 +77,27 @@ defmodule CloudflareApi do
       iex> is_struct(client, Tesla.Client)
       true
 
+  You may also enable opt-in rate-limit retries by passing
+  `rate_limit_retry: true` (or a keyword list of retry options) as the second
+  argument. See `CloudflareApi.RateLimitRetry` for available options.
+
+  ## Examples
+
+      iex> client = CloudflareApi.new("api-token", rate_limit_retry: true)
+      iex> is_struct(client, Tesla.Client)
+      true
+
   """
-  def new(cloudflare_api_token) do
-    Tesla.client([
-      {Tesla.Middleware.BaseUrl, "https://api.cloudflare.com/client/v4"},
-      Tesla.Middleware.JSON,
-      {Tesla.Middleware.BearerAuth, token: cloudflare_api_token}
-    ])
+  def new(cloudflare_api_token, opts \\ []) do
+    middlewares =
+      [
+        {Tesla.Middleware.BaseUrl, "https://api.cloudflare.com/client/v4"},
+        Tesla.Middleware.JSON,
+        {Tesla.Middleware.BearerAuth, token: cloudflare_api_token}
+      ]
+      |> maybe_add_rate_limit_retry(Keyword.get(opts, :rate_limit_retry))
+
+    Tesla.client(middlewares)
   end
 
   @doc ~S"""
@@ -106,13 +120,29 @@ defmodule CloudflareApi do
       true
 
   """
-  def client(cloudflare_api_token) do
-    c = CloudflareApi.new(cloudflare_api_token)
+  def client(cloudflare_api_token, opts \\ []) do
+    c = CloudflareApi.new(cloudflare_api_token, opts)
     fn -> c end
   end
 
   @doc false
   def uri_encode_opts(opts) do
     URI.encode_query(opts, :rfc3986)
+  end
+
+  defp maybe_add_rate_limit_retry(middleware, nil), do: middleware
+  defp maybe_add_rate_limit_retry(middleware, false), do: middleware
+
+  defp maybe_add_rate_limit_retry(middleware, true) do
+    [{CloudflareApi.RateLimitRetry, []} | middleware]
+  end
+
+  defp maybe_add_rate_limit_retry(middleware, retry_opts) when is_list(retry_opts) do
+    [{CloudflareApi.RateLimitRetry, retry_opts} | middleware]
+  end
+
+  defp maybe_add_rate_limit_retry(_middleware, other) do
+    raise ArgumentError,
+          "rate_limit_retry must be a boolean or keyword list, got: #{inspect(other)}"
   end
 end
