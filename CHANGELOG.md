@@ -9,6 +9,20 @@ derived from tags and version-bump commits in `mix.exs`.
 
 ### Added
 
+- _Nothing yet_
+
+### Changed
+
+- _Nothing yet_
+
+### Fixed
+
+- _Nothing yet_
+
+## [0.6.0] - 2025-12-06
+
+### Added
+
 - Opt-in rate-limit retry helper (`CloudflareApi.RateLimitRetry`) and client
   option so HTTP 429 responses are retried using `Retry-After` with bounded
   backoff.
@@ -20,6 +34,7 @@ derived from tags and version-bump commits in `mix.exs`.
 ### Fixed
 
 - _Nothing yet_
+
 
 ## [0.5.0] - 2025-12-05
 
@@ -377,4 +392,5 @@ Initial early release series.
 
 - Removed an accidental dependency on `Bonny` and pruned unused password-related
   helpers to keep the dependency set minimal.
+
 

@@ -156,7 +156,7 @@ Add `cloudflare_api` to your `mix.exs`:
 ```elixir
 def deps do
   [
-    {:cloudflare_api, "~> 0.5.0"}
+    {:cloudflare_api, "~> 0.6.0"}
   ]
 end
 ```
